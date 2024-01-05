@@ -3,12 +3,13 @@
 @section('content')
 	<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 						<!--begin::Toolbar-->
-						@include('partials.toolbar')
-						<!--end::Toolbar-->
+                        @include('partials.toolbar')
+                        <!--end::Toolbar-->
 						<!--begin::Post-->
 						<div class="post d-flex flex-column-fluid" id="kt_post">
 							<!--begin::Container-->
 							<div id="kt_content_container" class="container-xxl">
+                                <h1>Admin</h1>
 								<!--begin::Card-->
 								<div class="card">
 									<!--begin::Card body-->
@@ -30,7 +31,7 @@
 														</svg><!--end::Svg Icon--></span>
 														<!--end::Svg Icon-->
 														<div class="text-white fw-bolder fs-2 mb-2 mt-5">12</div>
-														<div class="fw-bold text-white">Dosen</div>
+														<div class="fw-bold text-white">Admin</div>
 													</div>
 													<!--end::Body-->
 												</a>
