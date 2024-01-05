@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 // Admin
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AkunController;
+use App\Http\Controllers\Admin\BiodataController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -44,6 +45,14 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/deleteAkun/{id}', [AkunController::class, 'destroy'])->middleware('auth')->name('destroy.akun');
     Route::get('/resetAkun/{id}', [AkunController::class, 'reset'])->middleware('auth')->name('reset.akun');
     Route::post('/resetupdateAkun/{id}', [AkunController::class, 'resetupdate'])->middleware('auth')->name('resetupdate.akun');
+
+    // Biodata
+    Route::get('/biodata', [BiodataController::class, 'index'])->middleware('auth')->name('biodata');
+    Route::post('/biodata', [BiodataController::class, 'store'])->middleware('auth')->name('insert.biodata');
+    Route::get('/editBiodata/{id}', [BiodataController::class, 'edit'])->middleware('auth')->name('edit.biodata');
+    Route::post('/updateBiodata/{id}', [BiodataController::class, 'update'])->middleware('auth')->name('update.biodata');
+    Route::delete('/deleteBiodata/{id}', [BiodataController::class, 'destroy'])->middleware('auth')->name('destroy.biodata');
+
 });
 
 Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth')->name('userDashboard');
