@@ -22,7 +22,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-dark">Dashboard</li>
+                <li class="breadcrumb-item text-dark">{{ $active }}</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->

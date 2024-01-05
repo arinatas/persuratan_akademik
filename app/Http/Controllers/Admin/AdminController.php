@@ -13,8 +13,8 @@ class AdminController extends Controller
         // dd("Berhasil login");
             return view('admin.dashboard.index', [
                 'title' => 'Dashboard Admin',
-                'secction' => 'Dashboard',
-                'active' => 'Dashboard'
+                'section' => 'Dashboard',
+                'active' => 'Dashboard Admin'
             ]);
     }
 }

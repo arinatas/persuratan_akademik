@@ -6,18 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Biodata;
+use App\Models\DosenPA;
 
-class BiodataController extends Controller
+class DosenPAController extends Controller
 {
     public function index()
     {
-        $biodatas = Biodata::all();
-            return view('admin.master.biodata.index', [
-                'title' => 'Biodata',
+        $dosenpas = DosenPA::all();
+            return view('admin.master.dosen_pa.index', [
+                'title' => 'Dosen PA',
                 'section' => 'Master',
-                'active' => 'Biodata',
-                'biodatas' => $biodatas,
+                'active' => 'Dosen PA',
+                'dosenpas' => $dosenpas,
             ]);
     }
 
@@ -25,13 +25,9 @@ class BiodataController extends Controller
     {
         // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
-            'nim' => 'required|string|max:100',
+            'nidn' => 'required|string|max:100',
             'nama' => 'required|string|max:255',
-            'kelas' => 'required|string|max:100',
-            'prodi' => 'required|string|max:100',
-            'fakultas' => 'required|string|max:100',
-            'angkatan' => 'required|string|max:100',
-            'dosen_pa' => 'required|integer',
+            'jabatan' => 'required|string|max:255'
         ]);
 
         // kalau ada error kembalikan error
@@ -44,14 +40,10 @@ class BiodataController extends Controller
             DB::beginTransaction();
 
             // insert ke tabel positions
-            Biodata::create([
-                'nim' => $request->nim,
+            DosenPA::create([
+                'nidn' => $request->nidn,
                 'nama' => $request->nama,
-                'kelas' => $request->kelas,
-                'prodi' => $request->prodi,
-                'fakultas' => $request->fakultas,
-                'angkatan' => $request->angkatan,
-                'dosen_pa' => $request->dosen_pa,
+                'jabatan' => $request->jabatan,
             ]);
 
             DB::commit();
@@ -67,37 +59,33 @@ class BiodataController extends Controller
 
     public function edit($id)
     {
-        $biodata = Biodata::find($id);
+        $dosen_pa = DosenPA::find($id);
 
-        if (!$biodata) {
+        if (!$dosen_pa) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
-        return view('admin.master.biodata.edit', [
-            'title' => 'Biodata',
+        return view('admin.master.dosen_pa.edit', [
+            'title' => 'Dosen PA',
             'secction' => 'Master',
-            'active' => 'Biodata',
-            'biodata' => $biodata,
+            'active' => 'Dosen PA',
+            'dosen_pa' => $dosen_pa,
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $biodata = Biodata::find($id);
+        $dosen_pa = DosenPA::find($id);
 
-        if (!$biodata) {
+        if (!$dosen_pa) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
         // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
-            'nim' => 'required|string|max:100',
+            'nidn' => 'required|string|max:100',
             'nama' => 'required|string|max:255',
-            'kelas' => 'required|string|max:100',
-            'prodi' => 'required|string|max:100',
-            'fakultas' => 'required|string|max:100',
-            'angkatan' => 'required|string|max:100',
-            'dosen_pa' => 'required|integer',
+            'jabatan' => 'required|string|max:255',
         ]);
 
         // kalau ada error kembalikan error
@@ -106,17 +94,13 @@ class BiodataController extends Controller
         }
 
         try{
-            $biodata->nim = $request->nim;
-            $biodata->nama = $request->nama;
-            $biodata->kelas = $request->kelas;
-            $biodata->prodi = $request->prodi;
-            $biodata->fakultas = $request->fakultas;
-            $biodata->angkatan = $request->angkatan;
-            $biodata->dosen_pa = $request->dosen_pa;
+            $dosen_pa->nidn = $request->nidn;
+            $dosen_pa->nama = $request->nama;
+            $dosen_pa->jabatan = $request->jabatan;
 
-            $biodata->save();
+            $dosen_pa->save();
 
-            return redirect('/biodata')->with('updateSuccess', 'Data berhasil di Update');
+            return redirect('/dosenPA')->with('updateSuccess', 'Data berhasil di Update');
         } catch(Exception $e) {
             dd($e);
             return redirect()->back()->with('updateFail', 'Data gagal di Update');
@@ -126,11 +110,11 @@ class BiodataController extends Controller
     public function destroy($id)
     {
         // Cari data pengguna berdasarkan ID
-        $biodata = Biodata::find($id);
+        $dosen_pa = DosenPA::find($id);
 
         try {
             // Hapus data pengguna
-            $biodata->delete();
+            $dosen_pa->delete();
             return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
         } catch (\Exception $e) {
             return redirect()->back()->with('deleteFail', $e->getMessage());

@@ -26,19 +26,15 @@
                                         </div>
                                         <!--end::Heading-->
                                         <!--begin::Table-->
-                                        @if ($biodatas )
+                                        @if ($dosenpas )
                                         <div class="table-responsive my-10 mx-8">
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
                                                     <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
                                                         <th class="min-w-100px">No</th>
-                                                        <th class="min-w-100">Nim</th>
+                                                        <th class="min-w-100">NIDN</th>
                                                         <th class="min-w-100px">Nama</th>
-                                                        <th class="min-w-100px">Kelas</th>
-                                                        <th class="min-w-100">Prodi</th>
-                                                        <th class="min-w-100">Fakultas</th>
-                                                        <th class="min-w-100">Angkatan</th>
-                                                        <th class="min-w-100">Dosen PA</th>
+                                                        <th class="min-w-100px">Jabatan</th>
                                                         <th class="min-w-300px">Action</th>
                                                     </tr>
                                                 </thead>
@@ -46,19 +42,15 @@
                                                     @php
                                                         $no = 1; // Inisialisasi no
                                                     @endphp
-                                                    @foreach ($biodatas as $item)
+                                                    @foreach ($dosenpas as $item)
                                                     <tr>
                                                         <td>{{ $no }}</td>
-                                                        <td>{{ $item->nim }}</td>
+                                                        <td>{{ $item->nidn }}</td>
                                                         <td>{{ $item->nama }}</td>
-                                                        <td>{{ $item->kelas }}</td>
-                                                        <td>{{ $item->prodi }}</td>
-                                                        <td>{{ $item->fakultas }}</td>
-                                                        <td>{{ $item->angkatan }}</td>
-                                                        <td>{{ $item->dosen_pa }}</td>
+                                                        <td>{{ $item->jabatan }}</td>
                                                         <td>
-                                                            <a href="{{ route('edit.biodata', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                                            <form id="form-delete" action="{{ route('destroy.biodata', $item->id ) }}" method="POST"
+                                                            <a href="{{ route('edit.dosenPA', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                                            <form id="form-delete" action="{{ route('destroy.dosenPA', $item->id ) }}" method="POST"
                                                             class="d-inline-block">
                                                             @csrf
                                                             @method('DELETE')
@@ -136,16 +128,16 @@
                                             <!--begin::Modal body-->
                                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                                 <!--begin::Form-->
-                                                <form action="{{ route('insert.biodata') }}" method="POST">
+                                                <form action="{{ route('insert.dosenPA') }}" method="POST">
                                                     @csrf
                                                     <!--begin::Input group-->
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Nim</span>
+                                                            <span class="required">NIDN</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nim" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="nidn" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -158,57 +150,12 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Kelas</span>
+                                                            <span class="required">Jabatan</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="kelas" required>
-                                                            <option value="Pagi">Pagi</option>
-                                                            <option value="Malam">Malam</option>
-                                                        </select>
+                                                        <input class="form-control form-control-solid" type="text" name="jabatan" required value=""/>
                                                     </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Prodi</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
-                                                            <option value="Informatika">Informatika</option>
-                                                            <option value="Sistem Informasi">Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
-                                                            <option value="Akutansi">Akutansi</option>
-                                                            <option value="Manajemen">Manajemen</option>
-                                                            <option value="DKV">DKV</option>
-                                                            <option value="Bisnis Digital">Bisnis Digital</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Fakultas</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="fakultas" required>
-                                                            <option value="Teknologi Informasi & Desain">Teknologi Informasi & Desain</option>
-                                                            <option value="Ekonomi & Bisnis">Ekonomi & Bisnis</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Angkatan</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="angkatan" required value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Dosen PA</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="dosen_pa" required value=""/>
-                                                    </div>
+
                                                     <!--end::Input group-->
                                                     <!--begin::Actions-->
                                                     <div class="text-center pt-15">

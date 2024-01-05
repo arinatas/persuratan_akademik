@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\BiodataController;
+use App\Http\Controllers\Admin\DosenPAController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -52,6 +53,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editBiodata/{id}', [BiodataController::class, 'edit'])->middleware('auth')->name('edit.biodata');
     Route::post('/updateBiodata/{id}', [BiodataController::class, 'update'])->middleware('auth')->name('update.biodata');
     Route::delete('/deleteBiodata/{id}', [BiodataController::class, 'destroy'])->middleware('auth')->name('destroy.biodata');
+
+    // Biodata
+    Route::get('/dosenPA', [DosenPAController::class, 'index'])->middleware('auth')->name('dosenPA');
+    Route::post('/dosenPA', [DosenPAController::class, 'store'])->middleware('auth')->name('insert.dosenPA');
+    Route::get('/editDosenPA/{id}', [DosenPAController::class, 'edit'])->middleware('auth')->name('edit.dosenPA');
+    Route::post('/updateDosenPA/{id}', [DosenPAController::class, 'update'])->middleware('auth')->name('update.dosenPA');
+    Route::delete('/deleteDosenPA/{id}', [DosenPAController::class, 'destroy'])->middleware('auth')->name('destroy.dosenPA');
 
 });
 
