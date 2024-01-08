@@ -27,5 +27,10 @@ class Biodata extends Model
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+
+    public function dosenPA()
+    {
+        return $this->hasOne(DosenPA::class, 'id', 'dosen_pa');
+    }
 }
 

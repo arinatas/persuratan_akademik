@@ -7,18 +7,23 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Biodata;
+use App\Models\DosenPA;
 
 class BiodataController extends Controller
 {
     public function index()
     {
-        $biodatas = Biodata::all();
-            return view('admin.master.biodata.index', [
-                'title' => 'Biodata',
-                'section' => 'Master',
-                'active' => 'Biodata',
-                'biodatas' => $biodatas,
-            ]);
+        $biodatas = Biodata::with('dosenPA')->get();
+        // mengambil data dosen PA untuk select
+        $dosenPAs = DosenPA::all();
+
+        return view('admin.master.biodata.index', [
+            'title' => 'Biodata',
+            'section' => 'Master',
+            'active' => 'Biodata',
+            'biodatas' => $biodatas,
+            'dosenPAs' => $dosenPAs,
+        ]);
     }
 
     public function store(Request $request)
@@ -73,11 +78,15 @@ class BiodataController extends Controller
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
+        // mengambil data dosen PA untuk select
+        $dosenPAs = DosenPA::all();
+
         return view('admin.master.biodata.edit', [
             'title' => 'Biodata',
             'secction' => 'Master',
             'active' => 'Biodata',
             'biodata' => $biodata,
+            'dosenPAs' => $dosenPAs,
         ]);
     }
 

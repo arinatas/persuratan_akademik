@@ -55,7 +55,7 @@
                                                         <td>{{ $item->prodi }}</td>
                                                         <td>{{ $item->fakultas }}</td>
                                                         <td>{{ $item->angkatan }}</td>
-                                                        <td>{{ $item->dosen_pa }}</td>
+                                                        <td>{{ $item->dosenPA->nama }}</td>
                                                         <td>
                                                             <a href="{{ route('edit.biodata', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                                             <form id="form-delete" action="{{ route('destroy.biodata', $item->id ) }}" method="POST"
@@ -207,7 +207,12 @@
                                                             <span class="required">Dosen PA</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="dosen_pa" required value=""/>
+                                                        <select class="form-control form-control-solid" name="dosen_pa" data-control="select2" data-dropdown-parent="#kt_modal_new_akun" required>
+                                                            <option value="">Pilih Dosen PA</option>
+                                                            @foreach ($dosenPAs as $dosenPA)
+                                                                <option value="{{ $dosenPA->id }}">{{ $dosenPA->nama }}</option>
+                                                            @endforeach
+                                                        </select>
                                                     </div>
                                                     <!--end::Input group-->
                                                     <!--begin::Actions-->
