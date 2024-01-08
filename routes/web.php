@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\BiodataController;
 use App\Http\Controllers\Admin\DosenPAController;
+use App\Http\Controllers\Admin\KaprodiController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -66,6 +67,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editDosenPA/{id}', [DosenPAController::class, 'edit'])->middleware('auth')->name('edit.dosenPA');
     Route::post('/updateDosenPA/{id}', [DosenPAController::class, 'update'])->middleware('auth')->name('update.dosenPA');
     Route::delete('/deleteDosenPA/{id}', [DosenPAController::class, 'destroy'])->middleware('auth')->name('destroy.dosenPA');
+
+    // Kaprodi
+    Route::get('/kaprodi', [KaprodiController::class, 'index'])->middleware('auth')->name('kaprodi');
+    Route::post('/kaprodi', [KaprodiController::class, 'store'])->middleware('auth')->name('insert.kaprodi');
+    Route::get('/editKaprodi/{id}', [KaprodiController::class, 'edit'])->middleware('auth')->name('edit.kaprodi');
+    Route::post('/updateKaprodi/{id}', [KaprodiController::class, 'update'])->middleware('auth')->name('update.kaprodi');
+    Route::delete('/deleteKaprodi/{id}', [KaprodiController::class, 'destroy'])->middleware('auth')->name('destroy.kaprodi');
 
 });
 

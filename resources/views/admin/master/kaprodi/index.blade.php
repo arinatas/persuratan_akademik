@@ -26,7 +26,7 @@
                                         </div>
                                         <!--end::Heading-->
                                         <!--begin::Table-->
-                                        @if ($dosenpas )
+                                        @if ($kaprodis )
                                         <div class="table-responsive my-10 mx-8">
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
@@ -34,7 +34,7 @@
                                                         <th class="min-w-100px">No</th>
                                                         <th class="min-w-100">NIDN/NIK</th>
                                                         <th class="min-w-100px">Nama</th>
-                                                        <th class="min-w-100px">Jabatan</th>
+                                                        <th class="min-w-100px">Prodi</th>
                                                         <th class="min-w-300px">Action</th>
                                                     </tr>
                                                 </thead>
@@ -42,15 +42,15 @@
                                                     @php
                                                         $no = 1; // Inisialisasi no
                                                     @endphp
-                                                    @foreach ($dosenpas as $item)
+                                                    @foreach ($kaprodis as $item)
                                                     <tr>
                                                         <td>{{ $no }}</td>
                                                         <td>{{ $item->nidn }}</td>
                                                         <td>{{ $item->nama }}</td>
-                                                        <td>{{ $item->jabatan }}</td>
+                                                        <td>{{ $item->prodi }}</td>
                                                         <td>
-                                                            <a href="{{ route('edit.dosenPA', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                                            <form id="form-delete" action="{{ route('destroy.dosenPA', $item->id ) }}" method="POST"
+                                                            <a href="{{ route('edit.kaprodi', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                                            <form id="form-delete" action="{{ route('destroy.kaprodi', $item->id ) }}" method="POST"
                                                             class="d-inline-block">
                                                             @csrf
                                                             @method('DELETE')
@@ -128,7 +128,7 @@
                                             <!--begin::Modal body-->
                                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                                 <!--begin::Form-->
-                                                <form action="{{ route('insert.dosenPA') }}" method="POST">
+                                                <form action="{{ route('insert.kaprodi') }}" method="POST">
                                                     @csrf
                                                     <!--begin::Input group-->
                                                     <div class="d-flex flex-column mb-7 fv-row">
@@ -150,10 +150,18 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Jabatan</span>
+                                                            <span class="required">Prodi</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="jabatan" required value=""/>
+                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
+                                                            <option value="Informatika">Informatika</option>
+                                                            <option value="Sistem Informasi">Sistem Informasi</option>
+                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
+                                                            <option value="Akutansi">Akutansi</option>
+                                                            <option value="Manajemen">Manajemen</option>
+                                                            <option value="DKV">DKV</option>
+                                                            <option value="Bisnis Digital">Bisnis Digital</option>
+                                                        </select>
                                                     </div>
 
                                                     <!--end::Input group-->
