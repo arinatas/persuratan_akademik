@@ -32,7 +32,7 @@
                                                 <thead>
                                                     <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
                                                         <th class="min-w-100px">No</th>
-                                                        <th class="min-w-100">NIDN/NIK</th>
+                                                        <th class="min-w-100px">NIDN/NIK</th>
                                                         <th class="min-w-100px">Nama</th>
                                                         <th class="min-w-100px">Prodi</th>
                                                         <th class="min-w-300px">Action</th>

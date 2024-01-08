@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\BiodataController;
 use App\Http\Controllers\Admin\DosenPAController;
 use App\Http\Controllers\Admin\KaprodiController;
+use App\Http\Controllers\Admin\PenandaTanganController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -74,6 +75,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editKaprodi/{id}', [KaprodiController::class, 'edit'])->middleware('auth')->name('edit.kaprodi');
     Route::post('/updateKaprodi/{id}', [KaprodiController::class, 'update'])->middleware('auth')->name('update.kaprodi');
     Route::delete('/deleteKaprodi/{id}', [KaprodiController::class, 'destroy'])->middleware('auth')->name('destroy.kaprodi');
+
+    // Penanda Tangan
+    Route::get('/penandaTangan', [PenandaTanganController::class, 'index'])->middleware('auth')->name('penandaTangan');
+    Route::post('/penandaTangan', [PenandaTanganController::class, 'store'])->middleware('auth')->name('insert.penandaTangan');
+    Route::get('/editPenandaTangan/{id}', [PenandaTanganController::class, 'edit'])->middleware('auth')->name('edit.penandaTangan');
+    Route::post('/updatePenandaTangan/{id}', [PenandaTanganController::class, 'update'])->middleware('auth')->name('update.penandaTangan');
+    Route::delete('/deletePenandaTangan/{id}', [PenandaTanganController::class, 'destroy'])->middleware('auth')->name('destroy.penandaTangan');
 
 });
 
