@@ -3,7 +3,15 @@
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\DashboardController;
+
+// Admin
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AkunController;
+use App\Http\Controllers\Admin\BiodataController;
+use App\Http\Controllers\Admin\DosenPAController;
+
+// User
+use App\Http\Controllers\User\UserController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -26,8 +34,38 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('password', [ChangePasswordController::class, 'edit'])->name('password.edit')->middleware('auth');
 Route::patch('password', [ChangePasswordController::class, 'update'])->name('password.edit')->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::middleware(['admin'])->group(function () {
+    // Dashboard Admin
+    Route::get('/adminDashboard', [AdminController::class, 'index'])->middleware('auth')->name('adminDashboard');
 
+    // User
+    Route::get('/akun', [AkunController::class, 'index'])->middleware('auth')->name('akun');
+    Route::post('/akun', [AkunController::class, 'store'])->middleware('auth')->name('insert.akun');
+    Route::get('/editAkun/{id}', [AkunController::class, 'edit'])->middleware('auth')->name('edit.akun');
+    Route::post('/updateAkun/{id}', [AkunController::class, 'update'])->middleware('auth')->name('update.akun');
+    Route::delete('/deleteAkun/{id}', [AkunController::class, 'destroy'])->middleware('auth')->name('destroy.akun');
+    Route::get('/resetAkun/{id}', [AkunController::class, 'reset'])->middleware('auth')->name('reset.akun');
+    Route::post('/resetupdateAkun/{id}', [AkunController::class, 'resetupdate'])->middleware('auth')->name('resetupdate.akun');
 
+    // Biodata
+    Route::get('/biodata', [BiodataController::class, 'index'])->middleware('auth')->name('biodata');
+    Route::post('/biodata', [BiodataController::class, 'store'])->middleware('auth')->name('insert.biodata');
+    Route::get('/editBiodata/{id}', [BiodataController::class, 'edit'])->middleware('auth')->name('edit.biodata');
+    Route::post('/updateBiodata/{id}', [BiodataController::class, 'update'])->middleware('auth')->name('update.biodata');
+    Route::delete('/deleteBiodata/{id}', [BiodataController::class, 'destroy'])->middleware('auth')->name('destroy.biodata');
+    Route::get('/import-biodata', [BiodataController::class, 'showImportForm'])->name('import.biodata.view');
+    Route::post('/import-rkat', [BiodataController::class, 'importExcel'])->name('import.biodata');
+    Route::get('download-example-excel', [BiodataController::class, 'downloadExampleExcel'])->name('download.example.excel');
+
+    // Biodata
+    Route::get('/dosenPA', [DosenPAController::class, 'index'])->middleware('auth')->name('dosenPA');
+    Route::post('/dosenPA', [DosenPAController::class, 'store'])->middleware('auth')->name('insert.dosenPA');
+    Route::get('/editDosenPA/{id}', [DosenPAController::class, 'edit'])->middleware('auth')->name('edit.dosenPA');
+    Route::post('/updateDosenPA/{id}', [DosenPAController::class, 'update'])->middleware('auth')->name('update.dosenPA');
+    Route::delete('/deleteDosenPA/{id}', [DosenPAController::class, 'destroy'])->middleware('auth')->name('destroy.dosenPA');
+
+});
+
+Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth')->name('userDashboard');
 
 

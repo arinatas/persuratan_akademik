@@ -22,7 +22,7 @@
                 </li>
                 <!--end::Item-->
                 <!--begin::Item-->
-                <li class="breadcrumb-item text-dark">Dashboard</li>
+                <li class="breadcrumb-item text-dark">{{ $active }}</li>
                 <!--end::Item-->
             </ul>
             <!--end::Breadcrumb-->
@@ -31,3 +31,88 @@
     </div>
     <!--end::Container-->
 </div>
+
+@if (\Session::has('insertSuccess'))
+<script>
+    Swal.fire(
+    'Berhasil!',
+    '{!! \Session::get('insertSuccess') !!}',
+    'success'
+    )
+</script>
+@endif
+@if (\Session::has('insertFail'))
+<script>
+    Swal.fire(
+    'Gagal!',
+    '{!! \Session::get('insertFail') !!}',
+    'error'
+    )
+</script>
+@endif
+@if (\Session::has('updateSuccess'))
+<script>
+    Swal.fire(
+    'Berhasil!',
+    '{!! \Session::get('updateSuccess') !!}',
+    'success'
+    )
+</script>
+@endif
+@if (\Session::has('deleteSuccess'))
+<script>
+    Swal.fire(
+    'Berhasil!',
+    '{!! \Session::get('deleteSuccess') !!}',
+    'success'
+    )
+</script>
+@endif
+@if (\Session::has('dataNotFound'))
+<script>
+    Swal.fire(
+    'Ups!',
+    '{!! \Session::get('dataNotFound') !!}',
+    'warning'
+    )
+</script>
+@endif
+@if (\Session::has('deleteFail'))
+<script>
+    Swal.fire(
+    'Failed',
+    '{!! \Session::get('deleteFail') !!}',
+    'error'
+    )
+</script>
+@endif
+@if (\Session::has('updateFail'))
+<script>
+    Swal.fire(
+    'Gagal!',
+    '{!! \Session::get('updateFail') !!}',
+    'error'
+    )
+</script>
+@endif
+<!-- Display error message with SweetAlert -->
+@if(session('error'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: '{{ session('error') }}',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+    });
+</script>
+@endif
+@if (\Session::has('validatorFail'))
+<script>
+    Swal.fire(
+    'Gagal!',
+    '{!! \Session::get('validatorFail') !!}',
+    'error'
+    )
+</script>
+@endif

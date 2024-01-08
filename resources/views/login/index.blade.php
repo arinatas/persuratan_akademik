@@ -16,7 +16,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<!--begin::Head-->
 	<head><base href="../../../../">
 		<meta charset="utf-8" />
-		<title>PPM Primakara</title>
+		<title>DALA Primakara</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -51,8 +51,8 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--end: Aside header-->
 						<!--begin: Aside content-->
 						<div class="flex-column-fluid d-flex flex-column justify-content-center">
-							<h3 class="font-size-h1 mb-5 text-white">Welcome to PPM Primakara</h3>
-							<p class="font-weight-lighter text-white opacity-80">Central Quality Assurance System of Primakara</p>
+							<h3 class="font-size-h1 mb-5 text-white">Welcome to DALA Primakara</h3>
+							<p class="font-weight-lighter text-white opacity-80">Academic Administration System of Primakara</p>
 						</div>
 						<!--end: Aside content-->
 						<!--begin: Aside footer for desktop-->
@@ -142,7 +142,7 @@ License: You must have a valid license purchased only from themeforest(the above
             
 					</div>
           <div class="simple-footer mb-3 text-center" style="user-select: auto;">
-              Made with <i class="fas fa-heart text-danger" style="user-select: auto;"></i> by PPTI Primakara
+              Made with <i class="fas fa-heart text-danger" style="user-select: auto;"></i> by DTI Primakara
           </div>
 					<!--end::Content body-->
 					<!--begin::Content footer for mobile-->
