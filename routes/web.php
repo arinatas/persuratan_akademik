@@ -53,6 +53,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editBiodata/{id}', [BiodataController::class, 'edit'])->middleware('auth')->name('edit.biodata');
     Route::post('/updateBiodata/{id}', [BiodataController::class, 'update'])->middleware('auth')->name('update.biodata');
     Route::delete('/deleteBiodata/{id}', [BiodataController::class, 'destroy'])->middleware('auth')->name('destroy.biodata');
+    Route::get('/import-biodata', [BiodataController::class, 'showImportForm'])->name('import.biodata.view');
+    Route::post('/import-rkat', [BiodataController::class, 'importExcel'])->name('import.biodata');
+    Route::get('download-example-excel', [BiodataController::class, 'downloadExampleExcel'])->name('download.example.excel');
 
     // Biodata
     Route::get('/dosenPA', [DosenPAController::class, 'index'])->middleware('auth')->name('dosenPA');

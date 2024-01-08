@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Biodata;
 use App\Models\DosenPA;
+use App\Imports\BiodataImport;
+use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class BiodataController extends Controller
 {
@@ -144,6 +147,93 @@ class BiodataController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('deleteFail', $e->getMessage());
         }
+    }
+
+    public function showImportForm()
+    {
+        return view('import'); // Menampilkan tampilan untuk mengunggah file Excel
+    }
+
+    public function downloadExampleExcel()
+    {
+        $filePath = public_path('contoh-excel/biodata.xlsx'); // Sesuaikan dengan path file Excel contoh Anda
+    
+        if (file_exists($filePath)) {
+            $headers = [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            ];
+    
+            return response()->download($filePath, 'biodata.xlsx', $headers);
+        } else {
+            return redirect()->back()->with('downloadFail', 'File contoh tidak ditemukan.');
+        }
+    }
+
+    public function importExcel(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'excel_file' => 'required|mimes:xls,xlsx',
+        ]);
+    
+        if ($validator->fails()) {
+            $validatorErrors = implode('<br>', $validator->errors()->all());
+            return redirect()->back()->with('validatorFail', $validatorErrors);
+        }
+    
+        $file = $request->file('excel_file');
+    
+        // Validasi Data duplikat atau dengan nim yang sama sebelum di impor
+        $import = new BiodataImport;
+        $rows = Excel::toCollection($import, $file)->first();
+    
+        $duplicateEntries = [];
+    
+        foreach ($rows as $row) {
+            $nim = $row['nim'];
+    
+            // Periksa apakah kombinasi email, bulan, dan tahun sudah ada di database
+            if (Biodata::where('nim', $nim)->exists()) {
+                $duplicateEntries[] = "NIM: $nim";
+            }
+        }
+    
+        if (!empty($duplicateEntries)) {
+            $errorMessage = 'Data Mahasiswa Sudah ada untuk :';
+            foreach ($duplicateEntries as $entry) {
+                $errorMessage .= " $entry";
+            }
+            return redirect()->back()->with('importError', $errorMessage);
+        }
+        // END Validasi Data duplikat atau dengan email & bulan & tahun yang sama sebelum di impor
+    
+        DB::beginTransaction(); // Memulai transaksi database
+    
+        try {
+            Excel::import($import, $file);
+    
+            DB::commit(); // Jika tidak ada kesalahan, lakukan commit untuk menyimpan perubahan ke database
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+            DB::rollBack(); // Rollback jika terjadi kesalahan validasi
+            $failures = $e->failures();
+            $errorMessages = [];
+    
+            foreach ($failures as $failure) {
+                $rowNumber = $failure->row();
+                $column = $failure->attribute();
+                $errorMessages[] = "Baris $rowNumber, Kolom $column: " . implode(', ', $failure->errors());
+            }
+            // Simpan detail kesalahan validasi dalam sesi
+            return redirect()->back()
+                ->with('importValidationFailures', $failures)
+                ->with('importErrors', $errorMessages)
+                ->withInput();
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback jika terjadi kesalahan umum selama impor
+            $errorMessage = 'Terjadi kesalahan selama impor. ';
+            $errorMessage .= 'Detail Kesalahan: ' . $e->getMessage(); // Tambahkan detail kesalahan umum
+            return redirect()->back()->with('importError', $errorMessage);
+        }
+        return redirect()->back()->with('importSuccess', 'Data berhasil diimpor.');
     }
 
 }
