@@ -26,23 +26,27 @@
 						<!--end::Heading-->
 						<!--begin::Table-->
                         <div class="mt-15">
-                            <form action="{{ route('update.dosenPA', $dosen_pa->id ) }}" method="POST">
+                            <form action="{{ route('update.penandaTangan', $penandaTangan->id ) }}" method="POST">
                                 @csrf
                                 <div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">NIDN/NIK</label>
-                                    <input type="text" value="{{$dosen_pa->nidn}}" class="form-control form-control-solid" required name="nidn"/>
+                                    <input type="text" value="{{$penandaTangan->nidn}}" class="form-control form-control-solid" required name="nidn"/>
                                 </div>
 								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Nama</label>
-                                    <input type="text" value="{{$dosen_pa->nama}}" class="form-control form-control-solid" required name="nama"/>
+                                    <input type="text" value="{{$penandaTangan->nama}}" class="form-control form-control-solid" required name="nama"/>
                                 </div>
 								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Jabatan</label>
-                                    <input type="text" value="{{$dosen_pa->jabatan}}" class="form-control form-control-solid" required name="jabatan"/>
+                                    <input type="text" value="{{$penandaTangan->jabatan}}" class="form-control form-control-solid" required name="jabatan"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">File TTD</label>
+                                    <input type="text" value="{{$penandaTangan->file_ttd}}" class="form-control form-control-solid" required name="file_ttd"/>
                                 </div>
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
-                                    <a href="{{ route('dosenPA') }}" class="btn btn-secondary">
+                                    <a href="{{ route('penandaTangan') }}" class="btn btn-secondary">
                                         <span class="indicator-label">
                                             Cancel
                                         </span>

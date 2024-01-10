@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\BiodataController;
 use App\Http\Controllers\Admin\DosenPAController;
+use App\Http\Controllers\Admin\KaprodiController;
+use App\Http\Controllers\Admin\PenandaTanganController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -46,6 +48,9 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/deleteAkun/{id}', [AkunController::class, 'destroy'])->middleware('auth')->name('destroy.akun');
     Route::get('/resetAkun/{id}', [AkunController::class, 'reset'])->middleware('auth')->name('reset.akun');
     Route::post('/resetupdateAkun/{id}', [AkunController::class, 'resetupdate'])->middleware('auth')->name('resetupdate.akun');
+    Route::get('/import-akun', [AkunController::class, 'showImportForm'])->name('import.akun.view');
+    Route::post('/import-akun', [AkunController::class, 'importExcel'])->name('import.akun');
+    Route::get('download-example-excel-akun', [AkunController::class, 'downloadExampleExcel'])->name('download.example.excelAkun');
 
     // Biodata
     Route::get('/biodata', [BiodataController::class, 'index'])->middleware('auth')->name('biodata');
@@ -54,15 +59,29 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/updateBiodata/{id}', [BiodataController::class, 'update'])->middleware('auth')->name('update.biodata');
     Route::delete('/deleteBiodata/{id}', [BiodataController::class, 'destroy'])->middleware('auth')->name('destroy.biodata');
     Route::get('/import-biodata', [BiodataController::class, 'showImportForm'])->name('import.biodata.view');
-    Route::post('/import-rkat', [BiodataController::class, 'importExcel'])->name('import.biodata');
+    Route::post('/import-biodata', [BiodataController::class, 'importExcel'])->name('import.biodata');
     Route::get('download-example-excel', [BiodataController::class, 'downloadExampleExcel'])->name('download.example.excel');
 
-    // Biodata
+    // Dosen PA
     Route::get('/dosenPA', [DosenPAController::class, 'index'])->middleware('auth')->name('dosenPA');
     Route::post('/dosenPA', [DosenPAController::class, 'store'])->middleware('auth')->name('insert.dosenPA');
     Route::get('/editDosenPA/{id}', [DosenPAController::class, 'edit'])->middleware('auth')->name('edit.dosenPA');
     Route::post('/updateDosenPA/{id}', [DosenPAController::class, 'update'])->middleware('auth')->name('update.dosenPA');
     Route::delete('/deleteDosenPA/{id}', [DosenPAController::class, 'destroy'])->middleware('auth')->name('destroy.dosenPA');
+
+    // Kaprodi
+    Route::get('/kaprodi', [KaprodiController::class, 'index'])->middleware('auth')->name('kaprodi');
+    Route::post('/kaprodi', [KaprodiController::class, 'store'])->middleware('auth')->name('insert.kaprodi');
+    Route::get('/editKaprodi/{id}', [KaprodiController::class, 'edit'])->middleware('auth')->name('edit.kaprodi');
+    Route::post('/updateKaprodi/{id}', [KaprodiController::class, 'update'])->middleware('auth')->name('update.kaprodi');
+    Route::delete('/deleteKaprodi/{id}', [KaprodiController::class, 'destroy'])->middleware('auth')->name('destroy.kaprodi');
+
+    // Penanda Tangan
+    Route::get('/penandaTangan', [PenandaTanganController::class, 'index'])->middleware('auth')->name('penandaTangan');
+    Route::post('/penandaTangan', [PenandaTanganController::class, 'store'])->middleware('auth')->name('insert.penandaTangan');
+    Route::get('/editPenandaTangan/{id}', [PenandaTanganController::class, 'edit'])->middleware('auth')->name('edit.penandaTangan');
+    Route::post('/updatePenandaTangan/{id}', [PenandaTanganController::class, 'update'])->middleware('auth')->name('update.penandaTangan');
+    Route::delete('/deletePenandaTangan/{id}', [PenandaTanganController::class, 'destroy'])->middleware('auth')->name('destroy.penandaTangan');
 
 });
 

@@ -32,7 +32,7 @@
                                                 <thead>
                                                     <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
                                                         <th class="min-w-100px">No</th>
-                                                        <th class="min-w-100">NIDN</th>
+                                                        <th class="min-w-100px">NIDN/NIK</th>
                                                         <th class="min-w-100px">Nama</th>
                                                         <th class="min-w-100px">Jabatan</th>
                                                         <th class="min-w-300px">Action</th>
@@ -134,7 +134,7 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">NIDN</span>
+                                                            <span class="required">NIDN/NIK</span>
                                                         </label>
                                                         <!--end::Label-->
                                                         <input class="form-control form-control-solid" type="text" name="nidn" required value=""/>

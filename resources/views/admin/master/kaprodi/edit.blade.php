@@ -26,23 +26,31 @@
 						<!--end::Heading-->
 						<!--begin::Table-->
                         <div class="mt-15">
-                            <form action="{{ route('update.dosenPA', $dosen_pa->id ) }}" method="POST">
+                            <form action="{{ route('update.kaprodi', $kaprodi->id ) }}" method="POST">
                                 @csrf
                                 <div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">NIDN/NIK</label>
-                                    <input type="text" value="{{$dosen_pa->nidn}}" class="form-control form-control-solid" required name="nidn"/>
+                                    <input type="text" value="{{$kaprodi->nidn}}" class="form-control form-control-solid" required name="nidn"/>
                                 </div>
 								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Nama</label>
-                                    <input type="text" value="{{$dosen_pa->nama}}" class="form-control form-control-solid" required name="nama"/>
+                                    <input type="text" value="{{$kaprodi->nama}}" class="form-control form-control-solid" required name="nama"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Jabatan</label>
-                                    <input type="text" value="{{$dosen_pa->jabatan}}" class="form-control form-control-solid" required name="jabatan"/>
-                                </div>
+									<label for="exampleFormControlInput1" class="required form-label">Prodi</label>
+									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
+										<option value="Informatika" {{ $kaprodi->prodi == 'Informatika' ? 'selected' : '' }}>Informatika</option>
+										<option value="Sistem Informasi" {{ $kaprodi->prodi == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
+										<option value="Sistem Informasi Akutansi" {{ $kaprodi->prodi == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
+										<option value="Akutansi" {{ $kaprodi->prodi == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
+										<option value="Manajemen" {{ $kaprodi->prodi == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
+										<option value="DKV" {{ $kaprodi->prodi == 'DKV' ? 'selected' : '' }}>DKV</option>
+										<option value="Bisnis Digital" {{ $kaprodi->prodi == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
+									</select>
+								</div>
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
-                                    <a href="{{ route('dosenPA') }}" class="btn btn-secondary">
+                                    <a href="{{ route('kaprodi') }}" class="btn btn-secondary">
                                         <span class="indicator-label">
                                             Cancel
                                         </span>
