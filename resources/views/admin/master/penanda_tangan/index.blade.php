@@ -49,7 +49,61 @@
                                                         <td>{{ $item->nidn }}</td>
                                                         <td>{{ $item->nama }}</td>
                                                         <td>{{ $item->jabatan }}</td>
-                                                        <td>{{ $item->file_ttd }}</td>
+                                                        <td>
+                                                            <a href="#" class="" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}">
+                                                                <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/General/Visible.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                                        <path d="M3,12 C3,12 5.45454545,6 12,6 C16.9090909,6 21,12 21,12 C21,12 16.9090909,18 12,18 C5.45454545,18 3,12 3,12 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                                        <path d="M12,15 C10.3431458,15 9,13.6568542 9,12 C9,10.3431458 10.3431458,9 12,9 C13.6568542,9 15,10.3431458 15,12 C15,13.6568542 13.6568542,15 12,15 Z" fill="#000000" opacity="0.3"/>
+                                                                    </g>
+                                                                </svg><!--end::Svg Icon--></span>
+                                                            </a>
+
+                                                            <!--begin::Modal - New Card-->
+                                                            <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+                                                                <!--begin::Modal dialog-->
+                                                                <div class="modal-dialog modal-dialog-centered mw-850px">
+                                                                    <!--begin::Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <!--begin::Modal header-->
+                                                                        <div class="modal-header">
+                                                                            <!--begin::Modal title-->
+                                                                            <h2>File Bukti</h2>
+                                                                            <!--end::Modal title-->
+                                                                            <!--begin::Close-->
+                                                                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                                                                <span class="svg-icon svg-icon-1">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                                                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                                                                    </svg>
+                                                                                </span>
+                                                                                <!--end::Svg Icon-->
+                                                                            </div>
+                                                                            <!--end::Close-->
+                                                                        </div>
+                                                                        <!--end::Modal header-->
+                                                                        <!--begin::Modal body-->
+                                                                        <div class="modal-body scroll-y mx-xl-8">
+                                                                            <!--begin::content modal body-->
+                                                                            <!--begin::content modal body-->
+                                                                            @if ($item->file_ttd)
+                                                                                <img src="{{ asset('storage/images/' . basename($item->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10">
+                                                                            @else
+                                                                                No File Available
+                                                                            @endif
+                                                                            <!--end::content modal body-->
+                                                                        </div>
+                                                                        <!--end::Modal body-->
+                                                                    </div>
+                                                                    <!--end::Modal content-->
+                                                                </div>
+                                                                <!--end::Modal dialog-->
+                                                            </div>
+                                                            <!--end::Modal - New Card-->
+                                                        </td>
                                                         <td>
                                                             <a href="{{ route('edit.penandaTangan', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                                             <form id="form-delete" action="{{ route('destroy.penandaTangan', $item->id ) }}" method="POST"
@@ -130,7 +184,7 @@
                                             <!--begin::Modal body-->
                                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                                 <!--begin::Form-->
-                                                <form action="{{ route('insert.penandaTangan') }}" method="POST">
+                                                <form action="{{ route('insert.penandaTangan') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <!--begin::Input group-->
                                                     <div class="d-flex flex-column mb-7 fv-row">
@@ -158,12 +212,10 @@
                                                         <input class="form-control form-control-solid" type="text" name="jabatan" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="required">File TTD</span>
                                                         </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="file_ttd" required value=""/>
+                                                        <input class="form-control form-control-solid" type="file" name="file_ttd" required/>
                                                     </div>
                                                     <!--end::Input group-->
                                                     <!--begin::Actions-->
