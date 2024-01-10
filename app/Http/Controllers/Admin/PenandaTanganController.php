@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\PenandaTangan;
 
@@ -23,42 +24,42 @@ class PenandaTanganController extends Controller
 
     public function store(Request $request)
     {
-        // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
             'nidn' => 'required|string|max:100',
             'nama' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
-            'file_ttd' => 'required|string|max:255'
+            'file_ttd' => 'required|file|mimes:png|max:2048', // Adjust the validation rules for file uploads
         ]);
-
-        // kalau ada error kembalikan error
+    
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
-        // simpan data ke database
+    
         try {
             DB::beginTransaction();
+    
+            // cek jika ada file upload
+            if ($request->file('file_ttd')) {
+                $fileName = $request->file('file_ttd')->storeAs('public/images', $request->file('file_ttd')->hashName());
+            }
 
-            // insert ke tabel positions
+    
             PenandaTangan::create([
                 'nidn' => $request->nidn,
                 'nama' => $request->nama,
                 'jabatan' => $request->jabatan,
-                'file_ttd' => $request->file_ttd,
+                'file_ttd' => $fileName,
             ]);
-
+    
             DB::commit();
-
-            return redirect()->back()->with('insertSuccess', 'Data berhasil di Inputkan.');
-
-        } catch(Exception $e) {
+    
+            return redirect()->back()->with('insertSuccess', 'Data berhasil diinputkan.');
+        } catch (Exception $e) {
             DB::rollBack();
-            // dd($e->getMessage());
             return redirect()->back()->with('insertFail', $e->getMessage());
         }
     }
-
+    
     public function edit($id)
     {
         $penandaTangan = PenandaTangan::find($id);
