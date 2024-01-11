@@ -30,7 +30,42 @@ class BiodataController extends Controller
                     || str_contains(strtolower($biodata->nama), strtolower($query));
             });
         }
-    
+
+        // Check jika terdapat nilai pada filter
+        $kelasFilter = $request->input('kelas');
+        // Filter based on class
+        if ($kelasFilter) {
+            $biodatas = $biodatas->where('kelas', $kelasFilter);
+        }
+        
+        // Check jika terdapat nilai pada filter prodi
+        $prodiFilter = $request->input('prodi');
+        // Filter based on prodi
+        if ($prodiFilter) {
+            $biodatas = $biodatas->where('prodi', $prodiFilter);
+        }
+
+        // Check jika terdapat nilai pada filter fakultas
+        $fakultasFilter = $request->input('fakultas');
+        // Filter based on fakultas
+        if ($fakultasFilter) {
+            $biodatas = $biodatas->where('fakultas', $fakultasFilter);
+        }
+
+        // Check jika terdapat nilai pada filter angkatan
+        $angkatanFilter = $request->input('angkatan');
+        // Filter based on angkatan
+        if ($angkatanFilter) {
+            $biodatas = $biodatas->where('angkatan', $angkatanFilter);
+        }
+
+        // Check jika terdapat nilai pada filter dosen_pa
+        $dosenPAFilter = $request->input('dosen_pa');
+        // Filter based on dosen_pa
+        if ($dosenPAFilter) {
+            $biodatas = $biodatas->where('dosen_pa', $dosenPAFilter);
+        }
+        
         // Mengambil nomor halaman dari URL
         $currentPage = request()->query('page', 1);
     
@@ -45,6 +80,9 @@ class BiodataController extends Controller
     
         // Mengambil data dosen PA untuk select
         $dosenPAs = DosenPA::all();
+
+        // Mengambil data Angkatan untuk Filter
+        $angkatanOptions = Biodata::distinct('angkatan')->pluck('angkatan')->sort();
     
         return view('admin.master.biodata.index', [
             'title' => 'Biodata',
@@ -52,6 +90,7 @@ class BiodataController extends Controller
             'active' => 'Biodata',
             'biodatas' => $biodatas,
             'dosenPAs' => $dosenPAs,
+            'angkatanOptions' => $angkatanOptions,
         ]);
     }    
 
