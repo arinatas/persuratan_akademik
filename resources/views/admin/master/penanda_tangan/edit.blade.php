@@ -26,7 +26,7 @@
 						<!--end::Heading-->
 						<!--begin::Table-->
                         <div class="mt-15">
-                            <form action="{{ route('update.penandaTangan', $penandaTangan->id ) }}" method="POST">
+							<form action="{{ route('update.penandaTangan', $penandaTangan->id ) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">NIDN/NIK</label>
@@ -41,9 +41,27 @@
                                     <input type="text" value="{{$penandaTangan->jabatan}}" class="form-control form-control-solid" required name="jabatan"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">File TTD</label>
-                                    <input type="text" value="{{$penandaTangan->file_ttd}}" class="form-control form-control-solid" required name="file_ttd"/>
+                                    <label class="required form-label">File TTD</label>
+                                    @if ($penandaTangan->file_ttd)
+                                        <div>
+                                            File Saat Ini:
+                                            <a href="{{ asset('storage/images/' . basename($penandaTangan->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto" target="_blank">
+                                                View File
+                                            </a>
+                                        </div>
+                                        <small style="color: red;">Jika Anda ingin memperbarui file, pilih file baru.</small>
+                                    @endif
+                                    <input type="file" class="form-control form-control-solid" name="file_ttd"/>
                                 </div>
+								@if($errors->any())
+								<div class="alert alert-danger">
+									<ul>
+										@foreach($errors->all() as $error)
+											<li>{{ $error }}</li>
+										@endforeach
+									</ul>
+								</div>
+								@endif
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
                                     <a href="{{ route('penandaTangan') }}" class="btn btn-secondary">
