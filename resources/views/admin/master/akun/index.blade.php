@@ -74,8 +74,20 @@
                                             @endif
                                         </div>
                                         <!--End::Import Form-->
+                                        <!-- Tampilan Search -->
+                                        <div class="card-px mt-5">
+                                            <form action="{{ route('akun') }}" method="GET">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="search" placeholder="Search by Username" value="{{ request('search') }}">
+                                                    <div style="margin-left: 10px;">
+                                                        <button type="submit" class="btn btn-success" style="width: 130px;">Search</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- End Tampilan Search -->
                                         <!--begin::Table-->
-                                        @if ($akuns )
+                                        @if ($akuns->count() > 0)
                                         <div class="table-responsive my-10 mx-8">
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
@@ -88,12 +100,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @php
-                                                        $no = 1; // Inisialisasi no
-                                                    @endphp
                                                     @foreach ($akuns as $item)
                                                     <tr>
-                                                        <td>{{ $no }}</td>
+                                                        <td>{{ ($akuns->currentPage() - 1) * $akuns->perPage() + $loop->index + 1 }}</td>
                                                         <td>{{ $item->username }}</td>
                                                         <td>
                                                             @if ($item->is_admin == 1)
@@ -122,13 +131,12 @@
                                                             <a href="{{ route('reset.akun', $item->id ) }}" class="btn btn-sm btn-warning btn-action" data-toggle="tooltip" title="Reset"><i class="fas fa-sync"></i></a>
                                                         </td>
                                                     </tr>
-                                                    @php
-                                                        $no++; // Tambahkan no setiap kali iterasi
-                                                    @endphp
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+                                        <!-- Pagination Links -->
+                                        {{ $akuns->links() }}
                                         @else
                                         <div class="my-10 mx-15">
                                             <!--begin::Notice-->

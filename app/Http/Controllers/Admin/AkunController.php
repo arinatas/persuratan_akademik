@@ -10,19 +10,44 @@ use App\Models\User;
 use App\Imports\AkunImport;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class AkunController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // Mengambil data akun tanpa pagination terlebih dahulu
         $akuns = User::all();
-            return view('admin.master.akun.index', [
-                'title' => 'Akun',
-                'section' => 'Master',
-                'active' => 'Akun',
-                'akuns' => $akuns,
-            ]);
-    }
+    
+        // Check jika terdapat nilai pada pencarian
+        $query = $request->input('search');
+        if ($query) {
+            // Jika ada pencarian, filter data berdasarkan nilai
+            $akuns = $akuns->filter(function ($user) use ($query) {
+                return str_contains(strtolower($user->username), strtolower($query));
+            });
+        }
+    
+        // Mengambil nomor halaman dari URL
+        $currentPage = $request->query('page', 1);
+    
+        // Membuat instance LengthAwarePaginator setelah melakukan filtering
+        $akuns = new LengthAwarePaginator(
+            $akuns->forPage($currentPage, 100),  // Batasan data per halaman
+            $akuns->count(),                      // Total item
+            100,                                 // Item per halaman
+            $currentPage,                        // Halaman saat ini
+            ['path' => $request->url()]           // Opsi tambahan
+        );
+    
+        return view('admin.master.akun.index', [
+            'title' => 'Akun',
+            'section' => 'Master',
+            'active' => 'Akun',
+            'akuns' => $akuns,
+        ]);
+    }    
 
     public function store(Request $request)
     {
