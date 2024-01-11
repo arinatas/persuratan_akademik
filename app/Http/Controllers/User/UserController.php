@@ -17,4 +17,13 @@ class UserController extends Controller
                 'active' => 'Dashboard'
             ]);
     }
+
+    public function surat(){
+        // dd("Berhasil login");
+        return view('surat.IzinAbsensi', [
+            'title' => 'Dashboard USER',
+            'secction' => 'Dashboard',
+            'active' => 'Dashboard'
+        ]);  
+    }
 }

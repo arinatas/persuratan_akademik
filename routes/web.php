@@ -86,5 +86,6 @@ Route::middleware(['admin'])->group(function () {
 });
 
 Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth')->name('userDashboard');
+Route::get('/suratTest', [UserController::class, 'surat'])->middleware('auth')->name('suratTest');
 
 
