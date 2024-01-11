@@ -11,15 +11,41 @@ use App\Models\DosenPA;
 use App\Imports\BiodataImport;
 use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class BiodataController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // Mengambil data biodata tanpa pagination terlebih dahulu
         $biodatas = Biodata::with('dosenPA')->get();
-        // mengambil data dosen PA untuk select
+    
+        // Check jika terdapat nilai pada pencarian
+        $query = $request->input('search');
+        if ($query) {
+            // Jika ada pencarian, filter data berdasarkan nilai nim atau nama
+            $biodatas = $biodatas->filter(function ($biodata) use ($query) {
+                return str_contains(strtolower($biodata->nim), strtolower($query))
+                    || str_contains(strtolower($biodata->nama), strtolower($query));
+            });
+        }
+    
+        // Mengambil nomor halaman dari URL
+        $currentPage = request()->query('page', 1);
+    
+        // Membuat instance LengthAwarePaginator setelah melakukan filtering
+        $biodatas = new LengthAwarePaginator(
+            $biodatas->forPage($currentPage, 100),  // Batasan data per halaman
+            $biodatas->count(),                     // Total item
+            100,                                    // Item per halaman
+            $currentPage,                           // Halaman saat ini
+            ['path' => request()->url()]           // Opsi tambahan
+        );
+    
+        // Mengambil data dosen PA untuk select
         $dosenPAs = DosenPA::all();
-
+    
         return view('admin.master.biodata.index', [
             'title' => 'Biodata',
             'section' => 'Master',
@@ -27,7 +53,7 @@ class BiodataController extends Controller
             'biodatas' => $biodatas,
             'dosenPAs' => $dosenPAs,
         ]);
-    }
+    }    
 
     public function store(Request $request)
     {
