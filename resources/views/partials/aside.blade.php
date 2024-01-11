@@ -70,12 +70,12 @@
                         <span class="menu-arrow"></span>
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
-                        <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/modals/general/invite-friends.html">
+                        <div class="menu-item {{ ($active === "Surat Magang MBKM") ? 'here show' : '' }}">
+                            <a class="menu-link" href="{{ url('suratMbkm') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Invite Friends</span>
+                                <span class="menu-title">Surat Permohonan Magang MBKM</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -83,7 +83,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">View Users</span>
+                                <span class="menu-title">Surat Izin Survey Matakuliah</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -91,7 +91,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Select Users</span>
+                                <span class="menu-title">Surat Keterangan Aktif Kuliah</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -99,7 +99,15 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Upgrade Plan</span>
+                                <span class="menu-title">Surat Izin Survey Proposal Skripsi</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
+                            <a class="menu-link" href="../../demo1/dist/modals/general/upgrade-plan.html">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Surat Izin Survey Skripsi</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -107,7 +115,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Share &amp; Earn</span>
+                                <span class="menu-title">Surat Permohonan Permintaan Data</span>
                             </a>
                         </div>
                     </div>
@@ -139,7 +147,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Invite Friends</span>
+                                <span class="menu-title">Surat Izin Absensi</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -147,7 +155,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">View Users</span>
+                                <span class="menu-title">Surat Permohonan Cuti Akademik</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -155,7 +163,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Select Users</span>
+                                <span class="menu-title">Surat Permohonan Mengundurkan Diri</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -163,7 +171,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Upgrade Plan</span>
+                                <span class="menu-title">Surat Permohonan Pindah Kelas</span>
                             </a>
                         </div>
                         <div class="menu-item">
@@ -171,7 +179,7 @@
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Share &amp; Earn</span>
+                                <span class="menu-title">Surat Permohonan Pindah Prodi</span>
                             </a>
                         </div>
                     </div>

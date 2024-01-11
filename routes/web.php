@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\BiodataController;
 use App\Http\Controllers\Admin\DosenPAController;
 use App\Http\Controllers\Admin\KaprodiController;
 use App\Http\Controllers\Admin\PenandaTanganController;
+use App\Http\Controllers\Admin\SuratMbkmController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -82,6 +83,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editPenandaTangan/{id}', [PenandaTanganController::class, 'edit'])->middleware('auth')->name('edit.penandaTangan');
     Route::post('/updatePenandaTangan/{id}', [PenandaTanganController::class, 'update'])->middleware('auth')->name('update.penandaTangan');
     Route::delete('/deletePenandaTangan/{id}', [PenandaTanganController::class, 'destroy'])->middleware('auth')->name('destroy.penandaTangan');
+
+    // Surat Magang MBKM
+    Route::get('/suratMbkm', [SuratMbkmController::class, 'index'])->middleware('auth')->name('suratMbkm');
+    Route::post('/suratMbkm', [SuratMbkmController::class, 'store'])->middleware('auth')->name('insert.suratMbkm');
+    Route::get('/editSuratMbkm/{id}', [SuratMbkmController::class, 'edit'])->middleware('auth')->name('edit.suratMbkm');
+    Route::post('/updateSuratMbkm/{id}', [SuratMbkmController::class, 'update'])->middleware('auth')->name('update.suratMbkm');
+    Route::delete('/deleteSuratMbkm/{id}', [SuratMbkmController::class, 'destroy'])->middleware('auth')->name('destroy.suratMbkm');
 
 });
 
