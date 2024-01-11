@@ -13,15 +13,32 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class AkunController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $akuns = User::all();
-            return view('admin.master.akun.index', [
-                'title' => 'Akun',
-                'section' => 'Master',
-                'active' => 'Akun',
-                'akuns' => $akuns,
-            ]);
+        // Mendapatkan nomor halaman dari URL
+        $currentPage = $request->query('page', 1);
+
+        // Mengambil data akun dengan pagination
+        $akuns = User::paginate(100, ['*'], 'page', $currentPage);
+
+        // Mendapatkan nomor halaman terakhir
+        $lastPageNumber = ($akuns->lastPage() > 0) ? $akuns->lastPage() : 1;
+
+        // Check if there is a search query
+        $query = $request->input('search');
+        if ($query) {
+            // If there is a search query, filter the users based on the username
+            $akuns = $akuns->filter(function ($user) use ($query) {
+                return str_contains(strtolower($user->username), strtolower($query));
+            });
+        }
+
+        return view('admin.master.akun.index', [
+            'title' => 'Akun',
+            'section' => 'Master',
+            'active' => 'Akun',
+            'akuns' => $akuns,
+        ]);
     }
 
     public function store(Request $request)
