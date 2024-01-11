@@ -78,7 +78,7 @@
                                         <div class="card-px mt-5">
                                             <form action="{{ route('biodata') }}" method="GET">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="search" placeholder="Search by Username" value="{{ request('search') }}">
+                                                    <input type="text" class="form-control" name="search" placeholder="Search biodata Mahasiswa" value="{{ request('search') }}">
                                                     <div style="margin-left: 10px;">
                                                         <button type="submit" class="btn btn-success" style="width: 130px;">Search</button>
                                                     </div>
@@ -86,6 +86,70 @@
                                             </form>
                                         </div>
                                         <!-- End Tampilan Search -->
+                                        <!-- Tampilan Filter -->
+                                        <div class="card-px mt-5">
+                                            <form action="{{ route('biodata') }}" method="GET" class="mb-3">
+                                                <div class="input-group">
+                                                    <!-- Filter Kelas -->
+                                                    <div class="input-group-append" style="width: 185px;">
+                                                        <select class="form-control" name="kelas">
+                                                            <option value="">Filter by Kelas</option>
+                                                            <option value="Pagi"{{ request('kelas') == 'Pagi' ? ' selected' : '' }}>Pagi</option>
+                                                            <option value="Malam"{{ request('kelas') == 'Malam' ? ' selected' : '' }}>Malam</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Filter Kelas -->
+
+                                                    <!-- Filter Prodi -->
+                                                    <div class="input-group-append" style="margin-left: 5px; width: 185px;">
+                                                        <select class="form-control" name="prodi">
+                                                            <option value="">Filter by Prodi</option>
+                                                            <option value="Informatika"{{ request('prodi') == 'Informatika' ? ' selected' : '' }}>Informatika</option>
+                                                            <option value="Sistem Informasi"{{ request('prodi') == 'Sistem Informasi' ? ' selected' : '' }}>Sistem Informasi</option>
+                                                            <option value="Sistem Informasi Akutansi"{{ request('prodi') == 'Sistem Informasi Akutansi' ? ' selected' : '' }}>Sistem Informasi Akutansi</option>
+                                                            <option value="DKV"{{ request('prodi') == 'DKV' ? ' selected' : '' }}>DKV</option>
+                                                            <option value="Manajemen"{{ request('prodi') == 'Manajemen' ? ' selected' : '' }}>Manajemen</option>
+                                                            <option value="Akutansi"{{ request('prodi') == 'Akutansi' ? ' selected' : '' }}>Akutansi</option>
+                                                            <option value="Bisnis Digital"{{ request('prodi') == 'Bisnis Digital' ? ' selected' : '' }}>Bisnis Digital</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <!-- Filter Fakultas -->
+                                                    <div class="input-group-append" style="margin-left: 5px; width: 185px;">
+                                                        <select class="form-control" name="fakultas">
+                                                            <option value="">Filter by Fakultas</option>
+                                                            <option value="Teknologi Informasi & Desain"{{ request('fakultas') == 'Teknologi Informasi & Desain' ? ' selected' : '' }}>Teknologi Informasi & Desain</option>
+                                                            <option value="Ekonomi & Bisnis"{{ request('fakultas') == 'Ekonomi & Bisnis' ? ' selected' : '' }}>Ekonomi & Bisnis</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <!-- Filter Angkatan -->
+                                                    <div class="input-group-append" style="margin-left: 5px; width: 185px;">
+                                                        <select class="form-control" name="angkatan">
+                                                            <option value="">Filter by Angkatan</option>
+                                                            @foreach($angkatanOptions as $angkatan)
+                                                                <option value="{{ $angkatan }}"{{ request('angkatan') == $angkatan ? ' selected' : '' }}>{{ $angkatan }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <!-- Filter Dosen PA -->
+                                                    <div class="input-group-append" style="margin-left: 5px; width: 240px;">
+                                                        <select class="form-control" name="dosen_pa">
+                                                            <option value="">Filter by Dosen PA</option>
+                                                            @foreach($dosenPAs as $dosenPA)
+                                                                <option value="{{ $dosenPA->id }}"{{ request('dosen_pa') == $dosenPA->id ? ' selected' : '' }}>{{ $dosenPA->nama }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    <div style="margin-left: 10px;">
+                                                        <button type="submit" class="btn btn-danger" style="width: 130px;">Filter</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- End Tampilan Filter -->
                                         <!--begin::Table-->
                                         @if ($biodatas->count() > 0)
                                         <div class="table-responsive my-10 mx-8">
@@ -96,11 +160,11 @@
                                                         <th class="min-w-100px">Nim</th>
                                                         <th class="min-w-100px">Nama</th>
                                                         <th class="min-w-100px">Kelas</th>
-                                                        <th class="min-w-100">Prodi</th>
-                                                        <th class="min-w-100">Fakultas</th>
-                                                        <th class="min-w-100">Angkatan</th>
-                                                        <th class="min-w-100">Dosen PA</th>
-                                                        <th class="min-w-300px">Action</th>
+                                                        <th class="min-w-100px">Prodi</th>
+                                                        <th class="min-w-100px">Fakultas</th>
+                                                        <th class="min-w-100px">Angkatan</th>
+                                                        <th class="min-w-100px">Dosen PA</th>
+                                                        <th class="min-w-200px">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
