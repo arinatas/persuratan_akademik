@@ -98,7 +98,7 @@ class AkunController extends Controller
 
         return view('admin.master.akun.edit', [
             'title' => 'User',
-            'secction' => 'Master',
+            'section' => 'Master',
             'active' => 'Akun',
             'akun' => $akun,
         ]);
@@ -162,7 +162,7 @@ class AkunController extends Controller
 
         return view('admin.master.akun.reset', [
             'title' => 'Akun',
-            'secction' => 'Master',
+            'section' => 'Master',
             'active' => 'Akun',
             'akun' => $akun,
         ]);

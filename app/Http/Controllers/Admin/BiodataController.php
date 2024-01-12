@@ -151,7 +151,7 @@ class BiodataController extends Controller
 
         return view('admin.master.biodata.edit', [
             'title' => 'Biodata',
-            'secction' => 'Master',
+            'section' => 'Master',
             'active' => 'Biodata',
             'biodata' => $biodata,
             'dosenPAs' => $dosenPAs,

@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SuratMbkmController;
 
 // User
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\SuratController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -98,6 +99,9 @@ Route::middleware(['admin'])->group(function () {
 });
 
 Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth')->name('userDashboard');
-Route::get('/suratTest', [UserController::class, 'surat'])->middleware('auth')->name('suratTest');
+
+// surat here
+Route::get('/createSuratIzinAbsensi', [SuratController::class, 'createSuratIzinAbsensi'])->middleware('auth')->name('createSuratIzinAbsensi');
+Route::get('/suratIzinAbsensi', [UserController::class, 'suratIzinAbsensi'])->middleware('auth')->name('suratIzinAbsensi');
 
 

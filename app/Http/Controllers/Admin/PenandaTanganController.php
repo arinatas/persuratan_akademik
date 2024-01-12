@@ -70,7 +70,7 @@ class PenandaTanganController extends Controller
 
         return view('admin.master.penanda_tangan.edit', [
             'title' => 'Penanda Tangan',
-            'secction' => 'Master',
+            'section' => 'Master',
             'active' => 'Penanda Tangan',
             'penandaTangan' => $penandaTangan,
         ]);

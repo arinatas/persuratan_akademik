@@ -126,7 +126,7 @@
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Surat Diproses Sendiri</span>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item {{ ($section === "Surat Diproses Sendiri") ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/art/art009.svg-->
@@ -143,7 +143,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/modals/general/invite-friends.html">
+                            <a class="menu-link {{ ($active === "Surat Izin Absensi") ? 'active' : '' }} " href="{{ url('createSuratIzinAbsensi') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

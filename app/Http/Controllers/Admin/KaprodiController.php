@@ -67,7 +67,7 @@ class KaprodiController extends Controller
 
         return view('admin.master.kaprodi.edit', [
             'title' => 'Kaprodi',
-            'secction' => 'Master',
+            'section' => 'Master',
             'active' => 'Kaprodi',
             'kaprodi' => $kaprodi,
         ]);
