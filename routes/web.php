@@ -102,6 +102,6 @@ Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth
 
 // surat here
 Route::get('/createSuratIzinAbsensi', [SuratController::class, 'createSuratIzinAbsensi'])->middleware('auth')->name('createSuratIzinAbsensi');
-Route::get('/suratIzinAbsensi', [UserController::class, 'suratIzinAbsensi'])->middleware('auth')->name('suratIzinAbsensi');
+Route::post('/suratIzinAbsensi', [SuratController::class, 'suratIzinAbsensi'])->middleware('auth')->name('suratIzinAbsensi');
 
 

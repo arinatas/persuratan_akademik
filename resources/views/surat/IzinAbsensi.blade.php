@@ -34,7 +34,6 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            background-color: #1d2b58;
             text-align: center;
         }
     </style>
@@ -42,12 +41,12 @@
     <body>
         <div class="wrapper">
             <!-- Main content -->
-            <div class="container mt-5 pt-5">
+            <div class="container mt-5">
                 <section class="letter">
                     <!-- title row -->
                     <div class="row">
                         <div class="col-12 ml-4">
-                            <img alt="Logo" class="" src="assets/media/logos/primakara_landscape.png" width="250px" />
+                            <img alt="Logo" class="" src="assets/media/logos/primakara_landscape.png" width="300px" />
                         </div>
                         <div class="col-12 text-center">
                             <h2 class="my-5"><b><u>SURAT PERMOHONAN IZIN</u></b></h2>
@@ -55,7 +54,7 @@
                         <!-- /.col -->
                     </div>
 
-                    <div class="mx-5 px-5">
+                    <div class="mx-5" style="font-size: 20px">
 
                         <!-- info row -->
                         <div class="row letter-yth">
@@ -76,7 +75,7 @@
                                             </table>
                                         </div>
                                         <div class="col-2" style="text-align: end;">
-                                            <img alt="Logo" class="" src="assets/media/print/parafacc.png" width="100px" />
+                                            <img alt="Logo" class="" src="assets/media/print/parafacc.png" width="120px" />
                                         </div>
                                     </div>
                                 </address>
@@ -102,19 +101,19 @@
                                             <table class="mt-2">
                                                 <tr>
                                                     <td>Nim</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;_____Nim Here</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['nim'] }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Nama</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;_____Name Here</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['nama'] }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Prodi</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;_____Prodi Here</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['prodi'] }}</td>
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div class="col-12 mt-3">
+                                        <div class="col-12 mt-3" style="text-indent: 30px;">
                                             Mengajukan permohonan izin untuk tidak mengukuti proses belajar mengajar pada mata kuliah berikut :
                                         </div>
                                     </div>
@@ -135,26 +134,60 @@
                                             <th>Dosen</th>
                                             <th>Hari / Tanggal</th>
                                             <th>Jam</th>
-                                            <th>Jumlah Izin</th>
+                                            <th>Jml Izin</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>3</td>
-                                            <td>4</td>
-                                            <td>5</td>
-                                            <td>6</td>
-                                        </tr>
+                                        @if ($data['matakuliah1'])
+                                            <tr>
+                                                <td>1</td>
+                                                <td>{{ $data['matakuliah1'] }}</td>
+                                                <td>{{ $data['dosen1'] }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($data['tanggal1'])->isoFormat('dddd, D MMM Y') }}</td>
+                                                <td>{{ $data['jam1'] }}</td>
+                                                <td>{{ $data['jml_izin1'] }}</td>
+                                            </tr>
+                                        @endif
+                                        @if ($data['matakuliah2'])
+                                            <tr>
+                                                <td>2</td>
+                                                <td>{{ $data['matakuliah2'] }}</td>
+                                                <td>{{ $data['dosen2'] }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($data['tanggal2'])->isoFormat('dddd, D MMM Y') }}</td>
+                                                <td>{{ $data['jam2'] }}</td>
+                                                <td>{{ $data['jml_izin2'] }}</td>
+                                            </tr>
+                                        @endif
+                                        @if ($data['matakuliah3'])
+                                            <tr>
+                                                <td>3</td>
+                                                <td>{{ $data['matakuliah3'] }}</td>
+                                                <td>{{ $data['dosen3'] }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($data['tanggal3'])->isoFormat('dddd, D MMM Y') }}</td>
+                                                <td>{{ $data['jam3'] }}</td>
+                                                <td>{{ $data['jml_izin3'] }}</td>
+                                            </tr>
+                                        @endif
+                                        @if ($data['matakuliah4'])
+                                            <tr>
+                                                <td>4</td>
+                                                <td>{{ $data['matakuliah4'] }}</td>
+                                                <td>{{ $data['dosen4'] }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($data['tanggal4'])->isoFormat('dddd, D MMM Y') }}</td>
+                                                <td>{{ $data['jam4'] }}</td>
+                                                <td>{{ $data['jml_izin4'] }}</td>
+                                            </tr>
+                                        @endif
+                                        @if ($data['matakuliah5'])
+                                            <tr>
+                                                <td>5</td>
+                                                <td>{{ $data['matakuliah5'] }}</td>
+                                                <td>{{ $data['dosen5'] }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($data['tanggal5'])->isoFormat('dddd, D MMM Y') }}</td>
+                                                <td>{{ $data['jam5'] }}</td>
+                                                <td>{{ $data['jml_izin5'] }}</td>
+                                            </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -164,13 +197,13 @@
 
                         <!-- info row -->
                         <div class="row letter-info-izin">
-                            <div class="col-sm-12 letter-col mt-3">
+                            <div class="col-sm-12 letter-col mt-2">
                                 <address>
                                     <div class="row">
-                                        <div class="col-12 mt-3">
-                                            <p style="text-align: justify; text-indent: 30px;">Mengajukan permohonan izin untuk tidak mengukuti proses belajar mengajar pada mata kuliah berikut : <u>Karena ada upacara adat</u> </p>
+                                        <div class="col-12 mt-2">
+                                            <p style="text-align: justify; text-indent: 30px;">Adapun alasan  pemohonan izin ini adalah : <u>{{ $data['alasan'] }}</u> </p>
                                         </div>
-                                        <div class="col-12 mt-3">
+                                        <div class="col-12 mt-2">
                                             <p style="text-align: justify;">Demikian permohonan ini saya sampaikan, atas izin yang diberikan saya ucapkan terima kasih.</p>
                                         </div>
                                     </div>
@@ -182,7 +215,7 @@
         
                         <!-- info row -->
                         <div class="row">
-                            <div class="col-8 letter-col mt-5">
+                            <div class="col-8 letter-col mt-3">
                                 <address>
                                     <strong>Mengetahui,</strong><br>
                                     <strong>Orang Tua / Wali</strong>
@@ -190,31 +223,32 @@
                                     <br>
                                     <br>
                                     <br>
-                                    <strong><u>I Made Artana, S.Kom.,M.M.</u></strong><br>
+                                    <strong><u>{{ $data['ortu'] }}</u></strong><br>
                                 </address>
                             </div>
-                            <div class="col-4 letter-col mt-5">
+                            <div class="col-4 letter-col mt-3">
                                 <address>
-                                    <strong>Denpasar,</strong><br>
+                                    <strong>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</strong><br>
                                     <strong>Hormat saya,</strong>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
-                                    <strong><u>I Made Artana, S.Kom.,M.M.</u></strong><br>
+                                    <strong><u>{{ $data['nama'] }}</u></strong><br>
                                 </address>
                             </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
                        
+                    </div>
+
+                    <div class="footer">
                         <!-- info row -->
-                        <div class="row mt-5">
-                            <div class="col-6 letter-col mt-4">
-                                <img alt="Logo" class="" src="assets/media/print/iso.png" width="250px" />
-                            </div>
-                            <div class="col-6 letter-col mt-5 pt-2">
-                                <table style="font-size: 13px; text-align: end; color:#1d2b58;">
+                        <div class="row mb-3" style="place-content: center;">
+                                <img alt="Logo" class="" src="assets/media/print/iso.png" width="240px" />
+                                <p class="mx-5 px-5"></p>
+                                <table style="font-size: 16px; text-align: end; color:#1d2b58;">
                                     <tr>
                                         <td><b>PRIMAKARA UNIVERSITY</b></td>
                                     </tr>
@@ -228,13 +262,9 @@
                                         <td><b>www.primakara.ac.id</b></td>
                                     </tr>
                                 </table>
-                            </div>
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-                    </div>
-
-                    <div class="footer">
                         <img alt="Logo" class="" src="assets/media/print/footer.png" width="100%" />
                     </div>
                 </section>
@@ -242,6 +272,8 @@
         </div>
         <!-- ./wrapper -->
 
-        
+        <script>
+            window.addEventListener("load", window.print());
+        </script>
     </body>
 </html>
