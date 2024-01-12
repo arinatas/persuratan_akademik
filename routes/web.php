@@ -94,6 +94,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/approveSuratMbkm/{id}', [SuratMbkmController::class, 'approve'])->middleware('auth')->name('approve.suratMbkm');
     Route::post('/unapproveSuratMbkm/{id}', [SuratMbkmController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratMbkm');
     Route::post('/rejectSuratMbkm/{id}', [SuratMbkmController::class, 'reject'])->middleware('auth')->name('reject.suratMbkm');
+    Route::get('/export-pdf/{id}', [SuratMbkmController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratMbkm');
     
 
 });

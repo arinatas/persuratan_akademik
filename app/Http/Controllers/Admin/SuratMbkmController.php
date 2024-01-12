@@ -172,5 +172,22 @@ class SuratMbkmController extends Controller
         }
     }
 
+    // Metode untuk menampilkan dan print Surat MBKM
+    public function exportPdfbyid($id)
+    {
+        $suratMbkm = SuratMbkm::where('id', $id)->get();
+
+        if ($suratMbkm->isEmpty()) {
+            return redirect()->back()->with('error', 'Data Surat MBKM tidak ditemukan.');
+        }
+        
+        return view('surat.suratMbkm', [
+            'title' => 'Surat Magang MBKM',
+            'section' => 'Surat Dibantu FO',
+            'active' => 'Surat Magang MBKM',
+            'suratMbkm' => $suratMbkm
+            ]);
+    }
+
 
 }
