@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class SuratMbkm extends Model
 {
@@ -30,5 +31,10 @@ class SuratMbkm extends Model
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+
+    public function getUser()
+    {
+        return $this->belongsTo(User::class, 'acc_by', 'id');
+    }
 }
 

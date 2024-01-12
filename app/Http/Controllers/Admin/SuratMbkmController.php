@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\SuratMbkm;
+use Illuminate\Support\Facades\Auth;
 
 class SuratMbkmController extends Controller
 {
@@ -20,5 +21,37 @@ class SuratMbkmController extends Controller
                 'mbkms' => $mbkms,
             ]);
     }
+
+
+    public function approve($id)
+    {
+        $surat = SuratMbkm::findOrFail($id);
+        $surat->status_acc = 1;
+        $surat->acc_by = Auth::id(); // Save id User yang login saat ini
+        $surat->save();
+
+        return redirect()->back()->with('updateSuccess', 'Surat berhasil di-approve');
+    }
+
+    public function unapprove($id)
+    {
+        $surat = SuratMbkm::findOrFail($id);
+        $surat->status_acc = 0;
+        $surat->acc_by = Auth::id(); // Save id User yang login saat ini
+        $surat->save();
+
+        return redirect()->back()->with('updateSuccess', 'Surat berhasil di-unapprove');
+    }
+
+    public function reject($id)
+    {
+        $surat = SuratMbkm::findOrFail($id);
+        $surat->status_acc = 2;
+        $surat->acc_by = Auth::id(); // Save id User yang login saat ini
+        $surat->save();
+
+        return redirect()->back()->with('updateSuccess', 'Surat berhasil ditolak');
+    }
+
 
 }

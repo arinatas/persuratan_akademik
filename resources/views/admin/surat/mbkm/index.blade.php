@@ -36,7 +36,7 @@
                                                         <th class="min-w-100px">NIM</th>
                                                         <th class="min-w-100px">Nama</th>
                                                         <th class="min-w-100px">Tanggal Pengajuan</th>
-                                                        <th class="min-w-100px">Status Acc</th>
+                                                        <th class="min-w-100px">Status Surat</th>
                                                         <th class="min-w-100px">Action</th>
                                                     </tr>
                                                 </thead>
@@ -50,18 +50,141 @@
                                                         <td>{{ $item->nomor }}</td>
                                                         <td>{{ $item->nim }}</td>
                                                         <td>{{ $item->nama }}</td>
-                                                        <td>{{ $item->created_at }}</td>
-                                                        <td>{{ $item->status_acc }}</td>
+                                                        <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
+                                                        <td>
+                                                            @if($item->status_acc == 0)
+                                                                <span class="badge bg-warning text-dark">
+                                                                    <i class="bi bi-clock"></i> Menunggu
+                                                                </span>
+                                                            @elseif($item->status_acc == 1)
+                                                                <span class="badge bg-success">
+                                                                    <i class="bi bi-check-circle"></i> Disetujui
+                                                                </span>
+                                                            @elseif($item->status_acc == 2)
+                                                                <span class="badge bg-danger">
+                                                                    <i class="bi bi-x-circle"></i> Ditolak
+                                                                </span>
+                                                            @else
+                                                                <span class="badge bg-secondary">Undefined</span>
+                                                            @endif
+                                                        </td>
                                                         <td>
                                                             <a href="{{ route('edit.suratMbkm', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                                             <form id="form-delete" action="{{ route('destroy.suratMbkm', $item->id ) }}" method="POST"
                                                             class="d-inline-block">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button id="submit-btn" type="submit" data-toggle="tooltip" data-original-title="Hapus bagian"
+                                                            <button id="submit-btn" type="submit" data-toggle="tooltip" title="Hapus bagian"
                                                                 class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)"
                                                                 ><i class="fas fa-trash"></i></i></button>
                                                             </form>
+                                                            <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Surat">
+                                                                <i class="fas fa-info-circle"></i>
+                                                            </button>
+                                                            <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered mw-850px">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h2>Detail {{ $title }}</h2>
+                                                                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                                                                <span class="svg-icon svg-icon-1">
+                                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                                                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                                                                    </svg>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--begin::Modal body-->
+                                                                        <div class="modal-body scroll-y mx-xl-8">
+                                                                            <!--begin::content modal body-->
+                                                                            <div class="table-responsive my-10 mx-8">
+                                                                                <table class="table table-striped gy-7 gs-7">
+                                                                                <tr>
+                                                                                    <th>Nomor Surat</th>
+                                                                                    <td>{{ $item->nomor }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Ditujukan Kepada</th>
+                                                                                    <td>{{ $item->yth }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Kepada di Tempat</th>
+                                                                                    <td>{{ $item->tempat }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Tanggal Mulai</th>
+                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_mulai)->format('d F Y') }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Tanggal Selesai</th>
+                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_selesai)->format('d F Y') }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>NIM</th>
+                                                                                    <td>{{ $item->nim }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Nama</th>
+                                                                                    <td>{{ $item->nama }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Prodi</th>
+                                                                                    <td>{{ $item->prodi }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Status Surat</th>
+                                                                                    <td>
+                                                                                        @if($item->status_acc == 0)
+                                                                                            <span class="badge bg-warning text-dark">
+                                                                                                <i class="bi bi-clock"></i> Menunggu
+                                                                                            </span>
+                                                                                        @elseif($item->status_acc == 1)
+                                                                                            <span class="badge bg-success">
+                                                                                                <i class="bi bi-check-circle"></i> Disetujui
+                                                                                            </span>
+                                                                                        @elseif($item->status_acc == 2)
+                                                                                            <span class="badge bg-danger">
+                                                                                                <i class="bi bi-x-circle"></i> Ditolak
+                                                                                            </span>
+                                                                                        @else
+                                                                                            <span class="badge bg-secondary">Undefined</span>
+                                                                                        @endif
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Acc By</th>
+                                                                                    <td>{{ $item->getUser->username }}</td>
+                                                                                </tr>
+                                                                                </table>
+                                                                            </div>
+                                                                            <!--end::content modal body-->
+                                                                        </div>
+                                                                    <!--end::Modal body-->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="btn-group d-flex flex-column">
+                                                                <!-- Approve Button -->
+                                                                <form method="post" action="{{ route('approve.suratMbkm', $item->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-success btn-action mb-2 w-100" data-toggle="tooltip" title="Setujui"><i class="fas fa-check"></i> Setujui</button>
+                                                                </form>
+
+                                                                <!-- Unapprove Button -->
+                                                                <form method="post" action="{{ route('unapprove.suratMbkm', $item->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-warning btn-action mb-2 w-100" data-toggle="tooltip" title="Unapprove"><i class="fas fa-undo"></i> Unapprove</button>
+                                                                </form>
+
+                                                                <!-- Reject Button -->
+                                                                <form method="post" action="{{ route('reject.suratMbkm', $item->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-danger btn-action w-100" data-toggle="tooltip" title="Tolak"><i class="fas fa-times"></i> Tolak</button>
+                                                                </form>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                     @php
