@@ -35,7 +35,6 @@
                                                         <th class="min-w-100px">Nomor Surat</th>
                                                         <th class="min-w-100px">NIM</th>
                                                         <th class="min-w-100px">Nama</th>
-                                                        <th class="min-w-100px">Tanggal Pengajuan</th>
                                                         <th class="min-w-100px">Status Surat</th>
                                                         <th class="min-w-100px">Action</th>
                                                     </tr>
@@ -47,10 +46,9 @@
                                                     @foreach ($mbkms as $item)
                                                     <tr>
                                                         <td>{{ $no }}</td>
-                                                        <td>{{ $item->nomor }}</td>
+                                                        <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
                                                         <td>{{ $item->nim }}</td>
                                                         <td>{{ $item->nama }}</td>
-                                                        <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
                                                         <td>
                                                             @if($item->status_acc == 0)
                                                                 <span class="badge bg-warning text-dark">
@@ -102,7 +100,7 @@
                                                                                 <table class="table table-striped gy-7 gs-7">
                                                                                 <tr>
                                                                                     <th>Nomor Surat</th>
-                                                                                    <td>{{ $item->nomor }}</td>
+                                                                                    <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Ditujukan Kepada</th>
@@ -154,7 +152,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Acc By</th>
-                                                                                    <td>{{ $item->getUser->username }}</td>
+                                                                                    <td>{{ isset($item->getUser->username) ? $item->getUser->username : 'Belum di Tindaklanjut' }}</td>
                                                                                 </tr>
                                                                                 </table>
                                                                             </div>
@@ -261,10 +259,10 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Nomor Surat</span>
+                                                            <span class="">Nomor Surat</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nomor" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="nomor" value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -288,7 +286,7 @@
                                                             <span class="required">Tanggal Mulai</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="tgl_mulai" required value=""/>
+                                                        <input class="form-control form-control-solid" type="date" name="tgl_mulai" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -296,7 +294,7 @@
                                                             <span class="required">Tanggal Selesai</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="tgl_selesai" required value=""/>
+                                                        <input class="form-control form-control-solid" type="date" name="tgl_selesai" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -320,7 +318,15 @@
                                                             <span class="required">Prodi</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="prodi" required value=""/>
+                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
+                                                            <option value="Informatika">Informatika</option>
+                                                            <option value="Sistem Informasi">Sistem Informasi</option>
+                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
+                                                            <option value="Akutansi">Akutansi</option>
+                                                            <option value="Manajemen">Manajemen</option>
+                                                            <option value="DKV">DKV</option>
+                                                            <option value="Bisnis Digital">Bisnis Digital</option>
+                                                        </select>
                                                     </div>
                                                     <!--end::Input group-->
                                                     <!--begin::Actions-->
