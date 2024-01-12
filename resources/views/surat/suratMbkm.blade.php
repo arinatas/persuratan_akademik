@@ -133,18 +133,21 @@
                                     <table class="table table-sm table-bordered">
                                         <thead>
                                             <tr class="fw-semibold fs-6 text-bold">
-                                                <th>No</th>
-                                                <th>Nim</th>
-                                                <th>Nama</th>
-                                                <th>Program Studi</th>
+                                                <th class="text-center">No</th>
+                                                <th class="text-center">Nim</th>
+                                                <th class="text-center">Nama</th>
+                                                <th class="text-center">Program Studi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td>{{ $item->nim }}</td>
-                                                <td>{{ $item->nama }}</td>
-                                                <td>{{ $item->prodi }}</td>
+                                                @php
+                                                    $no = 1; // Initialize the counter
+                                                @endphp
+                                                <td class="text-center">{{ $no++ }}</td>
+                                                <td class="text-center">{{ $item->nim }}</td>
+                                                <td class="text-center">{{ $item->nama }}</td>
+                                                <td class="text-center">{{ $item->prodi }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -180,7 +183,7 @@
                                         <br>
                                         <br>
                                         <strong><u>Helmy Syakh Alam, S.Pd., M.Pd.</u></strong><br>
-                                        <strong>NIDN  0829017702</strong><br>
+                                        <strong>NIDN. 0829017702</strong><br>
                                     </address>
                                 </div>
                                 <!-- /.col -->
