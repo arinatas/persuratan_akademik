@@ -91,6 +91,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editSuratMbkm/{id}', [SuratMbkmController::class, 'edit'])->middleware('auth')->name('edit.suratMbkm');
     Route::post('/updateSuratMbkm/{id}', [SuratMbkmController::class, 'update'])->middleware('auth')->name('update.suratMbkm');
     Route::delete('/deleteSuratMbkm/{id}', [SuratMbkmController::class, 'destroy'])->middleware('auth')->name('destroy.suratMbkm');
+    Route::post('/approveSuratMbkm/{id}', [SuratMbkmController::class, 'approve'])->middleware('auth')->name('approve.suratMbkm');
+    Route::post('/unapproveSuratMbkm/{id}', [SuratMbkmController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratMbkm');
+    Route::post('/rejectSuratMbkm/{id}', [SuratMbkmController::class, 'reject'])->middleware('auth')->name('reject.suratMbkm');
+    
 
 });
 
