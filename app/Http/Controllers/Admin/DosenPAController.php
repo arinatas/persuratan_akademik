@@ -67,7 +67,7 @@ class DosenPAController extends Controller
 
         return view('admin.master.dosen_pa.edit', [
             'title' => 'Dosen PA',
-            'secction' => 'Master',
+            'section' => 'Master',
             'active' => 'Dosen PA',
             'dosen_pa' => $dosen_pa,
         ]);

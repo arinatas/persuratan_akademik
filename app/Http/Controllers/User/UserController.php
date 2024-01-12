@@ -13,7 +13,7 @@ class UserController extends Controller
         // dd("Berhasil login");
             return view('user.dashboard.index', [
                 'title' => 'Dashboard USER',
-                'secction' => 'Dashboard',
+                'section' => 'Dashboard',
                 'active' => 'Dashboard'
             ]);
     }
@@ -22,7 +22,7 @@ class UserController extends Controller
         // dd("Berhasil login");
         return view('surat.IzinAbsensi', [
             'title' => 'Dashboard USER',
-            'secction' => 'Dashboard',
+            'section' => 'Dashboard',
             'active' => 'Dashboard'
         ]);  
     }

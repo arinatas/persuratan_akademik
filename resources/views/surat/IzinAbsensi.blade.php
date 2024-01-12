@@ -28,16 +28,25 @@
         body {
             font-family: 'XDPrime'; /* Menggunakan font custom pada elemen body */
         }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #1d2b58;
+            text-align: center;
+        }
     </style>
 
     <body>
         <div class="wrapper">
             <!-- Main content -->
-            <div class="container mt-5">
+            <div class="container mt-5 pt-5">
                 <section class="letter">
                     <!-- title row -->
                     <div class="row">
-                        <div class="col-12">
+                        <div class="col-12 ml-4">
                             <img alt="Logo" class="" src="assets/media/logos/primakara_landscape.png" width="250px" />
                         </div>
                         <div class="col-12 text-center">
@@ -224,17 +233,15 @@
                         </div>
                         <!-- /.row -->
                     </div>
-    
-    
+
+                    <div class="footer">
+                        <img alt="Logo" class="" src="assets/media/print/footer.png" width="100%" />
+                    </div>
                 </section>
             </div>
-
         </div>
         <!-- ./wrapper -->
 
-        <script>
-
-        </script>
-
+        
     </body>
 </html>
