@@ -34,7 +34,6 @@
             left: 0;
             bottom: 0;
             width: 100%;
-            background-color: #1d2b58;
             text-align: center;
         }
     </style>
@@ -43,15 +42,15 @@
     @foreach ($suratMbkm as $item)
         <div class="wrapper">
             <!-- Main content -->
-            <div class="container mt-5 pt-5">
+            <div class="container mt-5">
                 <section class="letter">
                     <!-- title row -->
                     <div class="row">
                         <div class="col-12 ml-5">
-                            <img alt="Logo" class="my-5" src="/assets/media/logos/primakara_landscape.png" width="250px" />
+                            <img alt="Logo" class="my-5" src="/assets/media/logos/primakara_landscape.png" width="300px" />
                         </div>
 
-                        <div class="mx-5 px-5">
+                        <div class="mx-5 px-5" style="font-size: 20px">
                         <div class="row letter-info-mhs">
                                 <div class="col-sm-12 letter-col">
                                     <address>
@@ -99,9 +98,6 @@
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; di – {{ $item->tempat }}</td>
                                                     </tr>
                                                 </table>
-                                            </div>
-                                            <div class="col-2" style="text-align: end;">
-                                                <img alt="Logo" class="" src="assets/media/print/parafacc.png" width="100px" />
                                             </div>
                                         </div>
                                     </address>
@@ -173,27 +169,18 @@
                             <!-- /.row -->
             
                             <!-- info row -->
-                            <div class="row">
-                                <div class="col-8 letter-col mt-5">
+                            <div style="float: inline-end;">
+                                <div>
                                     <address>
-                                        <strong>Mengetahui,</strong><br>
-                                        <strong>Orang Tua / Wali</strong>
+                                        <span>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</span><br>
+                                        <span>Primakara University</span><br>
+                                        <span>Wakil Rektor I Bidang Akademik</span>
                                         <br>
                                         <br>
                                         <br>
                                         <br>
-                                        <strong><u>I Made Artana, S.Kom.,M.M.</u></strong><br>
-                                    </address>
-                                </div>
-                                <div class="col-4 letter-col mt-5">
-                                    <address>
-                                        <strong>Denpasar,</strong><br>
-                                        <strong>Hormat saya,</strong>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <strong><u>I Made Artana, S.Kom.,M.M.</u></strong><br>
+                                        <strong><u>Helmy Syakh Alam, S.Pd., M.Pd.</u></strong><br>
+                                        <strong>NIDN  0829017702</strong><br>
                                     </address>
                                 </div>
                                 <!-- /.col -->
@@ -201,12 +188,12 @@
                             <!-- /.row -->
                         
                             <!-- info row -->
-                            <div class="row mt-5">
-                                <div class="col-6 letter-col mt-4">
-                                    <img alt="Logo" class="" src="assets/media/print/iso.png" width="250px" />
-                                </div>
-                                <div class="col-6 letter-col mt-5 pt-2">
-                                    <table style="font-size: 13px; text-align: end; color:#1d2b58;">
+                            <div class="footer">
+                            <!-- info row -->
+                            <div class="row mb-3" style="place-content: center;">
+                                    <img alt="Logo" class="" src="/assets/media/print/iso.png" width="240px" />
+                                    <p class="mx-5 px-5"></p>
+                                    <table style="font-size: 16px; text-align: end; color:#1d2b58;">
                                         <tr>
                                             <td><b>PRIMAKARA UNIVERSITY</b></td>
                                         </tr>
@@ -220,19 +207,19 @@
                                             <td><b>www.primakara.ac.id</b></td>
                                         </tr>
                                     </table>
-                                </div>
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
-                        </div>
-
-                        <div class="footer">
-                            <img alt="Logo" class="" src="assets/media/print/footer.png" width="100%" />
+                            <img alt="Logo" class="" src="/assets/media/print/footer.png" width="100%" />
                         </div>
                     </section>
                 </div>
             </div>
             <!-- ./wrapper -->
+
         @endforeach
+        <script>
+            window.addEventListener("load", window.print());
+        </script>
     </body>
 </html>
