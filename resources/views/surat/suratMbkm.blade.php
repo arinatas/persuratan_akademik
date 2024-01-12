@@ -117,8 +117,9 @@
                                                         <td>Dengan hormat,</td>
                                                     </tr>
                                                 </table>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sehubungan dengan pelaksanaan program Magang Merdeka Belajar Kampus Merdeka yang saat ini diikuti oleh mahasiswa kami, maka kami mohon kepada Bapak/Ibu untuk memberikan izin mahasiswa kami untuk mengadakan kegiatan magang di instansi yang Bapak/Ibu Pimpin, mulai dari tanggal {{ \Carbon\Carbon::parse($item->tgl_mulai)->format('d F Y') }}
-                                                sampai dengan tanggal {{ \Carbon\Carbon::parse($item->tgl_selesai)->format('d F Y') }}. Adapun mahasiswa kami adalah sebagai berikut :
+                                                <p style="text-align: justify; text-indent: 30px;">
+                                                    Sehubungan dengan pelaksanaan program Magang Merdeka Belajar Kampus Merdeka yang saat ini diikuti oleh mahasiswa kami, maka kami mohon kepada Bapak/Ibu untuk memberikan izin mahasiswa kami untuk mengadakan kegiatan magang di instansi yang Bapak/Ibu Pimpin, mulai dari tanggal {{ \Carbon\Carbon::parse($item->tgl_mulai)->format('d F Y') }} sampai dengan tanggal {{ \Carbon\Carbon::parse($item->tgl_selesai)->format('d F Y') }}. Adapun mahasiswa kami adalah sebagai berikut :
+                                                </p>
                                             </div>
                                         </div>
                                     </address>
@@ -177,10 +178,8 @@
                                     <address>
                                         <span>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</span><br>
                                         <span>Primakara University</span><br>
-                                        <span>Wakil Rektor I Bidang Akademik</span>
-                                        <br>
-                                        <br>
-                                        <br>
+                                        <span>Wakil Rektor I Bidang Akademik</span><br>
+                                        <img alt="Logo" class="" src="/assets/media/print/warek1.png" width="160px" />
                                         <br>
                                         <strong><u>Helmy Syakh Alam, S.Pd., M.Pd.</u></strong><br>
                                         <strong>NIDN. 0829017702</strong><br>
