@@ -23,15 +23,15 @@
 												@csrf
 												<div class="col-lg-4">
 													<label class="required form-label">Nama</label>
-													<input type="text" value="{{ $biomhs[0]->nama }}" class="form-control form-control-solid" name="nama"/>
+													<input type="text" value="{{ $biomhs[0]->nama }}" class="form-control form-control-solid" readonly name="nama"/>
 												</div>
 												<div class="col-lg-4">
 													<label class="required form-label">Nim</label>
-													<input type="text" value="{{ $biomhs[0]->nim }}" class="form-control form-control-solid" name="nim"/>
+													<input type="text" value="{{ $biomhs[0]->nim }}" class="form-control form-control-solid" readonly name="nim"/>
 												</div>
 												<div class="col-lg-4">
 													<label class="required form-label">Prodi</label>
-													<input type="text" value="{{ $biomhs[0]->prodi }}" class="form-control form-control-solid" name="prodi"/>
+													<input type="text" value="{{ $biomhs[0]->prodi }}" class="form-control form-control-solid" readonly name="prodi"/>
 												</div>
 												<div class="col-lg-6">
 													<label class="required form-label">Alasan Permohonan Izin</label>
