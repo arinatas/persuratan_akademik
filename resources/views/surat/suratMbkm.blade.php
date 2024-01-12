@@ -179,10 +179,16 @@
                                         <span>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</span><br>
                                         <span>Primakara University</span><br>
                                         <span>Wakil Rektor I Bidang Akademik</span><br>
-                                        <img alt="Logo" class="" src="/assets/media/print/warek1.png" width="160px" />
-                                        <br>
-                                        <strong><u>Helmy Syakh Alam, S.Pd., M.Pd.</u></strong><br>
-                                        <strong>NIDN. 0829017702</strong><br>
+                                        @if ($penandaTangan->file_ttd)
+                                            <img src="{{ asset('storage/images/' . basename($penandaTangan->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="160px">
+                                        @else
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                        @endif
+                                        <strong><u>{{ $penandaTangan->nama }}</u></strong><br>
+                                        <strong>NIDN. {{ $penandaTangan->nidn }}</strong><br>
                                     </address>
                                 </div>
                                 <!-- /.col -->
