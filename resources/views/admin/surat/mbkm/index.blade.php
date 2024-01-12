@@ -35,7 +35,6 @@
                                                         <th class="min-w-100px">Nomor Surat</th>
                                                         <th class="min-w-100px">NIM</th>
                                                         <th class="min-w-100px">Nama</th>
-                                                        <th class="min-w-100px">Tanggal Pengajuan</th>
                                                         <th class="min-w-100px">Status Surat</th>
                                                         <th class="min-w-100px">Action</th>
                                                     </tr>
@@ -47,10 +46,9 @@
                                                     @foreach ($mbkms as $item)
                                                     <tr>
                                                         <td>{{ $no }}</td>
-                                                        <td>{{ $item->nomor }}</td>
+                                                        <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
                                                         <td>{{ $item->nim }}</td>
                                                         <td>{{ $item->nama }}</td>
-                                                        <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d F Y') }}</td>
                                                         <td>
                                                             @if($item->status_acc == 0)
                                                                 <span class="badge bg-warning text-dark">
@@ -69,18 +67,27 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <a href="{{ route('edit.suratMbkm', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                                            <form id="form-delete" action="{{ route('destroy.suratMbkm', $item->id ) }}" method="POST"
-                                                            class="d-inline-block">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button id="submit-btn" type="submit" data-toggle="tooltip" title="Hapus bagian"
-                                                                class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)"
-                                                                ><i class="fas fa-trash"></i></i></button>
-                                                            </form>
-                                                            <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Surat">
-                                                                <i class="fas fa-info-circle"></i>
-                                                            </button>
+                                                            <div class="row">
+                                                                <div class="col-3 col-md-2" style="margin-right: 10px;">
+                                                                    <a href="{{ route('edit.suratMbkm', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit">
+                                                                        <i class="fas fa-pencil-alt"></i>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="col-3 col-md-2" style="margin-right: 10px;">
+                                                                    <form id="form-delete" action="{{ route('destroy.suratMbkm', $item->id ) }}" method="POST" class="d-inline-block">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <button id="submit-btn" type="submit" data-toggle="tooltip" title="Hapus bagian" class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)">
+                                                                            <i class="fas fa-trash"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="col-3 col-md-2">
+                                                                    <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Surat">
+                                                                        <i class="fas fa-info-circle"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
                                                             <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered mw-850px">
                                                                     <div class="modal-content">
@@ -102,7 +109,7 @@
                                                                                 <table class="table table-striped gy-7 gs-7">
                                                                                 <tr>
                                                                                     <th>Nomor Surat</th>
-                                                                                    <td>{{ $item->nomor }}</td>
+                                                                                    <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Ditujukan Kepada</th>
@@ -154,7 +161,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Acc By</th>
-                                                                                    <td>{{ $item->getUser->username }}</td>
+                                                                                    <td>{{ isset($item->getUser->username) ? $item->getUser->username : 'Belum di Tindaklanjut' }}</td>
                                                                                 </tr>
                                                                                 </table>
                                                                             </div>
@@ -163,6 +170,10 @@
                                                                     <!--end::Modal body-->
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                            <br>
+                                                            <div style="margin-top: -10px; margin-left: 5px; ">
+                                                            <a href="{{ route('export.suratMbkm', $item->id) }}" class="btn btn-sm btn-secondary btn-action btn-block" data-toggle="tooltip" title="Unduh Surat MBKM"><i class="fas fa-download"></i> Download Surat </a>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -261,10 +272,10 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Nomor Surat</span>
+                                                            <span class="">Nomor Surat</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nomor" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="nomor" value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -288,7 +299,7 @@
                                                             <span class="required">Tanggal Mulai</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="tgl_mulai" required value=""/>
+                                                        <input class="form-control form-control-solid" type="date" name="tgl_mulai" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -296,7 +307,7 @@
                                                             <span class="required">Tanggal Selesai</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="tgl_selesai" required value=""/>
+                                                        <input class="form-control form-control-solid" type="date" name="tgl_selesai" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -320,7 +331,15 @@
                                                             <span class="required">Prodi</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="prodi" required value=""/>
+                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
+                                                            <option value="Informatika">Informatika</option>
+                                                            <option value="Sistem Informasi">Sistem Informasi</option>
+                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
+                                                            <option value="Akutansi">Akutansi</option>
+                                                            <option value="Manajemen">Manajemen</option>
+                                                            <option value="DKV">DKV</option>
+                                                            <option value="Bisnis Digital">Bisnis Digital</option>
+                                                        </select>
                                                     </div>
                                                     <!--end::Input group-->
                                                     <!--begin::Actions-->

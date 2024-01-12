@@ -27,6 +27,11 @@ class SuratMbkm extends Model
         'acc_by',
     ];
 
+    // Set nilai default untuk status_acc ke 0
+    protected $attributes = [
+        'status_acc' => 0
+    ];
+
     public $timestamps = true;
 
     const CREATED_AT = 'created_at';

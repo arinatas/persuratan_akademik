@@ -26,31 +26,51 @@
 						<!--end::Heading-->
 						<!--begin::Table-->
                         <div class="mt-15">
-                            <form action="{{ route('update.kaprodi', $kaprodi->id ) }}" method="POST">
+                            <form action="{{ route('update.suratMbkm', $suratMbkm->id ) }}" method="POST">
                                 @csrf
                                 <div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">NIDN/NIK</label>
-                                    <input type="text" value="{{$kaprodi->nidn}}" class="form-control form-control-solid" required name="nidn"/>
+                                    <label for="exampleFormControlInput1" class="required form-label">Nomor Surat</label>
+                                    <input type="text" value="{{$suratMbkm->nomor}}" class="form-control form-control-solid" required name="nomor"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Ditujukan Kepada</label>
+                                    <input type="text" value="{{$suratMbkm->yth}}" class="form-control form-control-solid" required name="yth"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Di Tempat</label>
+                                    <input type="text" value="{{$suratMbkm->tempat}}" class="form-control form-control-solid" required name="tempat"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Tanggal Mulai</label>
+                                    <input type="date" value="{{$suratMbkm->tgl_mulai}}" class="form-control form-control-solid" required name="tgl_mulai"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Tanggal Selesai</label>
+                                    <input type="date" value="{{$suratMbkm->tgl_selesai}}" class="form-control form-control-solid" required name="tgl_selesai"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">NIM</label>
+                                    <input type="text" value="{{$suratMbkm->nim}}" class="form-control form-control-solid" required name="nim"/>
                                 </div>
 								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Nama</label>
-                                    <input type="text" value="{{$kaprodi->nama}}" class="form-control form-control-solid" required name="nama"/>
+                                    <input type="text" value="{{$suratMbkm->nama}}" class="form-control form-control-solid" required name="nama"/>
                                 </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class="required form-label">Prodi</label>
 									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
-										<option value="Informatika" {{ $kaprodi->prodi == 'Informatika' ? 'selected' : '' }}>Informatika</option>
-										<option value="Sistem Informasi" {{ $kaprodi->prodi == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
-										<option value="Sistem Informasi Akutansi" {{ $kaprodi->prodi == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
-										<option value="Akutansi" {{ $kaprodi->prodi == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
-										<option value="Manajemen" {{ $kaprodi->prodi == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
-										<option value="DKV" {{ $kaprodi->prodi == 'DKV' ? 'selected' : '' }}>DKV</option>
-										<option value="Bisnis Digital" {{ $kaprodi->prodi == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
+										<option value="Informatika" {{ $suratMbkm->prodi == 'Informatika' ? 'selected' : '' }}>Informatika</option>
+										<option value="Sistem Informasi" {{ $suratMbkm->prodi == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
+										<option value="Sistem Informasi Akutansi" {{ $suratMbkm->prodi == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
+										<option value="Akutansi" {{ $suratMbkm->prodi == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
+										<option value="Manajemen" {{ $suratMbkm->prodi == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
+										<option value="DKV" {{ $suratMbkm->prodi == 'DKV' ? 'selected' : '' }}>DKV</option>
+										<option value="Bisnis Digital" {{ $suratMbkm->prodi == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
 									</select>
 								</div>
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
-                                    <a href="{{ route('kaprodi') }}" class="btn btn-secondary">
+                                    <a href="{{ route('suratMbkm') }}" class="btn btn-secondary">
                                         <span class="indicator-label">
                                             Cancel
                                         </span>
