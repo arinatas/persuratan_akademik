@@ -15,7 +15,7 @@
 									<div class="card-body pb-10">
 										<!--begin::Heading-->
 										<div class="heading text-center mt-5 mb-10">
-											<h1>{{ $title }}</h1>
+											<h1>Form {{ $title }}</h1>
 										</div>
 										<!--begin::Row-->
 										<form action="{{ url('suratIzinAbsensi') }}" method="POST" target="_blank">

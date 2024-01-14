@@ -151,7 +151,7 @@
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/modals/general/view-users.html">
+                            <a class="menu-link {{ ($active === "Surat Cuti Akademik") ? 'active' : '' }} " href="{{ url('createSuratCutiAkademik') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
