@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\SuratMbkm;
+use App\Models\PenandaTangan;
 use Illuminate\Support\Facades\Auth;
 
 class SuratMbkmController extends Controller
@@ -180,13 +181,17 @@ class SuratMbkmController extends Controller
         if ($suratMbkm->isEmpty()) {
             return redirect()->back()->with('error', 'Data Surat MBKM tidak ditemukan.');
         }
+
+        // Ambil data penanda tangan berdasarkan ID
+        $penandaTangan = PenandaTangan::where('id', 1)->first();
         
         return view('surat.suratMbkm', [
             'title' => 'Surat Magang MBKM',
             'section' => 'Surat Dibantu FO',
             'active' => 'Surat Magang MBKM',
-            'suratMbkm' => $suratMbkm
-            ]);
+            'suratMbkm' => $suratMbkm,
+            'penandaTangan' => $penandaTangan,
+        ]);
     }
 
 
