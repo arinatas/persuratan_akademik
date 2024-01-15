@@ -37,7 +37,8 @@
                                                         <th class="min-w-100px">Nim</th>
                                                         <th class="min-w-100px">Nama</th>
                                                         <th class="min-w-100px">Status Surat</th>
-                                                        <th class="min-w-100px">Action</th>
+                                                        <th class="min-w-300px">Action</th>
+                                                        <th class="min-w-100px">ACC</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -70,12 +71,12 @@
                                                         </td>
                                                         <td>
                                                             <div class="row">
-                                                                <div class="col-3 col-md-2" style="margin-right: 10px;">
+                                                                <div class="col-3 col-md-2" style="margin-right: 5px;">
                                                                     <a href="{{ route('edit.suratSurveyMatkul', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit">
                                                                         <i class="fas fa-pencil-alt"></i>
                                                                     </a>
                                                                 </div>
-                                                                <div class="col-3 col-md-2" style="margin-right: 10px;">
+                                                                <div class="col-3 col-md-2" style="margin-right: 5px;">
                                                                     <form id="form-delete" action="{{ route('destroy.suratSurveyMatkul', $item->id ) }}" method="POST" class="d-inline-block">
                                                                         @csrf
                                                                         @method('DELETE')
@@ -128,6 +129,10 @@
                                                                                 <tr>
                                                                                     <th>Keterangan</th>
                                                                                     <td>{{ $item->keterangan }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Perusahaan</th>
+                                                                                    <td>{{ $item->perusahaan }}</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->nim1)
@@ -388,6 +393,14 @@
                                                         </label>
                                                         <!--end::Label-->
                                                         <input class="form-control form-control-solid" type="text" name="keterangan" required value=""/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="required">Perusahaan</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="perusahaan" required value=""/>
                                                     </div>
 
                                                     <div class="d-flex flex-column mb-7 fv-row">

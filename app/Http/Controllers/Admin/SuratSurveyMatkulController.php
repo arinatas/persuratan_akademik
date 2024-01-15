@@ -62,6 +62,7 @@ class SuratSurveyMatkulController extends Controller
             'tempat' => 'required|string|max:255',
             'matkul' => 'required|string|max:255',
             'keterangan' => 'required|string',
+            'perusahaan' => 'required|string|max:255',
             'nim1' => 'required|string|max:100',
             'nama1' => 'required|string|max:255',
             'prodi1' => 'required|string|max:100',
@@ -95,6 +96,7 @@ class SuratSurveyMatkulController extends Controller
                 'tempat' => $request->tempat,
                 'matkul' => $request->matkul,
                 'keterangan' => $request->keterangan,
+                'perusahaan' => $request->perusahaan,
                 'nim1' => $request->nim1,
                 'nama1' => $request->nama1,
                 'prodi1' => $request->prodi1,
@@ -154,6 +156,7 @@ class SuratSurveyMatkulController extends Controller
             'tempat' => 'required|string|max:255',
             'matkul' => 'required|string|max:255',
             'keterangan' => 'required|string',
+            'perusahaan' => 'required|string|max:255',
             'nim1' => 'required|string|max:100',
             'nama1' => 'required|string|max:255',
             'prodi1' => 'required|string|max:100',
@@ -182,6 +185,7 @@ class SuratSurveyMatkulController extends Controller
             $suratSurveyMatkul->tempat = $request->tempat;
             $suratSurveyMatkul->matkul = $request->matkul;
             $suratSurveyMatkul->keterangan = $request->keterangan;
+            $suratSurveyMatkul->perusahaan = $request->perusahaan;
             $suratSurveyMatkul->nim1 = $request->nim1;
             $suratSurveyMatkul->nama1 = $request->nama1;
             $suratSurveyMatkul->prodi1 = $request->prodi1;

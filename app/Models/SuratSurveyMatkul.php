@@ -20,6 +20,7 @@ class SuratSurveyMatkul extends Model
         'tempat',
         'matkul',
         'keterangan',
+        'perusahaan',
         'nim1',
         'nama1',
         'prodi1',

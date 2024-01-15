@@ -49,6 +49,10 @@
                                     <input type="text" value="{{$suratSurveyMatkul->keterangan}}" class="form-control form-control-solid" required name="keterangan"/>
                                 </div>
 								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Perusahaan</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->perusahaan}}" class="form-control form-control-solid" required name="perusahaan"/>
+                                </div>
+								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">NIM 1</label>
                                     <input type="text" value="{{$suratSurveyMatkul->nim1}}" class="form-control form-control-solid" required name="nim1"/>
                                 </div>
