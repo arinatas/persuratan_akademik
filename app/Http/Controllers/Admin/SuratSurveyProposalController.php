@@ -6,26 +6,26 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\SuratMbkm;
+use App\Models\SuratSurveyProposal;
 use App\Models\PenandaTangan;
 use Illuminate\Support\Facades\Auth;
 
-class SuratMbkmController extends Controller
+class SuratSurveyProposalController extends Controller
 {
     public function index()
     {
-        $mbkms = SuratMbkm::all();
-            return view('admin.surat.mbkm.index', [
-                'title' => 'Surat Magang MBKM',
+        $surveyProposals = SuratSurveyProposal::all();
+            return view('admin.surat.survey_proposal.index', [
+                'title' => 'Surat Izin Survei Proposal Skripsi',
                 'section' => 'Request Surat Mahasiswa',
-                'active' => 'Surat Magang MBKM',
-                'mbkms' => $mbkms,
+                'active' => 'Surat Izin Survei Proposal Skripsi',
+                'surveyProposals' => $surveyProposals,
             ]);
     }
 
     public function approve($id)
     {
-        $surat = SuratMbkm::findOrFail($id);
+        $surat = SuratSurveyProposal::findOrFail($id);
         $surat->status_acc = 1;
         $surat->acc_by = Auth::id(); // Save id User yang login saat ini
         $surat->save();
@@ -35,7 +35,7 @@ class SuratMbkmController extends Controller
 
     public function unapprove($id)
     {
-        $surat = SuratMbkm::findOrFail($id);
+        $surat = SuratSurveyProposal::findOrFail($id);
         $surat->status_acc = 0;
         $surat->acc_by = Auth::id(); // Save id User yang login saat ini
         $surat->save();
@@ -45,7 +45,7 @@ class SuratMbkmController extends Controller
 
     public function reject($id)
     {
-        $surat = SuratMbkm::findOrFail($id);
+        $surat = SuratSurveyProposal::findOrFail($id);
         $surat->status_acc = 2;
         $surat->acc_by = Auth::id(); // Save id User yang login saat ini
         $surat->save();
@@ -60,8 +60,7 @@ class SuratMbkmController extends Controller
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
             'tempat' => 'required|string|max:255',
-            'tgl_mulai' => 'required|date',
-            'tgl_selesai' => 'required|date',
+            'topik' => 'required|string',
             'nim1' => 'required|string|max:100',
             'nama1' => 'required|string|max:255',
             'prodi1' => 'required|string|max:100',
@@ -89,12 +88,11 @@ class SuratMbkmController extends Controller
             DB::beginTransaction();
 
             // insert ke tabel positions
-            SuratMbkm::create([
+            SuratSurveyProposal::create([
                 'nomor' => $request->nomor,
                 'yth' => $request->yth,
                 'tempat' => $request->tempat,
-                'tgl_mulai' => $request->tgl_mulai,
-                'tgl_selesai' => $request->tgl_selesai,
+                'topik' => $request->topik,
                 'nim1' => $request->nim1,
                 'nama1' => $request->nama1,
                 'prodi1' => $request->prodi1,
@@ -125,25 +123,25 @@ class SuratMbkmController extends Controller
 
     public function edit($id)
     {
-        $suratMbkm = SuratMbkm::find($id);
+        $suratSurveyProposal = SuratSurveyProposal::find($id);
 
-        if (!$suratMbkm) {
+        if (!$suratSurveyProposal) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
-        return view('admin.surat.mbkm.edit', [
-            'title' => 'Surat Magang MBKM',
+        return view('admin.surat.survey_proposal.edit', [
+            'title' => 'Surat Izin Survei Proposal Skripsi',
             'section' => 'Request Surat Mahasiswa',
-            'active' => 'Surat Magang MBKM',
-            'suratMbkm' => $suratMbkm,
+            'active' => 'Surat Izin Survei Proposal Skripsi',
+            'suratSurveyProposal' => $suratSurveyProposal,
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $suratMbkm = SuratMbkm::find($id);
+        $suratSurveyProposal = SuratSurveyProposal::find($id);
 
-        if (!$suratMbkm) {
+        if (!$suratSurveyProposal) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
@@ -152,8 +150,7 @@ class SuratMbkmController extends Controller
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
             'tempat' => 'required|string|max:255',
-            'tgl_mulai' => 'required|date',
-            'tgl_selesai' => 'required|date',
+            'topik' => 'required|string',
             'nim1' => 'required|string|max:100',
             'nama1' => 'required|string|max:255',
             'prodi1' => 'required|string|max:100',
@@ -183,30 +180,29 @@ class SuratMbkmController extends Controller
         }
 
         try{
-            $suratMbkm->nomor = $request->nomor;
-            $suratMbkm->yth = $request->yth;
-            $suratMbkm->tempat = $request->tempat;
-            $suratMbkm->tgl_mulai = $request->tgl_mulai;
-            $suratMbkm->tgl_selesai = $request->tgl_selesai;
-            $suratMbkm->nim1 = $request->nim1;
-            $suratMbkm->nama1 = $request->nama1;
-            $suratMbkm->prodi1 = $request->prodi1;
-            $suratMbkm->nim2 = $request->nim2;
-            $suratMbkm->nama2 = $request->nama2;
-            $suratMbkm->prodi2 = $request->prodi2;
-            $suratMbkm->nim3 = $request->nim3;
-            $suratMbkm->nama3 = $request->nama3;
-            $suratMbkm->prodi3 = $request->prodi3;
-            $suratMbkm->nim4 = $request->nim4;
-            $suratMbkm->nama4 = $request->nama4;
-            $suratMbkm->prodi4 = $request->prodi4;
-            $suratMbkm->nim5 = $request->nim5;
-            $suratMbkm->nama5 = $request->nama5;
-            $suratMbkm->prodi5 = $request->prodi5;
+            $suratSurveyProposal->nomor = $request->nomor;
+            $suratSurveyProposal->yth = $request->yth;
+            $suratSurveyProposal->tempat = $request->tempat;
+            $suratSurveyProposal->topik = $request->topik;
+            $suratSurveyProposal->nim1 = $request->nim1;
+            $suratSurveyProposal->nama1 = $request->nama1;
+            $suratSurveyProposal->prodi1 = $request->prodi1;
+            $suratSurveyProposal->nim2 = $request->nim2;
+            $suratSurveyProposal->nama2 = $request->nama2;
+            $suratSurveyProposal->prodi2 = $request->prodi2;
+            $suratSurveyProposal->nim3 = $request->nim3;
+            $suratSurveyProposal->nama3 = $request->nama3;
+            $suratSurveyProposal->prodi3 = $request->prodi3;
+            $suratSurveyProposal->nim4 = $request->nim4;
+            $suratSurveyProposal->nama4 = $request->nama4;
+            $suratSurveyProposal->prodi4 = $request->prodi4;
+            $suratSurveyProposal->nim5 = $request->nim5;
+            $suratSurveyProposal->nama5 = $request->nama5;
+            $suratSurveyProposal->prodi5 = $request->prodi5;
 
-            $suratMbkm->save();
+            $suratSurveyProposal->save();
 
-            return redirect('/suratMbkm')->with('updateSuccess', 'Data berhasil di Update');
+            return redirect('/suratSurveyProposal')->with('updateSuccess', 'Data berhasil di Update');
         } catch(Exception $e) {
             dd($e);
             return redirect()->back()->with('updateFail', 'Data gagal di Update');
@@ -216,11 +212,11 @@ class SuratMbkmController extends Controller
     public function destroy($id)
     {
         // Cari data pengguna berdasarkan ID
-        $suratMbkm = SuratMbkm::find($id);
+        $suratSurveyProposal = SuratSurveyProposal::find($id);
 
         try {
             // Hapus data pengguna
-            $suratMbkm->delete();
+            $suratSurveyProposal->delete();
             return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
         } catch (\Exception $e) {
             return redirect()->back()->with('deleteFail', $e->getMessage());
@@ -230,20 +226,20 @@ class SuratMbkmController extends Controller
     // Metode untuk menampilkan dan print Surat MBKM
     public function exportPdfbyid($id)
     {
-        $suratMbkm = SuratMbkm::where('id', $id)->get();
+        $suratSurveyProposal = SuratSurveyProposal::where('id', $id)->get();
 
-        if ($suratMbkm->isEmpty()) {
-            return redirect()->back()->with('error', 'Data Surat MBKM tidak ditemukan.');
+        if ($suratSurveyProposal->isEmpty()) {
+            return redirect()->back()->with('error', 'Data Surat Survey Proposal Skripsi tidak ditemukan.');
         }
 
         // Ambil data penanda tangan berdasarkan ID
         $penandaTangan = PenandaTangan::where('id', 1)->first();
         
-        return view('surat.suratMbkm', [
-            'title' => 'Surat Magang MBKM',
+        return view('surat.suratSurveyProposal', [
+            'title' => 'Surat Izin Survei Proposal Skripsi',
             'section' => 'Request Surat Mahasiswa',
-            'active' => 'Surat Magang MBKM',
-            'suratMbkm' => $suratMbkm,
+            'active' => 'Surat Izin Survei Proposal Skripsi',
+            'suratSurveyProposal' => $suratSurveyProposal,
             'penandaTangan' => $penandaTangan,
         ]);
     }

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Surat Magang MBKM</title>
+        <title>Surat Izin Survey Proposal Skripsi</title>
 		<link rel="shortcut icon" href="/assets/media/logos/smallprimakara.png" />
 
         <!-- Tell the browser to be responsive to screen width -->
@@ -39,7 +39,7 @@
     </style>
 
     <body>
-    @foreach ($suratMbkm as $item)
+    @foreach ($suratSurveyProposal as $item)
         <div class="wrapper">
             <!-- Main content -->
             <div class="container mt-5">
@@ -70,7 +70,7 @@
                                                     <tr>
                                                         <td>Perihal</td>
                                                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                                        <td>: &nbsp;&nbsp;&nbsp;Permohonan Izin Magang Merdeka Belajar Kampus Merdeka</td>
+                                                        <td>: &nbsp;&nbsp;&nbsp;Izin Survei Proposal Skripsi</td>
                                                     </tr>
                                                 </table>
                                             </div>
@@ -118,7 +118,7 @@
                                                     </tr>
                                                 </table>
                                                 <p style="text-align: justify; text-indent: 30px;">
-                                                    Sehubungan dengan pelaksanaan program Magang Merdeka Belajar Kampus Merdeka yang saat ini diikuti oleh mahasiswa kami, maka kami mohon kepada Bapak/Ibu untuk memberikan izin mahasiswa kami untuk mengadakan kegiatan magang di instansi yang Bapak/Ibu Pimpin, mulai dari tanggal {{ \Carbon\Carbon::parse($item->tgl_mulai)->format('d F Y') }} sampai dengan tanggal {{ \Carbon\Carbon::parse($item->tgl_selesai)->format('d F Y') }}. Adapun mahasiswa kami adalah sebagai berikut :
+                                                    Sehubungan dengan penyusunan tugas proposal skripsi yang saat ini sedang dijalani oleh mahasiswa kami, maka kami mohon kepada Bapak/Ibu untuk memberikan izin survey wawancara dan observasi untuk proposal skripsi mahasiswa kami dengan topik “{{ $item->topik }}”. Adapun mahasiswa kami adalah sebagai berikut :
                                                 </p>
                                             </div>
                                         </div>
@@ -198,7 +198,7 @@
                                         <div class="row">
                                             <div class="col-12 mt-3">
                                                 <p style="text-align: justify; text-indent: 30px;">
-                                                    Demikian permohonan kami, atas bantuan dan kerja samanya kami ucapkan terima kasih.
+                                                    Demikian permohonan kami, atas bantuan dan kerjasamanya kami ucapkan terimakasih.
                                                 </p>
                                             </div>
                                         </div>

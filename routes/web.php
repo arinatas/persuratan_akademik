@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PenandaTanganController;
 use App\Http\Controllers\Admin\SuratMbkmController;
 use App\Http\Controllers\Admin\SuratSurveyMatkulController;
 use App\Http\Controllers\Admin\SuratKeteranganKuliahController;
+use App\Http\Controllers\Admin\SuratSurveyProposalController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -119,6 +120,17 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/unapproveSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratKeteranganKuliah');
     Route::post('/rejectSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'reject'])->middleware('auth')->name('reject.suratKeteranganKuliah');
     Route::get('/exportSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratKeteranganKuliah');
+
+    // Surat Izin Survey Proposal
+    Route::get('/suratSurveyProposal', [SuratSurveyProposalController::class, 'index'])->middleware('auth')->name('suratSurveyProposal');
+    Route::post('/suratSurveyProposal', [SuratSurveyProposalController::class, 'store'])->middleware('auth')->name('insert.suratSurveyProposal');
+    Route::get('/editSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'edit'])->middleware('auth')->name('edit.suratSurveyProposal');
+    Route::post('/updateSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'update'])->middleware('auth')->name('update.suratSurveyProposal');
+    Route::delete('/deleteSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'destroy'])->middleware('auth')->name('destroy.suratSurveyProposal');
+    Route::post('/approveSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'approve'])->middleware('auth')->name('approve.suratSurveyProposal');
+    Route::post('/unapproveSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratSurveyProposal');
+    Route::post('/rejectSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'reject'])->middleware('auth')->name('reject.suratSurveyProposal');
+    Route::get('/exportSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveyProposal');
     
     
 

@@ -96,12 +96,12 @@
                                     <span class="menu-title">Surat Keterangan Aktif Kuliah</span>
                                 </a>
                             </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="../../demo1/dist/modals/general/upgrade-plan.html">
+                            <div class="menu-item {{ ($active === "Surat Izin Survei Proposal Skripsi") ? 'here show' : '' }}">
+                                <a class="menu-link" href="{{ url('suratSurveyProposal') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Surat Izin Survey Proposal Skripsi</span>
+                                    <span class="menu-title">Surat Izin Survei Proposal Skripsi</span>
                                 </a>
                             </div>
                             <div class="menu-item">
@@ -109,7 +109,7 @@
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
-                                    <span class="menu-title">Surat Izin Survey Skripsi</span>
+                                    <span class="menu-title">Surat Izin Survei Skripsi</span>
                                 </a>
                             </div>
                             <div class="menu-item">

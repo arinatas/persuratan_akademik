@@ -170,7 +170,7 @@ class SuratKeteranganKuliahController extends Controller
         $suratKeteranganKuliah = SuratKeteranganKuliah::where('id', $id)->get();
 
         if ($suratKeteranganKuliah->isEmpty()) {
-            return redirect()->back()->with('error', 'Data Surat MBKM tidak ditemukan.');
+            return redirect()->back()->with('error', 'Data Surat Keterangan Kuliah tidak ditemukan.');
         }
 
         // Ambil data penanda tangan berdasarkan ID
