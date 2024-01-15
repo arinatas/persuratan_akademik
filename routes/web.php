@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\KaprodiController;
 use App\Http\Controllers\Admin\PenandaTanganController;
 use App\Http\Controllers\Admin\SuratMbkmController;
 use App\Http\Controllers\Admin\SuratSurveyMatkulController;
+use App\Http\Controllers\Admin\SuratKeteranganKuliahController;
 
 // User
 use App\Http\Controllers\User\UserController;
