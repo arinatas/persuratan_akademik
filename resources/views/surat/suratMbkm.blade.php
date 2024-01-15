@@ -141,15 +141,49 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                @php
-                                                    $no = 1; // Initialize the counter
-                                                @endphp
-                                                <td class="text-center">{{ $no++ }}</td>
-                                                <td class="text-center">{{ $item->nim }}</td>
-                                                <td class="text-center">{{ $item->nama }}</td>
-                                                <td class="text-center">{{ $item->prodi }}</td>
-                                            </tr>
+                                        @php
+                                                $no = 1; // Initialize the counter
+                                            @endphp
+                                            @if($item->nim1)
+                                                <tr>
+                                                    <td class="text-center">{{ $no++ }}</td>
+                                                    <td class="text-center">{{ $item->nim1 }}</td>
+                                                    <td class="text-center">{{ $item->nama1 }}</td>
+                                                    <td class="text-center">{{ $item->prodi1 }}</td>
+                                                </tr>
+                                            @endif
+                                            @if($item->nim2)
+                                                <tr>
+                                                    <td class="text-center">{{ $no++ }}</td>
+                                                    <td class="text-center">{{ $item->nim2 }}</td>
+                                                    <td class="text-center">{{ $item->nama2 }}</td>
+                                                    <td class="text-center">{{ $item->prodi2 }}</td>
+                                                </tr>
+                                            @endif
+                                            @if($item->nim3)
+                                                <tr>
+                                                    <td class="text-center">{{ $no++ }}</td>
+                                                    <td class="text-center">{{ $item->nim3 }}</td>
+                                                    <td class="text-center">{{ $item->nama3 }}</td>
+                                                    <td class="text-center">{{ $item->prodi3 }}</td>
+                                                </tr>
+                                            @endif
+                                            @if($item->nim4)
+                                                <tr>
+                                                    <td class="text-center">{{ $no++ }}</td>
+                                                    <td class="text-center">{{ $item->nim4 }}</td>
+                                                    <td class="text-center">{{ $item->nama4 }}</td>
+                                                    <td class="text-center">{{ $item->prodi4 }}</td>
+                                                </tr>
+                                            @endif
+                                            @if($item->nim5)
+                                                <tr>
+                                                    <td class="text-center">{{ $no++ }}</td>
+                                                    <td class="text-center">{{ $item->nim5 }}</td>
+                                                    <td class="text-center">{{ $item->nama5 }}</td>
+                                                    <td class="text-center">{{ $item->prodi5 }}</td>
+                                                </tr>
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>

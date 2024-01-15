@@ -62,9 +62,21 @@ class SuratMbkmController extends Controller
             'tempat' => 'required|string|max:255',
             'tgl_mulai' => 'required|date',
             'tgl_selesai' => 'required|date',
-            'nim' => 'required|string|max:100',
-            'nama' => 'required|string|max:255',
-            'prodi' => 'required|string|max:100',
+            'nim1' => 'required|string|max:100',
+            'nama1' => 'required|string|max:255',
+            'prodi1' => 'required|string|max:100',
+            'nim2' => 'required|string|max:100',
+            'nama2' => 'required|string|max:255',
+            'prodi2' => 'required|string|max:100',
+            'nim3' => 'required|string|max:100',
+            'nama3' => 'required|string|max:255',
+            'prodi3' => 'required|string|max:100',
+            'nim4' => 'required|string|max:100',
+            'nama4' => 'required|string|max:255',
+            'prodi4' => 'required|string|max:100',
+            'nim5' => 'required|string|max:100',
+            'nama5' => 'required|string|max:255',
+            'prodi5' => 'required|string|max:100',
         ]);
 
         // kalau ada error kembalikan error
@@ -83,9 +95,21 @@ class SuratMbkmController extends Controller
                 'tempat' => $request->tempat,
                 'tgl_mulai' => $request->tgl_mulai,
                 'tgl_selesai' => $request->tgl_selesai,
-                'nim' => $request->nim,
-                'nama' => $request->nama,
-                'prodi' => $request->prodi,
+                'nim1' => $request->nim1,
+                'nama1' => $request->nama1,
+                'prodi1' => $request->prodi1,
+                'nim2' => $request->nim2,
+                'nama2' => $request->nama2,
+                'prodi2' => $request->prodi2,
+                'nim3' => $request->nim3,
+                'nama3' => $request->nama3,
+                'prodi3' => $request->prodi3,
+                'nim4' => $request->nim4,
+                'nama4' => $request->nama4,
+                'prodi4' => $request->prodi4,
+                'nim5' => $request->nim5,
+                'nama5' => $request->nama5,
+                'prodi5' => $request->prodi5,
             ]);
 
             DB::commit();
@@ -130,9 +154,21 @@ class SuratMbkmController extends Controller
             'tempat' => 'required|string|max:100',
             'tgl_mulai' => 'required|string|max:100',
             'tgl_selesai' => 'required|string|max:100',
-            'nim' => 'required|string|max:100',
-            'nama' => 'required|string|max:255',
-            'prodi' => 'required|string|max:100',
+            'nim1' => 'required|string|max:100',
+            'nama1' => 'required|string|max:255',
+            'prodi1' => 'required|string|max:100',
+            'nim2' => 'required|string|max:100',
+            'nama2' => 'required|string|max:255',
+            'prodi2' => 'required|string|max:100',
+            'nim2' => 'required|string|max:100',
+            'nama2' => 'required|string|max:255',
+            'prodi2' => 'required|string|max:100',
+            'nim3' => 'required|string|max:100',
+            'nama3' => 'required|string|max:255',
+            'prodi3' => 'required|string|max:100',
+            'nim3' => 'required|string|max:100',
+            'nama3' => 'required|string|max:255',
+            'prodi3' => 'required|string|max:100',
         ]);
 
         // kalau ada error kembalikan error
@@ -146,9 +182,21 @@ class SuratMbkmController extends Controller
             $suratMbkm->tempat = $request->tempat;
             $suratMbkm->tgl_mulai = $request->tgl_mulai;
             $suratMbkm->tgl_selesai = $request->tgl_selesai;
-            $suratMbkm->nim = $request->nim;
-            $suratMbkm->nama = $request->nama;
-            $suratMbkm->prodi = $request->prodi;
+            $suratMbkm->nim1 = $request->nim1;
+            $suratMbkm->nama1 = $request->nama1;
+            $suratMbkm->prodi1 = $request->prodi1;
+            $suratMbkm->nim2 = $request->nim2;
+            $suratMbkm->nama2 = $request->nama2;
+            $suratMbkm->prodi2 = $request->prodi2;
+            $suratMbkm->nim3 = $request->nim3;
+            $suratMbkm->nama3 = $request->nama3;
+            $suratMbkm->prodi3 = $request->prodi3;
+            $suratMbkm->nim4 = $request->nim4;
+            $suratMbkm->nama4 = $request->nama4;
+            $suratMbkm->prodi4 = $request->prodi4;
+            $suratMbkm->nim5 = $request->nim5;
+            $suratMbkm->nama5 = $request->nama5;
+            $suratMbkm->prodi5 = $request->prodi5;
 
             $suratMbkm->save();
 

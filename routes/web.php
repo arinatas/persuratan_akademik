@@ -117,7 +117,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/approveSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'approve'])->middleware('auth')->name('approve.suratKeteranganKuliah');
     Route::post('/unapproveSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratKeteranganKuliah');
     Route::post('/rejectSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'reject'])->middleware('auth')->name('reject.suratKeteranganKuliah');
-    Route::get('/export-pdf/{id}', [SuratKeteranganKuliahController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratKeteranganKuliah');
+    Route::get('/exportSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratKeteranganKuliah');
     
     
 
