@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\SuratSurveyMatkulController;
 use App\Http\Controllers\Admin\SuratKeteranganKuliahController;
 use App\Http\Controllers\Admin\SuratSurveyProposalController;
 use App\Http\Controllers\Admin\SuratSurveySkripsiController;
+use App\Http\Controllers\Admin\SuratPermohonanDataController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -143,6 +144,17 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/unapproveSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratSurveySkripsi');
     Route::post('/rejectSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'reject'])->middleware('auth')->name('reject.suratSurveySkripsi');
     Route::get('/exportSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveySkripsi');
+
+    // Surat Izin Survey Permohonan Data
+    Route::get('/suratPermohonanData', [SuratPermohonanDataController::class, 'index'])->middleware('auth')->name('suratPermohonanData');
+    Route::post('/suratPermohonanData', [SuratPermohonanDataController::class, 'store'])->middleware('auth')->name('insert.suratPermohonanData');
+    Route::get('/editSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'edit'])->middleware('auth')->name('edit.suratPermohonanData');
+    Route::post('/updateSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'update'])->middleware('auth')->name('update.suratPermohonanData');
+    Route::delete('/deleteSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'destroy'])->middleware('auth')->name('destroy.suratPermohonanData');
+    Route::post('/approveSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'approve'])->middleware('auth')->name('approve.suratPermohonanData');
+    Route::post('/unapproveSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratPermohonanData');
+    Route::post('/rejectSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'reject'])->middleware('auth')->name('reject.suratPermohonanData');
+    Route::get('/exportSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratPermohonanData');
 
 });
 

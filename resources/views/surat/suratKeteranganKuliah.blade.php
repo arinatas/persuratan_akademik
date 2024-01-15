@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SURAT KETERANGAN AKTIF KULIAH</title>
+        <title>Surat Keterangan Aktif Kuliah</title>
 		<link rel="shortcut icon" href="/assets/media/logos/smallprimakara.png" />
 
         <!-- Tell the browser to be responsive to screen width -->
