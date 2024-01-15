@@ -133,7 +133,7 @@
                                 <address>
                                     <div class="row">
                                         <div class="col-12 mt-2">
-                                            <p style="text-align: justify;">Demikian surat permohonan ini saya buat dengan sebenar-benarnya agar Bapak/Ibu* Ketua Program Studi dapat menyetuji permohonan ini.</p>
+                                            <p style="text-align: justify;">Demikian surat permohonan ini saya buat dengan sebenar-benarnya agar Bapak/Ibu* Kepala Program Studi dapat menyetuji permohonan ini.</p>
                                         </div>
                                     </div>
                                 </address>

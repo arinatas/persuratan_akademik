@@ -24,12 +24,15 @@
 												<div class="col-lg-6">
 													<label class="required form-label">Dosen PA</label>
 													<input type="text" value="{{ $biomhs[0]->dosenPA->nama }}" class="form-control form-control-solid" readonly name="dosenPA"/>
+													<input type="hidden" value="{{ $biomhs[0]->dosenPA->nidn }}" class="form-control form-control-solid" readonly name="dosenPA_nidn"/>
 												</div>
 												<div class="col-lg-6">
 													<label class="required form-label">Kaprodi</label>
 													@foreach ($kaprodi as $item)
 														@if ($item->prodi == $biomhs[0]->prodi)
 															<input type="text" value="{{ $item->nama }}" class="form-control form-control-solid" readonly name="kaprodi"/>
+															<input type="hidden" value="{{ $item->nidn }}" class="form-control form-control-solid" readonly name="kaprodi_nidn"/>
+															
 														@endif
 													@endforeach
 												</div>

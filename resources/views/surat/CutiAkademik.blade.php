@@ -139,8 +139,8 @@
                         <!-- /.row -->
         
                         <!-- info row -->
-                        <div class="row">
-                            <div class="col-8 letter-col mt-3">
+                        <div class="row text-center">
+                            <div class="col-6 letter-col mt-3">
                                 <address>
                                     <strong>Mengetahui,</strong><br>
                                     <strong>Pembimbing Akademis</strong>
@@ -149,9 +149,10 @@
                                     <br>
                                     <br>
                                     <strong><u>{{ $data['dosenPA'] }}</u></strong><br>
+                                    <strong>{{ $data['dosenPA_nidn'] }}</strong><br>
                                 </address>
                             </div>
-                            <div class="col-4 letter-col mt-3">
+                            <div class="col-6 letter-col mt-3">
                                 <address>
                                     <strong>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</strong><br>
                                     <strong>Hormat saya,</strong>
@@ -171,6 +172,7 @@
                                     <br>
                                     <br>
                                     <strong><u>{{ $data['kaprodi'] }}</u></strong><br>
+                                    <strong>{{ $data['kaprodi_nidn'] }}</strong><br>
                                 </address>
                             </div>
                             <!-- /.col -->
