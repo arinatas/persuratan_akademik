@@ -78,8 +78,8 @@
                                 <span class="menu-title">Surat Permohonan Magang MBKM</span>
                             </a>
                         </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/modals/general/view-users.html">
+                        <div class="menu-item {{ ($active === "Surat Survey Matakuliah") ? 'here show' : '' }}">
+                            <a class="menu-link" href="{{ url('suratSurveyMatkul') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
