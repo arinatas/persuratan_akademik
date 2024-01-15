@@ -22,6 +22,9 @@ class BiodataImport implements ToModel, WithHeadingRow, WithValidation // Gunaka
             'prodi' => $row['prodi'],
             'fakultas' => $row['fakultas'],
             'angkatan' => $row['angkatan'],
+            'tempat_lahir' => $row['tempat_lahir'],
+            'tgl_lahir' => $row['tgl_lahir'],
+            'alamat' => $row['alamat'],
             'dosen_pa' => $row['dosen_pa'],
         ]);
     }
@@ -36,6 +39,9 @@ class BiodataImport implements ToModel, WithHeadingRow, WithValidation // Gunaka
             'prodi' => 'required|string|max:100',
             'fakultas' => 'required|string|max:100',
             'angkatan' => 'required',
+            'tempat_lahir' => 'required|string|max:255',
+            'tgl_lahir' => 'required',
+            'alamat' => 'required|string|max:255',
             'dosen_pa' => 'required|integer',
         ];
     }

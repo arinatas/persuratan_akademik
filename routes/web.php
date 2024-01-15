@@ -107,6 +107,17 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/unapproveSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratSurveyMatkul');
     Route::post('/rejectSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'reject'])->middleware('auth')->name('reject.suratSurveyMatkul');
     Route::get('/exportSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveyMatkul');
+        
+    // Surat Keterangan Kuliah
+    Route::get('/suratKeteranganKuliah', [SuratKeteranganKuliahController::class, 'index'])->middleware('auth')->name('suratKeteranganKuliah');
+    Route::post('/suratKeteranganKuliah', [SuratKeteranganKuliahController::class, 'store'])->middleware('auth')->name('insert.suratKeteranganKuliah');
+    Route::get('/editSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'edit'])->middleware('auth')->name('edit.suratKeteranganKuliah');
+    Route::post('/updateSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'update'])->middleware('auth')->name('update.suratKeteranganKuliah');
+    Route::delete('/deleteSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'destroy'])->middleware('auth')->name('destroy.suratKeteranganKuliah');
+    Route::post('/approveSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'approve'])->middleware('auth')->name('approve.suratKeteranganKuliah');
+    Route::post('/unapproveSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratKeteranganKuliah');
+    Route::post('/rejectSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'reject'])->middleware('auth')->name('reject.suratKeteranganKuliah');
+    Route::get('/export-pdf/{id}', [SuratKeteranganKuliahController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratKeteranganKuliah');
     
     
 

@@ -104,6 +104,9 @@ class BiodataController extends Controller
             'prodi' => 'required|string|max:100',
             'fakultas' => 'required|string|max:100',
             'angkatan' => 'required|string|max:100',
+            'tempat_lahir' => 'required|string|max:255',
+            'tgl_lahir' => 'required|date',
+            'alamat' => 'required|string|max:255',
             'dosen_pa' => 'required|integer',
         ]);
 
@@ -124,6 +127,9 @@ class BiodataController extends Controller
                 'prodi' => $request->prodi,
                 'fakultas' => $request->fakultas,
                 'angkatan' => $request->angkatan,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tgl_lahir' => $request->tgl_lahir,
+                'alamat' => $request->alamat,
                 'dosen_pa' => $request->dosen_pa,
             ]);
 
@@ -174,6 +180,9 @@ class BiodataController extends Controller
             'prodi' => 'required|string|max:100',
             'fakultas' => 'required|string|max:100',
             'angkatan' => 'required|string|max:100',
+            'tempat_lahir' => 'required|string|max:255',
+            'tgl_lahir' => 'required|date',
+            'alamat' => 'required|string|max:255',
             'dosen_pa' => 'required|integer',
         ]);
 
@@ -189,6 +198,9 @@ class BiodataController extends Controller
             $biodata->prodi = $request->prodi;
             $biodata->fakultas = $request->fakultas;
             $biodata->angkatan = $request->angkatan;
+            $biodata->tempat_lahir = $request->tempat_lahir;
+            $biodata->tgl_lahir = $request->tgl_lahir;
+            $biodata->alamat = $request->alamat;
             $biodata->dosen_pa = $request->dosen_pa;
 
             $biodata->save();

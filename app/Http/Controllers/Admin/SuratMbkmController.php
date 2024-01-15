@@ -17,7 +17,7 @@ class SuratMbkmController extends Controller
         $mbkms = SuratMbkm::all();
             return view('admin.surat.mbkm.index', [
                 'title' => 'Surat Magang MBKM',
-                'section' => 'Surat Dibantu FO',
+                'section' => 'Request Surat Mahasiswa',
                 'active' => 'Surat Magang MBKM',
                 'mbkms' => $mbkms,
             ]);
@@ -109,7 +109,7 @@ class SuratMbkmController extends Controller
 
         return view('admin.surat.mbkm.edit', [
             'title' => 'Surat Magang MBKM',
-            'section' => 'Surat Dibantu FO',
+            'section' => 'Request Surat Mahasiswa',
             'active' => 'Surat Magang MBKM',
             'suratMbkm' => $suratMbkm,
         ]);
@@ -187,7 +187,7 @@ class SuratMbkmController extends Controller
         
         return view('surat.suratMbkm', [
             'title' => 'Surat Magang MBKM',
-            'section' => 'Surat Dibantu FO',
+            'section' => 'Request Surat Mahasiswa',
             'active' => 'Surat Magang MBKM',
             'suratMbkm' => $suratMbkm,
             'penandaTangan' => $penandaTangan,

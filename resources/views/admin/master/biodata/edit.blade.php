@@ -67,6 +67,18 @@
                                     <input type="text" value="{{$biodata->angkatan}}" class="form-control form-control-solid" required name="angkatan"/>
                                 </div>
 								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Tempat Lahir</label>
+                                    <input type="text" value="{{$biodata->tempat_lahir}}" class="form-control form-control-solid" required name="tempat_lahir"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Tanggal Lahir</label>
+                                    <input type="date" value="{{$biodata->tgl_lahir}}" class="form-control form-control-solid" required name="tgl_lahir"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Alamat</label>
+                                    <input type="text" value="{{$biodata->alamat}}" class="form-control form-control-solid" required name="alamat"/>
+                                </div>
+								<div class="mb-10">
 									<label for="exampleFormControlInput1" class="required form-label">Dosen PA</label>
 									<select class="form-select form-select-solid" data-control="select2" name="dosen_pa" required>
 										<option value="">Pilih Dosen PA</option>
