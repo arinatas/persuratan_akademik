@@ -25,7 +25,7 @@ class SuratSurveyMatkulController extends Controller
 
     public function approve($id)
     {
-        $surat = SuratMbkm::findOrFail($id);
+        $surat = SuratSurveyMatkul::findOrFail($id);
         $surat->status_acc = 1;
         $surat->acc_by = Auth::id(); // Save id User yang login saat ini
         $surat->save();
@@ -35,7 +35,7 @@ class SuratSurveyMatkulController extends Controller
 
     public function unapprove($id)
     {
-        $surat = SuratMbkm::findOrFail($id);
+        $surat = SuratSurveyMatkul::findOrFail($id);
         $surat->status_acc = 0;
         $surat->acc_by = Auth::id(); // Save id User yang login saat ini
         $surat->save();
@@ -45,7 +45,7 @@ class SuratSurveyMatkulController extends Controller
 
     public function reject($id)
     {
-        $surat = SuratMbkm::findOrFail($id);
+        $surat = SuratSurveyMatkul::findOrFail($id);
         $surat->status_acc = 2;
         $surat->acc_by = Auth::id(); // Save id User yang login saat ini
         $surat->save();
@@ -60,11 +60,24 @@ class SuratSurveyMatkulController extends Controller
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
             'tempat' => 'required|string|max:255',
-            'tgl_mulai' => 'required|date',
-            'tgl_selesai' => 'required|date',
-            'nim' => 'required|string|max:100',
-            'nama' => 'required|string|max:255',
-            'prodi' => 'required|string|max:100',
+            'matkul' => 'required|string|max:255',
+            'keterangan' => 'required|string',
+            'perusahaan' => 'required|string|max:255',
+            'nim1' => 'required|string|max:100',
+            'nama1' => 'required|string|max:255',
+            'prodi1' => 'required|string|max:100',
+            'nim2' => 'nullable|string|max:100',
+            'nama2' => 'nullable|string|max:255',
+            'prodi2' => 'nullable|string|max:100',
+            'nim3' => 'nullable|string|max:100',
+            'nama3' => 'nullable|string|max:255',
+            'prodi3' => 'nullable|string|max:100',
+            'nim4' => 'nullable|string|max:100',
+            'nama4' => 'nullable|string|max:255',
+            'prodi4' => 'nullable|string|max:100',
+            'nim5' => 'nullable|string|max:100',
+            'nama5' => 'nullable|string|max:255',
+            'prodi5' => 'nullable|string|max:100',
         ]);
 
         // kalau ada error kembalikan error
@@ -77,15 +90,28 @@ class SuratSurveyMatkulController extends Controller
             DB::beginTransaction();
 
             // insert ke tabel positions
-            SuratMbkm::create([
+            SuratSurveyMatkul::create([
                 'nomor' => $request->nomor,
                 'yth' => $request->yth,
                 'tempat' => $request->tempat,
-                'tgl_mulai' => $request->tgl_mulai,
-                'tgl_selesai' => $request->tgl_selesai,
-                'nim' => $request->nim,
-                'nama' => $request->nama,
-                'prodi' => $request->prodi,
+                'matkul' => $request->matkul,
+                'keterangan' => $request->keterangan,
+                'perusahaan' => $request->perusahaan,
+                'nim1' => $request->nim1,
+                'nama1' => $request->nama1,
+                'prodi1' => $request->prodi1,
+                'nim2' => $request->nim2,
+                'nama2' => $request->nama2,
+                'prodi2' => $request->prodi2,
+                'nim3' => $request->nim3,
+                'nama3' => $request->nama3,
+                'prodi3' => $request->prodi3,
+                'nim4' => $request->nim4,
+                'nama4' => $request->nama4,
+                'prodi4' => $request->prodi4,
+                'nim5' => $request->nim5,
+                'nama5' => $request->nama5,
+                'prodi5' => $request->prodi5,
             ]);
 
             DB::commit();
@@ -101,38 +127,51 @@ class SuratSurveyMatkulController extends Controller
 
     public function edit($id)
     {
-        $suratMbkm = SuratMbkm::find($id);
+        $suratSurveyMatkul = SuratSurveyMatkul::find($id);
 
-        if (!$suratMbkm) {
+        if (!$suratSurveyMatkul) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
-        return view('admin.surat.mbkm.edit', [
-            'title' => 'Surat Magang MBKM',
+        return view('admin.surat.survey_matkul.edit', [
+            'title' => 'Surat Survey Matakuliah',
             'section' => 'Surat Dibantu FO',
-            'active' => 'Surat Magang MBKM',
-            'suratMbkm' => $suratMbkm,
+            'active' => 'Surat Survey Matakuliah',
+            'suratSurveyMatkul' => $suratSurveyMatkul,
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $suratMbkm = SuratMbkm::find($id);
+        $suratSurveyMatkul = SuratSurveyMatkul::find($id);
 
-        if (!$suratMbkm) {
+        if (!$suratSurveyMatkul) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
         // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
-            'nomor' => 'required|string|max:100',
+            'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
-            'tempat' => 'required|string|max:100',
-            'tgl_mulai' => 'required|string|max:100',
-            'tgl_selesai' => 'required|string|max:100',
-            'nim' => 'required|string|max:100',
-            'nama' => 'required|string|max:100',
-            'prodi' => 'required|string|max:100',
+            'tempat' => 'required|string|max:255',
+            'matkul' => 'required|string|max:255',
+            'keterangan' => 'required|string',
+            'perusahaan' => 'required|string|max:255',
+            'nim1' => 'required|string|max:100',
+            'nama1' => 'required|string|max:255',
+            'prodi1' => 'required|string|max:100',
+            'nim2' => 'nullable|string|max:100',
+            'nama2' => 'nullable|string|max:255',
+            'prodi2' => 'nullable|string|max:100',
+            'nim3' => 'nullable|string|max:100',
+            'nama3' => 'nullable|string|max:255',
+            'prodi3' => 'nullable|string|max:100',
+            'nim4' => 'nullable|string|max:100',
+            'nama4' => 'nullable|string|max:255',
+            'prodi4' => 'nullable|string|max:100',
+            'nim5' => 'nullable|string|max:100',
+            'nama5' => 'nullable|string|max:255',
+            'prodi5' => 'nullable|string|max:100',
         ]);
 
         // kalau ada error kembalikan error
@@ -141,18 +180,31 @@ class SuratSurveyMatkulController extends Controller
         }
 
         try{
-            $suratMbkm->nomor = $request->nomor;
-            $suratMbkm->yth = $request->yth;
-            $suratMbkm->tempat = $request->tempat;
-            $suratMbkm->tgl_mulai = $request->tgl_mulai;
-            $suratMbkm->tgl_selesai = $request->tgl_selesai;
-            $suratMbkm->nim = $request->nim;
-            $suratMbkm->nama = $request->nama;
-            $suratMbkm->prodi = $request->prodi;
+            $suratSurveyMatkul->nomor = $request->nomor;
+            $suratSurveyMatkul->yth = $request->yth;
+            $suratSurveyMatkul->tempat = $request->tempat;
+            $suratSurveyMatkul->matkul = $request->matkul;
+            $suratSurveyMatkul->keterangan = $request->keterangan;
+            $suratSurveyMatkul->perusahaan = $request->perusahaan;
+            $suratSurveyMatkul->nim1 = $request->nim1;
+            $suratSurveyMatkul->nama1 = $request->nama1;
+            $suratSurveyMatkul->prodi1 = $request->prodi1;
+            $suratSurveyMatkul->nim2 = $request->nim2;
+            $suratSurveyMatkul->nama2 = $request->nama2;
+            $suratSurveyMatkul->prodi2 = $request->prodi2;
+            $suratSurveyMatkul->nim3 = $request->nim3;
+            $suratSurveyMatkul->nama3 = $request->nama3;
+            $suratSurveyMatkul->prodi3 = $request->prodi3;
+            $suratSurveyMatkul->nim4 = $request->nim4;
+            $suratSurveyMatkul->nama4 = $request->nama4;
+            $suratSurveyMatkul->prodi4 = $request->prodi4;
+            $suratSurveyMatkul->nim5 = $request->nim5;
+            $suratSurveyMatkul->nama5 = $request->nama5;
+            $suratSurveyMatkul->prodi5 = $request->prodi5;
 
-            $suratMbkm->save();
+            $suratSurveyMatkul->save();
 
-            return redirect('/suratMbkm')->with('updateSuccess', 'Data berhasil di Update');
+            return redirect('/suratSurveyMatkul')->with('updateSuccess', 'Data berhasil di Update');
         } catch(Exception $e) {
             dd($e);
             return redirect()->back()->with('updateFail', 'Data gagal di Update');
@@ -162,11 +214,11 @@ class SuratSurveyMatkulController extends Controller
     public function destroy($id)
     {
         // Cari data pengguna berdasarkan ID
-        $suratMbkm = SuratMbkm::find($id);
+        $suratSurveyMatkul = SuratSurveyMatkul::find($id);
 
         try {
             // Hapus data pengguna
-            $suratMbkm->delete();
+            $suratSurveyMatkul->delete();
             return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
         } catch (\Exception $e) {
             return redirect()->back()->with('deleteFail', $e->getMessage());
@@ -176,20 +228,20 @@ class SuratSurveyMatkulController extends Controller
     // Metode untuk menampilkan dan print Surat MBKM
     public function exportPdfbyid($id)
     {
-        $suratMbkm = SuratMbkm::where('id', $id)->get();
+        $suratSurveyMatkul = SuratSurveyMatkul::where('id', $id)->get();
 
-        if ($suratMbkm->isEmpty()) {
-            return redirect()->back()->with('error', 'Data Surat MBKM tidak ditemukan.');
+        if ($suratSurveyMatkul->isEmpty()) {
+            return redirect()->back()->with('error', 'Data Surat Survey Matkul tidak ditemukan.');
         }
 
         // Ambil data penanda tangan berdasarkan ID
         $penandaTangan = PenandaTangan::where('id', 1)->first();
         
-        return view('surat.suratMbkm', [
-            'title' => 'Surat Magang MBKM',
+        return view('surat.suratSurveyMatkul', [
+            'title' => 'Surat Survey Matakuliah',
             'section' => 'Surat Dibantu FO',
-            'active' => 'Surat Magang MBKM',
-            'suratMbkm' => $suratMbkm,
+            'active' => 'Surat Survey Matakuliah',
+            'suratSurveyMatkul' => $suratSurveyMatkul,
             'penandaTangan' => $penandaTangan,
         ]);
     }
