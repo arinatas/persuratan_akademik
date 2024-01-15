@@ -29,8 +29,8 @@
                             <form action="{{ route('update.suratMbkm', $suratMbkm->id ) }}" method="POST">
                                 @csrf
                                 <div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Nomor Surat</label>
-                                    <input type="text" value="{{$suratMbkm->nomor}}" class="form-control form-control-solid" required name="nomor"/>
+                                    <label for="exampleFormControlInput1" class=" form-label">Nomor Surat</label>
+                                    <input type="text" value="{{$suratMbkm->nomor}}" class="form-control form-control-solid" name="nomor"/>
                                 </div>
 								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Ditujukan Kepada</label>

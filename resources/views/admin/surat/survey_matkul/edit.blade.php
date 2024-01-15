@@ -26,51 +26,139 @@
 						<!--end::Heading-->
 						<!--begin::Table-->
                         <div class="mt-15">
-                            <form action="{{ route('update.suratMbkm', $suratMbkm->id ) }}" method="POST">
+                            <form action="{{ route('update.suratSurveyMatkul', $suratSurveyMatkul->id ) }}" method="POST">
                                 @csrf
                                 <div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Nomor Surat</label>
-                                    <input type="text" value="{{$suratMbkm->nomor}}" class="form-control form-control-solid" required name="nomor"/>
+                                    <label for="exampleFormControlInput1" class=" form-label">Nomor Surat</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nomor}}" class="form-control form-control-solid" name="nomor"/>
                                 </div>
 								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Ditujukan Kepada</label>
-                                    <input type="text" value="{{$suratMbkm->yth}}" class="form-control form-control-solid" required name="yth"/>
+                                    <input type="text" value="{{$suratSurveyMatkul->yth}}" class="form-control form-control-solid" required name="yth"/>
                                 </div>
 								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Di Tempat</label>
-                                    <input type="text" value="{{$suratMbkm->tempat}}" class="form-control form-control-solid" required name="tempat"/>
+                                    <input type="text" value="{{$suratSurveyMatkul->tempat}}" class="form-control form-control-solid" required name="tempat"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Tanggal Mulai</label>
-                                    <input type="date" value="{{$suratMbkm->tgl_mulai}}" class="form-control form-control-solid" required name="tgl_mulai"/>
+                                    <label for="exampleFormControlInput1" class="required form-label">Matakuliah</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->matkul}}" class="form-control form-control-solid" required name="matkul"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Tanggal Selesai</label>
-                                    <input type="date" value="{{$suratMbkm->tgl_selesai}}" class="form-control form-control-solid" required name="tgl_selesai"/>
+                                    <label for="exampleFormControlInput1" class="required form-label">Keterangan</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->keterangan}}" class="form-control form-control-solid" required name="keterangan"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">NIM</label>
-                                    <input type="text" value="{{$suratMbkm->nim}}" class="form-control form-control-solid" required name="nim"/>
+                                    <label for="exampleFormControlInput1" class="required form-label">NIM 1</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nim1}}" class="form-control form-control-solid" required name="nim1"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Nama</label>
-                                    <input type="text" value="{{$suratMbkm->nama}}" class="form-control form-control-solid" required name="nama"/>
+                                    <label for="exampleFormControlInput1" class="required form-label">Nama 1</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nama1}}" class="form-control form-control-solid" required name="nama1"/>
                                 </div>
 								<div class="mb-10">
-									<label for="exampleFormControlInput1" class="required form-label">Prodi</label>
-									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
-										<option value="Informatika" {{ $suratMbkm->prodi == 'Informatika' ? 'selected' : '' }}>Informatika</option>
-										<option value="Sistem Informasi" {{ $suratMbkm->prodi == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
-										<option value="Sistem Informasi Akutansi" {{ $suratMbkm->prodi == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
-										<option value="Akutansi" {{ $suratMbkm->prodi == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
-										<option value="Manajemen" {{ $suratMbkm->prodi == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
-										<option value="DKV" {{ $suratMbkm->prodi == 'DKV' ? 'selected' : '' }}>DKV</option>
-										<option value="Bisnis Digital" {{ $suratMbkm->prodi == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
+									<label for="exampleFormControlInput1" class="required form-label">Prodi 1</label>
+									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi1" required>
+										<option value="Informatika" {{ $suratSurveyMatkul->prodi1 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
+										<option value="Sistem Informasi" {{ $suratSurveyMatkul->prodi1 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
+										<option value="Sistem Informasi Akutansi" {{ $suratSurveyMatkul->prodi1 == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
+										<option value="Akutansi" {{ $suratSurveyMatkul->prodi1 == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
+										<option value="Manajemen" {{ $suratSurveyMatkul->prodi1 == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
+										<option value="DKV" {{ $suratSurveyMatkul->prodi1 == 'DKV' ? 'selected' : '' }}>DKV</option>
+										<option value="Bisnis Digital" {{ $suratSurveyMatkul->prodi1 == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
+									</select>
+								</div>
+
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">NIM 2</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nim2}}" class="form-control form-control-solid" name="nim2"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">Nama 2</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nama2}}" class="form-control form-control-solid" name="nama2"/>
+                                </div>
+								<div class="mb-10">
+									<label for="exampleFormControlInput1" class=" form-label">Prodi 2</label>
+									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi2">
+										<option value="" {{ is_null($suratSurveyMatkul->prodi2) ? 'selected' : '' }}>Pilih Prodi</option>
+										<option value="Informatika" {{ $suratSurveyMatkul->prodi2 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
+										<option value="Sistem Informasi" {{ $suratSurveyMatkul->prodi2 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
+										<option value="Sistem Informasi Akutansi" {{ $suratSurveyMatkul->prodi2 == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
+										<option value="Akutansi" {{ $suratSurveyMatkul->prodi2 == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
+										<option value="Manajemen" {{ $suratSurveyMatkul->prodi2 == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
+										<option value="DKV" {{ $suratSurveyMatkul->prodi2 == 'DKV' ? 'selected' : '' }}>DKV</option>
+										<option value="Bisnis Digital" {{ $suratSurveyMatkul->prodi2 == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
+									</select>
+								</div>
+
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">NIM 3</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nim3}}" class="form-control form-control-solid" name="nim3"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">Nama 3</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nama3}}" class="form-control form-control-solid" name="nama3"/>
+                                </div>
+								<div class="mb-10">
+									<label for="exampleFormControlInput1" class=" form-label">Prodi 3</label>
+									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi3">
+										<option value="" {{ is_null($suratSurveyMatkul->prodi3) ? 'selected' : '' }}>Pilih Prodi</option>
+										<option value="Informatika" {{ $suratSurveyMatkul->prodi3 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
+										<option value="Sistem Informasi" {{ $suratSurveyMatkul->prodi3 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
+										<option value="Sistem Informasi Akutansi" {{ $suratSurveyMatkul->prodi3 == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
+										<option value="Akutansi" {{ $suratSurveyMatkul->prodi3 == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
+										<option value="Manajemen" {{ $suratSurveyMatkul->prodi3 == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
+										<option value="DKV" {{ $suratSurveyMatkul->prodi3 == 'DKV' ? 'selected' : '' }}>DKV</option>
+										<option value="Bisnis Digital" {{ $suratSurveyMatkul->prodi3 == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
+									</select>
+								</div>
+
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">NIM 4</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nim4}}" class="form-control form-control-solid" name="nim4"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">Nama 4</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nama4}}" class="form-control form-control-solid" name="nama4"/>
+                                </div>
+								<div class="mb-10">
+									<label for="exampleFormControlInput1" class=" form-label">Prodi 4</label>
+									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi4">
+										<option value="" {{ is_null($suratSurveyMatkul->prodi4) ? 'selected' : '' }}>Pilih Prodi</option>
+										<option value="Informatika" {{ $suratSurveyMatkul->prodi4 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
+										<option value="Sistem Informasi" {{ $suratSurveyMatkul->prodi4 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
+										<option value="Sistem Informasi Akutansi" {{ $suratSurveyMatkul->prodi4 == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
+										<option value="Akutansi" {{ $suratSurveyMatkul->prodi4 == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
+										<option value="Manajemen" {{ $suratSurveyMatkul->prodi4 == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
+										<option value="DKV" {{ $suratSurveyMatkul->prodi4 == 'DKV' ? 'selected' : '' }}>DKV</option>
+										<option value="Bisnis Digital" {{ $suratSurveyMatkul->prodi4 == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
+									</select>
+								</div>
+
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">NIM 5</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nim5}}" class="form-control form-control-solid" name="nim5"/>
+                                </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">Nama 5</label>
+                                    <input type="text" value="{{$suratSurveyMatkul->nama5}}" class="form-control form-control-solid" name="nama5"/>
+                                </div>
+								<div class="mb-10">
+									<label for="exampleFormControlInput1" class="form-label">Prodi 5</label>
+									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi5">
+										<option value="" {{ is_null($suratSurveyMatkul->prodi5) ? 'selected' : '' }}>Pilih Prodi</option>
+										<option value="Informatika" {{ $suratSurveyMatkul->prodi5 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
+										<option value="Sistem Informasi" {{ $suratSurveyMatkul->prodi5 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
+										<option value="Sistem Informasi Akutansi" {{ $suratSurveyMatkul->prodi5 == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
+										<option value="Akutansi" {{ $suratSurveyMatkul->prodi5 == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
+										<option value="Manajemen" {{ $suratSurveyMatkul->prodi5 == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
+										<option value="DKV" {{ $suratSurveyMatkul->prodi5 == 'DKV' ? 'selected' : '' }}>DKV</option>
+										<option value="Bisnis Digital" {{ $suratSurveyMatkul->prodi5 == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
 									</select>
 								</div>
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
-                                    <a href="{{ route('suratMbkm') }}" class="btn btn-secondary">
+                                    <a href="{{ route('suratSurveyMatkul') }}" class="btn btn-secondary">
                                         <span class="indicator-label">
                                             Cancel
                                         </span>

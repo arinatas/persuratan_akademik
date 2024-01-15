@@ -125,13 +125,13 @@ class SuratMbkmController extends Controller
 
         // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
-            'nomor' => 'required|string|max:100',
+            'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
             'tempat' => 'required|string|max:100',
             'tgl_mulai' => 'required|string|max:100',
             'tgl_selesai' => 'required|string|max:100',
             'nim' => 'required|string|max:100',
-            'nama' => 'required|string|max:100',
+            'nama' => 'required|string|max:255',
             'prodi' => 'required|string|max:100',
         ]);
 
