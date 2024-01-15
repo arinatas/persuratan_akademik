@@ -113,9 +113,37 @@ class SuratController extends Controller
         $data = $request->all();
 
         return view('surat.pindahKelas', [
-            'title' => 'Surat Cuti Akademik',
+            'title' => 'Surat Pindah Kelas',
             'section' => 'Surat Diproses Sendiri',
-            'active' => 'Surat Cuti Akademik',
+            'active' => 'Surat Pindah Kelas',
+            'data' => $data,
+        ]);  
+    }
+
+    public function createSuratPindahProdi(){
+
+        $nim = auth()->user()->username;
+
+        $biomhs = Biodata::with('dosenPA')->where('nim', $nim)->get();
+        $kaprodi = Kaprodi::all();
+
+        return view('user.surat.pindahProdi', [
+            'title' => 'Surat Pindah Prodi',
+            'section' => 'Surat Diproses Sendiri',
+            'active' => 'Surat Pindah Prodi',
+            'biomhs' => $biomhs, 
+            'kaprodi' => $kaprodi, 
+        ]);  
+    }
+
+    public function suratPindahProdi(Request $request){
+
+        $data = $request->all();
+
+        return view('surat.pindahProdi', [
+            'title' => 'Surat Pindah Prodi',
+            'section' => 'Surat Diproses Sendiri',
+            'active' => 'Surat Pindah Prodi',
             'data' => $data,
         ]);  
     }
