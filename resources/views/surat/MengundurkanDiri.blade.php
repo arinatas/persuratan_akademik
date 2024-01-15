@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SURAT KETERANGAN CUTI AKADEMIK</title>
+        <title>SURAT PERMOHONAN PENGUNDURAN DIRI</title>
 		<link rel="shortcut icon" href="assets/media/logos/smallprimakara.png" />
 
         <!-- Tell the browser to be responsive to screen width -->
@@ -49,7 +49,7 @@
                             <img alt="Logo" class="" src="assets/media/logos/primakara_landscape.png" width="300px" />
                         </div>
                         <div class="col-12 text-center">
-                            <h2 class="my-5"><b><u>SURAT KETERANGAN CUTI AKADEMIK</u></b></h2>
+                            <h2 class="my-5"><b><u>SURAT PERMOHONAN PENGUNDURAN DIRI</u></b></h2>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -62,18 +62,15 @@
                                 <address>
                                     <div class="row">
                                         <div class="col-12">
+                                            <div class="" style="font-weight: bolder; font-style: italic; text-align: end;">
+                                                <p>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</p>
+                                            </div>
                                             <table style="font-weight: bolder; font-style: italic;">
                                                 <tr>
-                                                    <td>Kepada</td>
+                                                    <td>Kepada Yth.</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Yth. Kepala Program Studi {{ $data['prodi'] }}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Primakara University</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>di – tempat</td>
+                                                    <td>Rektor Primakara University</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -92,10 +89,7 @@
                                         <div class="col-12">
                                             <table>
                                                 <tr>
-                                                    <td>Dengan hormat,</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Saya yang bertanda tangan di bawah ini :  </td>
+                                                    <td>Yang bertanda tangan di bawah ini :  </td>
                                                 </tr>
                                             </table>
                                             <table class="mt-2">
@@ -114,7 +108,7 @@
                                             </table>
                                         </div>
                                         <div class="col-12 mt-3" style="text-indent: 30px;">
-                                            mengajukan permohonan cuti untuk tidak mengikuti perkuliahan pada semester <b><u>{{ $data['semester'] }}</u></b> Tahun Akademik <b><u>{{ $data['tahun'] }}</u></b> dikarenakan saya <b><u>{{ $data['alasan'] }}.</u></b> sekiranya Bapak/ Ibu berkenan mengabulkan permohonan ini.
+                                            Dengan ini saya mengajukan permohonan mengundurkan diri sebagai mahasiswa Primakara University karena <b><u>{{ $data['alasan'] }}.</u></b>
                                         </div>
                                     </div>
                                 </address>
@@ -129,7 +123,7 @@
                                 <address>
                                     <div class="row">
                                         <div class="col-12 mt-2">
-                                            <p style="text-align: justify;">Demikian surat permohonan cuti ini dan atas perhatian Bapak/Ibu, saya ucapkan terima kasih.</p>
+                                            <p style="text-align: justify;">Demikian permohonan kami buat, untuk dapat ditindak lanjuti.</p>
                                         </div>
                                     </div>
                                 </address>
@@ -139,22 +133,22 @@
                         <!-- /.row -->
         
                         <!-- info row -->
-                        <div class="row">
-                            <div class="col-8 letter-col mt-3">
+                        <div class="row text-center">
+                            <div class="col-6 letter-col mt-3">
                                 <address>
-                                    <strong>Mengetahui,</strong><br>
-                                    <strong>Pembimbing Akademis</strong>
+                                    <strong>Mengetahui/menyetujui</strong><br>
+                                    <strong>Orang tua mahasisw</strong>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
-                                    <strong><u>{{ $data['dosenPA'] }}</u></strong><br>
+                                    <strong><u>{{ $data['ortu'] }}</u></strong><br>
                                 </address>
                             </div>
-                            <div class="col-4 letter-col mt-3">
+                            <div class="col-6 letter-col mt-3">
                                 <address>
-                                    <strong>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</strong><br>
-                                    <strong>Hormat saya,</strong>
+                                    <strong>Hormat saya,</strong><br>
+                                    <strong>Pemohon</strong>
                                     <br>
                                     <br>
                                     <br>
@@ -162,15 +156,26 @@
                                     <strong><u>{{ $data['nama'] }}</u></strong><br>
                                 </address>
                             </div>
-                            <div class="col-12 letter-col mt-3 text-center">
+                            <div class="col-6 letter-col mt-5 text-center">
                                 <address>
-                                    <strong>Menyetujui,</strong><br>
+                                    <strong>Mengetahui/menyetujui</strong><br>
                                     <strong>Kepala Program Studi</strong>
                                     <br>
                                     <br>
                                     <br>
                                     <br>
                                     <strong><u>{{ $data['kaprodi'] }}</u></strong><br>
+                                </address>
+                            </div>
+                            <div class="col-6 letter-col mt-5">
+                                <address>
+                                    <strong>Mengetahui/menyetujui</strong><br>
+                                    <strong>Pembimbing Akademis</strong>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <strong><u>{{ $data['dosenPA'] }}</u></strong><br>
                                 </address>
                             </div>
                             <!-- /.col -->

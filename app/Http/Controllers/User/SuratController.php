@@ -56,10 +56,38 @@ class SuratController extends Controller
         
         $data = $request->all();
 
-        return view('surat.cutiAkademik', [
+        return view('surat.CutiAkademik', [
             'title' => 'Surat Cuti Akademik',
             'section' => 'Surat Diproses Sendiri',
             'active' => 'Surat Cuti Akademik',
+            'data' => $data,
+        ]);  
+    }
+
+    public function createSuratMengundurkanDiri(){
+
+        $nim = auth()->user()->username;
+
+        $biomhs = Biodata::with('dosenPA')->where('nim', $nim)->get();
+        $kaprodi = Kaprodi::all();
+
+        return view('user.surat.mengundurkanDiri', [
+            'title' => 'Surat Pengunduran Diri',
+            'section' => 'Surat Diproses Sendiri',
+            'active' => 'Surat Pengunduran Diri',
+            'biomhs' => $biomhs, 
+            'kaprodi' => $kaprodi, 
+        ]);  
+    }
+
+    public function suratMengundurkanDiri(Request $request){
+        
+        $data = $request->all();
+
+        return view('surat.MengundurkanDiri', [
+            'title' => 'Surat Pengunduran Diri',
+            'section' => 'Surat Diproses Sendiri',
+            'active' => 'Surat Pengunduran Diri',
             'data' => $data,
         ]);  
     }
