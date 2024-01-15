@@ -118,8 +118,10 @@ Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth
 Route::get('/createSuratIzinAbsensi', [SuratController::class, 'createSuratIzinAbsensi'])->middleware('auth')->name('createSuratIzinAbsensi');
 Route::get('/createSuratCutiAkademik', [SuratController::class, 'createSuratCutiAkademik'])->middleware('auth')->name('createSuratCutiAkademik');
 Route::get('/createSuratMengundurkanDiri', [SuratController::class, 'createSuratMengundurkanDiri'])->middleware('auth')->name('createSuratMengundurkanDiri');
+Route::get('/createSuratPindahKelas', [SuratController::class, 'createSuratPindahKelas'])->middleware('auth')->name('createSuratPindahKelas');
 Route::post('/suratIzinAbsensi', [SuratController::class, 'suratIzinAbsensi'])->middleware('auth')->name('suratIzinAbsensi');
 Route::post('/suratCutiAkademik', [SuratController::class, 'suratCutiAkademik'])->middleware('auth')->name('suratCutiAkademik');
 Route::post('/suratMengundurkanDiri', [SuratController::class, 'suratMengundurkanDiri'])->middleware('auth')->name('suratMengundurkanDiri');
+Route::post('/suratPindahKelas', [SuratController::class, 'suratPindahKelas'])->middleware('auth')->name('suratPindahKelas');
 
 
