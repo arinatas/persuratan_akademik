@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SuratMbkmController;
 use App\Http\Controllers\Admin\SuratSurveyMatkulController;
 use App\Http\Controllers\Admin\SuratKeteranganKuliahController;
 use App\Http\Controllers\Admin\SuratSurveyProposalController;
+use App\Http\Controllers\Admin\SuratSurveySkripsiController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -132,7 +133,16 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/rejectSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'reject'])->middleware('auth')->name('reject.suratSurveyProposal');
     Route::get('/exportSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveyProposal');
     
-    
+    // Surat Izin Survey Skripsi
+    Route::get('/suratSurveySkripsi', [SuratSurveySkripsiController::class, 'index'])->middleware('auth')->name('suratSurveySkripsi');
+    Route::post('/suratSurveySkripsi', [SuratSurveySkripsiController::class, 'store'])->middleware('auth')->name('insert.suratSurveySkripsi');
+    Route::get('/editSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'edit'])->middleware('auth')->name('edit.suratSurveySkripsi');
+    Route::post('/updateSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'update'])->middleware('auth')->name('update.suratSurveySkripsi');
+    Route::delete('/deleteSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'destroy'])->middleware('auth')->name('destroy.suratSurveySkripsi');
+    Route::post('/approveSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'approve'])->middleware('auth')->name('approve.suratSurveySkripsi');
+    Route::post('/unapproveSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratSurveySkripsi');
+    Route::post('/rejectSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'reject'])->middleware('auth')->name('reject.suratSurveySkripsi');
+    Route::get('/exportSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveySkripsi');
 
 });
 

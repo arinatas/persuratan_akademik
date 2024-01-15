@@ -104,8 +104,8 @@
                                     <span class="menu-title">Surat Izin Survei Proposal Skripsi</span>
                                 </a>
                             </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="../../demo1/dist/modals/general/upgrade-plan.html">
+                            <div class="menu-item {{ ($active === "Surat Izin Survei Skripsi") ? 'here show' : '' }}">
+                                <a class="menu-link" href="{{ url('suratSurveySkripsi') }}">
                                     <span class="menu-bullet">
                                         <span class="bullet bullet-dot"></span>
                                     </span>
