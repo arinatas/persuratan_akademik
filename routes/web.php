@@ -161,7 +161,7 @@ Route::middleware(['admin'])->group(function () {
 
 Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth')->name('userDashboard');
 
-// surat here
+// surat diproses sendiri
 Route::get('/createSuratIzinAbsensi', [SuratController::class, 'createSuratIzinAbsensi'])->middleware('auth')->name('createSuratIzinAbsensi');
 Route::get('/createSuratCutiAkademik', [SuratController::class, 'createSuratCutiAkademik'])->middleware('auth')->name('createSuratCutiAkademik');
 Route::get('/createSuratMengundurkanDiri', [SuratController::class, 'createSuratMengundurkanDiri'])->middleware('auth')->name('createSuratMengundurkanDiri');
@@ -172,5 +172,16 @@ Route::post('/suratCutiAkademik', [SuratController::class, 'suratCutiAkademik'])
 Route::post('/suratMengundurkanDiri', [SuratController::class, 'suratMengundurkanDiri'])->middleware('auth')->name('suratMengundurkanDiri');
 Route::post('/suratPindahKelas', [SuratController::class, 'suratPindahKelas'])->middleware('auth')->name('suratPindahKelas');
 Route::post('/suratPindahProdi', [SuratController::class, 'suratPindahProdi'])->middleware('auth')->name('suratPindahProdi');
+
+// end surat diproses sendiri
+
+// surat di proses FO
+Route::get('/userSuratSurveyMatkul', [SuratController::class, 'userSuratSurveyMatkul'])->middleware('auth')->name('userSuratSurveyMatkul');
+Route::post('/userSuratSurveyMatkulStore', [SuratController::class, 'userSuratSurveyMatkulStore'])->middleware('auth')->name('userSuratSurveyMatkulStore');
+Route::get('/userSuratSurveyMatkulEdit/{id}', [SuratController::class, 'userSuratSurveyMatkulEdit'])->middleware('auth')->name('userSuratSurveyMatkulEdit');
+Route::post('/userSuratSurveyMatkulUpdate/{id}', [SuratController::class, 'userSuratSurveyMatkulUpdate'])->middleware('auth')->name('userSuratSurveyMatkulUpdate');
+Route::delete('/userSuratSurveyMatkulDestroy/{id}', [SuratController::class, 'userSuratSurveyMatkulDestroy'])->middleware('auth')->name('userSuratSurveyMatkulDestroy');
+
+// end surat di proses FO
 
 
