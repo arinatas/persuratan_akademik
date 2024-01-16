@@ -45,9 +45,13 @@
                                     <input type="text" value="{{$suratKeteranganKuliah->pangkat}}" class="form-control form-control-solid" required name="pangkat"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Semester</label>
-                                    <input type="text" value="{{$suratKeteranganKuliah->semester}}" class="form-control form-control-solid" required name="semester"/>
-                                </div>
+									<label for="exampleFormControlInput1" class="required form-label">Semester</label>
+									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="semester" required>
+										<option value="Ganjil" {{ $suratKeteranganKuliah->semester == 'Ganjil' ? 'selected' : '' }}>Ganjil</option>
+										<option value="Genap" {{ $suratKeteranganKuliah->semester == 'Genap' ? 'selected' : '' }}>Genap</option>
+										<option value="SP" {{ $suratKeteranganKuliah->semester == 'SP' ? 'selected' : '' }}>SP</option>
+									</select>
+								</div>
 								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Tahun Akademik</label>
                                     <input type="text" value="{{$suratKeteranganKuliah->tahun_akademik}}" class="form-control form-control-solid" required name="tahun_akademik"/>

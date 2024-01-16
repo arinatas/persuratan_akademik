@@ -75,6 +75,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editDosenPA/{id}', [DosenPAController::class, 'edit'])->middleware('auth')->name('edit.dosenPA');
     Route::post('/updateDosenPA/{id}', [DosenPAController::class, 'update'])->middleware('auth')->name('update.dosenPA');
     Route::delete('/deleteDosenPA/{id}', [DosenPAController::class, 'destroy'])->middleware('auth')->name('destroy.dosenPA');
+    Route::get('/exportDosenPA', [DosenPAController::class, 'exportDosenPA'])->middleware('auth')->name('exportDosenPA');
 
     // Kaprodi
     Route::get('/kaprodi', [KaprodiController::class, 'index'])->middleware('auth')->name('kaprodi');
@@ -171,6 +172,7 @@ Route::post('/suratCutiAkademik', [SuratController::class, 'suratCutiAkademik'])
 Route::post('/suratMengundurkanDiri', [SuratController::class, 'suratMengundurkanDiri'])->middleware('auth')->name('suratMengundurkanDiri');
 Route::post('/suratPindahKelas', [SuratController::class, 'suratPindahKelas'])->middleware('auth')->name('suratPindahKelas');
 Route::post('/suratPindahProdi', [SuratController::class, 'suratPindahProdi'])->middleware('auth')->name('suratPindahProdi');
+
 // end surat diproses sendiri
 
 // surat di proses FO
@@ -181,4 +183,5 @@ Route::post('/userSuratSurveyMatkulUpdate/{id}', [SuratController::class, 'userS
 Route::delete('/userSuratSurveyMatkulDestroy/{id}', [SuratController::class, 'userSuratSurveyMatkulDestroy'])->middleware('auth')->name('userSuratSurveyMatkulDestroy');
 
 // end surat di proses FO
+
 

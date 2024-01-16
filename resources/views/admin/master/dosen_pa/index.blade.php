@@ -21,6 +21,7 @@
                                                 </div>
                                                 <div class="d-inline">
                                                     <a href="#" class="btn btn-sm btn-primary fs-6" data-bs-toggle="modal" data-bs-target="#kt_modal_new_akun">Tambah</a>
+                                                    <a href="{{ route('exportDosenPA') }}" class="btn btn-sm btn-info" title="Export Excel">Export Dosen PA</a>
                                                 </div>
                                             <!--end::Title-->
                                         </div>
@@ -31,10 +32,11 @@
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
                                                     <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
-                                                        <th class="min-w-100px">No</th>
+                                                        <th class="min-w-50px">No</th>
                                                         <th class="min-w-100px">NIDN/NIK</th>
                                                         <th class="min-w-100px">Nama</th>
                                                         <th class="min-w-100px">Jabatan</th>
+                                                        <th class="min-w-50px">ID PA</th>
                                                         <th class="min-w-300px">Action</th>
                                                     </tr>
                                                 </thead>
@@ -48,6 +50,7 @@
                                                         <td>{{ $item->nidn }}</td>
                                                         <td>{{ $item->nama }}</td>
                                                         <td>{{ $item->jabatan }}</td>
+                                                        <td>{{ $item->id }}</td>
                                                         <td>
                                                             <a href="{{ route('edit.dosenPA', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                                             <form id="form-delete" action="{{ route('destroy.dosenPA', $item->id ) }}" method="POST"

@@ -320,7 +320,12 @@
                                                             <span class="required">Semester</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="semester" required value=""/>
+                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="semester" required>
+                                                            <option value="">Pilih Semester</option>
+                                                            <option value="Ganjil">Ganjil</option>
+                                                            <option value="Genap">Genap</option>
+                                                            <option value="SP">SP</option>
+                                                        </select>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->

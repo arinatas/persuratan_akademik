@@ -157,7 +157,7 @@
                                                 <thead>
                                                     <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
                                                         <th class="min-w-200px">Action</th>
-                                                        <th class="min-w-100px">No</th>
+                                                        <th class="min-w-50px">No</th>
                                                         <th class="min-w-100px">Nim</th>
                                                         <th class="min-w-100px">Nama</th>
                                                         <th class="min-w-100px">Kelas</th>
@@ -166,8 +166,8 @@
                                                         <th class="min-w-100px">Angkatan</th>
                                                         <th class="min-w-100px">Tempat Lahir</th>
                                                         <th class="min-w-100px">Tanggal Lahir</th>
-                                                        <th class="min-w-100px">Alamat</th>
                                                         <th class="min-w-100px">Dosen PA</th>
+                                                        <th class="min-w-100px">Alamat</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -193,8 +193,8 @@
                                                         <td>{{ $item->angkatan }}</td>
                                                         <td>{{ $item->tempat_lahir }}</td>
                                                         <td>{{ $item->tgl_lahir }}</td>
-                                                        <td>{{ $item->alamat }}</td>
                                                         <td>{{ $item->dosenPA->nama }}</td>
+                                                        <td>{{ $item->alamat }}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

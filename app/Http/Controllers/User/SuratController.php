@@ -43,6 +43,7 @@ class SuratController extends Controller
             ]);  
         }
 
+
         public function createSuratCutiAkademik(){
 
             $nim = auth()->user()->username;
@@ -170,7 +171,7 @@ class SuratController extends Controller
                 'biomhs' => $biomhs, 
             ]);  
         }
-        
+
         public function userSuratSurveyMatkul(){
 
             $nim = auth()->user()->username;
