@@ -200,7 +200,7 @@
 												</div>
 												<div class="col-lg-4">
 													<label class="form-label">Prodi</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi2" required>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi2">
                                                         <option value="">Pilih Prodi</option>
                                                         <option value="Informatika">Informatika</option>
                                                         <option value="Sistem Informasi">Sistem Informasi</option>
@@ -225,7 +225,7 @@
 												</div>
 												<div class="col-lg-4">
 													<label class="form-label">Prodi</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi3" required>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi3">
                                                         <option value="">Pilih Prodi</option>
                                                         <option value="Informatika">Informatika</option>
                                                         <option value="Sistem Informasi">Sistem Informasi</option>
@@ -250,7 +250,7 @@
 												</div>
 												<div class="col-lg-4">
 													<label class="form-label">Prodi</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi4" required>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi4">
                                                         <option value="">Pilih Prodi</option>
                                                         <option value="Informatika">Informatika</option>
                                                         <option value="Sistem Informasi">Sistem Informasi</option>
@@ -275,7 +275,7 @@
 												</div>
 												<div class="col-lg-4">
 													<label class="form-label">Prodi</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi5" required>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi5">
                                                         <option value="">Pilih Prodi</option>
                                                         <option value="Informatika">Informatika</option>
                                                         <option value="Sistem Informasi">Sistem Informasi</option>
