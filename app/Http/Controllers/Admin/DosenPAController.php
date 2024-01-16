@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\DosenPA;
+use App\Exports\DosenPaExport;
+use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DosenPAController extends Controller
 {
@@ -119,6 +122,18 @@ class DosenPAController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('deleteFail', $e->getMessage());
         }
+    }
+
+    // Metode untuk Export ke Excel
+    public function exportDosenPa()
+    {
+        $export = new DosenPaExport();
+
+        $currentDate = Carbon::now()->format('d-m-y'); // Format the current date as desired
+
+        $fileName = 'data_dosen_pa_' . $currentDate . '.xlsx';
+
+        return Excel::download($export, $fileName);
     }
 
 }

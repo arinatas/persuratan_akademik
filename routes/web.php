@@ -75,6 +75,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editDosenPA/{id}', [DosenPAController::class, 'edit'])->middleware('auth')->name('edit.dosenPA');
     Route::post('/updateDosenPA/{id}', [DosenPAController::class, 'update'])->middleware('auth')->name('update.dosenPA');
     Route::delete('/deleteDosenPA/{id}', [DosenPAController::class, 'destroy'])->middleware('auth')->name('destroy.dosenPA');
+    Route::get('/exportDosenPA', [DosenPAController::class, 'exportDosenPA'])->middleware('auth')->name('exportDosenPA');
 
     // Kaprodi
     Route::get('/kaprodi', [KaprodiController::class, 'index'])->middleware('auth')->name('kaprodi');
