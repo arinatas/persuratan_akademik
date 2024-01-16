@@ -147,41 +147,41 @@
                                                     <div class="row letter-info-mhs">
                                                         <div class="col-sm-12 letter-col">
                                                             <address>
-                                                            <div class="row">
-                                                                <div class="col-12 table-responsive">
-                                                                    <table class="table table-sm table-bordered">
+                                                                <div class="row">
+                                                                    <div class="col-12 table-responsive">
+                                                                        <table class="table table-sm">
                                                                             <tbody>
                                                                                 @php
                                                                                     $no = 1; // Initialize the counter
                                                                                 @endphp
                                                                                 @if($item->data1)
-                                                                                    <tr>
-                                                                                        <td>{{ $no++ }}</td>
-                                                                                        <td>{{ $item->data1 }}</td>
+                                                                                    <tr style="border: none;">
+                                                                                        <td style="border: none;">{{ $no++ }}</td>
+                                                                                        <td style="border: none;">{{ $item->data1 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                                 @if($item->data2)
-                                                                                    <tr>
-                                                                                        <td>{{ $no++ }}</td>
-                                                                                        <td>{{ $item->data2 }}</td>
+                                                                                    <tr style="border: none;">
+                                                                                        <td style="border: none;">{{ $no++ }}</td>
+                                                                                        <td style="border: none;">{{ $item->data2 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                                 @if($item->data3)
-                                                                                    <tr>
-                                                                                        <td>{{ $no++ }}</td>
-                                                                                        <td>{{ $item->data3 }}</td>
+                                                                                    <tr style="border: none;">
+                                                                                        <td style="border: none;">{{ $no++ }}</td>
+                                                                                        <td style="border: none;">{{ $item->data3 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                                 @if($item->data4)
-                                                                                    <tr>
-                                                                                        <td>{{ $no++ }}</td>
-                                                                                        <td>{{ $item->data4 }}</td>
+                                                                                    <tr style="border: none;">
+                                                                                        <td style="border: none;">{{ $no++ }}</td>
+                                                                                        <td style="border: none;">{{ $item->data4 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                                 @if($item->data5)
-                                                                                    <tr>
-                                                                                        <td>{{ $no++ }}</td>
-                                                                                        <td>{{ $item->data5 }}</td>
+                                                                                    <tr style="border: none;">
+                                                                                        <td style="border: none;">{{ $no++ }}</td>
+                                                                                        <td style="border: none;">{{ $item->data5 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                             </tbody>
@@ -193,7 +193,7 @@
                                                     </div>
                                                 </div>
                                                 <!-- /.row -->
-                                                <p style="text-align: justify; text-indent: 30px;">
+                                                <p style="text-align: justify; text-indent: 30px; margin-top: -15px">
                                                     Demikian Surat Keterangan ini dibuat untuk dapat dipergunakan sebagaimana mestinya. 
                                                 </p>
                                             </div>
