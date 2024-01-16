@@ -2,7 +2,7 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="/">
+        <a href="#">
             <img alt="Logo" src="assets/media/logos/whiteprimakara.png" class="h-40px logo" />
         </a>
         <!--end::Logo-->
@@ -302,7 +302,7 @@
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Surat Dibantu FO</span>
                     </div>
                 </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                <div data-kt-menu-trigger="click" class="menu-item {{ ($section === "Surat Dibantu FO") ? 'here show' : '' }} menu-accordion">
                     <span class="menu-link">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/art/art009.svg-->
@@ -327,7 +327,7 @@
                             </a>
                         </div>
                         <div class="menu-item {{ ($active === "Surat Survey Matakuliah") ? 'here show' : '' }}">
-                            <a class="menu-link" href="">
+                            <a class="menu-link" href="{{ url('userSuratSurveyMatkul') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

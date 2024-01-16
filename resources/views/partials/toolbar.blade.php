@@ -108,6 +108,17 @@
     });
 </script>
 @endif
+@if(session('forbidden'))
+<script>
+    Swal.fire({
+        icon: 'error',
+        title: 'Actions Prohibited!',
+        text: '{{ session('forbidden') }}',
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK',
+    });
+</script>
+@endif
 @if (\Session::has('validatorFail'))
 <script>
     Swal.fire(
