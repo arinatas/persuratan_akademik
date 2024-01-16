@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class SuratMbkm extends Model
+class SuratSurveyProposal extends Model
 {
     use HasFactory;
 
-    protected $table = 'surat_magang_mbkm';
+    protected $table = 'surat_survey_proposal';
     protected $primaryKey = 'id';
     protected $keyType = 'string';
 
@@ -18,8 +18,7 @@ class SuratMbkm extends Model
         'nomor',
         'yth',
         'tempat',
-        'tgl_mulai',
-        'tgl_selesai',
+        'topik',
         'nim1',
         'nama1',
         'prodi1',

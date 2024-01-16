@@ -156,6 +156,7 @@
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
                                                     <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
+                                                        <th class="min-w-200px">Action</th>
                                                         <th class="min-w-100px">No</th>
                                                         <th class="min-w-100px">Nim</th>
                                                         <th class="min-w-100px">Nama</th>
@@ -163,21 +164,15 @@
                                                         <th class="min-w-100px">Prodi</th>
                                                         <th class="min-w-100px">Fakultas</th>
                                                         <th class="min-w-100px">Angkatan</th>
+                                                        <th class="min-w-100px">Tempat Lahir</th>
+                                                        <th class="min-w-100px">Tanggal Lahir</th>
+                                                        <th class="min-w-100px">Alamat</th>
                                                         <th class="min-w-100px">Dosen PA</th>
-                                                        <th class="min-w-200px">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($biodatas as $item)
                                                     <tr>
-                                                        <td>{{ ($biodatas->currentPage() - 1) * $biodatas->perPage() + $loop->index + 1 }}</td>
-                                                        <td>{{ $item->nim }}</td>
-                                                        <td>{{ $item->nama }}</td>
-                                                        <td>{{ $item->kelas }}</td>
-                                                        <td>{{ $item->prodi }}</td>
-                                                        <td>{{ $item->fakultas }}</td>
-                                                        <td>{{ $item->angkatan }}</td>
-                                                        <td>{{ $item->dosenPA->nama }}</td>
                                                         <td>
                                                             <a href="{{ route('edit.biodata', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
                                                             <form id="form-delete" action="{{ route('destroy.biodata', $item->id ) }}" method="POST"
@@ -189,6 +184,17 @@
                                                                 ><i class="fas fa-trash"></i></i></button>
                                                             </form>
                                                         </td>
+                                                        <td>{{ ($biodatas->currentPage() - 1) * $biodatas->perPage() + $loop->index + 1 }}</td>
+                                                        <td>{{ $item->nim }}</td>
+                                                        <td>{{ $item->nama }}</td>
+                                                        <td>{{ $item->kelas }}</td>
+                                                        <td>{{ $item->prodi }}</td>
+                                                        <td>{{ $item->fakultas }}</td>
+                                                        <td>{{ $item->angkatan }}</td>
+                                                        <td>{{ $item->tempat_lahir }}</td>
+                                                        <td>{{ $item->tgl_lahir }}</td>
+                                                        <td>{{ $item->alamat }}</td>
+                                                        <td>{{ $item->dosenPA->nama }}</td>
                                                     </tr>
                                                     @endforeach
                                                 </tbody>
@@ -321,6 +327,30 @@
                                                         </label>
                                                         <!--end::Label-->
                                                         <input class="form-control form-control-solid" type="text" name="angkatan" required value=""/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="required">Tempat Lahir</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="tempat_lahir" required value=""/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="required">Tanggal Lahir</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="date" name="tgl_lahir" required value=""/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="required">ALamat</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="alamat" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->

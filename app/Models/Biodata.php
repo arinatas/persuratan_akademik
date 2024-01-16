@@ -20,6 +20,9 @@ class Biodata extends Model
         'prodi',
         'fakultas',
         'angkatan',
+        'tempat_lahir',
+        'tgl_lahir',
+        'alamat',
         'dosen_pa',
     ];
 

@@ -17,7 +17,7 @@ class SuratSurveyMatkulController extends Controller
         $surveyMatkuls = SuratSurveyMatkul::all();
             return view('admin.surat.survey_matkul.index', [
                 'title' => 'Surat Survey Matakuliah',
-                'section' => 'Surat Dibantu FO',
+                'section' => 'Request Surat Mahasiswa',
                 'active' => 'Surat Survey Matakuliah',
                 'surveyMatkuls' => $surveyMatkuls,
             ]);
@@ -135,7 +135,7 @@ class SuratSurveyMatkulController extends Controller
 
         return view('admin.surat.survey_matkul.edit', [
             'title' => 'Surat Survey Matakuliah',
-            'section' => 'Surat Dibantu FO',
+            'section' => 'Request Surat Mahasiswa',
             'active' => 'Surat Survey Matakuliah',
             'suratSurveyMatkul' => $suratSurveyMatkul,
         ]);
@@ -239,7 +239,7 @@ class SuratSurveyMatkulController extends Controller
         
         return view('surat.suratSurveyMatkul', [
             'title' => 'Surat Survey Matakuliah',
-            'section' => 'Surat Dibantu FO',
+            'section' => 'Request Surat Mahasiswa',
             'active' => 'Surat Survey Matakuliah',
             'suratSurveyMatkul' => $suratSurveyMatkul,
             'penandaTangan' => $penandaTangan,

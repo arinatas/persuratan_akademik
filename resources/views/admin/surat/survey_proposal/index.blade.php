@@ -26,7 +26,7 @@
                                         </div>
                                         <!--end::Heading-->
                                         <!--begin::Table-->
-                                        @if ($mbkms )
+                                        @if ($surveyProposals )
                                         <div class="table-responsive my-10 mx-8">
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
@@ -44,7 +44,7 @@
                                                     @php
                                                         $no = 1; // Inisialisasi no
                                                     @endphp
-                                                    @foreach ($mbkms as $item)
+                                                    @foreach ($surveyProposals as $item)
                                                     <tr>
                                                         <td>{{ $no }}</td>
                                                         <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
@@ -70,12 +70,12 @@
                                                         <td>
                                                             <div class="row">
                                                                 <div class="col-3 col-md-2" style="margin-right: 5px;">
-                                                                    <a href="{{ route('edit.suratMbkm', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit">
+                                                                    <a href="{{ route('edit.suratSurveyProposal', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit">
                                                                         <i class="fas fa-pencil-alt"></i>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-3 col-md-2" style="margin-right: 5px;">
-                                                                    <form id="form-delete" action="{{ route('destroy.suratMbkm', $item->id ) }}" method="POST" class="d-inline-block">
+                                                                    <form id="form-delete" action="{{ route('destroy.suratSurveyProposal', $item->id ) }}" method="POST" class="d-inline-block">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button id="submit-btn" type="submit" data-toggle="tooltip" title="Hapus bagian" class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)">
@@ -121,12 +121,8 @@
                                                                                     <td>{{ $item->tempat }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Tanggal Mulai</th>
-                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_mulai)->format('d F Y') }}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Tanggal Selesai</th>
-                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_selesai)->format('d F Y') }}</td>
+                                                                                    <th>Topik</th>
+                                                                                    <td>{{ $item->topik }}</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->nim1)
@@ -252,25 +248,25 @@
                                                             </div>
                                                             <br>
                                                             <div style="margin-top: -10px; margin-left: 5px; ">
-                                                            <a href="{{ route('export.suratMbkm', $item->id) }}" class="btn btn-sm btn-secondary btn-action btn-block" data-toggle="tooltip" title="Unduh Surat MBKM"><i class="fas fa-download"></i> Download Surat </a>
+                                                            <a href="{{ route('export.suratSurveyProposal', $item->id) }}" class="btn btn-sm btn-secondary btn-action btn-block" data-toggle="tooltip" title="Unduh Surat MBKM"><i class="fas fa-download"></i> Download Surat </a>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="btn-group d-flex flex-column">
                                                                 <!-- Approve Button -->
-                                                                <form method="post" action="{{ route('approve.suratMbkm', $item->id) }}">
+                                                                <form method="post" action="{{ route('approve.suratSurveyProposal', $item->id) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-success btn-action mb-2 w-100" data-toggle="tooltip" title="Setujui"><i class="fas fa-check"></i> Setujui</button>
                                                                 </form>
 
                                                                 <!-- Unapprove Button -->
-                                                                <form method="post" action="{{ route('unapprove.suratMbkm', $item->id) }}">
+                                                                <form method="post" action="{{ route('unapprove.suratSurveyProposal', $item->id) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-warning btn-action mb-2 w-100" data-toggle="tooltip" title="Unapprove"><i class="fas fa-undo"></i> Unapprove</button>
                                                                 </form>
 
                                                                 <!-- Reject Button -->
-                                                                <form method="post" action="{{ route('reject.suratMbkm', $item->id) }}">
+                                                                <form method="post" action="{{ route('reject.suratSurveyProposal', $item->id) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-danger btn-action w-100" data-toggle="tooltip" title="Tolak"><i class="fas fa-times"></i> Tolak</button>
                                                                 </form>
@@ -345,7 +341,7 @@
                                             <!--begin::Modal body-->
                                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                                 <!--begin::Form-->
-                                                <form action="{{ route('insert.suratMbkm') }}" method="POST">
+                                                <form action="{{ route('insert.suratSurveyProposal') }}" method="POST">
                                                     @csrf
                                                     <!--begin::Input group-->
                                                     <div class="d-flex flex-column mb-7 fv-row">
@@ -375,18 +371,10 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tanggal Mulai</span>
+                                                            <span class="required">Topik</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="date" name="tgl_mulai" required value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tanggal Selesai</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="date" name="tgl_selesai" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="topik" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->

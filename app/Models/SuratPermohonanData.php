@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class SuratMbkm extends Model
+class SuratPermohonanData extends Model
 {
     use HasFactory;
 
-    protected $table = 'surat_magang_mbkm';
+    protected $table = 'surat_permohonan_data';
     protected $primaryKey = 'id';
     protected $keyType = 'string';
 
@@ -18,23 +18,12 @@ class SuratMbkm extends Model
         'nomor',
         'yth',
         'tempat',
-        'tgl_mulai',
-        'tgl_selesai',
-        'nim1',
-        'nama1',
-        'prodi1',
-        'nim2',
-        'nama2',
-        'prodi2',
-        'nim3',
-        'nama3',
-        'prodi3',
-        'nim4',
-        'nama4',
-        'prodi4',
-        'nim5',
-        'nama5',
-        'prodi5',
+        'nim',
+        'data1',
+        'data2',
+        'data3',
+        'data4',
+        'data5',
         'status_acc',
         'acc_by',
     ];
@@ -49,9 +38,16 @@ class SuratMbkm extends Model
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
+    // Relasi dengan tabel user untuk mengambil data user login
     public function getUser()
     {
         return $this->belongsTo(User::class, 'acc_by', 'id');
+    }
+
+    // Relasi dengan tabel biodata untuk mengambil biodata mahasiswa
+    public function biodata()
+    {
+        return $this->belongsTo(Biodata::class, 'nim', 'nim');
     }
 }
 

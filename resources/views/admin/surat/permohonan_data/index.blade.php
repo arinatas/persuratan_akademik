@@ -26,7 +26,7 @@
                                         </div>
                                         <!--end::Heading-->
                                         <!--begin::Table-->
-                                        @if ($mbkms )
+                                        @if ($permohonanDatas )
                                         <div class="table-responsive my-10 mx-8">
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
@@ -44,12 +44,12 @@
                                                     @php
                                                         $no = 1; // Inisialisasi no
                                                     @endphp
-                                                    @foreach ($mbkms as $item)
+                                                    @foreach ($permohonanDatas as $item)
                                                     <tr>
                                                         <td>{{ $no }}</td>
                                                         <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
-                                                        <td>{{ $item->nim1 }}</td>
-                                                        <td>{{ $item->nama1 }}</td>
+                                                        <td>{{ $item->nim }}</td>
+                                                        <td>{{ $item->biodata->nama }}</td>
                                                         <td>
                                                             @if($item->status_acc == 0)
                                                                 <span class="badge bg-warning text-dark">
@@ -70,12 +70,12 @@
                                                         <td>
                                                             <div class="row">
                                                                 <div class="col-3 col-md-2" style="margin-right: 5px;">
-                                                                    <a href="{{ route('edit.suratMbkm', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit">
+                                                                    <a href="{{ route('edit.suratPermohonanData', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit">
                                                                         <i class="fas fa-pencil-alt"></i>
                                                                     </a>
                                                                 </div>
                                                                 <div class="col-3 col-md-2" style="margin-right: 5px;">
-                                                                    <form id="form-delete" action="{{ route('destroy.suratMbkm', $item->id ) }}" method="POST" class="d-inline-block">
+                                                                    <form id="form-delete" action="{{ route('destroy.suratPermohonanData', $item->id ) }}" method="POST" class="d-inline-block">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button id="submit-btn" type="submit" data-toggle="tooltip" title="Hapus bagian" class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)">
@@ -117,105 +117,49 @@
                                                                                     <td>{{ $item->yth }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Kepada di Tempat</th>
+                                                                                    <th>Kepada Ditempat</th>
                                                                                     <td>{{ $item->tempat }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Tanggal Mulai</th>
-                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_mulai)->format('d F Y') }}</td>
+                                                                                    <th>NIM</th>
+                                                                                    <td>{{ $item->nim }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Tanggal Selesai</th>
-                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_selesai)->format('d F Y') }}</td>
+                                                                                    <th>Nama</th>
+                                                                                    <td>{{ $item->biodata->nama }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    @if($item->nim1)
-                                                                                        <th>NIM 1</th>
-                                                                                        <td>{{ $item->nim1 }}</td>
+                                                                                    <th>Program Studi</th>
+                                                                                    <td>{{ $item->biodata->prodi }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->data1)
+                                                                                        <th>Data 1</th>
+                                                                                        <td>{{ $item->data1 }}</td>
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    @if($item->nama1)
-                                                                                        <th>Nama 1</th>
-                                                                                        <td>{{ $item->nama1 }}</td>
+                                                                                    @if($item->data2)
+                                                                                        <th>Data 2</th>
+                                                                                        <td>{{ $item->data2 }}</td>
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    @if($item->prodi1)
-                                                                                        <th>Prodi 1</th>
-                                                                                        <td>{{ $item->prodi1 }}</td>
+                                                                                    @if($item->data3)
+                                                                                        <th>Data 3</th>
+                                                                                        <td>{{ $item->data3 }}</td>
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    @if($item->nim2)
-                                                                                        <th>NIM 2</th>
-                                                                                        <td>{{ $item->nim2 }}</td>
+                                                                                    @if($item->data4)
+                                                                                        <th>Data 4</th>
+                                                                                        <td>{{ $item->data4 }}</td>
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    @if($item->nama2)
-                                                                                        <th>Nama 2</th>
-                                                                                        <td>{{ $item->nama2 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->prodi2)
-                                                                                        <th>Prodi 2</th>
-                                                                                        <td>{{ $item->prodi2 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->nim3)
-                                                                                        <th>NIM 3</th>
-                                                                                        <td>{{ $item->nim3 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->nama3)
-                                                                                        <th>Nama 3</th>
-                                                                                        <td>{{ $item->nama3 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->prodi3)
-                                                                                        <th>Prodi 3</th>
-                                                                                        <td>{{ $item->prodi3 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->nim4)
-                                                                                        <th>NIM 4</th>
-                                                                                        <td>{{ $item->nim4 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->nama4)
-                                                                                        <th>Nama 4</th>
-                                                                                        <td>{{ $item->nama4 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->prodi4)
-                                                                                        <th>Prodi 4</th>
-                                                                                        <td>{{ $item->prodi4 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->nim5)
-                                                                                        <th>NIM 5</th>
-                                                                                        <td>{{ $item->nim5 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->nama5)
-                                                                                        <th>Nama 5</th>
-                                                                                        <td>{{ $item->nama5 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->prodi5)
-                                                                                        <th>Prodi 5</th>
-                                                                                        <td>{{ $item->prodi5 }}</td>
+                                                                                    @if($item->data5)
+                                                                                        <th>Data 5</th>
+                                                                                        <td>{{ $item->data5 }}</td>
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
@@ -252,25 +196,25 @@
                                                             </div>
                                                             <br>
                                                             <div style="margin-top: -10px; margin-left: 5px; ">
-                                                            <a href="{{ route('export.suratMbkm', $item->id) }}" class="btn btn-sm btn-secondary btn-action btn-block" data-toggle="tooltip" title="Unduh Surat MBKM"><i class="fas fa-download"></i> Download Surat </a>
+                                                            <a href="{{ route('export.suratPermohonanData', $item->id) }}" class="btn btn-sm btn-secondary btn-action btn-block" data-toggle="tooltip" title="Unduh Surat MBKM"><i class="fas fa-download"></i> Download Surat </a>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="btn-group d-flex flex-column">
                                                                 <!-- Approve Button -->
-                                                                <form method="post" action="{{ route('approve.suratMbkm', $item->id) }}">
+                                                                <form method="post" action="{{ route('approve.suratPermohonanData', $item->id) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-success btn-action mb-2 w-100" data-toggle="tooltip" title="Setujui"><i class="fas fa-check"></i> Setujui</button>
                                                                 </form>
 
                                                                 <!-- Unapprove Button -->
-                                                                <form method="post" action="{{ route('unapprove.suratMbkm', $item->id) }}">
+                                                                <form method="post" action="{{ route('unapprove.suratPermohonanData', $item->id) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-warning btn-action mb-2 w-100" data-toggle="tooltip" title="Unapprove"><i class="fas fa-undo"></i> Unapprove</button>
                                                                 </form>
 
                                                                 <!-- Reject Button -->
-                                                                <form method="post" action="{{ route('reject.suratMbkm', $item->id) }}">
+                                                                <form method="post" action="{{ route('reject.suratPermohonanData', $item->id) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-danger btn-action w-100" data-toggle="tooltip" title="Tolak"><i class="fas fa-times"></i> Tolak</button>
                                                                 </form>
@@ -345,7 +289,7 @@
                                             <!--begin::Modal body-->
                                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                                 <!--begin::Form-->
-                                                <form action="{{ route('insert.suratMbkm') }}" method="POST">
+                                                <form action="{{ route('insert.suratPermohonanData') }}" method="POST">
                                                     @csrf
                                                     <!--begin::Input group-->
                                                     <div class="d-flex flex-column mb-7 fv-row">
@@ -359,7 +303,7 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Yth</span>
+                                                            <span class="required">Ditujukan Kepada</span>
                                                         </label>
                                                         <!--end::Label-->
                                                         <input class="form-control form-control-solid" type="text" name="yth" required value=""/>
@@ -367,7 +311,7 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tempat</span>
+                                                            <span class="required">Kepada Ditempat</span>
                                                         </label>
                                                         <!--end::Label-->
                                                         <input class="form-control form-control-solid" type="text" name="tempat" required value=""/>
@@ -375,187 +319,50 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tanggal Mulai</span>
+                                                            <span class="required">Nim</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="date" name="tgl_mulai" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="nim" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tanggal Selesai</span>
+                                                            <span class="required">Data 1</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="date" name="tgl_selesai" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="data1" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">NIM 1</span>
+                                                            <span class="">Data 2</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nim1" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="data2"  value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Nama 1</span>
+                                                            <span class="">Data 3</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nama1" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="data3"  value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Prodi 1</span>
+                                                            <span class="">Data 4</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi1" required>
-                                                            <option value="">Pilih Prodi</option>
-                                                            <option value="Informatika">Informatika</option>
-                                                            <option value="Sistem Informasi">Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
-                                                            <option value="Akutansi">Akutansi</option>
-                                                            <option value="Manajemen">Manajemen</option>
-                                                            <option value="DKV">DKV</option>
-                                                            <option value="Bisnis Digital">Bisnis Digital</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">NIM 2</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nim2" value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="data4"  value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Nama 2</span>
+                                                            <span class="">Data 5</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nama2" value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Prodi 2</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi2">
-                                                            <option value="">Pilih Prodi</option>
-                                                            <option value="Informatika">Informatika</option>
-                                                            <option value="Sistem Informasi">Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
-                                                            <option value="Akutansi">Akutansi</option>
-                                                            <option value="Manajemen">Manajemen</option>
-                                                            <option value="DKV">DKV</option>
-                                                            <option value="Bisnis Digital">Bisnis Digital</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">NIM 3</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nim3" value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Nama 3</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nama3" value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Prodi 3</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi3">
-                                                            <option value="">Pilih Prodi</option>
-                                                            <option value="Informatika">Informatika</option>
-                                                            <option value="Sistem Informasi">Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
-                                                            <option value="Akutansi">Akutansi</option>
-                                                            <option value="Manajemen">Manajemen</option>
-                                                            <option value="DKV">DKV</option>
-                                                            <option value="Bisnis Digital">Bisnis Digital</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">NIM 4</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nim4" value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Nama 4</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nama4" value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Prodi 4</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi4">
-                                                            <option value="">Pilih Prodi</option>
-                                                            <option value="Informatika">Informatika</option>
-                                                            <option value="Sistem Informasi">Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
-                                                            <option value="Akutansi">Akutansi</option>
-                                                            <option value="Manajemen">Manajemen</option>
-                                                            <option value="DKV">DKV</option>
-                                                            <option value="Bisnis Digital">Bisnis Digital</option>
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">NIM 5</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nim5" value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Nama 5</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nama5" value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Prodi 5</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi5">
-                                                            <option value="">Pilih Prodi</option>
-                                                            <option value="Informatika">Informatika</option>
-                                                            <option value="Sistem Informasi">Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
-                                                            <option value="Akutansi">Akutansi</option>
-                                                            <option value="Manajemen">Manajemen</option>
-                                                            <option value="DKV">DKV</option>
-                                                            <option value="Bisnis Digital">Bisnis Digital</option>
-                                                        </select>
+                                                        <input class="form-control form-control-solid" type="text" name="data5"  value=""/>
                                                     </div>
                                                     <!--end::Input group-->
                                                     <!--begin::Actions-->

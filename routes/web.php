@@ -13,6 +13,10 @@ use App\Http\Controllers\Admin\KaprodiController;
 use App\Http\Controllers\Admin\PenandaTanganController;
 use App\Http\Controllers\Admin\SuratMbkmController;
 use App\Http\Controllers\Admin\SuratSurveyMatkulController;
+use App\Http\Controllers\Admin\SuratKeteranganKuliahController;
+use App\Http\Controllers\Admin\SuratSurveyProposalController;
+use App\Http\Controllers\Admin\SuratSurveySkripsiController;
+use App\Http\Controllers\Admin\SuratPermohonanDataController;
 
 // User
 use App\Http\Controllers\User\UserController;
@@ -107,8 +111,50 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/unapproveSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratSurveyMatkul');
     Route::post('/rejectSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'reject'])->middleware('auth')->name('reject.suratSurveyMatkul');
     Route::get('/exportSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveyMatkul');
+        
+    // Surat Keterangan Kuliah
+    Route::get('/suratKeteranganKuliah', [SuratKeteranganKuliahController::class, 'index'])->middleware('auth')->name('suratKeteranganKuliah');
+    Route::post('/suratKeteranganKuliah', [SuratKeteranganKuliahController::class, 'store'])->middleware('auth')->name('insert.suratKeteranganKuliah');
+    Route::get('/editSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'edit'])->middleware('auth')->name('edit.suratKeteranganKuliah');
+    Route::post('/updateSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'update'])->middleware('auth')->name('update.suratKeteranganKuliah');
+    Route::delete('/deleteSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'destroy'])->middleware('auth')->name('destroy.suratKeteranganKuliah');
+    Route::post('/approveSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'approve'])->middleware('auth')->name('approve.suratKeteranganKuliah');
+    Route::post('/unapproveSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratKeteranganKuliah');
+    Route::post('/rejectSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'reject'])->middleware('auth')->name('reject.suratKeteranganKuliah');
+    Route::get('/exportSuratKeteranganKuliah/{id}', [SuratKeteranganKuliahController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratKeteranganKuliah');
+
+    // Surat Izin Survey Proposal
+    Route::get('/suratSurveyProposal', [SuratSurveyProposalController::class, 'index'])->middleware('auth')->name('suratSurveyProposal');
+    Route::post('/suratSurveyProposal', [SuratSurveyProposalController::class, 'store'])->middleware('auth')->name('insert.suratSurveyProposal');
+    Route::get('/editSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'edit'])->middleware('auth')->name('edit.suratSurveyProposal');
+    Route::post('/updateSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'update'])->middleware('auth')->name('update.suratSurveyProposal');
+    Route::delete('/deleteSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'destroy'])->middleware('auth')->name('destroy.suratSurveyProposal');
+    Route::post('/approveSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'approve'])->middleware('auth')->name('approve.suratSurveyProposal');
+    Route::post('/unapproveSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratSurveyProposal');
+    Route::post('/rejectSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'reject'])->middleware('auth')->name('reject.suratSurveyProposal');
+    Route::get('/exportSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveyProposal');
     
-    
+    // Surat Izin Survey Skripsi
+    Route::get('/suratSurveySkripsi', [SuratSurveySkripsiController::class, 'index'])->middleware('auth')->name('suratSurveySkripsi');
+    Route::post('/suratSurveySkripsi', [SuratSurveySkripsiController::class, 'store'])->middleware('auth')->name('insert.suratSurveySkripsi');
+    Route::get('/editSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'edit'])->middleware('auth')->name('edit.suratSurveySkripsi');
+    Route::post('/updateSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'update'])->middleware('auth')->name('update.suratSurveySkripsi');
+    Route::delete('/deleteSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'destroy'])->middleware('auth')->name('destroy.suratSurveySkripsi');
+    Route::post('/approveSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'approve'])->middleware('auth')->name('approve.suratSurveySkripsi');
+    Route::post('/unapproveSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratSurveySkripsi');
+    Route::post('/rejectSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'reject'])->middleware('auth')->name('reject.suratSurveySkripsi');
+    Route::get('/exportSuratSurveySkripsi/{id}', [SuratSurveySkripsiController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveySkripsi');
+
+    // Surat Izin Survey Permohonan Data
+    Route::get('/suratPermohonanData', [SuratPermohonanDataController::class, 'index'])->middleware('auth')->name('suratPermohonanData');
+    Route::post('/suratPermohonanData', [SuratPermohonanDataController::class, 'store'])->middleware('auth')->name('insert.suratPermohonanData');
+    Route::get('/editSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'edit'])->middleware('auth')->name('edit.suratPermohonanData');
+    Route::post('/updateSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'update'])->middleware('auth')->name('update.suratPermohonanData');
+    Route::delete('/deleteSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'destroy'])->middleware('auth')->name('destroy.suratPermohonanData');
+    Route::post('/approveSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'approve'])->middleware('auth')->name('approve.suratPermohonanData');
+    Route::post('/unapproveSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'unapprove'])->middleware('auth')->name('unapprove.suratPermohonanData');
+    Route::post('/rejectSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'reject'])->middleware('auth')->name('reject.suratPermohonanData');
+    Route::get('/exportSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratPermohonanData');
 
 });
 
