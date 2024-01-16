@@ -207,7 +207,7 @@
                             <!-- /.row -->
             
                             <!-- info row -->
-                            <div style="float: inline-end; margin-top: -10px;">
+                            <div style="float: inline-end; margin-top: -35px;">
                                 <div>
                                     <address>
                                         <span>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</span><br>
