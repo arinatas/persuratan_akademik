@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SURAT KETERANGAN CUTI AKADEMIK</title>
+        <title>SURAT PERMOHONAN PINDAH KELAS</title>
 		<link rel="shortcut icon" href="assets/media/logos/smallprimakara.png" />
 
         <!-- Tell the browser to be responsive to screen width -->
@@ -49,7 +49,7 @@
                             <img alt="Logo" class="" src="assets/media/logos/primakara_landscape.png" width="300px" />
                         </div>
                         <div class="col-12 text-center">
-                            <h2 class="my-5"><b><u>SURAT KETERANGAN CUTI AKADEMIK</u></b></h2>
+                            <h2 class="my-5"><b><u>SURAT PERMOHONAN PINDAH KELAS</u></b></h2>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -100,21 +100,25 @@
                                             </table>
                                             <table class="mt-2">
                                                 <tr>
-                                                    <td>Nim</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['nim'] }}</td>
-                                                </tr>
-                                                <tr>
                                                     <td>Nama</td>
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['nama'] }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Prodi</td>
+                                                    <td>NIM</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['nim'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Program Studi</td>
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['prodi'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Alamat</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['alamat'] }}</td>
                                                 </tr>
                                             </table>
                                         </div>
                                         <div class="col-12 mt-3" style="text-indent: 30px;">
-                                            mengajukan permohonan cuti untuk tidak mengikuti perkuliahan pada semester <b><u>{{ $data['semester'] }}</u></b> Tahun Akademik <b><u>{{ $data['tahun'] }}</u></b> dikarenakan saya <b><u>{{ $data['alasan'] }}.</u></b> sekiranya Bapak/ Ibu berkenan mengabulkan permohonan ini.
+                                            Dengan ini mengajukan permohonan pindah kelas dari kelas <b><i>Regular {{ $data['kelasOld'] }}</i></b> menjadi kelas <b><i>Regular {{ $data['kelasNow'] }}</i></b> dengan alasan <b><u>{{ $data['alasan'] }}</u></b> dan meninjau pertimbangan tertentu dari Pembimbing Akademis/ Prodi berdasarkan hasil perkuliahan sebelumnya.
                                         </div>
                                     </div>
                                 </address>
@@ -129,7 +133,7 @@
                                 <address>
                                     <div class="row">
                                         <div class="col-12 mt-2">
-                                            <p style="text-align: justify;">Demikian surat permohonan cuti ini dan atas perhatian Bapak/Ibu, saya ucapkan terima kasih.</p>
+                                            <p style="text-align: justify;">Demikian surat permohonan ini saya buat dengan sebenar-benarnya agar Bapak/Ibu* Kepala Program Studi dapat menyetuji permohonan ini.</p>
                                         </div>
                                     </div>
                                 </address>
@@ -142,6 +146,7 @@
                         <div class="row text-center">
                             <div class="col-6 letter-col mt-3">
                                 <address>
+                                    <br>
                                     <strong>Mengetahui,</strong><br>
                                     <strong>Pembimbing Akademis</strong>
                                     <br>
@@ -155,7 +160,8 @@
                             <div class="col-6 letter-col mt-3">
                                 <address>
                                     <strong>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</strong><br>
-                                    <strong>Hormat saya,</strong>
+                                    <strong>Pemohon,</strong><br>
+                                    <strong>Mahasiswa</strong>
                                     <br>
                                     <br>
                                     <br>
@@ -163,7 +169,7 @@
                                     <strong><u>{{ $data['nama'] }}</u></strong><br>
                                 </address>
                             </div>
-                            <div class="col-12 letter-col mt-3 text-center">
+                            <div class="col-12 letter-col mt-3">
                                 <address>
                                     <strong>Menyetujui,</strong><br>
                                     <strong>Kepala Program Studi</strong>

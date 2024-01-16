@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SURAT KETERANGAN CUTI AKADEMIK</title>
+        <title>SURAT PERMOHONAN PINDAH PROGRAM STUDI</title>
 		<link rel="shortcut icon" href="assets/media/logos/smallprimakara.png" />
 
         <!-- Tell the browser to be responsive to screen width -->
@@ -49,7 +49,7 @@
                             <img alt="Logo" class="" src="assets/media/logos/primakara_landscape.png" width="300px" />
                         </div>
                         <div class="col-12 text-center">
-                            <h2 class="my-5"><b><u>SURAT KETERANGAN CUTI AKADEMIK</u></b></h2>
+                            <h2 class="my-5"><b><u>SURAT PERMOHONAN <br> PINDAH PROGRAM STUDI</u></b></h2>
                         </div>
                         <!-- /.col -->
                     </div>
@@ -67,7 +67,7 @@
                                                     <td>Kepada</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Yth. Kepala Program Studi {{ $data['prodi'] }}</td>
+                                                    <td>Yth. Kepala Program Studi {{ $data['prodiOld'] }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Primakara University</td>
@@ -100,36 +100,21 @@
                                             </table>
                                             <table class="mt-2">
                                                 <tr>
-                                                    <td>Nim</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['nim'] }}</td>
-                                                </tr>
-                                                <tr>
                                                     <td>Nama</td>
                                                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['nama'] }}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Prodi</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['prodi'] }}</td>
+                                                    <td>NIM</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['nim'] }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Program Studi</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $data['prodiOld'] }}</td>
                                                 </tr>
                                             </table>
                                         </div>
                                         <div class="col-12 mt-3" style="text-indent: 30px;">
-                                            mengajukan permohonan cuti untuk tidak mengikuti perkuliahan pada semester <b><u>{{ $data['semester'] }}</u></b> Tahun Akademik <b><u>{{ $data['tahun'] }}</u></b> dikarenakan saya <b><u>{{ $data['alasan'] }}.</u></b> sekiranya Bapak/ Ibu berkenan mengabulkan permohonan ini.
-                                        </div>
-                                    </div>
-                                </address>
-                            </div>
-                            <!-- /.col -->
-                        </div>
-                        <!-- /.row -->
-
-                        <!-- info row -->
-                        <div class="row letter-info-izin">
-                            <div class="col-sm-12 letter-col mt-2">
-                                <address>
-                                    <div class="row">
-                                        <div class="col-12 mt-2">
-                                            <p style="text-align: justify;">Demikian surat permohonan cuti ini dan atas perhatian Bapak/Ibu, saya ucapkan terima kasih.</p>
+                                            Dengan ini mengajukan permohonan pindah dari program studi <b><u>{{ $data['prodiOld'] }}</u></b> ke program studi <b><u>{{ $data['prodiNow'] }}</u></b> dengan alasan <b><u>{{ $data['alasan'] }}</u></b> Demikian surat permohonan ini saya buat dengan sebenar-benarnya agar Bapak/Ibu dapat menyetujui permohonan ini.
                                         </div>
                                     </div>
                                 </address>
@@ -142,6 +127,7 @@
                         <div class="row text-center">
                             <div class="col-6 letter-col mt-3">
                                 <address>
+                                    <br>
                                     <strong>Mengetahui,</strong><br>
                                     <strong>Pembimbing Akademis</strong>
                                     <br>
@@ -155,7 +141,8 @@
                             <div class="col-6 letter-col mt-3">
                                 <address>
                                     <strong>Denpasar, {{ \Carbon\Carbon::now()->isoFormat('D MMMM Y') }}</strong><br>
-                                    <strong>Hormat saya,</strong>
+                                    <strong>Pemohon,</strong><br>
+                                    <strong>Mahasiswa</strong>
                                     <br>
                                     <br>
                                     <br>
@@ -163,7 +150,7 @@
                                     <strong><u>{{ $data['nama'] }}</u></strong><br>
                                 </address>
                             </div>
-                            <div class="col-12 letter-col mt-3 text-center">
+                            <div class="col-12 letter-col mt-3">
                                 <address>
                                     <strong>Menyetujui,</strong><br>
                                     <strong>Kepala Program Studi</strong>

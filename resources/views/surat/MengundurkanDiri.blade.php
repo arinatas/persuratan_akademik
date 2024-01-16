@@ -165,6 +165,7 @@
                                     <br>
                                     <br>
                                     <strong><u>{{ $data['kaprodi'] }}</u></strong><br>
+                                    <strong>{{ $data['kaprodi_nidn'] }}</strong><br>
                                 </address>
                             </div>
                             <div class="col-6 letter-col mt-5">
@@ -176,6 +177,7 @@
                                     <br>
                                     <br>
                                     <strong><u>{{ $data['dosenPA'] }}</u></strong><br>
+                                    <strong>{{ $data['dosenPA_nidn'] }}</strong><br>
                                 </address>
                             </div>
                             <!-- /.col -->

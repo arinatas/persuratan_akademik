@@ -28,7 +28,7 @@ class SuratController extends Controller
         
         $data = $request->all();
 
-        return view('surat.IzinAbsensi', [
+        return view('surat.izinAbsensi', [
             'title' => 'Surat Izin Absensi',
             'section' => 'Surat Diproses Sendiri',
             'active' => 'Surat Izin Absensi',
@@ -56,7 +56,7 @@ class SuratController extends Controller
         
         $data = $request->all();
 
-        return view('surat.CutiAkademik', [
+        return view('surat.cutiAkademik', [
             'title' => 'Surat Cuti Akademik',
             'section' => 'Surat Diproses Sendiri',
             'active' => 'Surat Cuti Akademik',
@@ -84,10 +84,66 @@ class SuratController extends Controller
         
         $data = $request->all();
 
-        return view('surat.MengundurkanDiri', [
+        return view('surat.mengundurkanDiri', [
             'title' => 'Surat Pengunduran Diri',
             'section' => 'Surat Diproses Sendiri',
             'active' => 'Surat Pengunduran Diri',
+            'data' => $data,
+        ]);  
+    }
+
+    public function createSuratPindahKelas(){
+
+        $nim = auth()->user()->username;
+
+        $biomhs = Biodata::with('dosenPA')->where('nim', $nim)->get();
+        $kaprodi = Kaprodi::all();
+
+        return view('user.surat.pindahKelas', [
+            'title' => 'Surat Pindah Kelas',
+            'section' => 'Surat Diproses Sendiri',
+            'active' => 'Surat Pindah Kelas',
+            'biomhs' => $biomhs, 
+            'kaprodi' => $kaprodi, 
+        ]);  
+    }
+
+    public function suratPindahKelas(Request $request){
+
+        $data = $request->all();
+
+        return view('surat.pindahKelas', [
+            'title' => 'Surat Pindah Kelas',
+            'section' => 'Surat Diproses Sendiri',
+            'active' => 'Surat Pindah Kelas',
+            'data' => $data,
+        ]);  
+    }
+
+    public function createSuratPindahProdi(){
+
+        $nim = auth()->user()->username;
+
+        $biomhs = Biodata::with('dosenPA')->where('nim', $nim)->get();
+        $kaprodi = Kaprodi::all();
+
+        return view('user.surat.pindahProdi', [
+            'title' => 'Surat Pindah Prodi',
+            'section' => 'Surat Diproses Sendiri',
+            'active' => 'Surat Pindah Prodi',
+            'biomhs' => $biomhs, 
+            'kaprodi' => $kaprodi, 
+        ]);  
+    }
+
+    public function suratPindahProdi(Request $request){
+
+        $data = $request->all();
+
+        return view('surat.pindahProdi', [
+            'title' => 'Surat Pindah Prodi',
+            'section' => 'Surat Diproses Sendiri',
+            'active' => 'Surat Pindah Prodi',
             'data' => $data,
         ]);  
     }

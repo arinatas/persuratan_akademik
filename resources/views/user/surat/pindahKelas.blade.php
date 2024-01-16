@@ -18,14 +18,13 @@
 											<h1>Form {{ $title }}</h1>
 										</div>
 										<!--begin::Row-->
-										<form action="{{ url('suratMengundurkanDiri') }}" method="POST" target="_blank">
+										<form action="{{ url('suratPindahKelas') }}" method="POST" target="_blank">
 											<div class="row g-5 g-xl-8">
 												@csrf
 												<div class="col-lg-6">
 													<label class="required form-label">Dosen PA</label>
 													<input type="text" value="{{ $biomhs[0]->dosenPA->nama }}" class="form-control form-control-solid" readonly name="dosenPA"/>
 													<input type="hidden" value="{{ $biomhs[0]->dosenPA->nidn }}" class="form-control form-control-solid" readonly name="dosenPA_nidn"/>
-
 												</div>
 												<div class="col-lg-6">
 													<label class="required form-label">Kaprodi</label>
@@ -36,26 +35,38 @@
 														@endif
 													@endforeach
 												</div>
-												<div class="col-lg-4">
+												<div class="col-lg-3">
 													<label class="required form-label">Nama</label>
 													<input type="text" value="{{ $biomhs[0]->nama }}" class="form-control form-control-solid" readonly name="nama"/>
 												</div>
-												<div class="col-lg-4">
+												<div class="col-lg-3">
 													<label class="required form-label">Nim</label>
 													<input type="text" value="{{ $biomhs[0]->nim }}" class="form-control form-control-solid" readonly name="nim"/>
 												</div>
-												<div class="col-lg-4">
+												<div class="col-lg-3">
 													<label class="required form-label">Prodi</label>
 													<input type="text" value="{{ $biomhs[0]->prodi }}" class="form-control form-control-solid" readonly name="prodi"/>
 												</div>
+												<div class="col-lg-3">
+													<label class="required form-label">Kelas</label>
+													<input type="text" value="{{ $biomhs[0]->kelas }}" class="form-control form-control-solid" required name="kelasOld" />
+												</div>
 												<div class="col-lg-12">
-													<label class="required form-label">Alasan Mengundurkan Diri</label>
+													<label class="required form-label">Alamat</label>
+													<input type="text" value="" class="form-control form-control-solid" required name="alamat" />
+												</div>
+												<div class="col-lg-9">
+													<label class="required form-label">Alasan Pindah</label>
 													<input type="text" value="" class="form-control form-control-solid" required name="alasan" />
 												</div>
-												<div class="col-lg-12">
-													<label class="required form-label">Nama Orang Tua / Wali</label>
-													<input type="text" value="" class="form-control form-control-solid" required name="ortu"/>
+												<div class="col-lg-3">
+													<label class="required form-label">Pindah Ke Kelas</label>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="kelasNow" required>
+														<option value="Pagi">Pagi</option>
+														<option value="Malam">Malam</option>
+													</select>
 												</div>
+												
 
 												<div class="d-flex justify-content-end pb-20">
 													<!--begin::Actions-->
