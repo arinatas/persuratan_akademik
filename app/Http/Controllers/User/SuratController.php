@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use App\Models\Biodata;
 use App\Models\Kaprodi;
+use App\Models\PenandaTangan;
+
 // surat models
 use App\Models\SuratMbkm;
 use App\Models\SuratSurveyMatkul;
@@ -399,6 +401,30 @@ class SuratController extends Controller
             } catch (\Exception $e) {
                 return redirect()->back()->with('deleteFail', $e->getMessage());
             }
+        }
+
+        // Metode untuk menampilkan dan print Surat MBKM
+        public function userSuratSurveyMatkulPrint($id)
+        {
+            $suratSurveyMatkul = SuratSurveyMatkul::where('id', $id)->get();
+
+            if ($suratSurveyMatkul->isEmpty()) {
+                return redirect()->back()->with('error', 'Data Surat Survey Matkul tidak ditemukan.');
+            }
+            if ($suratSurveyMatkul[0]->status_acc == 0 || $suratSurveyMatkul[0]->status_acc == 2) {
+                return redirect('/userSuratSurveyMatkul')->with('error', 'Data Surat Survey Matkul belum disetujui.');
+            }
+
+            // Ambil data penanda tangan berdasarkan ID
+            $penandaTangan = PenandaTangan::where('id', 1)->first();
+            
+            return view('surat.suratSurveyMatkul', [
+                'title' => 'Surat Survey Matakuliah',
+                'section' => 'Request Surat Mahasiswa',
+                'active' => 'Surat Survey Matakuliah',
+                'suratSurveyMatkul' => $suratSurveyMatkul,
+                'penandaTangan' => $penandaTangan,
+            ]);
         }
 
     // end surat di proses FO

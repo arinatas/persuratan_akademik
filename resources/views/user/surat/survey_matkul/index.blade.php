@@ -60,6 +60,9 @@
 																@if ($item->status_acc == 0)
 																	<a href="{{ route('userSuratSurveyMatkulEdit', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 																@endif
+																@if ($item->status_acc == 1)
+																	<a href="{{ route('userSuratSurveyMatkulPrint', $item->id) }}" class="btn btn-sm btn-success btn-action" data-toggle="tooltip" title="Unduh Surat"><i class="fas fa-download"></i></a>
+																@endif
 																<form id="form-delete" action="{{ route('userSuratSurveyMatkulDestroy', $item->id ) }}" method="POST"
 																class="d-inline-block">
 																@csrf

@@ -181,6 +181,7 @@ Route::post('/userSuratSurveyMatkulStore', [SuratController::class, 'userSuratSu
 Route::get('/userSuratSurveyMatkulEdit/{id}', [SuratController::class, 'userSuratSurveyMatkulEdit'])->middleware('auth')->name('userSuratSurveyMatkulEdit');
 Route::post('/userSuratSurveyMatkulUpdate/{id}', [SuratController::class, 'userSuratSurveyMatkulUpdate'])->middleware('auth')->name('userSuratSurveyMatkulUpdate');
 Route::delete('/userSuratSurveyMatkulDestroy/{id}', [SuratController::class, 'userSuratSurveyMatkulDestroy'])->middleware('auth')->name('userSuratSurveyMatkulDestroy');
+Route::get('/userSuratSurveyMatkulPrint/{id}', [SuratController::class, 'userSuratSurveyMatkulPrint'])->middleware('auth')->name('userSuratSurveyMatkulPrint');
 
 // end surat di proses FO
 
