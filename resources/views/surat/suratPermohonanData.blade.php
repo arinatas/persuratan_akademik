@@ -156,32 +156,32 @@
                                                                                 @endphp
                                                                                 @if($item->data1)
                                                                                     <tr style="border: none;">
-                                                                                        <td style="border: none;">{{ $no++ }}</td>
-                                                                                        <td style="border: none;">{{ $item->data1 }}</td>
+                                                                                        <td style="border: none;">{{ $no++ }}. </td>
+                                                                                        <td style="border: none; text-align: left;">{{ $item->data1 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                                 @if($item->data2)
                                                                                     <tr style="border: none;">
-                                                                                        <td style="border: none;">{{ $no++ }}</td>
-                                                                                        <td style="border: none;">{{ $item->data2 }}</td>
+                                                                                        <td style="border: none;">{{ $no++ }}. </td>
+                                                                                        <td style="border: none; text-align: left;">{{ $item->data2 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                                 @if($item->data3)
                                                                                     <tr style="border: none;">
-                                                                                        <td style="border: none;">{{ $no++ }}</td>
-                                                                                        <td style="border: none;">{{ $item->data3 }}</td>
+                                                                                        <td style="border: none;">{{ $no++ }}. </td>
+                                                                                        <td style="border: none; text-align: left;">{{ $item->data3 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                                 @if($item->data4)
                                                                                     <tr style="border: none;">
-                                                                                        <td style="border: none;">{{ $no++ }}</td>
-                                                                                        <td style="border: none;">{{ $item->data4 }}</td>
+                                                                                        <td style="border: none;">{{ $no++ }}. </td>
+                                                                                        <td style="border: none; text-align: left;">{{ $item->data4 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                                 @if($item->data5)
                                                                                     <tr style="border: none;">
-                                                                                        <td style="border: none;">{{ $no++ }}</td>
-                                                                                        <td style="border: none;">{{ $item->data5 }}</td>
+                                                                                        <td style="border: none;">{{ $no++ }}. </td>
+                                                                                        <td style="border: none; text-align: left;">{{ $item->data5 }}</td>
                                                                                     </tr>
                                                                                 @endif
                                                                             </tbody>
