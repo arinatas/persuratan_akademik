@@ -63,6 +63,9 @@
 																@if ($item->status_acc == 1)
 																	<a href="{{ route('userSuratMagangMBKMPrint', $item->id) }}" class="btn btn-sm btn-success btn-action" target="blank" data-toggle="tooltip" title="Unduh Surat"><i class="fas fa-download"></i></a>
 																@endif
+                                                                    <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Surat">
+                                                                        <i class="fas fa-info-circle"></i>
+                                                                    </button>
 																<form id="form-delete" action="{{ route('userSuratMagangMBKMDestroy', $item->id ) }}" method="POST"
 																class="d-inline-block">
 																@csrf
@@ -71,6 +74,169 @@
 																	class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)"
 																	><i class="fas fa-trash"></i></i></button>
 																</form>
+																{{-- thismodal --}}
+																	<div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+																		<div class="modal-dialog modal-dialog-centered mw-850px">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h2>Detail {{ $title }}</h2>
+																					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+																						<span class="svg-icon svg-icon-1">
+																							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+																								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+																							</svg>
+																						</span>
+																					</div>
+																				</div>
+																				<!--begin::Modal body-->
+																				<div class="modal-body scroll-y mx-xl-8">
+																					<!--begin::content modal body-->
+																					<div class="table-responsive my-10 mx-8">
+																						<table class="table table-striped gy-7 gs-7">
+																						<tr>
+																							<th>Nomor Surat</th>
+																							<td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
+																						</tr>
+																						<tr>
+																							<th>Ditujukan Kepada</th>
+																							<td>{{ $item->yth }}</td>
+																						</tr>
+																						<tr>
+																							<th>Kepada di Tempat</th>
+																							<td>{{ $item->tempat }}</td>
+																						</tr>
+																						<tr>
+																							<th>Tanggal Mulai</th>
+																							<td>{{ \Carbon\Carbon::parse($item->tgl_mulai)->format('d F Y') }}</td>
+																						</tr>
+																						<tr>
+																							<th>Tanggal Selesai</th>
+																							<td>{{ \Carbon\Carbon::parse($item->tgl_selesai)->format('d F Y') }}</td>
+																						</tr>
+																						<tr>
+																							@if($item->nim1)
+																								<th>NIM 1</th>
+																								<td>{{ $item->nim1 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nama1)
+																								<th>Nama 1</th>
+																								<td>{{ $item->nama1 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->prodi1)
+																								<th>Prodi 1</th>
+																								<td>{{ $item->prodi1 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nim2)
+																								<th>NIM 2</th>
+																								<td>{{ $item->nim2 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nama2)
+																								<th>Nama 2</th>
+																								<td>{{ $item->nama2 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->prodi2)
+																								<th>Prodi 2</th>
+																								<td>{{ $item->prodi2 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nim3)
+																								<th>NIM 3</th>
+																								<td>{{ $item->nim3 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nama3)
+																								<th>Nama 3</th>
+																								<td>{{ $item->nama3 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->prodi3)
+																								<th>Prodi 3</th>
+																								<td>{{ $item->prodi3 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nim4)
+																								<th>NIM 4</th>
+																								<td>{{ $item->nim4 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nama4)
+																								<th>Nama 4</th>
+																								<td>{{ $item->nama4 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->prodi4)
+																								<th>Prodi 4</th>
+																								<td>{{ $item->prodi4 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nim5)
+																								<th>NIM 5</th>
+																								<td>{{ $item->nim5 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->nama5)
+																								<th>Nama 5</th>
+																								<td>{{ $item->nama5 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->prodi5)
+																								<th>Prodi 5</th>
+																								<td>{{ $item->prodi5 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							<th>Status Surat</th>
+																							<td>
+																								@if($item->status_acc == 0)
+																									<span class="badge bg-warning text-dark">
+																										<i class="bi bi-clock"></i> Menunggu
+																									</span>
+																								@elseif($item->status_acc == 1)
+																									<span class="badge bg-success">
+																										<i class="bi bi-check-circle"></i> Disetujui
+																									</span>
+																								@elseif($item->status_acc == 2)
+																									<span class="badge bg-danger">
+																										<i class="bi bi-x-circle"></i> Ditolak
+																									</span>
+																								@else
+																									<span class="badge bg-secondary">Undefined</span>
+																								@endif
+																							</td>
+																						</tr>
+																						<tr>
+																							<th>Acc By</th>
+																							<td>{{ isset($item->getUser->username) ? $item->getUser->username : 'Belum di Tindaklanjut' }}</td>
+																						</tr>
+																						</table>
+																					</div>
+																					<!--end::content modal body-->
+																				</div>
+																			<!--end::Modal body-->
+																			</div>
+																		</div>
+																	</div>
+																{{-- thismodal --}}
 															</td>
 														</tr>
 														@php

@@ -176,6 +176,15 @@ Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth
 
 // surat di proses FO
 
+    // mbkm
+        Route::get('/userSuratMagangMBKM', [SuratController::class, 'userSuratMagangMBKM'])->middleware('auth')->name('userSuratMagangMBKM');
+        Route::post('/userSuratMagangMBKMStore', [SuratController::class, 'userSuratMagangMBKMStore'])->middleware('auth')->name('userSuratMagangMBKMStore');
+        Route::get('/userSuratMagangMBKMEdit/{id}', [SuratController::class, 'userSuratMagangMBKMEdit'])->middleware('auth')->name('userSuratMagangMBKMEdit');
+        Route::post('/userSuratMagangMBKMUpdate/{id}', [SuratController::class, 'userSuratMagangMBKMUpdate'])->middleware('auth')->name('userSuratMagangMBKMUpdate');
+        Route::delete('/userSuratMagangMBKMDestroy/{id}', [SuratController::class, 'userSuratMagangMBKMDestroy'])->middleware('auth')->name('userSuratMagangMBKMDestroy');
+        Route::get('/userSuratMagangMBKMPrint/{id}', [SuratController::class, 'userSuratMagangMBKMPrint'])->middleware('auth')->name('userSuratMagangMBKMPrint');
+    // end mbkm
+
     // aktif kuliah
         Route::get('/userSuratKetKuliah', [SuratController::class, 'userSuratKetKuliah'])->middleware('auth')->name('userSuratKetKuliah');
         Route::post('/userSuratKetKuliahStore', [SuratController::class, 'userSuratKetKuliahStore'])->middleware('auth')->name('userSuratKetKuliahStore');

@@ -61,6 +61,9 @@
 																@if ($item->status_acc == 1)
 																	<a href="{{ route('userSuratPermohonanDataPrint', $item->id) }}" class="btn btn-sm btn-success btn-action" target="blank" data-toggle="tooltip" title="Unduh Surat"><i class="fas fa-download"></i></a>
 																@endif
+																<button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Surat">
+																	<i class="fas fa-info-circle"></i>
+																</button>
 																<form id="form-delete" action="{{ route('userSuratPermohonanDataDestroy', $item->id ) }}" method="POST"
 																class="d-inline-block">
 																@csrf
@@ -69,6 +72,113 @@
 																	class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)"
 																	><i class="fas fa-trash"></i></i></button>
 																</form>
+																{{-- this modal --}}
+																	<div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
+																		<div class="modal-dialog modal-dialog-centered mw-850px">
+																			<div class="modal-content">
+																				<div class="modal-header">
+																					<h2>Detail {{ $title }}</h2>
+																					<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+																						<span class="svg-icon svg-icon-1">
+																							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																								<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+																								<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+																							</svg>
+																						</span>
+																					</div>
+																				</div>
+																				<!--begin::Modal body-->
+																				<div class="modal-body scroll-y mx-xl-8">
+																					<!--begin::content modal body-->
+																					<div class="table-responsive my-10 mx-8">
+																						<table class="table table-striped gy-7 gs-7">
+																						<tr>
+																							<th>Nomor Surat</th>
+																							<td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
+																						</tr>
+																						<tr>
+																							<th>Ditujukan Kepada</th>
+																							<td>{{ $item->yth }}</td>
+																						</tr>
+																						<tr>
+																							<th>Kepada Ditempat</th>
+																							<td>{{ $item->tempat }}</td>
+																						</tr>
+																						<tr>
+																							<th>NIM</th>
+																							<td>{{ $item->nim }}</td>
+																						</tr>
+																						<tr>
+																							<th>Nama</th>
+																							<td>{{ $item->biodata->nama }}</td>
+																						</tr>
+																						<tr>
+																							<th>Program Studi</th>
+																							<td>{{ $item->biodata->prodi }}</td>
+																						</tr>
+																						<tr>
+																							@if($item->data1)
+																								<th>Data 1</th>
+																								<td>{{ $item->data1 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->data2)
+																								<th>Data 2</th>
+																								<td>{{ $item->data2 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->data3)
+																								<th>Data 3</th>
+																								<td>{{ $item->data3 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->data4)
+																								<th>Data 4</th>
+																								<td>{{ $item->data4 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							@if($item->data5)
+																								<th>Data 5</th>
+																								<td>{{ $item->data5 }}</td>
+																							@endif
+																						</tr>
+																						<tr>
+																							<th>Status Surat</th>
+																							<td>
+																								@if($item->status_acc == 0)
+																									<span class="badge bg-warning text-dark">
+																										<i class="bi bi-clock"></i> Menunggu
+																									</span>
+																								@elseif($item->status_acc == 1)
+																									<span class="badge bg-success">
+																										<i class="bi bi-check-circle"></i> Disetujui
+																									</span>
+																								@elseif($item->status_acc == 2)
+																									<span class="badge bg-danger">
+																										<i class="bi bi-x-circle"></i> Ditolak
+																									</span>
+																								@else
+																									<span class="badge bg-secondary">Undefined</span>
+																								@endif
+																							</td>
+																						</tr>
+																						<tr>
+																							<th>Acc By</th>
+																							<td>{{ isset($item->getUser->username) ? $item->getUser->username : 'Belum di Tindaklanjut' }}</td>
+																						</tr>
+																						</table>
+																					</div>
+																					<!--end::content modal body-->
+																				</div>
+																			<!--end::Modal body-->
+																			</div>
+																		</div>
+																	</div>
+																{{-- this modal --}}
 															</td>
 														</tr>
 														@php
