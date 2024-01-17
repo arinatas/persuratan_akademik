@@ -177,16 +177,13 @@ Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth
 // surat di proses FO
 
     // aktif kuliah
-    // end aktif kuliah
-
-    // mbkm
         Route::get('/userSuratKetKuliah', [SuratController::class, 'userSuratKetKuliah'])->middleware('auth')->name('userSuratKetKuliah');
         Route::post('/userSuratKetKuliahStore', [SuratController::class, 'userSuratKetKuliahStore'])->middleware('auth')->name('userSuratKetKuliahStore');
         Route::get('/userSuratKetKuliahEdit/{id}', [SuratController::class, 'userSuratKetKuliahEdit'])->middleware('auth')->name('userSuratKetKuliahEdit');
         Route::post('/userSuratKetKuliahUpdate/{id}', [SuratController::class, 'userSuratKetKuliahUpdate'])->middleware('auth')->name('userSuratKetKuliahUpdate');
         Route::delete('/userSuratKetKuliahDestroy/{id}', [SuratController::class, 'userSuratKetKuliahDestroy'])->middleware('auth')->name('userSuratKetKuliahDestroy');
         Route::get('/userSuratKetKuliahPrint/{id}', [SuratController::class, 'userSuratKetKuliahPrint'])->middleware('auth')->name('userSuratKetKuliahPrint');
-    // end mbkm
+    // end aktif kuliah
 
     // survey matkul
         Route::get('/userSuratSurveyMatkul', [SuratController::class, 'userSuratSurveyMatkul'])->middleware('auth')->name('userSuratSurveyMatkul');
@@ -214,6 +211,15 @@ Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth
         Route::delete('/userSuratSurveySkripsiDestroy/{id}', [SuratController::class, 'userSuratSurveySkripsiDestroy'])->middleware('auth')->name('userSuratSurveySkripsiDestroy');
         Route::get('/userSuratSurveySkripsiPrint/{id}', [SuratController::class, 'userSuratSurveySkripsiPrint'])->middleware('auth')->name('userSuratSurveySkripsiPrint');
     // end survey skripsi
+
+    // permohonan data
+        Route::get('/userSuratPermohonanData', [SuratController::class, 'userSuratPermohonanData'])->middleware('auth')->name('userSuratPermohonanData');
+        Route::post('/userSuratPermohonanDataStore', [SuratController::class, 'userSuratPermohonanDataStore'])->middleware('auth')->name('userSuratPermohonanDataStore');
+        Route::get('/userSuratPermohonanDataEdit/{id}', [SuratController::class, 'userSuratPermohonanDataEdit'])->middleware('auth')->name('userSuratPermohonanDataEdit');
+        Route::post('/userSuratPermohonanDataUpdate/{id}', [SuratController::class, 'userSuratPermohonanDataUpdate'])->middleware('auth')->name('userSuratPermohonanDataUpdate');
+        Route::delete('/userSuratPermohonanDataDestroy/{id}', [SuratController::class, 'userSuratPermohonanDataDestroy'])->middleware('auth')->name('userSuratPermohonanDataDestroy');
+        Route::get('/userSuratPermohonanDataPrint/{id}', [SuratController::class, 'userSuratPermohonanDataPrint'])->middleware('auth')->name('userSuratPermohonanDataPrint');
+    // end permohonan data
 
 
 

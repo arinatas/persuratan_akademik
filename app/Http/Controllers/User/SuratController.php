@@ -16,6 +16,8 @@ use App\Models\SuratMbkm;
 use App\Models\SuratSurveyMatkul;
 use App\Models\SuratSurveyProposal;
 use App\Models\SuratSurveySkripsi;
+use App\Models\SuratPermohonanData;
+
 
 
 
@@ -351,6 +353,205 @@ class SuratController extends Controller
                 ]);
             }
         // end surat ket kuliah
+
+        // surat permohonan data
+            public function userSuratPermohonanData(){
+
+                $nim = auth()->user()->username;
+
+                $biomhs = Biodata::where('nim', $nim)->get();
+
+                $mySuratPermohonanData = SuratPermohonanData::where('nim', $nim)->orderByDesc('id')->paginate(3);
+
+                return view('user.surat.permohonan_data.index', [
+                    'title' => 'Surat Permohonan Data',
+                    'section' => 'Surat Dibantu FO',
+                    'active' => 'Surat Permohonan Data',
+                    'biomhs' => $biomhs, 
+                    'mySuratPermohonanData' => $mySuratPermohonanData, 
+                ]);  
+            }
+
+            public function userSuratPermohonanDataStore(Request $request){
+
+                // validasi input yang didapatkan dari request
+                $validator = Validator::make($request->all(), [
+                    'nomor' => 'nullable|string|max:100',
+                    'yth' => 'required|string|max:255',
+                    'tempat' => 'required|string|max:255',
+                    'nim' => 'required|string|max:100',
+                    'data1' => 'required|string',
+                    'data2' => 'nullable|string',
+                    'data3' => 'nullable|string',
+                    'data4' => 'nullable|string',
+                    'data5' => 'nullable|string',
+                ]);
+
+                // kalau ada error kembalikan error
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                // simpan data ke database
+                try {
+                    DB::beginTransaction();
+
+                    // insert ke tabel positions
+                    SuratPermohonanData::create([
+                        'nomor' => $request->nomor,
+                        'yth' => $request->yth,
+                        'tempat' => $request->tempat,
+                        'nim' => $request->nim,
+                        'data1' => $request->data1,
+                        'data2' => $request->data2,
+                        'data3' => $request->data3,
+                        'data4' => $request->data4,
+                        'data5' => $request->data5,
+                    ]);
+
+                    DB::commit();
+
+                    return redirect()->back()->with('insertSuccess', 'Data berhasil di Inputkan.');
+
+                } catch(Exception $e) {
+                    DB::rollBack();
+                    // dd($e->getMessage());
+                    return redirect()->back()->with('insertFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratPermohonanDataEdit($id)
+            {
+                $nim = auth()->user()->username;
+
+                $biomhs = Biodata::where('nim', $nim)->get();
+
+                $mySuratPermohonanData = SuratPermohonanData::find($id);
+
+                if (!$mySuratPermohonanData) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySuratPermohonanData->nim != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+                if ($mySuratPermohonanData->status_acc == 1 || $mySuratPermohonanData->status_acc == 2) {
+                    return redirect()->back()->with('error', 'Data telah ditindaklanjuti');
+                }
+
+                return view('user.surat.permohonan_data.edit', [
+                    'title' => 'Surat Keterangan Aktif Kuliah',
+                    'section' => 'Surat Dibantu FO',
+                    'active' => 'Surat Keterangan Aktif Kuliah',
+                    'biomhs' => $biomhs, 
+                    'mySuratPermohonanData' => $mySuratPermohonanData,
+                ]);
+            }
+
+            public function userSuratPermohonanDataUpdate(Request $request, $id){
+
+                $nim = auth()->user()->username;
+
+                $mySuratPermohonanData = SuratPermohonanData::find($id);
+
+
+                if (!$mySuratPermohonanData) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySuratPermohonanData->nim != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+
+                // validasi input yang didapatkan dari request
+                $validator = Validator::make($request->all(), [
+                    'nomor' => 'nullable|string|max:100',
+                    'yth' => 'required|string|max:100',
+                    'tempat' => 'required|string|max:255',
+                    'nim' => 'required|string|max:100',
+                    'data1' => 'required|string|max:100',
+                    'data2' => 'nullable|string|max:100',
+                    'data3' => 'nullable|string|max:100',
+                    'data4' => 'nullable|string|max:100',
+                    'data5' => 'nullable|string|max:100',
+                ]);
+
+                // kalau ada error kembalikan error
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                // simpan data ke database
+                try {
+                    DB::beginTransaction();
+
+                    // update data
+                        $mySuratPermohonanData->nomor = $request->nomor;
+                        $mySuratPermohonanData->yth = $request->yth;
+                        $mySuratPermohonanData->tempat = $request->tempat;
+                        $mySuratPermohonanData->nim = $request->nim;
+                        $mySuratPermohonanData->data1 = $request->data1;
+                        $mySuratPermohonanData->data2 = $request->data2;
+                        $mySuratPermohonanData->data3 = $request->data3;
+                        $mySuratPermohonanData->data4 = $request->data4;
+                        $mySuratPermohonanData->data5 = $request->data5;
+
+                    $mySuratPermohonanData->save();
+
+                    DB::commit();
+
+                    return redirect('/userSuratPermohonanData')->with('updateSuccess', 'Data berhasil di Inputkan.');
+
+                } catch(Exception $e) {
+                    DB::rollBack();
+                    // dd($e->getMessage());
+                    return redirect()->back()->with('updateFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratPermohonanDataDestroy($id)
+            {
+                $nim = auth()->user()->username;
+
+                $mySuratPermohonanData = SuratPermohonanData::find($id);
+
+                if (!$mySuratPermohonanData) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySuratPermohonanData->nim != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+
+                try {
+                    // Hapus data pengguna
+                    $mySuratPermohonanData->delete();
+                    return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
+                } catch (\Exception $e) {
+                    return redirect()->back()->with('deleteFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratPermohonanDataPrint($id)
+            {
+                $suratPermohonanData = SuratPermohonanData::where('id', $id)->get();
+
+                if ($suratPermohonanData->isEmpty()) {
+                    return redirect()->back()->with('error', 'Data Surat Permohonan Data tidak ditemukan.');
+                }
+                if ($suratPermohonanData[0]->status_acc == 0 || $suratPermohonanData[0]->status_acc == 2) {
+                    return redirect('/userSuratSurveyMatkul')->with('error', 'Data Surat Survey Matkul belum disetujui.');
+                }
+
+                // Ambil data penanda tangan berdasarkan ID
+                $penandaTangan = PenandaTangan::where('id', 1)->first();
+                
+                return view('surat.suratPermohonanData', [
+                    'title' => 'Surat Permohonan Data',
+                    'section' => 'Surat Dibantu FO',
+                    'active' => 'Surat Permohonan Data',
+                    'suratPermohonanData' => $suratPermohonanData,
+                    'penandaTangan' => $penandaTangan,
+                ]);
+            }
+        // end surat permohonan data
 
         // surat mbkm
             public function userSuratMagangMBKM(){

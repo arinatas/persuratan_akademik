@@ -358,8 +358,8 @@
                                 <span class="menu-title">Surat Izin Survey Skripsi</span>
                             </a>
                         </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/modals/general/share-earn.html">
+                        <div class="menu-item {{ ($active === "Surat Permohonan Data") ? 'here show' : '' }}">
+                            <a class="menu-link" href="{{ url('userSuratPermohonanData') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
