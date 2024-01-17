@@ -162,26 +162,51 @@ Route::middleware(['admin'])->group(function () {
 Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth')->name('userDashboard');
 
 // surat diproses sendiri
-Route::get('/createSuratIzinAbsensi', [SuratController::class, 'createSuratIzinAbsensi'])->middleware('auth')->name('createSuratIzinAbsensi');
-Route::get('/createSuratCutiAkademik', [SuratController::class, 'createSuratCutiAkademik'])->middleware('auth')->name('createSuratCutiAkademik');
-Route::get('/createSuratMengundurkanDiri', [SuratController::class, 'createSuratMengundurkanDiri'])->middleware('auth')->name('createSuratMengundurkanDiri');
-Route::get('/createSuratPindahKelas', [SuratController::class, 'createSuratPindahKelas'])->middleware('auth')->name('createSuratPindahKelas');
-Route::get('/createSuratPindahProdi', [SuratController::class, 'createSuratPindahProdi'])->middleware('auth')->name('createSuratPindahProdi');
-Route::post('/suratIzinAbsensi', [SuratController::class, 'suratIzinAbsensi'])->middleware('auth')->name('suratIzinAbsensi');
-Route::post('/suratCutiAkademik', [SuratController::class, 'suratCutiAkademik'])->middleware('auth')->name('suratCutiAkademik');
-Route::post('/suratMengundurkanDiri', [SuratController::class, 'suratMengundurkanDiri'])->middleware('auth')->name('suratMengundurkanDiri');
-Route::post('/suratPindahKelas', [SuratController::class, 'suratPindahKelas'])->middleware('auth')->name('suratPindahKelas');
-Route::post('/suratPindahProdi', [SuratController::class, 'suratPindahProdi'])->middleware('auth')->name('suratPindahProdi');
-
+    Route::get('/createSuratIzinAbsensi', [SuratController::class, 'createSuratIzinAbsensi'])->middleware('auth')->name('createSuratIzinAbsensi');
+    Route::get('/createSuratCutiAkademik', [SuratController::class, 'createSuratCutiAkademik'])->middleware('auth')->name('createSuratCutiAkademik');
+    Route::get('/createSuratMengundurkanDiri', [SuratController::class, 'createSuratMengundurkanDiri'])->middleware('auth')->name('createSuratMengundurkanDiri');
+    Route::get('/createSuratPindahKelas', [SuratController::class, 'createSuratPindahKelas'])->middleware('auth')->name('createSuratPindahKelas');
+    Route::get('/createSuratPindahProdi', [SuratController::class, 'createSuratPindahProdi'])->middleware('auth')->name('createSuratPindahProdi');
+    Route::post('/suratIzinAbsensi', [SuratController::class, 'suratIzinAbsensi'])->middleware('auth')->name('suratIzinAbsensi');
+    Route::post('/suratCutiAkademik', [SuratController::class, 'suratCutiAkademik'])->middleware('auth')->name('suratCutiAkademik');
+    Route::post('/suratMengundurkanDiri', [SuratController::class, 'suratMengundurkanDiri'])->middleware('auth')->name('suratMengundurkanDiri');
+    Route::post('/suratPindahKelas', [SuratController::class, 'suratPindahKelas'])->middleware('auth')->name('suratPindahKelas');
+    Route::post('/suratPindahProdi', [SuratController::class, 'suratPindahProdi'])->middleware('auth')->name('suratPindahProdi');
 // end surat diproses sendiri
 
 // surat di proses FO
-Route::get('/userSuratSurveyMatkul', [SuratController::class, 'userSuratSurveyMatkul'])->middleware('auth')->name('userSuratSurveyMatkul');
-Route::post('/userSuratSurveyMatkulStore', [SuratController::class, 'userSuratSurveyMatkulStore'])->middleware('auth')->name('userSuratSurveyMatkulStore');
-Route::get('/userSuratSurveyMatkulEdit/{id}', [SuratController::class, 'userSuratSurveyMatkulEdit'])->middleware('auth')->name('userSuratSurveyMatkulEdit');
-Route::post('/userSuratSurveyMatkulUpdate/{id}', [SuratController::class, 'userSuratSurveyMatkulUpdate'])->middleware('auth')->name('userSuratSurveyMatkulUpdate');
-Route::delete('/userSuratSurveyMatkulDestroy/{id}', [SuratController::class, 'userSuratSurveyMatkulDestroy'])->middleware('auth')->name('userSuratSurveyMatkulDestroy');
-Route::get('/userSuratSurveyMatkulPrint/{id}', [SuratController::class, 'userSuratSurveyMatkulPrint'])->middleware('auth')->name('userSuratSurveyMatkulPrint');
+
+    // aktif kuliah
+    // end aktif kuliah
+
+    // survey matkul
+        Route::get('/userSuratSurveyMatkul', [SuratController::class, 'userSuratSurveyMatkul'])->middleware('auth')->name('userSuratSurveyMatkul');
+        Route::post('/userSuratSurveyMatkulStore', [SuratController::class, 'userSuratSurveyMatkulStore'])->middleware('auth')->name('userSuratSurveyMatkulStore');
+        Route::get('/userSuratSurveyMatkulEdit/{id}', [SuratController::class, 'userSuratSurveyMatkulEdit'])->middleware('auth')->name('userSuratSurveyMatkulEdit');
+        Route::post('/userSuratSurveyMatkulUpdate/{id}', [SuratController::class, 'userSuratSurveyMatkulUpdate'])->middleware('auth')->name('userSuratSurveyMatkulUpdate');
+        Route::delete('/userSuratSurveyMatkulDestroy/{id}', [SuratController::class, 'userSuratSurveyMatkulDestroy'])->middleware('auth')->name('userSuratSurveyMatkulDestroy');
+        Route::get('/userSuratSurveyMatkulPrint/{id}', [SuratController::class, 'userSuratSurveyMatkulPrint'])->middleware('auth')->name('userSuratSurveyMatkulPrint');
+    // end survey matkul
+        
+    // mbkm
+        Route::get('/userSuratMagangMBKM', [SuratController::class, 'userSuratMagangMBKM'])->middleware('auth')->name('userSuratMagangMBKM');
+        Route::post('/userSuratMagangMBKMStore', [SuratController::class, 'userSuratMagangMBKMStore'])->middleware('auth')->name('userSuratMagangMBKMStore');
+        Route::get('/userSuratMagangMBKMEdit/{id}', [SuratController::class, 'userSuratMagangMBKMEdit'])->middleware('auth')->name('userSuratMagangMBKMEdit');
+        Route::post('/userSuratMagangMBKMUpdate/{id}', [SuratController::class, 'userSuratMagangMBKMUpdate'])->middleware('auth')->name('userSuratMagangMBKMUpdate');
+        Route::delete('/userSuratMagangMBKMDestroy/{id}', [SuratController::class, 'userSuratMagangMBKMDestroy'])->middleware('auth')->name('userSuratMagangMBKMDestroy');
+        Route::get('/userSuratMagangMBKMPrint/{id}', [SuratController::class, 'userSuratMagangMBKMPrint'])->middleware('auth')->name('userSuratMagangMBKMPrint');
+    // end mbkm
+
+    // survey proposal
+        Route::get('/userSuratSurveyProposal', [SuratController::class, 'userSuratSurveyProposal'])->middleware('auth')->name('userSuratSurveyProposal');
+        Route::post('/userSuratSurveyProposalStore', [SuratController::class, 'userSuratSurveyProposalStore'])->middleware('auth')->name('userSuratSurveyProposalStore');
+        Route::get('/userSuratSurveyProposalEdit/{id}', [SuratController::class, 'userSuratSurveyProposalEdit'])->middleware('auth')->name('userSuratSurveyProposalEdit');
+        Route::post('/userSuratSurveyProposalUpdate/{id}', [SuratController::class, 'userSuratSurveyProposalUpdate'])->middleware('auth')->name('userSuratSurveyProposalUpdate');
+        Route::delete('/userSuratSurveyProposalDestroy/{id}', [SuratController::class, 'userSuratSurveyProposalDestroy'])->middleware('auth')->name('userSuratSurveyProposalDestroy');
+        Route::get('/userSuratSurveyProposalPrint/{id}', [SuratController::class, 'userSuratSurveyProposalPrint'])->middleware('auth')->name('userSuratSurveyProposalPrint');
+    // end survey proposal
+
+
 
 // end surat di proses FO
 

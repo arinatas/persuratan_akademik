@@ -24,7 +24,7 @@
 									</div>
 									<div class="card-body pb-10">
 										<!--Begin::Table-->
-										@if ($mySuratMbkm->count() > 0)
+										@if ($mySurveyProposal->count() > 0)
 										<div class="table-responsive">
 											<table class="table table-row-bordered gy-5">
 												<thead>
@@ -32,7 +32,7 @@
 														<th>No</th>
 														<th class="min-w-80px">Kepada</th>
 														<th class="min-w-80px">Tempat</th>
-														<th class="min-w-200px">Tanggal</th>
+														<th class="min-w-200px">topik</th>
 														<th>Status</th>
 														<th>Action</th>
 													</tr>
@@ -41,12 +41,12 @@
 													@php
 														$no = 1; // Inisialisasi no
 													@endphp
-													@foreach($mySuratMbkm as $item)
+													@foreach($mySurveyProposal as $item)
 														<tr>
 															<td>{{ $no }}</td>
 															<td>{{ $item->yth }}</td>
 															<td>{{ $item->tempat }}</td>
-															<td>{{ $item->tgl_mulai }} <b>&nbsp;~&nbsp;</b> {{ $item->tgl_selesai }}</td>
+															<td>{{ $item->topik }}</td>
 															<td>
 																@if ($item->status_acc == 0)
 																<span class="badge bg-warning text-dark">Menunggu</span>
@@ -58,12 +58,12 @@
 															</td>
 															<td>
 																@if ($item->status_acc == 0)
-																	<a href="{{ route('userSuratMagangMBKMEdit', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+																	<a href="{{ route('userSuratSurveyProposalEdit', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 																@endif
 																@if ($item->status_acc == 1)
-																	<a href="{{ route('userSuratMagangMBKMPrint', $item->id) }}" class="btn btn-sm btn-success btn-action" target="blank" data-toggle="tooltip" title="Unduh Surat"><i class="fas fa-download"></i></a>
+																	<a href="{{ route('userSuratSurveyProposalPrint', $item->id) }}" class="btn btn-sm btn-success btn-action" target="blank" data-toggle="tooltip" title="Unduh Surat"><i class="fas fa-download"></i></a>
 																@endif
-																<form id="form-delete" action="{{ route('userSuratMagangMBKMDestroy', $item->id ) }}" method="POST"
+																<form id="form-delete" action="{{ route('userSuratSurveyProposalDestroy', $item->id ) }}" method="POST"
 																class="d-inline-block">
 																@csrf
 																@method('DELETE')
@@ -80,7 +80,7 @@
 												</tbody>
 											</table>
 										</div>
-                                        {{ $mySuratMbkm->links() }}
+                                        {{ $mySurveyProposal->links() }}
 
 										@else
 										<div class="">
@@ -124,10 +124,10 @@
 											<h1>Form {{ $title }}</h1>
 										</div>
 										<!--begin::Row-->
-										<form action="{{ url('userSuratMagangMBKMStore') }}" method="POST">
+										<form action="{{ url('userSuratSurveyProposalStore') }}" method="POST">
 											<div class="row g-5 g-xl-8">
 												@csrf
-												<div class="col-lg-4">
+												<div class="col-lg-6">
 													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
 													<input type="text" value="{{ old('yth') }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
 													@error('yth')
@@ -136,8 +136,8 @@
 														</div>
 													@enderror
 												</div>
-												<div class="col-lg-4">
-													<label class="required form-label">Tempat MBKM / Nama Perusahaan</label>
+												<div class="col-lg-6">
+													<label class="required form-label">Tempat / Nama Perusahaan</label>
 													<input type="text" value="{{ old('tempat') }}" class="form-control form-control-solid  @error('tempat') is-invalid @enderror" required name="tempat"/>
 													@error('tempat')
 														<div class="invalid-feedback mb-1">
@@ -145,19 +145,10 @@
 														</div>
 													@enderror
 												</div>
-                                                <div class="col-lg-2">
-													<label class="form-label">Tanggal Mulai</label>
-													<input type="date" value="{{ old('tgl_mulai') }}" class="form-control form-control-solid @error('tgl_mulai') is-invalid @enderror" required name="tgl_mulai"/>
-													@error('tgl_mulai')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
-														</div>
-													@enderror
-												</div>
-                                                <div class="col-lg-2">
-													<label class="form-label">Tanggal Selesai</label>
-													<input type="date" value="{{ old('tgl_selesai') }}" class="form-control form-control-solid @error('tgl_selesai') is-invalid @enderror" required name="tgl_selesai"/>
-													@error('tgl_selesai')
+												<div class="col-lg-12">
+													<label class="required form-label">Topik</label>
+													<input type="text" value="{{ old('topik') }}" class="form-control form-control-solid  @error('topik') is-invalid @enderror" required name="topik"/>
+													@error('topik')
 														<div class="invalid-feedback mb-1">
 															{{ $message }}
 														</div>

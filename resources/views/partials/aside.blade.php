@@ -319,7 +319,7 @@
                     </span>
                     <div class="menu-sub menu-sub-accordion menu-active-bg">
                         <div class="menu-item {{ ($active === "Surat Magang MBKM") ? 'here show' : '' }}">
-                            <a class="menu-link" href="">
+                            <a class="menu-link" href="{{ url('userSuratMagangMBKM') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
@@ -342,8 +342,8 @@
                                 <span class="menu-title">Surat Keterangan Aktif Kuliah</span>
                             </a>
                         </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/modals/general/upgrade-plan.html">
+                        <div class="menu-item {{ ($active === "Surat Survey Proposal Skripsi") ? 'here show' : '' }}">
+                            <a class="menu-link" href="{{ url('userSuratSurveyProposal') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
