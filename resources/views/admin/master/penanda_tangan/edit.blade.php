@@ -45,7 +45,7 @@
                                     @if ($penandaTangan->file_ttd)
                                         <div>
                                             File Saat Ini:
-                                            <a href="{{ asset('storage/images/' . basename($penandaTangan->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto" target="_blank">
+                                            <a href="{{ asset('storage/' . basename($penandaTangan->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto" target="_blank">
                                                 View File
                                             </a>
                                         </div>

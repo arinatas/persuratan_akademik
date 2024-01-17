@@ -90,7 +90,7 @@
                                                                             <!--begin::content modal body-->
                                                                             <!--begin::content modal body-->
                                                                             @if ($item->file_ttd)
-                                                                                <img src="{{ asset('storage/images/' . basename($item->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10">
+                                                                                <img src="{{ asset('storage/' . basename($item->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10">
                                                                             @else
                                                                                 No File Available
                                                                             @endif

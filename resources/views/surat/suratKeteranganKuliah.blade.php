@@ -134,7 +134,7 @@
                                     <span>Primakara University</span><br>
                                     <span>Wakil Rektor I Bidang Akademik</span><br>
                                     @if ($penandaTangan->file_ttd)
-                                        <img src="{{ asset('storage/images/' . basename($penandaTangan->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="160px">
+                                        <img src="{{ asset('storage/' . basename($penandaTangan->file_ttd)) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="160px">
                                     @else
                                         <br>
                                         <br>
