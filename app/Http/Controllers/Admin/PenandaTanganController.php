@@ -107,7 +107,7 @@ class PenandaTanganController extends Controller
             if ($request->file('file_ttd')) {
                 // Delete existing file if it exists
                 if ($penandaTangan->file_ttd) {
-                    Storage::delete('public/images/' . basename($penandaTangan->file_ttd));
+                    Storage::delete('public/' . $penandaTangan->file_ttd);
                 }
     
                 // Store the new file
