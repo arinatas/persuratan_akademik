@@ -40,7 +40,7 @@ class PenandaTanganController extends Controller
     
             // cek jika ada file upload
             if ($request->file('file_ttd')) {
-                $fileName = $request->file('file_ttd')->storeAs('public/images', $request->file('file_ttd')->hashName());
+                $fileName = $request->file('file_ttd')->storeAs('images', $request->file('file_ttd')->hashName());
             }
 
     
@@ -111,7 +111,7 @@ class PenandaTanganController extends Controller
                 }
     
                 // Store the new file
-                $fileName = $request->file('file_ttd')->storeAs('public/images', $request->file('file_ttd')->hashName());
+                $fileName = $request->file('file_ttd')->storeAs('images', $request->file('file_ttd')->hashName());
                 $penandaTangan->file_ttd = $fileName;
             }
     
