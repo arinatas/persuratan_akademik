@@ -334,8 +334,8 @@
                                 <span class="menu-title">Surat Izin Survey Matakuliah</span>
                             </a>
                         </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="../../demo1/dist/modals/general/select-users.html">
+                        <div class="menu-item {{ ($active === "Surat Keterangan Aktif Kuliah") ? 'here show' : '' }}">
+                            <a class="menu-link" href="{{ url('userSuratKetKuliah') }}">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>

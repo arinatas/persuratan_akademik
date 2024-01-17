@@ -179,6 +179,15 @@ Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth
     // aktif kuliah
     // end aktif kuliah
 
+    // mbkm
+        Route::get('/userSuratKetKuliah', [SuratController::class, 'userSuratKetKuliah'])->middleware('auth')->name('userSuratKetKuliah');
+        Route::post('/userSuratKetKuliahStore', [SuratController::class, 'userSuratKetKuliahStore'])->middleware('auth')->name('userSuratKetKuliahStore');
+        Route::get('/userSuratKetKuliahEdit/{id}', [SuratController::class, 'userSuratKetKuliahEdit'])->middleware('auth')->name('userSuratKetKuliahEdit');
+        Route::post('/userSuratKetKuliahUpdate/{id}', [SuratController::class, 'userSuratKetKuliahUpdate'])->middleware('auth')->name('userSuratKetKuliahUpdate');
+        Route::delete('/userSuratKetKuliahDestroy/{id}', [SuratController::class, 'userSuratKetKuliahDestroy'])->middleware('auth')->name('userSuratKetKuliahDestroy');
+        Route::get('/userSuratKetKuliahPrint/{id}', [SuratController::class, 'userSuratKetKuliahPrint'])->middleware('auth')->name('userSuratKetKuliahPrint');
+    // end mbkm
+
     // survey matkul
         Route::get('/userSuratSurveyMatkul', [SuratController::class, 'userSuratSurveyMatkul'])->middleware('auth')->name('userSuratSurveyMatkul');
         Route::post('/userSuratSurveyMatkulStore', [SuratController::class, 'userSuratSurveyMatkulStore'])->middleware('auth')->name('userSuratSurveyMatkulStore');
@@ -187,16 +196,7 @@ Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth
         Route::delete('/userSuratSurveyMatkulDestroy/{id}', [SuratController::class, 'userSuratSurveyMatkulDestroy'])->middleware('auth')->name('userSuratSurveyMatkulDestroy');
         Route::get('/userSuratSurveyMatkulPrint/{id}', [SuratController::class, 'userSuratSurveyMatkulPrint'])->middleware('auth')->name('userSuratSurveyMatkulPrint');
     // end survey matkul
-        
-    // mbkm
-        Route::get('/userSuratMagangMBKM', [SuratController::class, 'userSuratMagangMBKM'])->middleware('auth')->name('userSuratMagangMBKM');
-        Route::post('/userSuratMagangMBKMStore', [SuratController::class, 'userSuratMagangMBKMStore'])->middleware('auth')->name('userSuratMagangMBKMStore');
-        Route::get('/userSuratMagangMBKMEdit/{id}', [SuratController::class, 'userSuratMagangMBKMEdit'])->middleware('auth')->name('userSuratMagangMBKMEdit');
-        Route::post('/userSuratMagangMBKMUpdate/{id}', [SuratController::class, 'userSuratMagangMBKMUpdate'])->middleware('auth')->name('userSuratMagangMBKMUpdate');
-        Route::delete('/userSuratMagangMBKMDestroy/{id}', [SuratController::class, 'userSuratMagangMBKMDestroy'])->middleware('auth')->name('userSuratMagangMBKMDestroy');
-        Route::get('/userSuratMagangMBKMPrint/{id}', [SuratController::class, 'userSuratMagangMBKMPrint'])->middleware('auth')->name('userSuratMagangMBKMPrint');
-    // end mbkm
-
+    
     // survey proposal
         Route::get('/userSuratSurveyProposal', [SuratController::class, 'userSuratSurveyProposal'])->middleware('auth')->name('userSuratSurveyProposal');
         Route::post('/userSuratSurveyProposalStore', [SuratController::class, 'userSuratSurveyProposalStore'])->middleware('auth')->name('userSuratSurveyProposalStore');

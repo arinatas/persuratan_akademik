@@ -11,6 +11,7 @@ use App\Models\Kaprodi;
 use App\Models\PenandaTangan;
 
 // surat models
+use App\Models\SuratKeteranganKuliah;
 use App\Models\SuratMbkm;
 use App\Models\SuratSurveyMatkul;
 use App\Models\SuratSurveyProposal;
@@ -164,6 +165,193 @@ class SuratController extends Controller
     // end surat di proses sendiri
 
     // surat di proses FO
+        // surat ket kuliah
+            public function userSuratKetKuliah(){
+
+                $nim = auth()->user()->username;
+
+                $biomhs = Biodata::where('nim', $nim)->get();
+
+                $mySuratKeteranganKuliah = SuratKeteranganKuliah::where('nim', $nim)->orderByDesc('id')->paginate(3);
+
+                return view('user.surat.keterangan_kuliah.index', [
+                    'title' => 'Surat Keterangan Aktif Kuliah',
+                    'section' => 'Surat Dibantu FO',
+                    'active' => 'Surat Keterangan Aktif Kuliah',
+                    'biomhs' => $biomhs, 
+                    'mySuratKeteranganKuliah' => $mySuratKeteranganKuliah, 
+                ]);  
+            }
+
+            public function userSuratKetKuliahStore(Request $request){
+
+                // validasi input yang didapatkan dari request
+                $validator = Validator::make($request->all(), [
+                    'nomor' => 'nullable|string|max:100',
+                    'nim' => 'required|string|max:100',
+                    'nama_ortu' => 'required|string|max:255',
+                    'pangkat' => 'required|string|max:255',
+                    'semester' => 'required|string|max:100',
+                    'tahun_akademik' => 'required|string|max:100',
+                ]);
+
+                // kalau ada error kembalikan error
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                // simpan data ke database
+                try {
+                    DB::beginTransaction();
+
+                    // insert ke tabel positions
+                    SuratKeteranganKuliah::create([
+                        'nomor' => $request->nomor,
+                        'nim' => $request->nim,
+                        'nama_ortu' => $request->nama_ortu,
+                        'pangkat' => $request->pangkat,
+                        'semester' => $request->semester,
+                        'tahun_akademik' => $request->tahun_akademik,
+                    ]);
+
+                    DB::commit();
+
+                    return redirect()->back()->with('insertSuccess', 'Data berhasil di Inputkan.');
+
+                } catch(Exception $e) {
+                    DB::rollBack();
+                    // dd($e->getMessage());
+                    return redirect()->back()->with('insertFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratKetKuliahEdit($id)
+            {
+                $nim = auth()->user()->username;
+
+                $biomhs = Biodata::where('nim', $nim)->get();
+
+                $mySuratKeteranganKuliah = SuratKeteranganKuliah::find($id);
+
+                if (!$mySuratKeteranganKuliah) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySuratKeteranganKuliah->nim != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+                if ($mySuratKeteranganKuliah->status_acc == 1 || $mySuratKeteranganKuliah->status_acc == 2) {
+                    return redirect()->back()->with('error', 'Data telah ditindaklanjuti');
+                }
+
+                return view('user.surat.keterangan_kuliah.edit', [
+                    'title' => 'Surat Keterangan Aktif Kuliah',
+                    'section' => 'Surat Dibantu FO',
+                    'active' => 'Surat Keterangan Aktif Kuliah',
+                    'biomhs' => $biomhs, 
+                    'mySuratKeteranganKuliah' => $mySuratKeteranganKuliah,
+                ]);
+            }
+
+            public function userSuratKetKuliahUpdate(Request $request, $id){
+
+                $nim = auth()->user()->username;
+
+                $mySuratKeteranganKuliah = SuratKeteranganKuliah::find($id);
+
+
+                if (!$mySuratKeteranganKuliah) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySuratKeteranganKuliah->nim != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+
+                // validasi input yang didapatkan dari request
+                $validator = Validator::make($request->all(), [
+                    'nomor' => 'nullable|string|max:100',
+                    'nim' => 'required|string|max:100',
+                    'nama_ortu' => 'required|string|max:255',
+                    'pangkat' => 'required|string|max:255',
+                    'semester' => 'required|string|max:100',
+                    'tahun_akademik' => 'required|string|max:100',
+                ]);
+
+                // kalau ada error kembalikan error
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                // simpan data ke database
+                try {
+                    DB::beginTransaction();
+
+                    // update data
+                        $mySuratKeteranganKuliah->nomor = $request->nomor;
+                        $mySuratKeteranganKuliah->nim = $request->nim;
+                        $mySuratKeteranganKuliah->nama_ortu = $request->nama_ortu;
+                        $mySuratKeteranganKuliah->pangkat = $request->pangkat;
+                        $mySuratKeteranganKuliah->semester = $request->semester;
+                        $mySuratKeteranganKuliah->tahun_akademik = $request->tahun_akademik;
+
+                    $mySuratKeteranganKuliah->save();
+
+                    DB::commit();
+
+                    return redirect('/userSuratKetKuliah')->with('updateSuccess', 'Data berhasil di Inputkan.');
+
+                } catch(Exception $e) {
+                    DB::rollBack();
+                    // dd($e->getMessage());
+                    return redirect()->back()->with('updateFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratKetKuliahDestroy($id)
+            {
+                $nim = auth()->user()->username;
+
+                $mySuratKeteranganKuliah = SuratKeteranganKuliah::find($id);
+
+                if (!$mySuratKeteranganKuliah) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySuratKeteranganKuliah->nim != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+
+                try {
+                    // Hapus data pengguna
+                    $mySuratKeteranganKuliah->delete();
+                    return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
+                } catch (\Exception $e) {
+                    return redirect()->back()->with('deleteFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratKetKuliahPrint($id)
+            {
+                $suratKeteranganKuliah = SuratKeteranganKuliah::where('id', $id)->get();
+
+                if ($suratKeteranganKuliah->isEmpty()) {
+                    return redirect()->back()->with('error', 'Data Surat Keterangan Kuliah tidak ditemukan.');
+                }
+                if ($suratKeteranganKuliah[0]->status_acc == 0 || $suratKeteranganKuliah[0]->status_acc == 2) {
+                    return redirect('/userSuratSurveyMatkul')->with('error', 'Data Surat Survey Matkul belum disetujui.');
+                }
+
+                // Ambil data penanda tangan berdasarkan ID
+                $penandaTangan = PenandaTangan::where('id', 1)->first();
+                
+                return view('surat.suratKeteranganKuliah', [
+                    'title' => 'Surat Keterangan Aktif Kuliah',
+                    'section' => 'Surat Dibantu FO',
+                    'active' => 'Surat Keterangan Aktif Kuliah',
+                    'suratKeteranganKuliah' => $suratKeteranganKuliah,
+                    'penandaTangan' => $penandaTangan,
+                ]);
+            }
+        // end surat ket kuliah
+
         // surat mbkm
             public function userSuratMagangMBKM(){
 
@@ -914,7 +1102,7 @@ class SuratController extends Controller
             }
         // surat survey proposal
         
-        // surat survey proposal
+        // surat survey skripsi
             public function userSuratSurveySkripsi(){
 
                 $nim = auth()->user()->username;
@@ -1158,9 +1346,7 @@ class SuratController extends Controller
                     'penandaTangan' => $penandaTangan,
                 ]);
             }
-        // surat survey proposal
-
-        
+        // surat survey skripsi
         
     // end surat di proses FO
 
