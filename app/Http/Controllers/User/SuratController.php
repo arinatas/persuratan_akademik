@@ -906,13 +906,261 @@ class SuratController extends Controller
                 
                 return view('surat.suratSurveyProposal', [
                     'title' => 'Surat Izin Survei Proposal Skripsi',
-                    'section' => 'Request Surat Mahasiswa',
+                    'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Izin Survei Proposal Skripsi',
                     'suratSurveyProposal' => $suratSurveyProposal,
                     'penandaTangan' => $penandaTangan,
                 ]);
             }
         // surat survey proposal
+        
+        // surat survey proposal
+            public function userSuratSurveySkripsi(){
+
+                $nim = auth()->user()->username;
+
+                $biomhs = Biodata::where('nim', $nim)->get();
+
+                $mySurveySkripsi = SuratSurveySkripsi::where('nim1', $nim)->orderByDesc('id')->paginate(3);
+
+                return view('user.surat.survey_skripsi.index', [
+                    'title' => 'Surat Survey Skripsi',
+                    'section' => 'Surat Dibantu FO',
+                    'active' => 'Surat Survey Skripsi',
+                    'biomhs' => $biomhs, 
+                    'mySurveySkripsi' => $mySurveySkripsi, 
+                ]);  
+            }
+
+            public function userSuratSurveySkripsiStore(Request $request){
+
+                // validasi input yang didapatkan dari request
+                $validator = Validator::make($request->all(), [
+                    'nomor' => 'nullable|string|max:100',
+                    'yth' => 'required|string|max:255',
+                    'tempat' => 'required|string|max:255',
+                    'topik' => 'required|string',
+                    'nim1' => 'required|string|max:100',
+                    'nama1' => 'required|string|max:255',
+                    'prodi1' => 'required|string|max:100',
+                    'nim2' => 'nullable|string|max:100',
+                    'nama2' => 'nullable|string|max:255',
+                    'prodi2' => 'nullable|string|max:100',
+                    'nim3' => 'nullable|string|max:100',
+                    'nama3' => 'nullable|string|max:255',
+                    'prodi3' => 'nullable|string|max:100',
+                    'nim4' => 'nullable|string|max:100',
+                    'nama4' => 'nullable|string|max:255',
+                    'prodi4' => 'nullable|string|max:100',
+                    'nim5' => 'nullable|string|max:100',
+                    'nama5' => 'nullable|string|max:255',
+                    'prodi5' => 'nullable|string|max:100',
+                    'status_acc' => 'nullable',
+                    'acc_by' => 'nullable',
+                ]);
+
+                // kalau ada error kembalikan error
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                // simpan data ke database
+                try {
+                    DB::beginTransaction();
+
+                    // insert ke tabel positions
+                    SuratSurveySkripsi::create([
+                        'nomor' => $request->nomor,
+                        'yth' => $request->yth,
+                        'tempat' => $request->tempat,
+                        'topik' => $request->topik,
+                        'nim1' => $request->nim1,
+                        'nama1' => $request->nama1,
+                        'prodi1' => $request->prodi1,
+                        'nim2' => $request->nim2,
+                        'nama2' => $request->nama2,
+                        'prodi2' => $request->prodi2,
+                        'nim3' => $request->nim3,
+                        'nama3' => $request->nama3,
+                        'prodi3' => $request->prodi3,
+                        'nim4' => $request->nim4,
+                        'nama4' => $request->nama4,
+                        'prodi4' => $request->prodi4,
+                        'nim5' => $request->nim5,
+                        'nama5' => $request->nama5,
+                        'prodi5' => $request->prodi5,
+                        'status_acc' => $request->status_acc,
+                        'acc_by' => $request->acc_by,
+                    ]);
+
+                    DB::commit();
+
+                    return redirect()->back()->with('insertSuccess', 'Data berhasil di Inputkan.');
+
+                } catch(Exception $e) {
+                    DB::rollBack();
+                    // dd($e->getMessage());
+                    return redirect()->back()->with('insertFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratSurveySkripsiEdit($id)
+            {
+                $nim = auth()->user()->username;
+
+                $biomhs = Biodata::where('nim', $nim)->get();
+
+                $mySurveySkripsi = SuratSurveySkripsi::find($id);
+
+                if (!$mySurveySkripsi) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySurveySkripsi->nim1 != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+                if ($mySurveySkripsi->status_acc == 1 || $mySurveySkripsi->status_acc == 2) {
+                    return redirect()->back()->with('error', 'Data telah ditindaklanjuti');
+                }
+
+                return view('user.surat.survey_skripsi.edit', [
+                    'title' => 'Surat Survey Skripsi',
+                    'section' => 'Surat Dibantu FO',
+                    'active' => 'Surat Survey Skripsi',
+                    'biomhs' => $biomhs, 
+                    'mySurveySkripsi' => $mySurveySkripsi, 
+                ]);
+            }
+
+            public function userSuratSurveySkripsiUpdate(Request $request, $id){
+
+                $nim = auth()->user()->username;
+
+                $mySurveySkripsi = SuratSurveySkripsi::find($id);
+
+                if (!$mySurveySkripsi) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySurveySkripsi->nim1 != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+
+                // validasi input yang didapatkan dari request
+                $validator = Validator::make($request->all(), [
+                    'nomor' => 'nullable|string|max:100',
+                    'yth' => 'required|string|max:255',
+                    'tempat' => 'required|string|max:255',
+                    'topik' => 'required|string',
+                    'nim1' => 'required|string|max:100',
+                    'nama1' => 'required|string|max:255',
+                    'prodi1' => 'required|string|max:100',
+                    'nim2' => 'nullable|string|max:100',
+                    'nama2' => 'nullable|string|max:255',
+                    'prodi2' => 'nullable|string|max:100',
+                    'nim3' => 'nullable|string|max:100',
+                    'nama3' => 'nullable|string|max:255',
+                    'prodi3' => 'nullable|string|max:100',
+                    'nim4' => 'nullable|string|max:100',
+                    'nama4' => 'nullable|string|max:255',
+                    'prodi4' => 'nullable|string|max:100',
+                    'nim5' => 'nullable|string|max:100',
+                    'nama5' => 'nullable|string|max:255',
+                    'prodi5' => 'nullable|string|max:100',
+                    'status_acc' => 'nullable',
+                    'acc_by' => 'nullable',
+                ]);
+
+                // kalau ada error kembalikan error
+                if ($validator->fails()) {
+                    return redirect()->back()->withErrors($validator)->withInput();
+                }
+
+                // simpan data ke database
+                try {
+                    DB::beginTransaction();
+
+                    // update data
+                        $mySurveySkripsi->nomor = $request->nomor;
+                        $mySurveySkripsi->yth = $request->yth;
+                        $mySurveySkripsi->tempat = $request->tempat;
+                        $mySurveySkripsi->topik = $request->topik;
+                        $mySurveySkripsi->nim1 = $request->nim1;
+                        $mySurveySkripsi->nama1 = $request->nama1;
+                        $mySurveySkripsi->prodi1 = $request->prodi1;
+                        $mySurveySkripsi->nim2 = $request->nim2;
+                        $mySurveySkripsi->nama2 = $request->nama2;
+                        $mySurveySkripsi->prodi2 = $request->prodi2;
+                        $mySurveySkripsi->nim3 = $request->nim3;
+                        $mySurveySkripsi->nama3 = $request->nama3;
+                        $mySurveySkripsi->prodi3 = $request->prodi3;
+                        $mySurveySkripsi->nim4 = $request->nim4;
+                        $mySurveySkripsi->nama4 = $request->nama4;
+                        $mySurveySkripsi->prodi4 = $request->prodi4;
+                        $mySurveySkripsi->nim5 = $request->nim5;
+                        $mySurveySkripsi->nama5 = $request->nama5;
+                        $mySurveySkripsi->prodi5 = $request->prodi5;
+                        $mySurveySkripsi->status_acc = $request->status_acc;
+                        $mySurveySkripsi->acc_by = $request->acc_by;
+
+                    $mySurveySkripsi->save();
+
+                    DB::commit();
+
+                    return redirect('/userSuratSurveySkripsi')->with('updateSuccess', 'Data berhasil di Inputkan.');
+
+                } catch(Exception $e) {
+                    DB::rollBack();
+                    // dd($e->getMessage());
+                    return redirect()->back()->with('updateFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratSurveySkripsiDestroy($id)
+            {
+                $nim = auth()->user()->username;
+
+                $mySurveySkripsi = SuratSurveySkripsi::find($id);
+
+                if (!$mySurveySkripsi) {
+                    return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+                }
+                if ($mySurveySkripsi->nim1 != $nim) {
+                    return redirect()->back()->with('forbidden', 'Action Not Allowed');
+                }
+
+                try {
+                    // Hapus data pengguna
+                    $mySurveySkripsi->delete();
+                    return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
+                } catch (\Exception $e) {
+                    return redirect()->back()->with('deleteFail', $e->getMessage());
+                }
+            }
+
+            public function userSuratSurveySkripsiPrint($id)
+            {
+                $suratSurveySkripsi = SuratSurveySkripsi::where('id', $id)->get();
+
+                if ($suratSurveySkripsi->isEmpty()) {
+                    return redirect()->back()->with('error', 'Data Surat Survey Skripsi tidak ditemukan.');
+                }
+                if ($suratSurveySkripsi[0]->status_acc == 0 || $suratSurveySkripsi[0]->status_acc == 2) {
+                    return redirect('/userSuratSurveyMatkul')->with('error', 'Data Surat Survey Matkul belum disetujui.');
+                }
+
+                // Ambil data penanda tangan berdasarkan ID
+                $penandaTangan = PenandaTangan::where('id', 1)->first();
+                
+                return view('surat.suratSurveySkripsi', [
+                    'title' => 'Surat Izin Survei Skripsi',
+                    'section' => 'Request Surat Mahasiswa',
+                    'active' => 'Surat Izin Survei Skripsi',
+                    'suratSurveySkripsi' => $suratSurveySkripsi,
+                    'penandaTangan' => $penandaTangan,
+                ]);
+            }
+        // surat survey proposal
+
+        
         
     // end surat di proses FO
 

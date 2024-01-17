@@ -206,6 +206,15 @@ Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth
         Route::get('/userSuratSurveyProposalPrint/{id}', [SuratController::class, 'userSuratSurveyProposalPrint'])->middleware('auth')->name('userSuratSurveyProposalPrint');
     // end survey proposal
 
+    // survey skripsi
+        Route::get('/userSuratSurveySkripsi', [SuratController::class, 'userSuratSurveySkripsi'])->middleware('auth')->name('userSuratSurveySkripsi');
+        Route::post('/userSuratSurveySkripsiStore', [SuratController::class, 'userSuratSurveySkripsiStore'])->middleware('auth')->name('userSuratSurveySkripsiStore');
+        Route::get('/userSuratSurveySkripsiEdit/{id}', [SuratController::class, 'userSuratSurveySkripsiEdit'])->middleware('auth')->name('userSuratSurveySkripsiEdit');
+        Route::post('/userSuratSurveySkripsiUpdate/{id}', [SuratController::class, 'userSuratSurveySkripsiUpdate'])->middleware('auth')->name('userSuratSurveySkripsiUpdate');
+        Route::delete('/userSuratSurveySkripsiDestroy/{id}', [SuratController::class, 'userSuratSurveySkripsiDestroy'])->middleware('auth')->name('userSuratSurveySkripsiDestroy');
+        Route::get('/userSuratSurveySkripsiPrint/{id}', [SuratController::class, 'userSuratSurveySkripsiPrint'])->middleware('auth')->name('userSuratSurveySkripsiPrint');
+    // end survey skripsi
+
 
 
 // end surat di proses FO
