@@ -63,6 +63,10 @@
                                                                 <span class="badge bg-danger">
                                                                     <i class="bi bi-x-circle"></i> Ditolak
                                                                 </span>
+                                                            @elseif($item->status_acc == 3)
+                                                                <span class="badge bg-primary">
+                                                                    <i class="fas fa-cut"></i> Perlu Revisi
+                                                                </span>
                                                             @else
                                                                 <span class="badge bg-secondary">Undefined</span>
                                                             @endif
@@ -79,6 +83,14 @@
                                                                 <form method="post" action="{{ route('unapprove.suratKeteranganKuliah', $item->id) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-warning btn-action mb-2 w-100" data-toggle="tooltip" title="Unapprove"><i class="fas fa-undo"></i> Unapprove</button>
+                                                                </form>
+
+                                                                <!-- Revisi Button -->
+                                                                <form method="post" action="{{ route('revisi.suratKeteranganKuliah', $item->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-primary btn-action mb-2 w-100" data-toggle="tooltip" title="Revisi">
+                                                                        <i class="fas fa-cut"></i> Revisi
+                                                                    </button>
                                                                 </form>
 
                                                                 <!-- Reject Button -->
@@ -155,7 +167,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Pangkat / Golongan</th>
-                                                                                    <td>{{ $item->pangkat }}</td>
+                                                                                    <td>{{ $item->pangkat ?? '-' }}</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Semester</th>
@@ -180,10 +192,20 @@
                                                                                             <span class="badge bg-danger">
                                                                                                 <i class="bi bi-x-circle"></i> Ditolak
                                                                                             </span>
+                                                                                        @elseif($item->status_acc == 3)
+                                                                                            <span class="badge bg-primary">
+                                                                                                <i class="fas fa-cut"></i> Perlu Revisi
+                                                                                            </span>
                                                                                         @else
                                                                                             <span class="badge bg-secondary">Undefined</span>
                                                                                         @endif
                                                                                     </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->status_acc == 3)
+                                                                                        <th>Revisi</th>
+                                                                                        <td>{{ $item->revisi }}</td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Acc By</th>
@@ -301,10 +323,10 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Pangkat / Golongan</span>
+                                                            <span class="">Pangkat / Golongan</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="pangkat" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="pangkat" value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->

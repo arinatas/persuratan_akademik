@@ -60,6 +60,10 @@
                                     <label for="exampleFormControlInput1" class=" form-label">Data 5</label>
                                     <input type="text" value="{{$suratPermohonanData->data5}}" class="form-control form-control-solid"  name="data5"/>
                                 </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">Cantumkan Revisi</label>
+                                    <input type="text" value="{{$suratPermohonanData->revisi}}" class="form-control form-control-solid" name="revisi"/>
+                                </div>
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
                                     <a href="{{ route('suratPermohonanData') }}" class="btn btn-secondary">

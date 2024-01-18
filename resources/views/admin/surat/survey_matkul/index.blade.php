@@ -65,6 +65,10 @@
                                                                 <span class="badge bg-danger">
                                                                     <i class="bi bi-x-circle"></i> Ditolak
                                                                 </span>
+                                                            @elseif($item->status_acc == 3)
+                                                                <span class="badge bg-primary">
+                                                                    <i class="fas fa-cut"></i> Perlu Revisi
+                                                                </span>
                                                             @else
                                                                 <span class="badge bg-secondary">Undefined</span>
                                                             @endif
@@ -81,6 +85,14 @@
                                                                 <form method="post" action="{{ route('unapprove.suratSurveyMatkul', $item->id) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-sm btn-warning btn-action mb-2 w-100" data-toggle="tooltip" title="Unapprove"><i class="fas fa-undo"></i> Unapprove</button>
+                                                                </form>
+
+                                                                <!-- Revisi Button -->
+                                                                <form method="post" action="{{ route('revisi.suratSurveyMatkul', $item->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-primary btn-action mb-2 w-100" data-toggle="tooltip" title="Revisi">
+                                                                        <i class="fas fa-cut"></i> Revisi
+                                                                    </button>
                                                                 </form>
 
                                                                 <!-- Reject Button -->
@@ -248,10 +260,20 @@
                                                                                             <span class="badge bg-danger">
                                                                                                 <i class="bi bi-x-circle"></i> Ditolak
                                                                                             </span>
+                                                                                        @elseif($item->status_acc == 3)
+                                                                                            <span class="badge bg-primary">
+                                                                                                <i class="fas fa-cut"></i> Perlu Revisi
+                                                                                            </span>
                                                                                         @else
                                                                                             <span class="badge bg-secondary">Undefined</span>
                                                                                         @endif
                                                                                     </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->status_acc == 3)
+                                                                                        <th>Revisi</th>
+                                                                                        <td>{{ $item->revisi }}</td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Acc By</th>

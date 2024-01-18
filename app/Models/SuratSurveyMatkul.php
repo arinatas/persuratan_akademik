@@ -37,6 +37,7 @@ class SuratSurveyMatkul extends Model
         'prodi5',
         'status_acc',
         'acc_by',
+        'revisi',
     ];
 
     // Set nilai default untuk status_acc ke 0

@@ -53,6 +53,16 @@ class SuratSurveyMatkulController extends Controller
         return redirect()->back()->with('updateSuccess', 'Surat berhasil ditolak');
     }
 
+    public function revisi($id)
+    {
+        $surat = SuratSurveyMatkul::findOrFail($id);
+        $surat->status_acc = 3;
+        $surat->acc_by = Auth::id(); // Save id User yang login saat ini
+        $surat->save();
+
+        return redirect()->back()->with('updateSuccess', 'Surat berhasil diminta Revisi');
+    }
+
     public function store(Request $request)
     {
         // validasi input yang didapatkan dari request
@@ -77,6 +87,7 @@ class SuratSurveyMatkulController extends Controller
             'nim5' => 'nullable|string|max:100',
             'nama5' => 'nullable|string|max:255',
             'prodi5' => 'nullable|string|max:100',
+            'revisi' => 'nullable|string|max:255',
         ]);
 
         // kalau ada error kembalikan error
@@ -110,6 +121,7 @@ class SuratSurveyMatkulController extends Controller
                 'nim5' => $request->nim5,
                 'nama5' => $request->nama5,
                 'prodi5' => $request->prodi5,
+                'revisi' => $request->revisi,
             ]);
 
             DB::commit();
@@ -169,6 +181,7 @@ class SuratSurveyMatkulController extends Controller
             'nim5' => 'nullable|string|max:100',
             'nama5' => 'nullable|string|max:255',
             'prodi5' => 'nullable|string|max:100',
+            'revisi' => 'nullable|string|max:255',
         ]);
 
         // kalau ada error kembalikan error
@@ -197,6 +210,7 @@ class SuratSurveyMatkulController extends Controller
             $suratSurveyMatkul->nim5 = $request->nim5;
             $suratSurveyMatkul->nama5 = $request->nama5;
             $suratSurveyMatkul->prodi5 = $request->prodi5;
+            $suratSurveyMatkul->revisi = $request->revisi;
 
             $suratSurveyMatkul->save();
 

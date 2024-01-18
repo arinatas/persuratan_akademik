@@ -15,12 +15,12 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $suratMBKM = SuratMbkm::count();
-        $suratKeteranganKuliah = SuratKeteranganKuliah::count();
-        $suratPermohonanData = SuratPermohonanData::count();
-        $suratSurveyMatkul = SuratSurveyMatkul::count();
-        $suratSurveyProposal = SuratSurveyProposal::count();
-        $suratSurveySkripsi = SuratSurveySkripsi::count();
+        $suratMBKM = SuratMbkm::where('status_acc', 1)->orWhere('status_acc', 3)->count();
+        $suratKeteranganKuliah = SuratKeteranganKuliah::where('status_acc', 1)->orWhere('status_acc', 3)->count();
+        $suratPermohonanData = SuratPermohonanData::where('status_acc', 1)->orWhere('status_acc', 3)->count();
+        $suratSurveyMatkul = SuratSurveyMatkul::where('status_acc', 1)->orWhere('status_acc', 3)->count();
+        $suratSurveyProposal = SuratSurveyProposal::where('status_acc', 1)->orWhere('status_acc', 3)->count();
+        $suratSurveySkripsi = SuratSurveySkripsi::where('status_acc', 1)->orWhere('status_acc', 3)->count();
     
         return view('admin.dashboard.index', [
             'title' => 'Dashboard Admin',
@@ -34,5 +34,6 @@ class AdminController extends Controller
             'suratSurveySkripsi' => $suratSurveySkripsi,
         ]);
     }
+    
     
 }
