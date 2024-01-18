@@ -62,7 +62,7 @@
 												</div>
 
                                                 {{-- hidden input --}}
-													<input type="hidden" value="{{ $mySuratKeteranganKuliah->status_acc }}" class="form-control form-control-solid" name="status_acc"/>
+													<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
 													<input type="hidden" value="{{ $mySuratKeteranganKuliah->nomor }}" class="form-control form-control-solid" name="nomor"/>
 													<input type="hidden" value="{{ $mySuratKeteranganKuliah->acc_by }}" class="form-control form-control-solid" name="acc_by"/>
 													<input type="hidden" value="{{ $mySuratKeteranganKuliah->nim }}" class="form-control form-control-solid" readonly name="nim"/>

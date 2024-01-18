@@ -52,10 +52,12 @@
 																<span class="badge bg-success">Disetujui</span>
 																@elseif($item->status_acc == 2)
 																<span class="badge bg-danger">Ditolak</span>
+																@elseif($item->status_acc == 3)
+																<span class="badge bg-danger">Perlu Revisi</span>
 																@endif
 															</td>
 															<td>
-																@if ($item->status_acc == 0)
+																@if ($item->status_acc == 0 || $item->status_acc == 3)
 																	<a href="{{ route('userSuratMagangMBKMEdit', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 																@endif
 																@if ($item->status_acc == 1)
@@ -213,10 +215,20 @@
 																									<span class="badge bg-danger">
 																										<i class="bi bi-x-circle"></i> Ditolak
 																									</span>
+																								@elseif($item->status_acc == 3)
+																									<span class="badge bg-primary">
+																										<i class="fas fa-cut"></i> Perlu Revisi
+																									</span>
 																								@else
 																									<span class="badge bg-secondary">Undefined</span>
 																								@endif
 																							</td>
+																						</tr>
+																						<tr>
+																							@if($item->status_acc == 3)
+																								<th>Revisi</th>
+																								<td>{{ $item->revisi }}</td>
+																							@endif
 																						</tr>
 																						<tr>
 																							<th>Acc By</th>
@@ -287,7 +299,7 @@
 										<form action="{{ url('userSuratMagangMBKMStore') }}" method="POST">
 											<div class="row g-5 g-xl-8">
 												@csrf
-												<div class="col-lg-4">
+												<div class="col-lg-6">
 													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
 													<input type="text" value="{{ old('yth') }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
 													@error('yth')
@@ -296,7 +308,7 @@
 														</div>
 													@enderror
 												</div>
-                                                <div class="col-lg-2">
+                                                <div class="col-lg-3">
 													<label class="form-label">Tanggal Mulai</label>
 													<input type="date" value="{{ old('tgl_mulai') }}" class="form-control form-control-solid @error('tgl_mulai') is-invalid @enderror" required name="tgl_mulai"/>
 													@error('tgl_mulai')
@@ -305,7 +317,7 @@
 														</div>
 													@enderror
 												</div>
-                                                <div class="col-lg-2">
+                                                <div class="col-lg-3">
 													<label class="form-label">Tanggal Selesai</label>
 													<input type="date" value="{{ old('tgl_selesai') }}" class="form-control form-control-solid @error('tgl_selesai') is-invalid @enderror" required name="tgl_selesai"/>
 													@error('tgl_selesai')

@@ -56,10 +56,12 @@
 																<span class="badge bg-success">Disetujui</span>
 																@elseif($item->status_acc == 2)
 																<span class="badge bg-danger">Ditolak</span>
+																@elseif($item->status_acc == 3)
+																<span class="badge bg-danger">Perlu Revisi</span>
 																@endif
 															</td>
 															<td>
-																@if ($item->status_acc == 0)
+																@if ($item->status_acc == 0 || $item->status_acc == 3)
 																	<a href="{{ route('userSuratKetKuliahEdit', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 																@endif
 																@if ($item->status_acc == 1)
@@ -155,10 +157,20 @@
 																									<span class="badge bg-danger">
 																										<i class="bi bi-x-circle"></i> Ditolak
 																									</span>
+																								@elseif($item->status_acc == 3)
+																									<span class="badge bg-primary">
+																										<i class="fas fa-cut"></i> Perlu Revisi
+																									</span>
 																								@else
 																									<span class="badge bg-secondary">Undefined</span>
 																								@endif
 																							</td>
+																						</tr>
+																						<tr>
+																							@if($item->status_acc == 3)
+																								<th>Revisi</th>
+																								<td>{{ $item->revisi }}</td>
+																							@endif
 																						</tr>
 																						<tr>
 																							<th>Acc By</th>

@@ -50,10 +50,12 @@
 																<span class="badge bg-success">Disetujui</span>
 																@elseif($item->status_acc == 2)
 																<span class="badge bg-danger">Ditolak</span>
+																@elseif($item->status_acc == 3)
+																<span class="badge bg-danger">Perlu Revisi</span>
 																@endif
 															</td>
 															<td>
-																@if ($item->status_acc == 0)
+																@if ($item->status_acc == 0 ||$item->status_acc == 3)
 																	<a href="{{ route('userSuratPermohonanDataEdit', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
 																@endif
 																@if ($item->status_acc == 1)
@@ -155,7 +157,10 @@
 																									<span class="badge bg-danger">
 																										<i class="bi bi-x-circle"></i> Ditolak
 																									</span>
-																								@else
+																								@elseif($item->status_acc == 3)
+																								<span class="badge bg-primary">
+																									<i class="fas fa-cut"></i> Perlu Revisi
+																								</span>
 																									<span class="badge bg-secondary">Undefined</span>
 																								@endif
 																							</td>
@@ -229,7 +234,7 @@
 										<form action="{{ url('userSuratPermohonanDataStore') }}" method="POST">
 											<div class="row g-5 g-xl-8">
 												@csrf
-												<div class="col-lg-6">
+												<div class="col-lg-12">
 													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
 													<input type="text" value="{{ old('yth') }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
 													@error('yth')

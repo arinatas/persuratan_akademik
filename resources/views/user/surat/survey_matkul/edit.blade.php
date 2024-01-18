@@ -21,7 +21,7 @@
 										<form action="{{ url('userSuratSurveyMatkulUpdate', $mySurveyMatkuls->id) }}" method="POST">
 											<div class="row g-5 g-xl-8">
 												@csrf
-												<div class="col-lg-4">
+												<div class="col-lg-6">
 													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
 													<input type="text" value="{{ $mySurveyMatkuls->yth }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
 													@error('yth')
@@ -30,7 +30,7 @@
 														</div>
 													@enderror
 												</div>
-												<div class="col-lg-4">
+												<div class="col-lg-6">
 													<label class="required form-label">Matakuliah</label>
 													<input type="text" value="{{ $mySurveyMatkuls->matkul }}" class="form-control form-control-solid  @error('matkul') is-invalid @enderror" required name="matkul"/>
 													@error('matkul')
@@ -177,7 +177,7 @@
 												<hr>
 
                                                 {{-- hidden input --}}
-													<input type="hidden" value="{{ $mySurveyMatkuls->status_acc }}" class="form-control form-control-solid" name="status_acc"/>
+													<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
 													<input type="hidden" value="{{ $mySurveyMatkuls->nomor }}" class="form-control form-control-solid" name="nomor"/>
 													<input type="hidden" value="{{ $mySurveyMatkuls->acc_by }}" class="form-control form-control-solid" name="acc_by"/>
                                                 {{-- end hidden input --}}

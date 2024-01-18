@@ -21,7 +21,7 @@
 										<form action="{{ url('userSuratPermohonanDataUpdate', $mySuratPermohonanData->id) }}" method="POST">
 											<div class="row g-5 g-xl-8">
 												@csrf
-												<div class="col-lg-6">
+												<div class="col-lg-12">
 													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
 													<input type="text" value="{{ $mySuratPermohonanData->yth }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
 													@error('yth')
@@ -77,7 +77,7 @@
 												</div>
 
                                                 {{-- hidden input --}}
-													<input type="hidden" value="{{ $mySuratPermohonanData->status_acc }}" class="form-control form-control-solid" name="status_acc"/>
+													<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
 													<input type="hidden" value="{{ $mySuratPermohonanData->nomor }}" class="form-control form-control-solid" name="nomor"/>
 													<input type="hidden" value="{{ $mySuratPermohonanData->acc_by }}" class="form-control form-control-solid" name="acc_by"/>
 													<input type="hidden" value="{{ $mySuratPermohonanData->nim }}" class="form-control form-control-solid" readonly name="nim"/>

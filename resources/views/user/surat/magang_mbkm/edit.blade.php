@@ -21,7 +21,7 @@
 										<form action="{{ url('userSuratMagangMBKMUpdate', $mySuratMbkm->id) }}" method="POST">
 											<div class="row g-5 g-xl-8">
 												@csrf
-												<div class="col-lg-4">
+												<div class="col-lg-6">
 													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
 													<input type="text" value="{{ $mySuratMbkm->yth }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
 													@error('yth')
@@ -30,7 +30,7 @@
 														</div>
 													@enderror
 												</div>
-												<div class="col-lg-2">
+												<div class="col-lg-3">
 													<label class="form-label">Tanggal Mulai</label>
 													<input type="date" value="{{ $mySuratMbkm->tgl_mulai }}" class="form-control form-control-solid" required name="tgl_mulai"/>
 													@error('tgl_mulai')
@@ -39,7 +39,7 @@
 														</div>
 													@enderror
 												</div>
-                                                <div class="col-lg-2">
+                                                <div class="col-lg-3">
 													<label class="form-label">Tanggal Selesai</label>
 													<input type="date" value="{{ $mySuratMbkm->tgl_selesai }}" class="form-control form-control-solid" required name="tgl_selesai"/>
 													@error('tgl_selesai')
@@ -167,7 +167,7 @@
 												<hr>
 
                                                 {{-- hidden input --}}
-													<input type="hidden" value="{{ $mySuratMbkm->status_acc }}" class="form-control form-control-solid" name="status_acc"/>
+													<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
 													<input type="hidden" value="{{ $mySuratMbkm->nomor }}" class="form-control form-control-solid" name="nomor"/>
 													<input type="hidden" value="{{ $mySuratMbkm->acc_by }}" class="form-control form-control-solid" name="acc_by"/>
                                                 {{-- end hidden input --}}

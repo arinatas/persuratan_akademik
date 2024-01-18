@@ -21,7 +21,7 @@
 										<form action="{{ url('userSuratSurveySkripsiUpdate', $mySurveySkripsi->id) }}" method="POST">
 											<div class="row g-5 g-xl-8">
 												@csrf
-												<div class="col-lg-6">
+												<div class="col-lg-12">
 													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
 													<input type="text" value="{{ $mySurveySkripsi->yth }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
 													@error('yth')
@@ -159,7 +159,7 @@
 												<hr>
 
                                                 {{-- hidden input --}}
-													<input type="hidden" value="{{ $mySurveySkripsi->status_acc }}" class="form-control form-control-solid" name="status_acc"/>
+													<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
 													<input type="hidden" value="{{ $mySurveySkripsi->nomor }}" class="form-control form-control-solid" name="nomor"/>
 													<input type="hidden" value="{{ $mySurveySkripsi->acc_by }}" class="form-control form-control-solid" name="acc_by"/>
                                                 {{-- end hidden input --}}
