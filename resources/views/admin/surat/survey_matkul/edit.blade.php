@@ -37,10 +37,6 @@
                                     <input type="text" value="{{$suratSurveyMatkul->yth}}" class="form-control form-control-solid" required name="yth"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Di Tempat</label>
-                                    <input type="text" value="{{$suratSurveyMatkul->tempat}}" class="form-control form-control-solid" required name="tempat"/>
-                                </div>
-								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Matakuliah</label>
                                     <input type="text" value="{{$suratSurveyMatkul->matkul}}" class="form-control form-control-solid" required name="matkul"/>
                                 </div>

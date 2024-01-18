@@ -17,7 +17,6 @@ class SuratMbkm extends Model
     protected $fillable = [
         'nomor',
         'yth',
-        'tempat',
         'tgl_mulai',
         'tgl_selesai',
         'nim1',

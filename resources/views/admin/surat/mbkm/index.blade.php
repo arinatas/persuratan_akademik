@@ -36,8 +36,8 @@
                                                         <th class="min-w-100px">NIM</th>
                                                         <th class="min-w-100px">Nama</th>
                                                         <th class="min-w-100px">Status Surat</th>
-                                                        <th class="min-w-300px">Action</th>
                                                         <th class="min-w-100px">ACC</th>
+                                                        <th class="min-w-100px">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -68,27 +68,38 @@
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <div class="row">
-                                                                <div class="col-3 col-md-2" style="margin-right: 5px;">
-                                                                    <a href="{{ route('edit.suratMbkm', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit">
-                                                                        <i class="fas fa-pencil-alt"></i>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="col-3 col-md-2" style="margin-right: 5px;">
-                                                                    <form id="form-delete" action="{{ route('destroy.suratMbkm', $item->id ) }}" method="POST" class="d-inline-block">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button id="submit-btn" type="submit" data-toggle="tooltip" title="Hapus bagian" class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)">
-                                                                            <i class="fas fa-trash"></i>
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="col-3 col-md-2">
-                                                                    <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Surat">
-                                                                        <i class="fas fa-info-circle"></i>
-                                                                    </button>
-                                                                </div>
+                                                            <div class="btn-group d-flex flex-column">
+                                                                <!-- Approve Button -->
+                                                                <form method="post" action="{{ route('approve.suratMbkm', $item->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-success btn-action mb-2 w-100" data-toggle="tooltip" title="Setujui"><i class="fas fa-check"></i> Setujui</button>
+                                                                </form>
+
+                                                                <!-- Unapprove Button -->
+                                                                <form method="post" action="{{ route('unapprove.suratMbkm', $item->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-warning btn-action mb-2 w-100" data-toggle="tooltip" title="Unapprove"><i class="fas fa-undo"></i> Unapprove</button>
+                                                                </form>
+
+                                                                <!-- Reject Button -->
+                                                                <form method="post" action="{{ route('reject.suratMbkm', $item->id) }}">
+                                                                    @csrf
+                                                                    <button type="submit" class="btn btn-sm btn-danger btn-action w-100" data-toggle="tooltip" title="Tolak"><i class="fas fa-times"></i> Tolak</button>
+                                                                </form>
                                                             </div>
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ route('edit.suratMbkm', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i>
+                                                            </a>
+                                                            <form id="form-delete" action="{{ route('destroy.suratMbkm', $item->id ) }}" method="POST" class="d-inline-block">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                    <button id="submit-btn" type="submit" data-toggle="tooltip" title="Hapus bagian" class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)"><i class="fas fa-trash"></i>
+                                                                    </button>
+                                                            </form>
+                                                            <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Surat"><i class="fas fa-info-circle"></i>
+                                                            </button>
+                                                            <!-- Modals Detail-->
                                                             <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered mw-850px">
                                                                     <div class="modal-content">
@@ -115,10 +126,6 @@
                                                                                 <tr>
                                                                                     <th>Ditujukan Kepada</th>
                                                                                     <td>{{ $item->yth }}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Kepada di Tempat</th>
-                                                                                    <td>{{ $item->tempat }}</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Tanggal Mulai</th>
@@ -251,29 +258,8 @@
                                                                 </div>
                                                             </div>
                                                             <br>
-                                                            <div style="margin-top: -10px; margin-left: 5px; ">
-                                                            <a href="{{ route('export.suratMbkm', $item->id) }}" class="btn btn-sm btn-secondary btn-action btn-block" data-toggle="tooltip" title="Unduh Surat MBKM"><i class="fas fa-download"></i> Download Surat </a>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="btn-group d-flex flex-column">
-                                                                <!-- Approve Button -->
-                                                                <form method="post" action="{{ route('approve.suratMbkm', $item->id) }}">
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-sm btn-success btn-action mb-2 w-100" data-toggle="tooltip" title="Setujui"><i class="fas fa-check"></i> Setujui</button>
-                                                                </form>
-
-                                                                <!-- Unapprove Button -->
-                                                                <form method="post" action="{{ route('unapprove.suratMbkm', $item->id) }}">
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-sm btn-warning btn-action mb-2 w-100" data-toggle="tooltip" title="Unapprove"><i class="fas fa-undo"></i> Unapprove</button>
-                                                                </form>
-
-                                                                <!-- Reject Button -->
-                                                                <form method="post" action="{{ route('reject.suratMbkm', $item->id) }}">
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-sm btn-danger btn-action w-100" data-toggle="tooltip" title="Tolak"><i class="fas fa-times"></i> Tolak</button>
-                                                                </form>
+                                                            <div style="margin-top: 10px; margin-left: 5px; ">
+                                                                <a href="{{ route('export.suratMbkm', $item->id) }}" class="btn btn-sm btn-secondary btn-action btn-block" data-toggle="tooltip" title="Unduh Surat MBKM"><i class="fas fa-download"></i> Download Surat </a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -363,14 +349,6 @@
                                                         </label>
                                                         <!--end::Label-->
                                                         <input class="form-control form-control-solid" type="text" name="yth" required value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tempat</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="tempat" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
