@@ -14,7 +14,7 @@ class SuratSurveyMatkulController extends Controller
 {
     public function index()
     {
-        $surveyMatkuls = SuratSurveyMatkul::all();
+        $surveyMatkuls = SuratSurveyMatkul::orderBy('id', 'desc')->get();
             return view('admin.surat.survey_matkul.index', [
                 'title' => 'Surat Survey Matakuliah',
                 'section' => 'Request Surat Mahasiswa',

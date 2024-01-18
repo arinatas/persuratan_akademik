@@ -14,7 +14,7 @@ class SuratSurveySkripsiController extends Controller
 {
     public function index()
     {
-        $surveySkripsis = SuratSurveySkripsi::all();
+        $surveySkripsis = SuratSurveySkripsi::orderBy('id', 'desc')->get();
             return view('admin.surat.survey_skripsi.index', [
                 'title' => 'Surat Izin Survei Skripsi',
                 'section' => 'Request Surat Mahasiswa',

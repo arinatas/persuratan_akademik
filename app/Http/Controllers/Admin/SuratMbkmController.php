@@ -14,7 +14,7 @@ class SuratMbkmController extends Controller
 {
     public function index()
     {
-        $mbkms = SuratMbkm::all();
+        $mbkms = SuratMbkm::orderBy('id', 'desc')->get();
             return view('admin.surat.mbkm.index', [
                 'title' => 'Surat Magang MBKM',
                 'section' => 'Request Surat Mahasiswa',

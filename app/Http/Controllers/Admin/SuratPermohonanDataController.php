@@ -14,7 +14,7 @@ class SuratPermohonanDataController extends Controller
 {
     public function index()
     {
-        $permohonanDatas = SuratPermohonanData::with('biodata')->get();
+        $permohonanDatas = SuratPermohonanData::with('biodata')->orderBy('id', 'desc')->get();
             return view('admin.surat.permohonan_data.index', [
                 'title' => 'Surat Permohonan Permintaan Data',
                 'section' => 'Request Surat Mahasiswa',

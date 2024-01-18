@@ -14,13 +14,14 @@ class SuratKeteranganKuliahController extends Controller
 {
     public function index()
     {
-        $keteranganKuliahs = SuratKeteranganKuliah::with('biodata')->get();
-            return view('admin.surat.keterangan_kuliah.index', [
-                'title' => 'Surat Keterangan Kuliah',
-                'section' => 'Request Surat Mahasiswa',
-                'active' => 'Surat Keterangan Kuliah',
-                'keteranganKuliahs' => $keteranganKuliahs,
-            ]);
+        $keteranganKuliahs = SuratKeteranganKuliah::with('biodata')->orderBy('id', 'desc')->get();
+
+        return view('admin.surat.keterangan_kuliah.index', [
+            'title' => 'Surat Keterangan Kuliah',
+            'section' => 'Request Surat Mahasiswa',
+            'active' => 'Surat Keterangan Kuliah',
+            'keteranganKuliahs' => $keteranganKuliahs,
+        ]);
     }
 
     public function approve($id)

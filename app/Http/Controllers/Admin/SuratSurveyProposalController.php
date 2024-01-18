@@ -14,7 +14,7 @@ class SuratSurveyProposalController extends Controller
 {
     public function index()
     {
-        $surveyProposals = SuratSurveyProposal::all();
+        $surveyProposals = SuratSurveyProposal::orderBy('id', 'desc')->get();
             return view('admin.surat.survey_proposal.index', [
                 'title' => 'Surat Izin Survei Proposal Skripsi',
                 'section' => 'Request Surat Mahasiswa',
