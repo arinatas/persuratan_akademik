@@ -155,7 +155,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Pangkat / Golongan</th>
-                                                                                    <td>{{ $item->pangkat }}</td>
+                                                                                    <td>{{ $item->pangkat ?? '-' }}</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Semester</th>
@@ -301,10 +301,10 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Pangkat / Golongan</span>
+                                                            <span class="">Pangkat / Golongan</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="pangkat" required value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="pangkat" value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->

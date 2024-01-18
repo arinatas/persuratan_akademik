@@ -95,7 +95,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Pangkat / Golongan</td>
-                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $item->pangkat }}</td>
+                                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp; {{ $item->pangkat ?? '-' }}</td>
                                                 </tr>
                                             </table>
                                         </div>

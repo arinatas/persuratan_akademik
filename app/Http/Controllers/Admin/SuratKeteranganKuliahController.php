@@ -60,7 +60,7 @@ class SuratKeteranganKuliahController extends Controller
             'nomor' => 'nullable|string|max:100',
             'nim' => 'required|string|max:100',
             'nama_ortu' => 'required|string|max:255',
-            'pangkat' => 'required|string|max:255',
+            'pangkat' => 'nullable|string|max:255',
             'semester' => 'required|string|max:100',
             'tahun_akademik' => 'required|string|max:100',
         ]);
@@ -124,7 +124,7 @@ class SuratKeteranganKuliahController extends Controller
             'nomor' => 'nullable|string|max:100',
             'nim' => 'required|string|max:100',
             'nama_ortu' => 'required|string|max:255',
-            'pangkat' => 'required|string|max:255',
+            'pangkat' => 'nullable|string|max:255',
             'semester' => 'required|string|max:100',
             'tahun_akademik' => 'required|string|max:100',
         ]);

@@ -95,7 +95,7 @@
                                                         <td>{{ $item->yth }}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; di – {{ $item->tempat }}</td>
+                                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; di – Tempat</td>
                                                     </tr>
                                                 </table>
                                             </div>

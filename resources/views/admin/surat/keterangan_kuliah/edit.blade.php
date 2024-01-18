@@ -41,8 +41,8 @@
                                     <input type="text" value="{{$suratKeteranganKuliah->nama_ortu}}" class="form-control form-control-solid" required name="nama_ortu"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Pangkat / Golongan</label>
-                                    <input type="text" value="{{$suratKeteranganKuliah->pangkat}}" class="form-control form-control-solid" required name="pangkat"/>
+                                    <label for="exampleFormControlInput1" class=" form-label">Pangkat / Golongan</label>
+                                    <input type="text" value="{{$suratKeteranganKuliah->pangkat}}" class="form-control form-control-solid" name="pangkat"/>
                                 </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class="required form-label">Semester</label>
