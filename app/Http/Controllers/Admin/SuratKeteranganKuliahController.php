@@ -53,6 +53,16 @@ class SuratKeteranganKuliahController extends Controller
         return redirect()->back()->with('updateSuccess', 'Surat berhasil ditolak');
     }
 
+    public function revisi($id)
+    {
+        $surat = SuratKeteranganKuliah::findOrFail($id);
+        $surat->status_acc = 3;
+        $surat->acc_by = Auth::id(); // Save id User yang login saat ini
+        $surat->save();
+
+        return redirect()->back()->with('updateSuccess', 'Surat berhasil diminta Revisi');
+    }
+
     public function store(Request $request)
     {
         // validasi input yang didapatkan dari request
@@ -63,6 +73,7 @@ class SuratKeteranganKuliahController extends Controller
             'pangkat' => 'nullable|string|max:255',
             'semester' => 'required|string|max:100',
             'tahun_akademik' => 'required|string|max:100',
+            'revisi' => 'nullable|string|max:255',
         ]);
 
         // kalau ada error kembalikan error
@@ -82,6 +93,7 @@ class SuratKeteranganKuliahController extends Controller
                 'pangkat' => $request->pangkat,
                 'semester' => $request->semester,
                 'tahun_akademik' => $request->tahun_akademik,
+                'revisi' => $request->revisi,
             ]);
 
             DB::commit();
@@ -127,6 +139,7 @@ class SuratKeteranganKuliahController extends Controller
             'pangkat' => 'nullable|string|max:255',
             'semester' => 'required|string|max:100',
             'tahun_akademik' => 'required|string|max:100',
+            'revisi' => 'nullable|string|max:255',
         ]);
 
         // kalau ada error kembalikan error
@@ -141,6 +154,7 @@ class SuratKeteranganKuliahController extends Controller
             $suratKeteranganKuliah->pangkat = $request->pangkat;
             $suratKeteranganKuliah->semester = $request->semester;
             $suratKeteranganKuliah->tahun_akademik = $request->tahun_akademik;
+            $suratKeteranganKuliah->revisi = $request->revisi;
             $suratKeteranganKuliah->save();
 
             return redirect('/suratKeteranganKuliah')->with('updateSuccess', 'Data berhasil di Update');

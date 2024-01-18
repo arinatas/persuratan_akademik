@@ -56,6 +56,10 @@
                                     <label for="exampleFormControlInput1" class="required form-label">Tahun Akademik</label>
                                     <input type="text" value="{{$suratKeteranganKuliah->tahun_akademik}}" class="form-control form-control-solid" required name="tahun_akademik"/>
                                 </div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">Cantumkan Revisi</label>
+                                    <input type="text" value="{{$suratKeteranganKuliah->revisi}}" class="form-control form-control-solid" name="revisi"/>
+                                </div>
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
                                     <a href="{{ route('suratKeteranganKuliah') }}" class="btn btn-secondary">

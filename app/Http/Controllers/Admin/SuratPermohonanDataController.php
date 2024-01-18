@@ -53,6 +53,16 @@ class SuratPermohonanDataController extends Controller
         return redirect()->back()->with('updateSuccess', 'Surat berhasil ditolak');
     }
 
+    public function revisi($id)
+    {
+        $surat = SuratPermohonanData::findOrFail($id);
+        $surat->status_acc = 3;
+        $surat->acc_by = Auth::id(); // Save id User yang login saat ini
+        $surat->save();
+
+        return redirect()->back()->with('updateSuccess', 'Surat berhasil diminta Revisi');
+    }
+
     public function store(Request $request)
     {
         // validasi input yang didapatkan dari request
@@ -65,6 +75,7 @@ class SuratPermohonanDataController extends Controller
             'data3' => 'nullable|string',
             'data4' => 'nullable|string',
             'data5' => 'nullable|string',
+            'revisi' => 'nullable|string|max:255',
         ]);
 
         // kalau ada error kembalikan error
@@ -86,6 +97,7 @@ class SuratPermohonanDataController extends Controller
                 'data3' => $request->data3,
                 'data4' => $request->data4,
                 'data5' => $request->data5,
+                'revisi' => $request->revisi,
             ]);
 
             DB::commit();
@@ -133,6 +145,7 @@ class SuratPermohonanDataController extends Controller
             'data3' => 'nullable|string|max:100',
             'data4' => 'nullable|string|max:100',
             'data5' => 'nullable|string|max:100',
+            'revisi' => 'nullable|string|max:255',
         ]);
 
         // kalau ada error kembalikan error
@@ -149,6 +162,7 @@ class SuratPermohonanDataController extends Controller
             $suratPermohonanData->data3 = $request->data3;
             $suratPermohonanData->data4 = $request->data4;
             $suratPermohonanData->data5 = $request->data5;
+            $suratPermohonanData->revisi = $request->revisi;
             $suratPermohonanData->save();
 
             return redirect('/suratPermohonanData')->with('updateSuccess', 'Data berhasil di Update');

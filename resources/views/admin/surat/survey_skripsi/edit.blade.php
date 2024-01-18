@@ -148,6 +148,10 @@
 										<option value="Bisnis Digital" {{ $suratSurveySkripsi->prodi5 == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>
 									</select>
 								</div>
+								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class=" form-label">Cantumkan Revisi</label>
+                                    <input type="text" value="{{$suratSurveySkripsi->revisi}}" class="form-control form-control-solid" name="revisi"/>
+                                </div>
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
                                     <a href="{{ route('suratSurveySkripsi') }}" class="btn btn-secondary">
