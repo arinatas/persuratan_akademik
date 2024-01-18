@@ -16,7 +16,7 @@
 										<!--begin::Title-->
 										<div class="d-flex flex-row justify-content-between">
 											<div>
-												<h1>My {{ $title }} Request</h1>
+												<h1>Informasi Surat Yang Diajukan</h1>
 											</div>
 
 										</div>
@@ -31,7 +31,6 @@
 													<tr class="fw-bold fs-5">
 														<th>No</th>
 														<th class="min-w-80px">Kepada</th>
-														<th class="min-w-80px">Tempat</th>
 														<th class="min-w-200px">Keterangan Survey</th>
 														<th>Status</th>
 														<th>Action</th>
@@ -45,7 +44,6 @@
 														<tr>
 															<td>{{ $no }}</td>
 															<td>{{ $item->yth }}</td>
-															<td>{{ $item->tempat }}</td>
 															<td>{{ $item->keterangan }}</td>
 															<td>
 																@if ($item->status_acc == 0)
@@ -101,10 +99,6 @@
 																						<tr>
 																							<th>Ditujukan Kepada</th>
 																							<td>{{ $item->yth }}</td>
-																						</tr>
-																						<tr>
-																							<th>Kepada di Tempat</th>
-																							<td>{{ $item->tempat }}</td>
 																						</tr>
 																						<tr>
 																							<th>Matakuliah</th>
@@ -301,15 +295,6 @@
 													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
 													<input type="text" value="{{ old('yth') }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
 													@error('yth')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
-														</div>
-													@enderror
-												</div>
-												<div class="col-lg-4">
-													<label class="required form-label">Tempat / Nama Perusahaan</label>
-													<input type="text" value="{{ old('tempat') }}" class="form-control form-control-solid  @error('tempat') is-invalid @enderror" required name="tempat"/>
-													@error('tempat')
 														<div class="invalid-feedback mb-1">
 															{{ $message }}
 														</div>

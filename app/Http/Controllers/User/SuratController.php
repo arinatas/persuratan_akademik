@@ -192,7 +192,7 @@ class SuratController extends Controller
                     'nomor' => 'nullable|string|max:100',
                     'nim' => 'required|string|max:100',
                     'nama_ortu' => 'required|string|max:255',
-                    'pangkat' => 'required|string|max:255',
+                    'pangkat' => 'nullable|string|max:255',
                     'semester' => 'required|string|max:100',
                     'tahun_akademik' => 'required|string|max:100',
                 ]);
@@ -273,7 +273,7 @@ class SuratController extends Controller
                     'nomor' => 'nullable|string|max:100',
                     'nim' => 'required|string|max:100',
                     'nama_ortu' => 'required|string|max:255',
-                    'pangkat' => 'required|string|max:255',
+                    'pangkat' => 'nullable|string|max:255',
                     'semester' => 'required|string|max:100',
                     'tahun_akademik' => 'required|string|max:100',
                 ]);
@@ -378,7 +378,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'nim' => 'required|string|max:100',
                     'data1' => 'required|string',
                     'data2' => 'nullable|string',
@@ -400,7 +399,6 @@ class SuratController extends Controller
                     SuratPermohonanData::create([
                         'nomor' => $request->nomor,
                         'yth' => $request->yth,
-                        'tempat' => $request->tempat,
                         'nim' => $request->nim,
                         'data1' => $request->data1,
                         'data2' => $request->data2,
@@ -465,7 +463,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:100',
-                    'tempat' => 'required|string|max:255',
                     'nim' => 'required|string|max:100',
                     'data1' => 'required|string|max:100',
                     'data2' => 'nullable|string|max:100',
@@ -486,7 +483,6 @@ class SuratController extends Controller
                     // update data
                         $mySuratPermohonanData->nomor = $request->nomor;
                         $mySuratPermohonanData->yth = $request->yth;
-                        $mySuratPermohonanData->tempat = $request->tempat;
                         $mySuratPermohonanData->nim = $request->nim;
                         $mySuratPermohonanData->data1 = $request->data1;
                         $mySuratPermohonanData->data2 = $request->data2;
@@ -577,7 +573,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'tgl_mulai' => 'required|date',
                     'tgl_selesai' => 'required|date',
                     'nim1' => 'required|string|max:100',
@@ -612,7 +607,6 @@ class SuratController extends Controller
                     SuratMbkm::create([
                         'nomor' => $request->nomor,
                         'yth' => $request->yth,
-                        'tempat' => $request->tempat,
                         'tgl_mulai' => $request->tgl_mulai,
                         'tgl_selesai' => $request->tgl_selesai,
                         'nim1' => $request->nim1,
@@ -689,7 +683,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'tgl_mulai' => 'required|date',
                     'tgl_selesai' => 'required|date',
                     'nim1' => 'required|string|max:100',
@@ -723,7 +716,6 @@ class SuratController extends Controller
                     // update data
                         $mySuratMbkm->nomor = $request->nomor;
                         $mySuratMbkm->yth = $request->yth;
-                        $mySuratMbkm->tempat = $request->tempat;
                         $mySuratMbkm->tgl_mulai = $request->tgl_mulai;
                         $mySuratMbkm->tgl_selesai = $request->tgl_selesai;
                         $mySuratMbkm->nim1 = $request->nim1;
@@ -827,7 +819,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'matkul' => 'required|string|max:255',
                     'keterangan' => 'required|string',
                     'perusahaan' => 'required|string|max:255',
@@ -863,7 +854,6 @@ class SuratController extends Controller
                     SuratSurveyMatkul::create([
                         'nomor' => $request->nomor,
                         'yth' => $request->yth,
-                        'tempat' => $request->tempat,
                         'matkul' => $request->matkul,
                         'keterangan' => $request->keterangan,
                         'perusahaan' => $request->perusahaan,
@@ -941,7 +931,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'matkul' => 'required|string|max:255',
                     'keterangan' => 'required|string',
                     'perusahaan' => 'required|string|max:255',
@@ -976,7 +965,6 @@ class SuratController extends Controller
                     // update data
                         $mySurveyMatkuls->nomor = $request->nomor;
                         $mySurveyMatkuls->yth = $request->yth;
-                        $mySurveyMatkuls->tempat = $request->tempat;
                         $mySurveyMatkuls->matkul = $request->matkul;
                         $mySurveyMatkuls->keterangan = $request->keterangan;
                         $mySurveyMatkuls->perusahaan = $request->perusahaan;
@@ -1081,7 +1069,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'topik' => 'required|string',
                     'nim1' => 'required|string|max:100',
                     'nama1' => 'required|string|max:255',
@@ -1115,7 +1102,6 @@ class SuratController extends Controller
                     SuratSurveyProposal::create([
                         'nomor' => $request->nomor,
                         'yth' => $request->yth,
-                        'tempat' => $request->tempat,
                         'topik' => $request->topik,
                         'nim1' => $request->nim1,
                         'nama1' => $request->nama1,
@@ -1191,7 +1177,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'topik' => 'required|string',
                     'nim1' => 'required|string|max:100',
                     'nama1' => 'required|string|max:255',
@@ -1224,7 +1209,6 @@ class SuratController extends Controller
                     // update data
                         $mySurveyProposal->nomor = $request->nomor;
                         $mySurveyProposal->yth = $request->yth;
-                        $mySurveyProposal->tempat = $request->tempat;
                         $mySurveyProposal->topik = $request->topik;
                         $mySurveyProposal->nim1 = $request->nim1;
                         $mySurveyProposal->nama1 = $request->nama1;
@@ -1327,7 +1311,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'topik' => 'required|string',
                     'nim1' => 'required|string|max:100',
                     'nama1' => 'required|string|max:255',
@@ -1361,7 +1344,6 @@ class SuratController extends Controller
                     SuratSurveySkripsi::create([
                         'nomor' => $request->nomor,
                         'yth' => $request->yth,
-                        'tempat' => $request->tempat,
                         'topik' => $request->topik,
                         'nim1' => $request->nim1,
                         'nama1' => $request->nama1,
@@ -1437,7 +1419,6 @@ class SuratController extends Controller
                 $validator = Validator::make($request->all(), [
                     'nomor' => 'nullable|string|max:100',
                     'yth' => 'required|string|max:255',
-                    'tempat' => 'required|string|max:255',
                     'topik' => 'required|string',
                     'nim1' => 'required|string|max:100',
                     'nama1' => 'required|string|max:255',
@@ -1470,7 +1451,6 @@ class SuratController extends Controller
                     // update data
                         $mySurveySkripsi->nomor = $request->nomor;
                         $mySurveySkripsi->yth = $request->yth;
-                        $mySurveySkripsi->tempat = $request->tempat;
                         $mySurveySkripsi->topik = $request->topik;
                         $mySurveySkripsi->nim1 = $request->nim1;
                         $mySurveySkripsi->nama1 = $request->nama1;

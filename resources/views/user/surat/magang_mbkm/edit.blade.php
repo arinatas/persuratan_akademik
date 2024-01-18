@@ -30,15 +30,6 @@
 														</div>
 													@enderror
 												</div>
-												<div class="col-lg-4">
-													<label class="required form-label">Tempat / Nama Perusahaan</label>
-													<input type="text" value="{{ $mySuratMbkm->tempat }}" class="form-control form-control-solid  @error('tempat') is-invalid @enderror" required name="tempat"/>
-													@error('tempat')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
-														</div>
-													@enderror
-												</div>
 												<div class="col-lg-2">
 													<label class="form-label">Tanggal Mulai</label>
 													<input type="date" value="{{ $mySuratMbkm->tgl_mulai }}" class="form-control form-control-solid" required name="tgl_mulai"/>

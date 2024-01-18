@@ -30,15 +30,6 @@
 														</div>
 													@enderror
 												</div>
-												<div class="col-lg-6">
-													<label class="required form-label">Tempat / Nama Perusahaan</label>
-													<input type="text" value="{{ $mySuratPermohonanData->tempat }}" class="form-control form-control-solid  @error('tempat') is-invalid @enderror" required name="tempat"/>
-													@error('tempat')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
-														</div>
-													@enderror
-												</div>
 												<div class="col-lg-12">
 													<label class="required form-label">Data 1</label>
 													<input type="text" value="{{ $mySuratPermohonanData->data1 }}" class="form-control form-control-solid  @error('data1') is-invalid @enderror" required name="data1"/>

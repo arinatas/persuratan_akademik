@@ -31,15 +31,6 @@
 													@enderror
 												</div>
 												<div class="col-lg-4">
-													<label class="required form-label">Tempat / Nama Perusahaan</label>
-													<input type="text" value="{{ $mySurveyMatkuls->tempat }}" class="form-control form-control-solid  @error('tempat') is-invalid @enderror" required name="tempat"/>
-													@error('tempat')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
-														</div>
-													@enderror
-												</div>
-												<div class="col-lg-4">
 													<label class="required form-label">Matakuliah</label>
 													<input type="text" value="{{ $mySurveyMatkuls->matkul }}" class="form-control form-control-solid  @error('matkul') is-invalid @enderror" required name="matkul"/>
 													@error('matkul')

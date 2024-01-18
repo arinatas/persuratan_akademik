@@ -16,7 +16,7 @@
 										<!--begin::Title-->
 										<div class="d-flex flex-row justify-content-between">
 											<div>
-												<h1>My {{ $title }} Request</h1>
+												<h1>Informasi Surat Yang Diajukan</h1>
 											</div>
 
 										</div>
@@ -239,8 +239,8 @@
 													@enderror
 												</div>
 												<div class="col-lg-6">
-													<label class="required form-label">Pangkat / Golongan</label>
-													<input type="text" value="{{ old('pangkat') }}" class="form-control form-control-solid  @error('pangkat') is-invalid @enderror" required name="pangkat"/>
+													<label class="form-label">Pangkat / Golongan</label>
+													<input type="text" value="{{ old('pangkat') }}" class="form-control form-control-solid  @error('pangkat') is-invalid @enderror" name="pangkat"/>
 													@error('pangkat')
 														<div class="invalid-feedback mb-1">
 															{{ $message }}
