@@ -128,10 +128,6 @@
                                                                                     <td>{{ $item->yth }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Kepada di Tempat</th>
-                                                                                    <td>{{ $item->tempat }}</td>
-                                                                                </tr>
-                                                                                <tr>
                                                                                     <th>Tanggal Mulai</th>
                                                                                     <td>{{ \Carbon\Carbon::parse($item->tgl_mulai)->format('d F Y') }}</td>
                                                                                 </tr>
@@ -353,14 +349,6 @@
                                                         </label>
                                                         <!--end::Label-->
                                                         <input class="form-control form-control-solid" type="text" name="yth" required value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tempat</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="tempat" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->

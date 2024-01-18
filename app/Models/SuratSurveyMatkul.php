@@ -17,7 +17,6 @@ class SuratSurveyMatkul extends Model
     protected $fillable = [
         'nomor',
         'yth',
-        'tempat',
         'matkul',
         'keterangan',
         'perusahaan',

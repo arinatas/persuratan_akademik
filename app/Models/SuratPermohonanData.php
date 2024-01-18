@@ -17,7 +17,6 @@ class SuratPermohonanData extends Model
     protected $fillable = [
         'nomor',
         'yth',
-        'tempat',
         'nim',
         'data1',
         'data2',

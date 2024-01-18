@@ -59,7 +59,6 @@ class SuratSurveySkripsiController extends Controller
         $validator = Validator::make($request->all(), [
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
-            'tempat' => 'required|string|max:255',
             'topik' => 'required|string',
             'nim1' => 'required|string|max:100',
             'nama1' => 'required|string|max:255',
@@ -91,7 +90,6 @@ class SuratSurveySkripsiController extends Controller
             SuratSurveySkripsi::create([
                 'nomor' => $request->nomor,
                 'yth' => $request->yth,
-                'tempat' => $request->tempat,
                 'topik' => $request->topik,
                 'nim1' => $request->nim1,
                 'nama1' => $request->nama1,
@@ -149,7 +147,6 @@ class SuratSurveySkripsiController extends Controller
         $validator = Validator::make($request->all(), [
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
-            'tempat' => 'required|string|max:255',
             'topik' => 'required|string',
             'nim1' => 'required|string|max:100',
             'nama1' => 'required|string|max:255',
@@ -182,7 +179,6 @@ class SuratSurveySkripsiController extends Controller
         try{
             $suratSurveySkripsi->nomor = $request->nomor;
             $suratSurveySkripsi->yth = $request->yth;
-            $suratSurveySkripsi->tempat = $request->tempat;
             $suratSurveySkripsi->topik = $request->topik;
             $suratSurveySkripsi->nim1 = $request->nim1;
             $suratSurveySkripsi->nama1 = $request->nama1;

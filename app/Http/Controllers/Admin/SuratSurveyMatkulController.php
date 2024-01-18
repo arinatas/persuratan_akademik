@@ -59,7 +59,6 @@ class SuratSurveyMatkulController extends Controller
         $validator = Validator::make($request->all(), [
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
-            'tempat' => 'required|string|max:255',
             'matkul' => 'required|string|max:255',
             'keterangan' => 'required|string',
             'perusahaan' => 'required|string|max:255',
@@ -93,7 +92,6 @@ class SuratSurveyMatkulController extends Controller
             SuratSurveyMatkul::create([
                 'nomor' => $request->nomor,
                 'yth' => $request->yth,
-                'tempat' => $request->tempat,
                 'matkul' => $request->matkul,
                 'keterangan' => $request->keterangan,
                 'perusahaan' => $request->perusahaan,
@@ -153,7 +151,6 @@ class SuratSurveyMatkulController extends Controller
         $validator = Validator::make($request->all(), [
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
-            'tempat' => 'required|string|max:255',
             'matkul' => 'required|string|max:255',
             'keterangan' => 'required|string',
             'perusahaan' => 'required|string|max:255',
@@ -182,7 +179,6 @@ class SuratSurveyMatkulController extends Controller
         try{
             $suratSurveyMatkul->nomor = $request->nomor;
             $suratSurveyMatkul->yth = $request->yth;
-            $suratSurveyMatkul->tempat = $request->tempat;
             $suratSurveyMatkul->matkul = $request->matkul;
             $suratSurveyMatkul->keterangan = $request->keterangan;
             $suratSurveyMatkul->perusahaan = $request->perusahaan;

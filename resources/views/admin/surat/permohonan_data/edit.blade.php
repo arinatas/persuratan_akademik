@@ -37,10 +37,6 @@
                                     <input type="text" value="{{$suratPermohonanData->yth}}" class="form-control form-control-solid" required name="yth"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Kepada Ditempat</label>
-                                    <input type="text" value="{{$suratPermohonanData->tempat}}" class="form-control form-control-solid" required name="tempat"/>
-                                </div>
-								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Nim</label>
                                     <input type="text" value="{{$suratPermohonanData->nim}}" class="form-control form-control-solid" required name="nim"/>
                                 </div>

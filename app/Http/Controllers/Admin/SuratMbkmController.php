@@ -59,7 +59,6 @@ class SuratMbkmController extends Controller
         $validator = Validator::make($request->all(), [
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
-            'tempat' => 'required|string|max:255',
             'tgl_mulai' => 'required|date',
             'tgl_selesai' => 'required|date',
             'nim1' => 'required|string|max:100',
@@ -92,7 +91,6 @@ class SuratMbkmController extends Controller
             SuratMbkm::create([
                 'nomor' => $request->nomor,
                 'yth' => $request->yth,
-                'tempat' => $request->tempat,
                 'tgl_mulai' => $request->tgl_mulai,
                 'tgl_selesai' => $request->tgl_selesai,
                 'nim1' => $request->nim1,
@@ -151,7 +149,6 @@ class SuratMbkmController extends Controller
         $validator = Validator::make($request->all(), [
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
-            'tempat' => 'required|string|max:255',
             'tgl_mulai' => 'required|date',
             'tgl_selesai' => 'required|date',
             'nim1' => 'required|string|max:100',
@@ -185,7 +182,6 @@ class SuratMbkmController extends Controller
         try{
             $suratMbkm->nomor = $request->nomor;
             $suratMbkm->yth = $request->yth;
-            $suratMbkm->tempat = $request->tempat;
             $suratMbkm->tgl_mulai = $request->tgl_mulai;
             $suratMbkm->tgl_selesai = $request->tgl_selesai;
             $suratMbkm->nim1 = $request->nim1;

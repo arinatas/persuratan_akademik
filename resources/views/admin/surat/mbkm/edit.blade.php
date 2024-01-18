@@ -37,10 +37,6 @@
                                     <input type="text" value="{{$suratMbkm->yth}}" class="form-control form-control-solid" required name="yth"/>
                                 </div>
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Di Tempat</label>
-                                    <input type="text" value="{{$suratMbkm->tempat}}" class="form-control form-control-solid" required name="tempat"/>
-                                </div>
-								<div class="mb-10">
                                     <label for="exampleFormControlInput1" class="required form-label">Tanggal Mulai</label>
                                     <input type="date" value="{{$suratMbkm->tgl_mulai}}" class="form-control form-control-solid" required name="tgl_mulai"/>
                                 </div>

@@ -59,7 +59,6 @@ class SuratPermohonanDataController extends Controller
         $validator = Validator::make($request->all(), [
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:255',
-            'tempat' => 'required|string|max:255',
             'nim' => 'required|string|max:100',
             'data1' => 'required|string',
             'data2' => 'nullable|string',
@@ -81,7 +80,6 @@ class SuratPermohonanDataController extends Controller
             SuratPermohonanData::create([
                 'nomor' => $request->nomor,
                 'yth' => $request->yth,
-                'tempat' => $request->tempat,
                 'nim' => $request->nim,
                 'data1' => $request->data1,
                 'data2' => $request->data2,
@@ -129,7 +127,6 @@ class SuratPermohonanDataController extends Controller
         $validator = Validator::make($request->all(), [
             'nomor' => 'nullable|string|max:100',
             'yth' => 'required|string|max:100',
-            'tempat' => 'required|string|max:255',
             'nim' => 'required|string|max:100',
             'data1' => 'required|string|max:100',
             'data2' => 'nullable|string|max:100',
@@ -146,7 +143,6 @@ class SuratPermohonanDataController extends Controller
         try{
             $suratPermohonanData->nomor = $request->nomor;
             $suratPermohonanData->yth = $request->yth;
-            $suratPermohonanData->tempat = $request->tempat;
             $suratPermohonanData->nim = $request->nim;
             $suratPermohonanData->data1 = $request->data1;
             $suratPermohonanData->data2 = $request->data2;
