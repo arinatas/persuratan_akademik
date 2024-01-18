@@ -79,7 +79,7 @@
 												</div>
 												<div class="col-lg-4">
 													<label class="form-label">Prodi</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi2" required>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi2">
                                                         <option value="" {{ is_null($mySurveyProposal->prodi2) ? 'selected' : '' }}>Pilih Prodi</option>
 														<option value="Informatika" {{ $mySurveyProposal->prodi2 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
 														<option value="Sistem Informasi" {{ $mySurveyProposal->prodi2 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
@@ -104,7 +104,7 @@
 												</div>
 												<div class="col-lg-4">
 													<label class="form-label">Prodi</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi3" required>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi3">
                                                         <option value="" {{ is_null($mySurveyProposal->prodi3) ? 'selected' : '' }}>Pilih Prodi</option>
 														<option value="Informatika" {{ $mySurveyProposal->prodi3 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
 														<option value="Sistem Informasi" {{ $mySurveyProposal->prodi3 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
@@ -129,7 +129,7 @@
 												</div>
 												<div class="col-lg-4">
 													<label class="form-label">Prodi</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi4" required>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi4">
                                                         <option value="" {{ is_null($mySurveyProposal->prodi4) ? 'selected' : '' }}>Pilih Prodi</option>
 														<option value="Informatika" {{ $mySurveyProposal->prodi4 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
 														<option value="Sistem Informasi" {{ $mySurveyProposal->prodi4 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
@@ -154,7 +154,7 @@
 												</div>
 												<div class="col-lg-4">
 													<label class="form-label">Prodi</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi5" required>
+													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi5">
                                                         <option value="" {{ is_null($mySurveyProposal->prodi5) ? 'selected' : '' }}>Pilih Prodi</option>
 														<option value="Informatika" {{ $mySurveyProposal->prodi5 == 'Informatika' ? 'selected' : '' }}>Informatika</option>
 														<option value="Sistem Informasi" {{ $mySurveyProposal->prodi5 == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
