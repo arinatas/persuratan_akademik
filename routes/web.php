@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\DosenPAController;
 use App\Http\Controllers\Admin\KaprodiController;
 use App\Http\Controllers\Admin\PenandaTanganController;
 use App\Http\Controllers\Admin\JenisPanduanController;
+use App\Http\Controllers\Admin\PedomanController;
 use App\Http\Controllers\Admin\SuratMbkmController;
 use App\Http\Controllers\Admin\SuratSurveyMatkulController;
 use App\Http\Controllers\Admin\SuratKeteranganKuliahController;
@@ -170,6 +171,13 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/rejectSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'reject'])->middleware('auth')->name('reject.suratPermohonanData');
     Route::post('/revisiSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'revisi'])->middleware('auth')->name('revisi.suratPermohonanData');
     Route::get('/exportSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratPermohonanData');
+
+    // Pedoman
+    Route::get('/pedoman', [PedomanController::class, 'index'])->middleware('auth')->name('pedoman');
+    Route::post('/pedoman', [PedomanController::class, 'store'])->middleware('auth')->name('insert.pedoman');
+    Route::get('/editPedoman/{id}', [PedomanController::class, 'edit'])->middleware('auth')->name('edit.pedoman');
+    Route::post('/updatePedoman/{id}', [PedomanController::class, 'update'])->middleware('auth')->name('update.pedoman');
+    Route::delete('/deletePedoman/{id}', [PedomanController::class, 'destroy'])->middleware('auth')->name('destroy.pedoman');
 
 });
 
