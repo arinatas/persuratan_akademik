@@ -14,7 +14,7 @@ class SuratSurveySkripsiController extends Controller
 {
     public function index()
     {
-        $perPage = 5;
+        $perPage = 10;
         $query = SuratSurveySkripsi::orderBy('id', 'desc');
 
         // Filter berdasarkan status_acc

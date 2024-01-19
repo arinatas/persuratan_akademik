@@ -14,7 +14,7 @@ class SuratMbkmController extends Controller
 {
     public function index()
     {
-        $perPage = 5;
+        $perPage = 10;
     
         $query = SuratMbkm::orderBy('id', 'desc');
     

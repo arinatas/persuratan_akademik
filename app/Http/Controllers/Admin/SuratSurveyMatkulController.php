@@ -14,7 +14,7 @@ class SuratSurveyMatkulController extends Controller
 {
     public function index()
     {
-        $perPage = 5;
+        $perPage = 10;
 
         $query = SuratSurveyMatkul::orderBy('id', 'desc');
 

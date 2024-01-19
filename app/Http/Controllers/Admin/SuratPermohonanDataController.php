@@ -14,7 +14,7 @@ class SuratPermohonanDataController extends Controller
 {
     public function index()
     {
-        $perPage = 5;
+        $perPage = 10;
 
         $query = SuratPermohonanData::with('biodata')->orderBy('id', 'desc');
         

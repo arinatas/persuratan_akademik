@@ -14,7 +14,7 @@ class SuratKeteranganKuliahController extends Controller
 {
     public function index()
     {
-        $perPage = 5;
+        $perPage = 10;
     
         // Mulai dengan query dasar
         $query = SuratKeteranganKuliah::with('biodata')->orderBy('id', 'desc');
