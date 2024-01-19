@@ -14,14 +14,34 @@ class SuratMbkmController extends Controller
 {
     public function index()
     {
-        $mbkms = SuratMbkm::orderBy('id', 'desc')->get();
-            return view('admin.surat.mbkm.index', [
-                'title' => 'Surat Magang MBKM',
-                'section' => 'Request Surat Mahasiswa',
-                'active' => 'Surat Magang MBKM',
-                'mbkms' => $mbkms,
-            ]);
-    }
+        $perPage = 5;
+    
+        $mbkms = SuratMbkm::orderBy('id', 'desc');
+    
+        // Filter by status_acc
+        $statusAcc = request()->get('status_acc');
+        if ($statusAcc !== null) {
+            $mbkms = $mbkms->where('status_acc', $statusAcc);
+        }
+         // End Filter by status_acc
+    
+        // Filter Tanggal
+        $startDate = request()->get('start_date');
+        $endDate = request()->get('end_date');
+        if ($startDate && $endDate) {
+            $mbkms = $mbkms->whereBetween('tgl_pengajuan', [$startDate, $endDate]);
+        }
+        // End Filter Tanggal
+    
+        $mbkms = $mbkms->paginate($perPage)->appends(request()->query());
+    
+        return view('admin.surat.mbkm.index', [
+            'title' => 'Surat Magang MBKM',
+            'section' => 'Request Surat Mahasiswa',
+            'active' => 'Surat Magang MBKM',
+            'mbkms' => $mbkms,
+        ]);
+    }        
 
     public function approve($id)
     {

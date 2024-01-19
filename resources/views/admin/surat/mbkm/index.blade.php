@@ -25,6 +25,38 @@
                                             <!--end::Title-->
                                         </div>
                                         <!--end::Heading-->
+                                        <!-- Tampilan Filter -->
+                                        <div class="card-px mt-5">
+                                            <form action="{{ route('suratMbkm') }}" method="GET" class="mb-3">
+                                                <div class="input-group">
+                                                    <!-- Filter Kelas -->
+                                                    <div class="input-group-append" style="width: 185px;">
+                                                        <select class="form-control" name="status_acc">
+                                                            <option value="">Filter by Status</option>
+                                                            <option value="0"{{ request('status_acc') == '0' ? ' selected' : '' }}>Menunggu</option>
+                                                            <option value="1"{{ request('status_acc') == '1' ? ' selected' : '' }}>Disetujui</option>
+                                                            <option value="2"{{ request('status_acc') == '2' ? ' selected' : '' }}>Ditolak</option>
+                                                            <option value="3"{{ request('status_acc') == '3' ? ' selected' : '' }}>Direvisi</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Filter Kelas -->
+                                                    
+                                                    <!-- Filter Tanggal -->
+                                                    <div style="margin-left: 10px;">
+                                                        <input type="date" class="form-control" name="start_date" value="{{ request('start_date') }}" placeholder="Start Date">
+                                                    </div>
+                                                    <div style="margin-left: 10px;">
+                                                        <input type="date" class="form-control" name="end_date" value="{{ request('end_date') }}" placeholder="End Date">
+                                                    </div>
+                                                    <!-- End Filter Tanggal -->
+
+                                                    <div style="margin-left: 10px;">
+                                                        <button type="submit" class="btn btn-danger" style="width: 130px;">Filter</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- End Tampilan Filter -->
                                         <!--begin::Table-->
                                         @if ($mbkms )
                                         <div class="table-responsive my-10 mx-8">
@@ -41,12 +73,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @php
-                                                        $no = 1; // Inisialisasi no
-                                                    @endphp
                                                     @foreach ($mbkms as $item)
                                                     <tr>
-                                                        <td>{{ $no }}</td>
+                                                        <td>{{ $mbkms->firstItem() + $loop->index }}</td>
                                                         <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
                                                         <td>{{ $item->nim1 }}</td>
                                                         <td>{{ $item->nama1 }}</td>
@@ -285,13 +314,11 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    @php
-                                                        $no++; // Tambahkan no setiap kali iterasi
-                                                    @endphp
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+                                        {{ $mbkms->appends(request()->query())->links() }}
                                         @else
                                         <div class="my-10 mx-15">
                                             <!--begin::Notice-->
