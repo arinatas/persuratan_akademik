@@ -14,7 +14,7 @@ class PedomanController extends Controller
     public function index()
     {
         $pedomans = Pedoman::all();
-            return view('admin.master.pedoman.index', [
+            return view('admin.pedoman.index', [
                 'title' => 'Pedoman',
                 'section' => 'Master',
                 'active' => 'Pedoman',
@@ -66,7 +66,7 @@ class PedomanController extends Controller
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
-        return view('admin.master.pedoman.edit', [
+        return view('admin.pedoman.edit', [
             'title' => 'Pedoman',
             'section' => 'Master',
             'active' => 'Pedoman',

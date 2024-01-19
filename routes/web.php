@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\KaprodiController;
 use App\Http\Controllers\Admin\PenandaTanganController;
 use App\Http\Controllers\Admin\JenisPanduanController;
 use App\Http\Controllers\Admin\PedomanController;
+use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\SuratMbkmController;
 use App\Http\Controllers\Admin\SuratSurveyMatkulController;
 use App\Http\Controllers\Admin\SuratKeteranganKuliahController;
@@ -178,6 +179,13 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editPedoman/{id}', [PedomanController::class, 'edit'])->middleware('auth')->name('edit.pedoman');
     Route::post('/updatePedoman/{id}', [PedomanController::class, 'update'])->middleware('auth')->name('update.pedoman');
     Route::delete('/deletePedoman/{id}', [PedomanController::class, 'destroy'])->middleware('auth')->name('destroy.pedoman');
+
+    // Pengumuman
+    Route::get('/pengumuman', [PengumumanController::class, 'index'])->middleware('auth')->name('pengumuman');
+    Route::post('/pengumuman', [PengumumanController::class, 'store'])->middleware('auth')->name('insert.pengumuman');
+    Route::get('/editPengumuman/{id}', [PengumumanController::class, 'edit'])->middleware('auth')->name('edit.pengumuman');
+    Route::post('/updatePengumuman/{id}', [PengumumanController::class, 'update'])->middleware('auth')->name('update.pengumuman');
+    Route::delete('/deletePengumuman/{id}', [PengumumanController::class, 'destroy'])->middleware('auth')->name('destroy.pengumuman');
 
 });
 
