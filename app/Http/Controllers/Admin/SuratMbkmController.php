@@ -16,12 +16,12 @@ class SuratMbkmController extends Controller
     {
         $perPage = 5;
     
-        $mbkms = SuratMbkm::orderBy('id', 'desc');
+        $query = SuratMbkm::orderBy('id', 'desc');
     
         // Filter by status_acc
         $statusAcc = request()->get('status_acc');
         if ($statusAcc !== null) {
-            $mbkms = $mbkms->where('status_acc', $statusAcc);
+            $query->where('status_acc', $statusAcc);
         }
          // End Filter by status_acc
     
@@ -29,11 +29,11 @@ class SuratMbkmController extends Controller
         $startDate = request()->get('start_date');
         $endDate = request()->get('end_date');
         if ($startDate && $endDate) {
-            $mbkms = $mbkms->whereBetween('tgl_pengajuan', [$startDate, $endDate]);
+            $query->whereBetween('tgl_pengajuan', [$startDate, $endDate]);
         }
         // End Filter Tanggal
     
-        $mbkms = $mbkms->paginate($perPage)->appends(request()->query());
+        $mbkms = $query->paginate($perPage)->appends(request()->query());
     
         return view('admin.surat.mbkm.index', [
             'title' => 'Surat Magang MBKM',

@@ -36,12 +36,17 @@ class SuratSurveyProposal extends Model
         'status_acc',
         'acc_by',
         'revisi',
+        'tgl_pengajuan'
     ];
 
     // Set nilai default untuk status_acc ke 0
-    protected $attributes = [
-        'status_acc' => 0
-    ];
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+
+        $this->attributes['status_acc'] = 0;
+        $this->attributes['tgl_pengajuan'] = now();
+    }
 
     public $timestamps = true;
 

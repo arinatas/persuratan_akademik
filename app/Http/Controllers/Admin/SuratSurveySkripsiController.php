@@ -14,13 +14,33 @@ class SuratSurveySkripsiController extends Controller
 {
     public function index()
     {
-        $surveySkripsis = SuratSurveySkripsi::orderBy('id', 'desc')->get();
-            return view('admin.surat.survey_skripsi.index', [
-                'title' => 'Surat Izin Survei Skripsi',
-                'section' => 'Request Surat Mahasiswa',
-                'active' => 'Surat Izin Survei Skripsi',
-                'surveySkripsis' => $surveySkripsis,
-            ]);
+        $perPage = 5;
+        $query = SuratSurveySkripsi::orderBy('id', 'desc');
+
+        // Filter berdasarkan status_acc
+        $statusAcc = request()->get('status_acc');
+        if ($statusAcc !== null) {
+            $query->where('status_acc', $statusAcc);
+        }
+        // Akhir Filter berdasarkan status_acc
+    
+        // Filter Tanggal
+        $startDate = request()->get('start_date');
+        $endDate = request()->get('end_date');
+        if ($startDate && $endDate) {
+            $query->whereBetween('tgl_pengajuan', [$startDate, $endDate]);
+        }
+        // Akhir Filter Tanggal
+
+        // Lakukan paginasi pada hasil query
+        $surveySkripsis = $query->paginate($perPage)->appends(request()->query());
+
+        return view('admin.surat.survey_skripsi.index', [
+            'title' => 'Surat Izin Survei Skripsi',
+            'section' => 'Request Surat Mahasiswa',
+            'active' => 'Surat Izin Survei Skripsi',
+            'surveySkripsis' => $surveySkripsis,
+        ]);
     }
 
     public function approve($id)

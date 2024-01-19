@@ -297,6 +297,10 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    <th>Tanggal Pengajuan</th>
+                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_pengajuan)->format('d F Y') }}</td>
+                                                                                </tr>
+                                                                                <tr>
                                                                                     <th>Acc By</th>
                                                                                     <td>{{ isset($item->getUser->username) ? $item->getUser->username : 'Belum di Tindaklanjut' }}</td>
                                                                                 </tr>

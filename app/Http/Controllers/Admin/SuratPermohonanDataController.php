@@ -14,13 +14,34 @@ class SuratPermohonanDataController extends Controller
 {
     public function index()
     {
-        $permohonanDatas = SuratPermohonanData::with('biodata')->orderBy('id', 'desc')->get();
-            return view('admin.surat.permohonan_data.index', [
-                'title' => 'Surat Permohonan Permintaan Data',
-                'section' => 'Request Surat Mahasiswa',
-                'active' => 'Surat Permohonan Permintaan Data',
-                'permohonanDatas' => $permohonanDatas,
-            ]);
+        $perPage = 5;
+
+        $query = SuratPermohonanData::with('biodata')->orderBy('id', 'desc');
+        
+        // Filter berdasarkan status_acc
+        $statusAcc = request()->get('status_acc');
+        if ($statusAcc !== null) {
+            $query->where('status_acc', $statusAcc);
+        }
+        // Akhir Filter berdasarkan status_acc
+    
+        // Filter Tanggal
+        $startDate = request()->get('start_date');
+        $endDate = request()->get('end_date');
+        if ($startDate && $endDate) {
+            $query->whereBetween('tgl_pengajuan', [$startDate, $endDate]);
+        }
+        // Akhir Filter Tanggal
+        
+        // Lakukan paginasi pada hasil query
+        $permohonanDatas = $query->paginate($perPage)->appends(request()->query());
+            
+        return view('admin.surat.permohonan_data.index', [
+            'title' => 'Surat Permohonan Permintaan Data',
+            'section' => 'Request Surat Mahasiswa',
+            'active' => 'Surat Permohonan Permintaan Data',
+            'permohonanDatas' => $permohonanDatas,
+        ]);
     }
 
     public function approve($id)
