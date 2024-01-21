@@ -14,14 +14,36 @@ class SuratKeteranganKuliahController extends Controller
 {
     public function index()
     {
-        $keteranganKuliahs = SuratKeteranganKuliah::with('biodata')->get();
-            return view('admin.surat.keterangan_kuliah.index', [
-                'title' => 'Surat Keterangan Kuliah',
-                'section' => 'Request Surat Mahasiswa',
-                'active' => 'Surat Keterangan Kuliah',
-                'keteranganKuliahs' => $keteranganKuliahs,
-            ]);
-    }
+        $perPage = 10;
+    
+        // Mulai dengan query dasar
+        $query = SuratKeteranganKuliah::with('biodata')->orderBy('id', 'desc');
+    
+        // Filter berdasarkan status_acc
+        $statusAcc = request()->get('status_acc');
+        if ($statusAcc !== null) {
+            $query->where('status_acc', $statusAcc);
+        }
+        // Akhir Filter berdasarkan status_acc
+    
+        // Filter Tanggal
+        $startDate = request()->get('start_date');
+        $endDate = request()->get('end_date');
+        if ($startDate && $endDate) {
+            $query->whereBetween('tgl_pengajuan', [$startDate, $endDate]);
+        }
+        // Akhir Filter Tanggal
+    
+        // Lakukan paginasi pada hasil query
+        $keteranganKuliahs = $query->paginate($perPage)->appends(request()->query());
+    
+        return view('admin.surat.keterangan_kuliah.index', [
+            'title' => 'Surat Keterangan Kuliah',
+            'section' => 'Request Surat Mahasiswa',
+            'active' => 'Surat Keterangan Kuliah',
+            'keteranganKuliahs' => $keteranganKuliahs,
+        ]);
+    }    
 
     public function approve($id)
     {

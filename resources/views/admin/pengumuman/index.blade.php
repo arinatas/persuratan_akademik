@@ -17,7 +17,7 @@
                                         <div class="card-px pt-10 d-flex justify-content-between">
                                             <!--begin::Title-->
                                                 <div class="d-inline mt-2">
-                                                    <h2 class="fs-2x fw-bolder mb-0">{{ $title }}</h2>
+                                                    <h2 class="fs-2x fw-bolder mb-0">Master {{ $title }}</h2>
                                                 </div>
                                                 <div class="d-inline">
                                                     <a href="#" class="btn btn-sm btn-primary fs-6" data-bs-toggle="modal" data-bs-target="#kt_modal_new_akun">Tambah</a>
@@ -25,124 +25,50 @@
                                             <!--end::Title-->
                                         </div>
                                         <!--end::Heading-->
-                                        <!-- Tampilan Filter -->
-                                        <div class="card-px mt-5">
-                                            <form action="{{ route('suratPermohonanData') }}" method="GET" class="mb-3">
-                                                <div class="input-group">
-                                                    <!-- Filter Kelas -->
-                                                    <div class="input-group-append" style="width: 185px;">
-                                                        <select class="form-control" name="status_acc">
-                                                            <option value="">Filter by Status</option>
-                                                            <option value="0"{{ request('status_acc') == '0' ? ' selected' : '' }}>Menunggu</option>
-                                                            <option value="1"{{ request('status_acc') == '1' ? ' selected' : '' }}>Disetujui</option>
-                                                            <option value="2"{{ request('status_acc') == '2' ? ' selected' : '' }}>Ditolak</option>
-                                                            <option value="3"{{ request('status_acc') == '3' ? ' selected' : '' }}>Direvisi</option>
-                                                        </select>
-                                                    </div>
-                                                    <!-- Filter Kelas -->
-                                                    
-                                                    <!-- Filter Tanggal -->
-                                                    <div style="margin-left: 10px;">
-                                                        <input type="date" class="form-control" name="start_date" value="{{ request('start_date') }}" placeholder="Start Date">
-                                                    </div>
-                                                    <div style="margin-left: 10px;">
-                                                        <input type="date" class="form-control" name="end_date" value="{{ request('end_date') }}" placeholder="End Date">
-                                                    </div>
-                                                    <!-- End Filter Tanggal -->
-
-                                                    <div style="margin-left: 10px;">
-                                                        <button type="submit" class="btn btn-danger" style="width: 130px;">Filter</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <!-- End Tampilan Filter -->
                                         <!--begin::Table-->
-                                        @if ($permohonanDatas )
+                                        @if ($pengumumans )
                                         <div class="table-responsive my-10 mx-8">
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
                                                     <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
-                                                        <th class="min-w-50px">No</th>
-                                                        <th class="min-w-100px">Nomor Surat</th>
-                                                        <th class="min-w-100px">NIM</th>
-                                                        <th class="min-w-100px">Nama</th>
-                                                        <th class="min-w-100px">Status Surat</th>
-                                                        <th class="min-w-100px">ACC</th>
-                                                        <th class="min-w-100px">Action</th>
+                                                        <th class="min-w-100px">No</th>
+                                                        <th class="min-w-100px">Judul</th>
+                                                        <th class="min-w-100px">Tanggal Terbit</th>
+                                                        <th class="min-w-100px">File Pengumuman</th>
+                                                        <th class="min-w-300px">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($permohonanDatas as $item)
+                                                    @php
+                                                        $no = 1; // Inisialisasi no
+                                                    @endphp
+                                                    @foreach ($pengumumans as $item)
                                                     <tr>
-                                                        <td>{{ $permohonanDatas->firstItem() + $loop->index }}</td>
-                                                        <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
-                                                        <td>{{ $item->nim }}</td>
-                                                        <td>{{ $item->biodata->nama }}</td>
+                                                        <td>{{ $no }}</td>
+                                                        <td>{{ $item->judul }}</td>
+                                                        <td>{{ \Carbon\Carbon::parse($item->tgl_terbit)->format('d F Y') }}</td>
                                                         <td>
-                                                            @if($item->status_acc == 0)
-                                                                <span class="badge bg-warning text-dark">
-                                                                    <i class="bi bi-clock"></i> Menunggu
-                                                                </span>
-                                                            @elseif($item->status_acc == 1)
-                                                                <span class="badge bg-success">
-                                                                    <i class="bi bi-check-circle"></i> Disetujui
-                                                                </span>
-                                                            @elseif($item->status_acc == 2)
-                                                                <span class="badge bg-danger">
-                                                                    <i class="bi bi-x-circle"></i> Ditolak
-                                                                </span>
-                                                            @elseif($item->status_acc == 3)
-                                                                <span class="badge bg-primary">
-                                                                    <i class="fas fa-cut"></i> Perlu Revisi
-                                                                </span>
+                                                            @if ($item->nama_file)
+                                                                <a href="{{ asset('storage/' . $item->nama_file) }}" target="_blank">
+                                                                    <i class="fas fa-eye"></i> View PDF
+                                                                </a>
                                                             @else
-                                                                <span class="badge bg-secondary">Undefined</span>
+                                                                No File Available
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <div class="btn-group d-flex flex-column">
-                                                                <!-- Approve Button -->
-                                                                <form method="post" action="{{ route('approve.suratPermohonanData', $item->id) }}">
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-sm btn-success btn-action mb-2 w-100" data-toggle="tooltip" title="Setujui"><i class="fas fa-check"></i> Setujui</button>
-                                                                </form>
-
-                                                                <!-- Unapprove Button -->
-                                                                <form method="post" action="{{ route('unapprove.suratPermohonanData', $item->id) }}">
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-sm btn-warning btn-action mb-2 w-100" data-toggle="tooltip" title="Unapprove"><i class="fas fa-undo"></i> Unapprove</button>
-                                                                </form>
-
-                                                                <!-- Revisi Button -->
-                                                                <form method="post" action="{{ route('revisi.suratPermohonanData', $item->id) }}">
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-sm btn-primary btn-action mb-2 w-100" data-toggle="tooltip" title="Revisi">
-                                                                        <i class="fas fa-cut"></i> Revisi
-                                                                    </button>
-                                                                </form>
-
-                                                                <!-- Reject Button -->
-                                                                <form method="post" action="{{ route('reject.suratPermohonanData', $item->id) }}">
-                                                                    @csrf
-                                                                    <button type="submit" class="btn btn-sm btn-danger btn-action w-100" data-toggle="tooltip" title="Tolak"><i class="fas fa-times"></i> Tolak</button>
-                                                                </form>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <a href="{{ route('edit.suratPermohonanData', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit">
-                                                                <i class="fas fa-pencil-alt"></i>
-                                                            </a>
-                                                            <form id="form-delete" action="{{ route('destroy.suratPermohonanData', $item->id ) }}" method="POST" class="d-inline-block">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                                <button id="submit-btn" type="submit" data-toggle="tooltip" title="Hapus bagian" class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)">
-                                                                    <i class="fas fa-trash"></i>
-                                                                </button>
+                                                            <a href="{{ route('edit.pengumuman', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                                            <form id="form-delete" action="{{ route('destroy.pengumuman', $item->id ) }}" method="POST"
+                                                            class="d-inline-block">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button id="submit-btn" type="submit" data-toggle="tooltip" data-original-title="Hapus bagian"
+                                                                class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)"
+                                                                ><i class="fas fa-trash"></i></i></button>
                                                             </form>
-                                                            <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Surat">
-                                                                <i class="fas fa-info-circle"></i>
+                                                            <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Pengumuman"><i class="fas fa-info-circle"></i>
                                                             </button>
+                                                            <!-- Modals Detail-->
                                                             <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered mw-850px">
                                                                     <div class="modal-content">
@@ -163,73 +89,27 @@
                                                                             <div class="table-responsive my-10 mx-8">
                                                                                 <table class="table table-striped gy-7 gs-7">
                                                                                 <tr>
-                                                                                    <th>Nomor Surat</th>
-                                                                                    <td>{{ isset($item->nomor) ? $item->nomor : '-' }}</td>
+                                                                                    <th>Judul</th>
+                                                                                    <td>{{ $item->judul }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Ditujukan Kepada</th>
-                                                                                    <td>{{ $item->yth }}</td>
+                                                                                    <th>Tanggal Awal</th>
+                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_awal)->format('d F Y') }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>NIM</th>
-                                                                                    <td>{{ $item->nim }}</td>
+                                                                                    <th>Tanggal Akhir</th>
+                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_akhir)->format('d F Y') }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Nama</th>
-                                                                                    <td>{{ $item->biodata->nama }}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Program Studi</th>
-                                                                                    <td>{{ $item->biodata->prodi }}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->data1)
-                                                                                        <th>Data 1</th>
-                                                                                        <td>{{ $item->data1 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->data2)
-                                                                                        <th>Data 2</th>
-                                                                                        <td>{{ $item->data2 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->data3)
-                                                                                        <th>Data 3</th>
-                                                                                        <td>{{ $item->data3 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->data4)
-                                                                                        <th>Data 4</th>
-                                                                                        <td>{{ $item->data4 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    @if($item->data5)
-                                                                                        <th>Data 5</th>
-                                                                                        <td>{{ $item->data5 }}</td>
-                                                                                    @endif
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Status Surat</th>
+                                                                                    <th>Status Pin Pengumuman</th>
                                                                                     <td>
-                                                                                        @if($item->status_acc == 0)
-                                                                                            <span class="badge bg-warning text-dark">
-                                                                                                <i class="bi bi-clock"></i> Menunggu
+                                                                                        @if($item->status_pin == 0)
+                                                                                            <span class="badge bg-danger text-dark">
+                                                                                                <i class="bi bi-clock"></i> Tidak Disematkan
                                                                                             </span>
-                                                                                        @elseif($item->status_acc == 1)
+                                                                                        @elseif($item->status_pin == 1)
                                                                                             <span class="badge bg-success">
-                                                                                                <i class="bi bi-check-circle"></i> Disetujui
-                                                                                            </span>
-                                                                                        @elseif($item->status_acc == 2)
-                                                                                            <span class="badge bg-danger">
-                                                                                                <i class="bi bi-x-circle"></i> Ditolak
-                                                                                            </span>
-                                                                                        @elseif($item->status_acc == 3)
-                                                                                            <span class="badge bg-primary">
-                                                                                                <i class="fas fa-cut"></i> Perlu Revisi
+                                                                                                <i class="bi bi-check-circle"></i> Disematkan
                                                                                             </span>
                                                                                         @else
                                                                                             <span class="badge bg-secondary">Undefined</span>
@@ -237,18 +117,76 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    @if($item->status_acc == 3)
-                                                                                        <th>Revisi</th>
-                                                                                        <td>{{ $item->revisi }}</td>
+                                                                                    <th>Tanggal Terbit</th>
+                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_terbit)->format('d F Y') }}</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->desc1)
+                                                                                        <th>Desc 1</th>
+                                                                                        <td>{{ $item->desc1 }}</td>
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Tanggal Pengajuan</th>
-                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_pengajuan)->format('d F Y') }}</td>
+                                                                                    @if($item->desc2)
+                                                                                        <th>Desc 2</th>
+                                                                                        <td>{{ $item->desc2 }}</td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Acc By</th>
-                                                                                    <td>{{ isset($item->getUser->username) ? $item->getUser->username : 'Belum di Tindaklanjut' }}</td>
+                                                                                    @if($item->desc3)
+                                                                                        <th>Desc 3</th>
+                                                                                        <td>{{ $item->desc3 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->desc4)
+                                                                                        <th>Desc 4</th>
+                                                                                        <td>{{ $item->desc4 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->desc5)
+                                                                                        <th>Desc 5</th>
+                                                                                        <td>{{ $item->desc5 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar Pengumuman</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->gambar, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->gambar)
+                                                                                            @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+                                                                                                {{-- Display image --}}
+                                                                                                <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Pengumuman" style="width: 450px; height: auto;">
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>File Pengumuman</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->nama_file, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->nama_file)
+                                                                                            @if (in_array(strtolower($extension), ['pdf']))
+                                                                                                {{-- Display PDF --}}
+                                                                                                <a href="{{ asset('storage/' . $item->nama_file) }}" target="_blank">View PDF</a>
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
                                                                                 </tr>
                                                                                 </table>
                                                                             </div>
@@ -258,17 +196,15 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <br>
-                                                            <div style="margin-top: 10px; margin-left: 5px; ">
-                                                                <a href="{{ route('export.suratPermohonanData', $item->id) }}" class="btn btn-sm btn-secondary btn-action btn-block" data-toggle="tooltip" title="Unduh Surat MBKM"><i class="fas fa-download"></i> Download Surat </a>
-                                                            </div>
                                                         </td>
                                                     </tr>
+                                                    @php
+                                                        $no++; // Tambahkan no setiap kali iterasi
+                                                    @endphp
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
-                                        {{ $permohonanDatas->appends(request()->query())->links() }}
                                         @else
                                         <div class="my-10 mx-15">
                                             <!--begin::Notice-->
@@ -305,7 +241,7 @@
                                 <!--begin::Modal-->
                                 <div class="modal fade" id="kt_modal_new_akun" tabindex="-1" aria-hidden="true">
                                     <!--begin::Modal dialog-->
-                                    <div class="modal-dialog modal-dialog-centered mw-650px">
+                                    <div class="modal-dialog modal-dialog-centered mw-1000px">
                                         <!--begin::Modal content-->
                                         <div class="modal-content">
                                             <!--begin::Modal header-->
@@ -330,72 +266,95 @@
                                             <!--begin::Modal body-->
                                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                                 <!--begin::Form-->
-                                                <form action="{{ route('insert.suratPermohonanData') }}" method="POST">
+                                                <form action="{{ route('insert.pengumuman') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <!--begin::Input group-->
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Nomor Surat</span>
+                                                            <span class="required">Judul</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nomor" value=""/>
+                                                        <input class="form-control form-control-solid" type="text" name="judul" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Ditujukan Kepada</span>
+                                                            <span class="required">Tanggal Awal</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="yth" required value=""/>
+                                                        <input class="form-control form-control-solid" type="date" name="tgl_awal" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Nim</span>
+                                                            <span class="required">Tanggal Akhir</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="nim" required value=""/>
+                                                        <input class="form-control form-control-solid" type="date" name="tgl_akhir" required value=""/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Data 1</span>
+                                                            <span class="required">Status Pengumuman</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="data1" required value=""/>
+                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="status_pin" required>
+                                                            <option value = 0>Tidak Disematkan</option>
+                                                            <option value = 1>Disematkan</option>
+                                                        </select>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Data 2</span>
+                                                            <span class="required">Desc 1</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="data2"  value=""/>
+                                                        <textarea class="form-control form-control-solid" name="desc1" required value="" style="height: 300px;"/></textarea>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Data 3</span>
+                                                            <span class="">Desc 2</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="data3"  value=""/>
+                                                        <textarea class="form-control form-control-solid" name="desc2"  value="" style="height: 300px;"/></textarea>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Data 4</span>
+                                                            <span class="">Desc 3</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="data4"  value=""/>
+                                                        <textarea class="form-control form-control-solid" name="desc3"  value="" style="height: 300px;"/></textarea>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">Data 5</span>
+                                                            <span class="">Desc 4</span>
                                                         </label>
                                                         <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="text" name="data5"  value=""/>
+                                                        <textarea class="form-control form-control-solid" name="desc4"  value="" style="height: 300px;"/></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Desc 5</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <textarea class="form-control form-control-solid" name="desc5"  value="" style="height: 300px;"/></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">File Pengumuman</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="nama_file" />
                                                     </div>
                                                     <!--end::Input group-->
                                                     <!--begin::Actions-->

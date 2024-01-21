@@ -30,57 +30,61 @@ class BiodataController extends Controller
                     || str_contains(strtolower($biodata->nama), strtolower($query));
             });
         }
-
+    
         // Check jika terdapat nilai pada filter
         $kelasFilter = $request->input('kelas');
         // Filter based on class
         if ($kelasFilter) {
             $biodatas = $biodatas->where('kelas', $kelasFilter);
         }
-        
+    
         // Check jika terdapat nilai pada filter prodi
         $prodiFilter = $request->input('prodi');
         // Filter based on prodi
         if ($prodiFilter) {
             $biodatas = $biodatas->where('prodi', $prodiFilter);
         }
-
+    
         // Check jika terdapat nilai pada filter fakultas
         $fakultasFilter = $request->input('fakultas');
         // Filter based on fakultas
         if ($fakultasFilter) {
             $biodatas = $biodatas->where('fakultas', $fakultasFilter);
         }
-
+    
         // Check jika terdapat nilai pada filter angkatan
         $angkatanFilter = $request->input('angkatan');
         // Filter based on angkatan
         if ($angkatanFilter) {
             $biodatas = $biodatas->where('angkatan', $angkatanFilter);
         }
-
+    
         // Check jika terdapat nilai pada filter dosen_pa
         $dosenPAFilter = $request->input('dosen_pa');
         // Filter based on dosen_pa
         if ($dosenPAFilter) {
             $biodatas = $biodatas->where('dosen_pa', $dosenPAFilter);
         }
-        
+    
         // Mengambil nomor halaman dari URL
         $currentPage = request()->query('page', 1);
     
         // Membuat instance LengthAwarePaginator setelah melakukan filtering
+        $perPage = 100; // Set the desired number of items per page consistently
         $biodatas = new LengthAwarePaginator(
-            $biodatas->forPage($currentPage, 100),  // Batasan data per halaman
-            $biodatas->count(),                     // Total item
-            100,                                    // Item per halaman
-            $currentPage,                           // Halaman saat ini
-            ['path' => request()->url()]           // Opsi tambahan
+            $biodatas->forPage($currentPage, $perPage),  // Batasan data per halaman
+            $biodatas->count(),                          // Total item
+            $perPage,                                   // Item per halaman
+            $currentPage,                               // Halaman saat ini
+            ['path' => request()->url()]               // Opsi tambahan
         );
+    
+        // Append filter parameters to pagination links
+        $biodatas->appends(request()->query());
     
         // Mengambil data dosen PA untuk select
         $dosenPAs = DosenPA::all();
-
+    
         // Mengambil data Angkatan untuk Filter
         $angkatanOptions = Biodata::distinct('angkatan')->pluck('angkatan')->sort();
     
@@ -92,7 +96,7 @@ class BiodataController extends Controller
             'dosenPAs' => $dosenPAs,
             'angkatanOptions' => $angkatanOptions,
         ]);
-    }    
+    }     
 
     public function store(Request $request)
     {

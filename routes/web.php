@@ -11,6 +11,9 @@ use App\Http\Controllers\Admin\BiodataController;
 use App\Http\Controllers\Admin\DosenPAController;
 use App\Http\Controllers\Admin\KaprodiController;
 use App\Http\Controllers\Admin\PenandaTanganController;
+use App\Http\Controllers\Admin\JenisPanduanController;
+use App\Http\Controllers\Admin\PedomanController;
+use App\Http\Controllers\Admin\PengumumanController;
 use App\Http\Controllers\Admin\SuratMbkmController;
 use App\Http\Controllers\Admin\SuratSurveyMatkulController;
 use App\Http\Controllers\Admin\SuratKeteranganKuliahController;
@@ -91,6 +94,13 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/updatePenandaTangan/{id}', [PenandaTanganController::class, 'update'])->middleware('auth')->name('update.penandaTangan');
     Route::delete('/deletePenandaTangan/{id}', [PenandaTanganController::class, 'destroy'])->middleware('auth')->name('destroy.penandaTangan');
 
+    // Jenis Panduan
+    Route::get('/jenisPanduan', [JenisPanduanController::class, 'index'])->middleware('auth')->name('jenisPanduan');
+    Route::post('/jenisPanduan', [JenisPanduanController::class, 'store'])->middleware('auth')->name('insert.jenisPanduan');
+    Route::get('/editJenisPanduan/{id}', [JenisPanduanController::class, 'edit'])->middleware('auth')->name('edit.jenisPanduan');
+    Route::post('/updateJenisPanduan/{id}', [JenisPanduanController::class, 'update'])->middleware('auth')->name('update.jenisPanduan');
+    Route::delete('/deleteJenisPanduan/{id}', [JenisPanduanController::class, 'destroy'])->middleware('auth')->name('destroy.jenisPanduan');
+
     // Surat Magang MBKM
     Route::get('/suratMbkm', [SuratMbkmController::class, 'index'])->middleware('auth')->name('suratMbkm');
     Route::post('/suratMbkm', [SuratMbkmController::class, 'store'])->middleware('auth')->name('insert.suratMbkm');
@@ -162,6 +172,20 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/rejectSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'reject'])->middleware('auth')->name('reject.suratPermohonanData');
     Route::post('/revisiSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'revisi'])->middleware('auth')->name('revisi.suratPermohonanData');
     Route::get('/exportSuratPermohonanData/{id}', [SuratPermohonanDataController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratPermohonanData');
+
+    // Pedoman
+    Route::get('/pedoman', [PedomanController::class, 'index'])->middleware('auth')->name('pedoman');
+    Route::post('/pedoman', [PedomanController::class, 'store'])->middleware('auth')->name('insert.pedoman');
+    Route::get('/editPedoman/{id}', [PedomanController::class, 'edit'])->middleware('auth')->name('edit.pedoman');
+    Route::post('/updatePedoman/{id}', [PedomanController::class, 'update'])->middleware('auth')->name('update.pedoman');
+    Route::delete('/deletePedoman/{id}', [PedomanController::class, 'destroy'])->middleware('auth')->name('destroy.pedoman');
+
+    // Pengumuman
+    Route::get('/pengumuman', [PengumumanController::class, 'index'])->middleware('auth')->name('pengumuman');
+    Route::post('/pengumuman', [PengumumanController::class, 'store'])->middleware('auth')->name('insert.pengumuman');
+    Route::get('/editPengumuman/{id}', [PengumumanController::class, 'edit'])->middleware('auth')->name('edit.pengumuman');
+    Route::post('/updatePengumuman/{id}', [PengumumanController::class, 'update'])->middleware('auth')->name('update.pengumuman');
+    Route::delete('/deletePengumuman/{id}', [PengumumanController::class, 'destroy'])->middleware('auth')->name('destroy.pengumuman');
 
 });
 

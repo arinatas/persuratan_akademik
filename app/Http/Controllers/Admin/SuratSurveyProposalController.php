@@ -14,13 +14,34 @@ class SuratSurveyProposalController extends Controller
 {
     public function index()
     {
-        $surveyProposals = SuratSurveyProposal::all();
-            return view('admin.surat.survey_proposal.index', [
-                'title' => 'Surat Izin Survei Proposal Skripsi',
-                'section' => 'Request Surat Mahasiswa',
-                'active' => 'Surat Izin Survei Proposal Skripsi',
-                'surveyProposals' => $surveyProposals,
-            ]);
+        $perPage = 10;
+
+        $query = SuratSurveyProposal::orderBy('id', 'desc');
+
+        // Filter berdasarkan status_acc
+        $statusAcc = request()->get('status_acc');
+        if ($statusAcc !== null) {
+            $query->where('status_acc', $statusAcc);
+        }
+        // Akhir Filter berdasarkan status_acc
+    
+        // Filter Tanggal
+        $startDate = request()->get('start_date');
+        $endDate = request()->get('end_date');
+        if ($startDate && $endDate) {
+            $query->whereBetween('tgl_pengajuan', [$startDate, $endDate]);
+        }
+        // Akhir Filter Tanggal
+        
+        // Lakukan paginasi pada hasil query
+        $surveyProposals = $query->paginate($perPage)->appends(request()->query());
+
+        return view('admin.surat.survey_proposal.index', [
+            'title' => 'Surat Izin Survei Proposal Skripsi',
+            'section' => 'Request Surat Mahasiswa',
+            'active' => 'Surat Izin Survei Proposal Skripsi',
+            'surveyProposals' => $surveyProposals,
+        ]);
     }
 
     public function approve($id)
