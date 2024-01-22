@@ -16,7 +16,7 @@ class PedomanController extends Controller
         $pedomans = Pedoman::all();
             return view('admin.pedoman.index', [
                 'title' => 'Pedoman',
-                'section' => 'Master',
+                'section' => 'Menu Informasi',
                 'active' => 'Pedoman',
                 'pedomans' => $pedomans,
             ]);
@@ -68,7 +68,7 @@ class PedomanController extends Controller
 
         return view('admin.pedoman.edit', [
             'title' => 'Pedoman',
-            'section' => 'Master',
+            'section' => 'Menu Informasi',
             'active' => 'Pedoman',
             'pedoman' => $pedoman,
         ]);

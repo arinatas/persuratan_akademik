@@ -7,24 +7,29 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use App\Models\Pengumuman;
+use App\Models\Panduan;
+use App\Models\JenisPanduan;
 
-class PengumumanController extends Controller
+class PanduanController extends Controller
 {
     public function index()
     {
-        $pengumumans = Pengumuman::all();
-            return view('admin.pengumuman.index', [
-                'title' => 'Pengumuman',
-                'section' => 'Menu Informasi',
-                'active' => 'Pengumuman',
-                'pengumumans' => $pengumumans,
-            ]);
+        $panduans = Panduan::all();
+        $jenisPanduans = JenisPanduan::all(); // Mengambil data jenis panduan
+
+        return view('admin.panduan.index', [
+            'title' => 'Panduan',
+            'section' => 'Menu Informasi',
+            'active' => 'Panduan',
+            'panduans' => $panduans,
+            'jenisPanduans' => $jenisPanduans,
+        ]);
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'jenis_panduan' => 'required|integer',
             'judul' => 'required|string|max:255',
             'desc1' => 'required|string',
             'desc2' => 'nullable|string',
@@ -33,9 +38,7 @@ class PengumumanController extends Controller
             'desc5' => 'nullable|string',
             'gambar' => 'nullable|file|mimes:jpg',
             'nama_file' => 'nullable|file|mimes:pdf',
-            'tgl_awal' => 'required|date',
-            'tgl_akhir' => 'required|date',
-            'status_pin' => 'required|integer',
+            
         ]);
     
         if ($validator->fails()) {
@@ -51,15 +54,16 @@ class PengumumanController extends Controller
 
             // cek jika ada Gambar Upload
             if ($request->file('gambar')) {
-                $gambarName = $request->file('gambar')->store('pengumuman');
+                $gambarName = $request->file('gambar')->store('panduan');
             }
 
             // cek jika ada file upload
             if ($request->file('nama_file')) {
-                $fileName = $request->file('nama_file')->store('pengumuman');
+                $fileName = $request->file('nama_file')->store('panduan');
             }
 
-            Pengumuman::create([
+            Panduan::create([
+                'jenis_panduan' => $request->jenis_panduan,
                 'judul' => $request->judul,
                 'desc1' => $request->desc1,
                 'desc2' => $request->desc2,
@@ -68,9 +72,6 @@ class PengumumanController extends Controller
                 'desc5' => $request->desc5,
                 'gambar' => $gambarName,
                 'nama_file' => $fileName,
-                'tgl_awal' => $request->tgl_awal,
-                'tgl_akhir' => $request->tgl_akhir,
-                'status_pin' => $request->status_pin,
             ]);
     
             DB::commit();
@@ -84,30 +85,33 @@ class PengumumanController extends Controller
     
     public function edit($id)
     {
-        $pengumuman = Pengumuman::find($id);
+        $panduan = Panduan::find($id);
+        $jenisPanduans = JenisPanduan::all(); // Mengambil data jenis panduan
 
-        if (!$pengumuman) {
+        if (!$panduan) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
 
-        return view('admin.pengumuman.edit', [
-            'title' => 'Pengumuman',
+        return view('admin.panduan.edit', [
+            'title' => 'Panduan',
             'section' => 'Menu Informasi',
-            'active' => 'Pengumuman',
-            'pengumuman' => $pengumuman,
+            'active' => 'Panduan',
+            'panduan' => $panduan,
+            'jenisPanduans' => $jenisPanduans,
         ]);
     }
 
     public function update(Request $request, $id)
     {
-        $pengumuman = Pengumuman::find($id);
+        $panduan = Panduan::find($id);
     
-        if (!$pengumuman) {
+        if (!$panduan) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
     
         // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
+            'jenis_panduan' => 'required|integer',
             'judul' => 'required|string|max:255',
             'desc1' => 'required|string',
             'desc2' => 'nullable|string',
@@ -116,9 +120,6 @@ class PengumumanController extends Controller
             'desc5' => 'nullable|string',
             'gambar' => 'nullable|file|mimes:jpg',
             'nama_file' => 'nullable|file|mimes:pdf',
-            'tgl_awal' => 'required|date',
-            'tgl_akhir' => 'required|date',
-            'status_pin' => 'required|integer'
         ]);
     
         // kalau ada error kembalikan error
@@ -127,44 +128,41 @@ class PengumumanController extends Controller
         }
     
         try {
-            // Update fields that do not depend on the file first
-            $pengumuman->judul = $request->judul;
-            $pengumuman->desc1 = $request->desc1;
-            $pengumuman->desc2 = $request->desc2;
-            $pengumuman->desc3 = $request->desc3;
-            $pengumuman->desc4 = $request->desc4;
-            $pengumuman->desc5 = $request->desc5;
-            $pengumuman->tgl_awal = $request->tgl_awal;
-            $pengumuman->tgl_akhir = $request->tgl_akhir;
-            $pengumuman->status_pin = $request->status_pin;
+            $panduan->jenis_panduan = $request->jenis_panduan;
+            $panduan->judul = $request->judul;
+            $panduan->desc1 = $request->desc1;
+            $panduan->desc2 = $request->desc2;
+            $panduan->desc3 = $request->desc3;
+            $panduan->desc4 = $request->desc4;
+            $panduan->desc5 = $request->desc5;
 
             // Check if there is a new file uploaded
             if ($request->file('gambar')) {
                 // Delete existing file if it exists
-                if ($pengumuman->gambar) {
-                    Storage::delete($pengumuman->gambar);
+                if ($panduan->gambar) {
+                    Storage::delete($panduan->gambar);
                 }
     
                 // Store the new file
-                $gambarName = $request->file('gambar')->store('pengumuman');
-                $pengumuman->gambar = $gambarName;
+                $gambarName = $request->file('gambar')->store('panduan');
+                $panduan->gambar = $gambarName;
             }
     
             // Check if there is a new file uploaded
             if ($request->file('nama_file')) {
                 // Delete existing file if it exists
-                if ($pengumuman->nama_file) {
-                    Storage::delete($pengumuman->nama_file);
+                if ($panduan->nama_file) {
+                    Storage::delete($panduan->nama_file);
                 }
     
                 // Store the new file
-                $fileName = $request->file('nama_file')->store('pengumuman');
-                $pengumuman->nama_file = $fileName;
+                $fileName = $request->file('nama_file')->store('panduan');
+                $panduan->nama_file = $fileName;
             }
     
-            $pengumuman->save();
+            $panduan->save();
     
-            return redirect('/pengumuman')->with('updateSuccess', 'Data berhasil di Update');
+            return redirect('/panduan')->with('updateSuccess', 'Data berhasil di Update');
         } catch (Exception $e) {
             return redirect()->back()->with('updateFail', 'Data gagal di Update');
         }
@@ -172,12 +170,12 @@ class PengumumanController extends Controller
 
     public function destroy($id)
     {
-        // Cari data pengumuman berdasarkan ID
-        $pengumuman = Pengumuman::find($id);
+        // Cari data panduan berdasarkan ID
+        $panduan = Panduan::find($id);
     
         try {
             // Hapus file terkait
-            $filePath = $pengumuman->nama_file;
+            $filePath = $panduan->nama_file;
     
             if (!empty($filePath) && Storage::exists($filePath)) {
                 // Hapus file dari penyimpanan
@@ -185,15 +183,15 @@ class PengumumanController extends Controller
             }
 
             // Hapus gambar terkait
-            $gambarPath = $pengumuman->gambar;
+            $gambarPath = $panduan->gambar;
     
             if (!empty($gambarPath) && Storage::exists($gambarPath)) {
                 // Hapus gambar dari penyimpanan
                 Storage::delete($gambarPath);
             }
     
-            // Hapus data pengumuman
-            $pengumuman->delete();
+            // Hapus data panduan
+            $panduan->delete();
     
             return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
         } catch (\Exception $e) {
