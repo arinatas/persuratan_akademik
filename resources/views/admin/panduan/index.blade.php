@@ -25,6 +25,41 @@
                                             <!--end::Title-->
                                         </div>
                                         <!--end::Heading-->
+                                        <!-- Tampilan Filter -->
+                                        <div class="card-px mt-5">
+                                            <form action="{{ route('panduan') }}" method="GET" class="mb-3">
+                                                <div class="input-group">
+                                                    <!-- Filter Jenis Panduan -->
+                                                    <div class="input-group-append" style="width: 200px;">
+                                                        <select class="form-control" name="jenis_panduan">
+                                                            <option value="">Filter by Jenis Panduan</option>
+                                                            @foreach ($jenisPanduans as $jenisPanduan)
+                                                                <option value="{{ $jenisPanduan->id }}"{{ request('jenis_panduan') == $jenisPanduan->id ? ' selected' : '' }}>
+                                                                    {{ $jenisPanduan->nama }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <!-- Filter Jenis Panduan -->
+                                                    <div style="margin-left: 10px;">
+                                                        <button type="submit" class="btn btn-danger" style="width: 130px;">Filter</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- End Tampilan Filter -->
+                                        <!-- Tampilan Search -->
+                                        <div class="card-px mt-5">
+                                            <form action="{{ route('panduan') }}" method="GET">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="search" placeholder="Search Panduan Berdasarkan Judul / Deskripsi" value="{{ request('search') }}">
+                                                    <div style="margin-left: 10px;">
+                                                        <button type="submit" class="btn btn-success" style="width: 130px;">Search</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- End Tampilan Search -->
                                         <!--begin::Table-->
                                         @if ($panduans )
                                         <div class="table-responsive my-10 mx-8">
@@ -38,12 +73,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @php
-                                                        $no = 1; // Inisialisasi no
-                                                    @endphp
                                                     @foreach ($panduans as $item)
                                                     <tr>
-                                                        <td>{{ $no }}</td>
+                                                        <td>{{ $panduans->firstItem() + $loop->index }}</td>
                                                         <td>{{ $item->judul }}</td>
                                                         <td>{{ $item->jenisPanduan->nama }}</td>
                                                         <td>
@@ -168,13 +200,11 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    @php
-                                                        $no++; // Tambahkan no setiap kali iterasi
-                                                    @endphp
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+                                        {{ $panduans->appends(request()->query())->links() }}
                                         @else
                                         <div class="my-10 mx-15">
                                             <!--begin::Notice-->

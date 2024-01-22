@@ -13,13 +13,26 @@ class PedomanController extends Controller
 {
     public function index()
     {
-        $pedomans = Pedoman::all();
-            return view('admin.pedoman.index', [
-                'title' => 'Pedoman',
-                'section' => 'Menu Informasi',
-                'active' => 'Pedoman',
-                'pedomans' => $pedomans,
-            ]);
+        $perPage = 10;
+        $query = Pedoman::query();
+
+        // Search Pedoman
+        $search = request()->get('search');
+        if ($search !== null) {
+            $query->where(function($q) use ($search) {
+                $q->where('nama', 'LIKE', "%$search%")
+                ->orWhere('keterangan', 'LIKE', "%$search%");
+            });
+        }
+        // End Search Pedoman
+
+        $pedomans = $query->paginate($perPage)->appends(request()->query());
+        return view('admin.pedoman.index', [
+            'title' => 'Pedoman',
+            'section' => 'Menu Informasi',
+            'active' => 'Pedoman',
+            'pedomans' => $pedomans,
+        ]);
     }
 
     public function store(Request $request)

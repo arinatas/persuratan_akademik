@@ -13,13 +13,46 @@ class PengumumanController extends Controller
 {
     public function index()
     {
-        $pengumumans = Pengumuman::all();
-            return view('admin.pengumuman.index', [
-                'title' => 'Pengumuman',
-                'section' => 'Menu Informasi',
-                'active' => 'Pengumuman',
-                'pengumumans' => $pengumumans,
-            ]);
+        $perPage = 10;
+        $query = Pengumuman::query();
+
+        // Filter by status_pin
+        $statusPin = request()->get('status_pin');
+        if ($statusPin !== null) {
+            $query->where('status_pin', $statusPin);
+        }
+         // End Filter by status_pin
+    
+        // Filter Tanggal
+        $startDate = request()->get('start_date');
+        $endDate = request()->get('end_date');
+        if ($startDate && $endDate) {
+            $query->whereBetween('tgl_terbit', [$startDate, $endDate]);
+        }
+        // End Filter Tanggal
+
+        // Search Pengumuman
+        $search = request()->get('search');
+        if ($search !== null) {
+            $query->where(function($q) use ($search) {
+                $q->where('judul', 'LIKE', "%$search%")
+                ->orWhere('desc1', 'LIKE', "%$search%")
+                ->orWhere('desc2', 'LIKE', "%$search%")
+                ->orWhere('desc3', 'LIKE', "%$search%")
+                ->orWhere('desc4', 'LIKE', "%$search%")
+                ->orWhere('desc5', 'LIKE', "%$search%");
+            });
+        }
+        // End Search Pengumuman
+    
+        $pengumumans = $query->paginate($perPage)->appends(request()->query());
+
+        return view('admin.pengumuman.index', [
+            'title' => 'Pengumuman',
+            'section' => 'Menu Informasi',
+            'active' => 'Pengumuman',
+            'pengumumans' => $pengumumans,
+        ]);
     }
 
     public function store(Request $request)

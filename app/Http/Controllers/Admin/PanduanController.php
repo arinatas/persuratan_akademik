@@ -14,8 +14,32 @@ class PanduanController extends Controller
 {
     public function index()
     {
-        $panduans = Panduan::all();
+        $perPage = 10;
+        $query = Panduan::query();
         $jenisPanduans = JenisPanduan::all(); // Mengambil data jenis panduan
+
+        // Filter by Jenis Panduan
+        $jenisPanduan = request()->get('jenis_panduan');
+        if ($jenisPanduan !== null) {
+            $query->where('jenis_panduan', $jenisPanduan);
+        }
+        // End Filter by Jenis Panduan
+
+        // Search Panduan
+        $search = request()->get('search');
+        if ($search !== null) {
+            $query->where(function($q) use ($search) {
+                $q->where('judul', 'LIKE', "%$search%")
+                ->orWhere('desc1', 'LIKE', "%$search%")
+                ->orWhere('desc2', 'LIKE', "%$search%")
+                ->orWhere('desc3', 'LIKE', "%$search%")
+                ->orWhere('desc4', 'LIKE', "%$search%")
+                ->orWhere('desc5', 'LIKE', "%$search%");
+            });
+        }
+        // End Search Panduan
+
+        $panduans = $query->paginate($perPage)->appends(request()->query());
 
         return view('admin.panduan.index', [
             'title' => 'Panduan',

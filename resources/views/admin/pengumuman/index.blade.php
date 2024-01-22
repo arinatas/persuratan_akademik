@@ -25,6 +25,48 @@
                                             <!--end::Title-->
                                         </div>
                                         <!--end::Heading-->
+                                        <!-- Tampilan Filter -->
+                                        <div class="card-px mt-5">
+                                            <form action="{{ route('pengumuman') }}" method="GET" class="mb-3">
+                                                <div class="input-group">
+                                                    <!-- Filter Kelas -->
+                                                    <div class="input-group-append" style="width: 185px;">
+                                                        <select class="form-control" name="status_pin">
+                                                            <option value="">Filter by Disematkan</option>
+                                                            <option value="0"{{ request('status_pin') == '0' ? ' selected' : '' }}>Tidak Disematkan</option>
+                                                            <option value="1"{{ request('status_pin') == '1' ? ' selected' : '' }}>Disematkan</option>
+                                                        </select>
+                                                    </div>
+                                                    <!-- Filter Kelas -->
+                                                    
+                                                    <!-- Filter Tanggal -->
+                                                    <div style="margin-left: 10px;">
+                                                        <input type="date" class="form-control" name="start_date" value="{{ request('start_date') }}" placeholder="Start Date">
+                                                    </div>
+                                                    <div style="margin-left: 10px;">
+                                                        <input type="date" class="form-control" name="end_date" value="{{ request('end_date') }}" placeholder="End Date">
+                                                    </div>
+                                                    <!-- End Filter Tanggal -->
+
+                                                    <div style="margin-left: 10px;">
+                                                        <button type="submit" class="btn btn-danger" style="width: 130px;">Filter</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- End Tampilan Filter -->
+                                        <!-- Tampilan Search -->
+                                        <div class="card-px mt-5">
+                                            <form action="{{ route('pengumuman') }}" method="GET">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="search" placeholder="Search Pengumuman Berdasarkan Judul / Deskripsi" value="{{ request('search') }}">
+                                                    <div style="margin-left: 10px;">
+                                                        <button type="submit" class="btn btn-success" style="width: 130px;">Search</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- End Tampilan Search -->
                                         <!--begin::Table-->
                                         @if ($pengumumans )
                                         <div class="table-responsive my-10 mx-8">
@@ -35,16 +77,14 @@
                                                         <th class="min-w-100px">Judul</th>
                                                         <th class="min-w-100px">Tanggal Terbit</th>
                                                         <th class="min-w-100px">File Pengumuman</th>
+                                                        <th class="min-w-100px">Status</th>
                                                         <th class="min-w-300px">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @php
-                                                        $no = 1; // Inisialisasi no
-                                                    @endphp
                                                     @foreach ($pengumumans as $item)
                                                     <tr>
-                                                        <td>{{ $no }}</td>
+                                                        <td>{{ $pengumumans->firstItem() + $loop->index }}</td>
                                                         <td>{{ $item->judul }}</td>
                                                         <td>{{ \Carbon\Carbon::parse($item->tgl_terbit)->format('d F Y') }}</td>
                                                         <td>
@@ -54,6 +94,19 @@
                                                                 </a>
                                                             @else
                                                                 No File Available
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if($item->status_pin == 0)
+                                                                <span class="badge bg-danger text-dark">
+                                                                    <i class="bi bi-clock"></i> Tidak Disematkan
+                                                                </span>
+                                                            @elseif($item->status_pin == 1)
+                                                                <span class="badge bg-success">
+                                                                    <i class="bi bi-check-circle"></i> Disematkan
+                                                                </span>
+                                                            @else
+                                                                <span class="badge bg-secondary">Undefined</span>
                                                             @endif
                                                         </td>
                                                         <td>
@@ -198,13 +251,11 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    @php
-                                                        $no++; // Tambahkan no setiap kali iterasi
-                                                    @endphp
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+                                        {{ $pengumumans->appends(request()->query())->links() }}
                                         @else
                                         <div class="my-10 mx-15">
                                             <!--begin::Notice-->
