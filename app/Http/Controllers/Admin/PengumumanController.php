@@ -44,6 +44,9 @@ class PengumumanController extends Controller
             });
         }
         // End Search Pengumuman
+
+        // Order by ID secara descending
+        $query->orderBy('id', 'desc');
     
         $pengumumans = $query->paginate($perPage)->appends(request()->query());
 
