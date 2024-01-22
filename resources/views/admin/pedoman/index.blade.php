@@ -17,7 +17,7 @@
                                         <div class="card-px pt-10 d-flex justify-content-between">
                                             <!--begin::Title-->
                                                 <div class="d-inline mt-2">
-                                                    <h2 class="fs-2x fw-bolder mb-0">Master {{ $title }}</h2>
+                                                    <h2 class="fs-2x fw-bolder mb-0">{{ $title }}</h2>
                                                 </div>
                                                 <div class="d-inline">
                                                     <a href="#" class="btn btn-sm btn-primary fs-6" data-bs-toggle="modal" data-bs-target="#kt_modal_new_akun">Tambah</a>
@@ -25,6 +25,18 @@
                                             <!--end::Title-->
                                         </div>
                                         <!--end::Heading-->
+                                        <!-- Tampilan Search -->
+                                        <div class="card-px mt-5">
+                                            <form action="{{ route('pedoman') }}" method="GET">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="search" placeholder="Search Pedoman Berdasarkan Judul / Deskripsi" value="{{ request('search') }}">
+                                                    <div style="margin-left: 10px;">
+                                                        <button type="submit" class="btn btn-success" style="width: 130px;">Search</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- End Tampilan Search -->
                                         <!--begin::Table-->
                                         @if ($pedomans )
                                         <div class="table-responsive my-10 mx-8">
@@ -39,12 +51,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @php
-                                                        $no = 1; // Inisialisasi no
-                                                    @endphp
                                                     @foreach ($pedomans as $item)
                                                     <tr>
-                                                        <td>{{ $no }}</td>
+                                                        <td>{{ $pedomans->firstItem() + $loop->index }}</td>
                                                         <td>{{ $item->nama }}</td>
                                                         <td>{{ $item->keterangan }}</td>
                                                         <td>
@@ -68,13 +77,11 @@
                                                             </form>
                                                         </td>
                                                     </tr>
-                                                    @php
-                                                        $no++; // Tambahkan no setiap kali iterasi
-                                                    @endphp
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
+                                        {{ $pedomans->appends(request()->query())->links() }}
                                         @else
                                         <div class="my-10 mx-15">
                                             <!--begin::Notice-->

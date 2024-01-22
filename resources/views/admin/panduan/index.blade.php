@@ -27,27 +27,20 @@
                                         <!--end::Heading-->
                                         <!-- Tampilan Filter -->
                                         <div class="card-px mt-5">
-                                            <form action="{{ route('pengumuman') }}" method="GET" class="mb-3">
+                                            <form action="{{ route('panduan') }}" method="GET" class="mb-3">
                                                 <div class="input-group">
-                                                    <!-- Filter Kelas -->
-                                                    <div class="input-group-append" style="width: 185px;">
-                                                        <select class="form-control" name="status_pin">
-                                                            <option value="">Filter by Disematkan</option>
-                                                            <option value="0"{{ request('status_pin') == '0' ? ' selected' : '' }}>Tidak Disematkan</option>
-                                                            <option value="1"{{ request('status_pin') == '1' ? ' selected' : '' }}>Disematkan</option>
+                                                    <!-- Filter Jenis Panduan -->
+                                                    <div class="input-group-append" style="width: 200px;">
+                                                        <select class="form-control" name="jenis_panduan">
+                                                            <option value="">Filter by Jenis Panduan</option>
+                                                            @foreach ($jenisPanduans as $jenisPanduan)
+                                                                <option value="{{ $jenisPanduan->id }}"{{ request('jenis_panduan') == $jenisPanduan->id ? ' selected' : '' }}>
+                                                                    {{ $jenisPanduan->nama }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
-                                                    <!-- Filter Kelas -->
-                                                    
-                                                    <!-- Filter Tanggal -->
-                                                    <div style="margin-left: 10px;">
-                                                        <input type="date" class="form-control" name="start_date" value="{{ request('start_date') }}" placeholder="Start Date">
-                                                    </div>
-                                                    <div style="margin-left: 10px;">
-                                                        <input type="date" class="form-control" name="end_date" value="{{ request('end_date') }}" placeholder="End Date">
-                                                    </div>
-                                                    <!-- End Filter Tanggal -->
-
+                                                    <!-- Filter Jenis Panduan -->
                                                     <div style="margin-left: 10px;">
                                                         <button type="submit" class="btn btn-danger" style="width: 130px;">Filter</button>
                                                     </div>
@@ -57,9 +50,9 @@
                                         <!-- End Tampilan Filter -->
                                         <!-- Tampilan Search -->
                                         <div class="card-px mt-5">
-                                            <form action="{{ route('pengumuman') }}" method="GET">
+                                            <form action="{{ route('panduan') }}" method="GET">
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="search" placeholder="Search Pengumuman Berdasarkan Judul / Deskripsi" value="{{ request('search') }}">
+                                                    <input type="text" class="form-control" name="search" placeholder="Search Panduan Berdasarkan Judul / Deskripsi" value="{{ request('search') }}">
                                                     <div style="margin-left: 10px;">
                                                         <button type="submit" class="btn btn-success" style="width: 130px;">Search</button>
                                                     </div>
@@ -68,50 +61,26 @@
                                         </div>
                                         <!-- End Tampilan Search -->
                                         <!--begin::Table-->
-                                        @if ($pengumumans )
+                                        @if ($panduans )
                                         <div class="table-responsive my-10 mx-8">
                                             <table class="table table-striped gy-7 gs-7">
                                                 <thead>
                                                     <tr class="fw-bold fs-6 text-gray-800 border-bottom-2 border-gray-200">
                                                         <th class="min-w-100px">No</th>
                                                         <th class="min-w-100px">Judul</th>
-                                                        <th class="min-w-100px">Tanggal Terbit</th>
-                                                        <th class="min-w-100px">File Pengumuman</th>
-                                                        <th class="min-w-100px">Status</th>
+                                                        <th class="min-w-100px">Jenis Panduan</th>
                                                         <th class="min-w-300px">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($pengumumans as $item)
+                                                    @foreach ($panduans as $item)
                                                     <tr>
-                                                        <td>{{ $pengumumans->firstItem() + $loop->index }}</td>
+                                                        <td>{{ $panduans->firstItem() + $loop->index }}</td>
                                                         <td>{{ $item->judul }}</td>
-                                                        <td>{{ \Carbon\Carbon::parse($item->tgl_terbit)->format('d F Y') }}</td>
+                                                        <td>{{ $item->jenisPanduan->nama }}</td>
                                                         <td>
-                                                            @if ($item->nama_file)
-                                                                <a href="{{ asset('storage/' . $item->nama_file) }}" target="_blank">
-                                                                    <i class="fas fa-eye"></i> View PDF
-                                                                </a>
-                                                            @else
-                                                                No File Available
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            @if($item->status_pin == 0)
-                                                                <span class="badge bg-danger text-dark">
-                                                                    <i class="bi bi-clock"></i> Tidak Disematkan
-                                                                </span>
-                                                            @elseif($item->status_pin == 1)
-                                                                <span class="badge bg-success">
-                                                                    <i class="bi bi-check-circle"></i> Disematkan
-                                                                </span>
-                                                            @else
-                                                                <span class="badge bg-secondary">Undefined</span>
-                                                            @endif
-                                                        </td>
-                                                        <td>
-                                                            <a href="{{ route('edit.pengumuman', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-                                                            <form id="form-delete" action="{{ route('destroy.pengumuman', $item->id ) }}" method="POST"
+                                                            <a href="{{ route('edit.panduan', $item->id ) }}" class="btn btn-sm btn-primary btn-action" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                                            <form id="form-delete" action="{{ route('destroy.panduan', $item->id ) }}" method="POST"
                                                             class="d-inline-block">
                                                             @csrf
                                                             @method('DELETE')
@@ -119,7 +88,7 @@
                                                                 class="btn btn-sm btn-danger btn-action" onclick="confirmDelete(event)"
                                                                 ><i class="fas fa-trash"></i></i></button>
                                                             </form>
-                                                            <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Pengumuman"><i class="fas fa-info-circle"></i>
+                                                            <button class="btn btn-sm btn-info btn-action" data-bs-toggle="modal" data-bs-target="#detailModal{{ $item->id }}" title="Detail Panduan"><i class="fas fa-info-circle"></i>
                                                             </button>
                                                             <!-- Modals Detail-->
                                                             <div class="modal fade" id="detailModal{{ $item->id }}" tabindex="-1" aria-hidden="true">
@@ -146,28 +115,8 @@
                                                                                     <td>{{ $item->judul }}</td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Tanggal Awal</th>
-                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_awal)->format('d F Y') }}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Tanggal Akhir</th>
-                                                                                    <td>{{ \Carbon\Carbon::parse($item->tgl_akhir)->format('d F Y') }}</td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <th>Status Pin Pengumuman</th>
-                                                                                    <td>
-                                                                                        @if($item->status_pin == 0)
-                                                                                            <span class="badge bg-danger text-dark">
-                                                                                                <i class="bi bi-clock"></i> Tidak Disematkan
-                                                                                            </span>
-                                                                                        @elseif($item->status_pin == 1)
-                                                                                            <span class="badge bg-success">
-                                                                                                <i class="bi bi-check-circle"></i> Disematkan
-                                                                                            </span>
-                                                                                        @else
-                                                                                            <span class="badge bg-secondary">Undefined</span>
-                                                                                        @endif
-                                                                                    </td>
+                                                                                    <th>Jenis Panduan</th>
+                                                                                    <td>{{ $item->jenisPanduan->nama }}</td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <th>Tanggal Terbit</th>
@@ -204,7 +153,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Gambar Pengumuman</th>
+                                                                                    <th>Gambar Panduan</th>
                                                                                     <td>
                                                                                         @php
                                                                                             $extension = pathinfo($item->gambar, PATHINFO_EXTENSION);
@@ -212,7 +161,7 @@
                                                                                         @if ($item->gambar)
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
-                                                                                                <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Pengumuman" style="width: 450px; height: auto;">
+                                                                                                <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -223,7 +172,7 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>File Pengumuman</th>
+                                                                                    <th>File Panduan</th>
                                                                                     <td>
                                                                                         @php
                                                                                             $extension = pathinfo($item->nama_file, PATHINFO_EXTENSION);
@@ -255,7 +204,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        {{ $pengumumans->appends(request()->query())->links() }}
+                                        {{ $panduans->appends(request()->query())->links() }}
                                         @else
                                         <div class="my-10 mx-15">
                                             <!--begin::Notice-->
@@ -317,9 +266,23 @@
                                             <!--begin::Modal body-->
                                             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                                 <!--begin::Form-->
-                                                <form action="{{ route('insert.pengumuman') }}" method="POST" enctype="multipart/form-data">
+                                                <form action="{{ route('insert.panduan') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <!--begin::Input group-->
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="required">Jenis Panduan</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <!-- Dropdown for Jenis Panduan -->
+                                                        <select class="form-control form-control-solid" name="jenis_panduan" required>
+                                                            <option value="">Pilih Jenis Panduan</option>
+                                                            @foreach ($jenisPanduans as $jenisPanduan)
+                                                                <option value="{{ $jenisPanduan->id }}">{{ $jenisPanduan->nama }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
@@ -327,33 +290,6 @@
                                                         </label>
                                                         <!--end::Label-->
                                                         <input class="form-control form-control-solid" type="text" name="judul" required value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tanggal Awal</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="date" name="tgl_awal" required value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Tanggal Akhir</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <input class="form-control form-control-solid" type="date" name="tgl_akhir" required value=""/>
-                                                    </div>
-                                                    <div class="d-flex flex-column mb-7 fv-row">
-                                                        <!--begin::Label-->
-                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="required">Status Pengumuman</span>
-                                                        </label>
-                                                        <!--end::Label-->
-                                                        <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="status_pin" required>
-                                                            <option value = 0>Tidak Disematkan</option>
-                                                            <option value = 1>Disematkan</option>
-                                                        </select>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -403,7 +339,7 @@
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-                                                            <span class="">File Pengumuman</span>
+                                                            <span class="">File Panduan</span>
                                                         </label>
                                                         <input class="form-control form-control-solid" type="file" name="nama_file" />
                                                     </div>

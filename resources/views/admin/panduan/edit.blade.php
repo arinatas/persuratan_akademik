@@ -26,53 +26,49 @@
 						<!--end::Heading-->
 						<!--begin::Table-->
                         <div class="mt-15">
-							<form action="{{ route('update.pengumuman', $pengumuman->id ) }}" method="POST" enctype="multipart/form-data">
+							<form action="{{ route('update.panduan', $panduan->id ) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Judul</label>
-                                    <input type="text" value="{{$pengumuman->judul}}" class="form-control form-control-solid" required name="judul"/>
-                                </div>
-								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Tanggal Awal</label>
-                                    <input type="date" value="{{$pengumuman->tgl_awal}}" class="form-control form-control-solid" required name="tgl_awal"/>
-                                </div>
-								<div class="mb-10">
-                                    <label for="exampleFormControlInput1" class="required form-label">Tanggal Akhir</label>
-                                    <input type="date" value="{{$pengumuman->tgl_akhir}}" class="form-control form-control-solid" required name="tgl_akhir"/>
-                                </div>
-								<div class="mb-10">
-									<label for="exampleFormControlInput1" class="required form-label">Status Disematkan</label>
-									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="status_pin" required>
-										<option value = 0 {{ $pengumuman->status_pin == 0 ? 'selected' : '' }}>Tidak Disematkan</option>
-										<option value = 1 {{ $pengumuman->status_pin == 1 ? 'selected' : '' }}>Disematkan</option>
+									<label for="jenis_panduan" class="required form-label">Jenis Panduan</label>
+									<select class="form-control form-control-solid" name="jenis_panduan" required>
+										<option value="">Pilih Jenis Panduan</option>
+										@foreach ($jenisPanduans as $jenisPanduan)
+											<option value="{{ $jenisPanduan->id }}" {{ $panduan->jenisPanduan->id == $jenisPanduan->id ? 'selected' : '' }}>
+												{{ $jenisPanduan->nama }}
+											</option>
+										@endforeach
 									</select>
 								</div>
 								<div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="required form-label">Judul</label>
+                                    <input type="text" value="{{$panduan->judul}}" class="form-control form-control-solid" required name="judul"/>
+                                </div>
+								<div class="mb-10">
 									<label for="exampleFormControlInput1" class="required form-label">Paragraf 1</label>
-									<textarea class="form-control form-control-solid" required name="desc1" style="height: 300px;">{{$pengumuman->desc1}}</textarea>
+									<textarea class="form-control form-control-solid" required name="desc1" style="height: 300px;">{{$panduan->desc1}}</textarea>
 								</div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 2</label>
-									<textarea class="form-control form-control-solid"  name="desc2" style="height: 300px;">{{$pengumuman->desc2}}</textarea>
+									<textarea class="form-control form-control-solid"  name="desc2" style="height: 300px;">{{$panduan->desc2}}</textarea>
 								</div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 3</label>
-									<textarea class="form-control form-control-solid"  name="desc3" style="height: 300px;">{{$pengumuman->desc3}}</textarea>
+									<textarea class="form-control form-control-solid"  name="desc3" style="height: 300px;">{{$panduan->desc3}}</textarea>
 								</div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 4</label>
-									<textarea class="form-control form-control-solid"  name="desc4" style="height: 300px;">{{$pengumuman->desc4}}</textarea>
+									<textarea class="form-control form-control-solid"  name="desc4" style="height: 300px;">{{$panduan->desc4}}</textarea>
 								</div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 5</label>
-									<textarea class="form-control form-control-solid"  name="desc5" style="height: 300px;">{{$pengumuman->desc5}}</textarea>
+									<textarea class="form-control form-control-solid"  name="desc5" style="height: 300px;">{{$panduan->desc5}}</textarea>
 								</div>
 								<div class="mb-10">
-                                    <label class=" form-label">Gambar Pengumuman</label>
-                                    @if ($pengumuman->gambar)
+                                    <label class=" form-label">Gambar Panduan</label>
+                                    @if ($panduan->gambar)
                                         <div>
                                             Gambar Saat Ini:
-                                            <a href="{{ asset('storage/' . $pengumuman->gambar) }}" alt="Gambar Pengumuman" class="img-fluid mx-auto" target="_blank">
+                                            <a href="{{ asset('storage/' . $panduan->gambar) }}" alt="Gambar Panduan" class="img-fluid mx-auto" target="_blank">
                                                 View Gambar
                                             </a>
                                         </div>
@@ -81,11 +77,11 @@
                                     <input type="file" class="form-control form-control-solid" name="gambar"/>
                                 </div>
 								<div class="mb-10">
-                                    <label class=" form-label">File Pengumuman</label>
-                                    @if ($pengumuman->nama_file)
+                                    <label class=" form-label">File Panduan</label>
+                                    @if ($panduan->nama_file)
                                         <div>
                                             File Saat Ini:
-                                            <a href="{{ asset('storage/' . $pengumuman->nama_file) }}" alt="File Pengumuman" class="img-fluid mx-auto" target="_blank">
+                                            <a href="{{ asset('storage/' . $panduan->nama_file) }}" alt="File Panduan" class="img-fluid mx-auto" target="_blank">
                                                 View File
                                             </a>
                                         </div>
@@ -104,7 +100,7 @@
 								@endif
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
-                                    <a href="{{ route('pengumuman') }}" class="btn btn-secondary">
+                                    <a href="{{ route('panduan') }}" class="btn btn-secondary">
                                         <span class="indicator-label">
                                             Cancel
                                         </span>
