@@ -26,6 +26,9 @@ class PedomanController extends Controller
         }
         // End Search Pedoman
 
+        // Order by ID secara descending
+        $query->orderBy('id', 'desc');
+
         $pedomans = $query->paginate($perPage)->appends(request()->query());
         return view('admin.pedoman.index', [
             'title' => 'Pedoman',

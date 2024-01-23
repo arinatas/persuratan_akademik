@@ -39,6 +39,9 @@ class PanduanController extends Controller
         }
         // End Search Panduan
 
+        // Order by ID secara descending
+        $query->orderBy('id', 'desc');
+
         $panduans = $query->paginate($perPage)->appends(request()->query());
 
         return view('admin.panduan.index', [
