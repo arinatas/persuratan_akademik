@@ -197,7 +197,13 @@ Route::middleware(['admin'])->group(function () {
 
 });
 
+// menu
 Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth')->name('userDashboard');
+Route::get('/userPengumuman/{id}', [UserController::class, 'pengumuman'])->middleware('auth')->name('userPengumuman');
+Route::get('/userPedoman', [UserController::class, 'pedoman'])->middleware('auth')->name('userPedoman');
+Route::get('/userPanduan', [UserController::class, 'panduan'])->name('userPanduan');
+Route::get('/panduanDetails/{id}', [UserController::class, 'panduanDetails'])->name('panduanDetails');
+
 
 // surat diproses sendiri
     Route::get('/createSuratIzinAbsensi', [SuratController::class, 'createSuratIzinAbsensi'])->middleware('auth')->name('createSuratIzinAbsensi');

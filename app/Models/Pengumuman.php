@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Pengumuman extends Model
 {
@@ -35,6 +36,13 @@ class Pengumuman extends Model
 
         $this->attributes['tgl_terbit'] = now();
     }
+
+    public function scopeAktifHariIni($query)
+    {
+        return $query->whereDate('tgl_awal', '<=', Carbon::now())
+                     ->whereDate('tgl_akhir', '>=', Carbon::now());
+    }
+
 
     public $timestamps = true;
 
