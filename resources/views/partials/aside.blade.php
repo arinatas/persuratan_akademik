@@ -464,8 +464,8 @@
                         <span class="menu-title">Pedoman</span>
                     </a>
                 </div>
-                <div class="menu-item {{ ($active === "Panduan") ? 'here show' : '' }}">
-                    <a class="menu-link" href="{{ url('userPanduan') }}" target="blank">
+                <div class="menu-item {{ ($active === "Pusat Informasi Akademik") ? 'here show' : '' }}">
+                    <a class="menu-link" href="{{ url('userPusatInformasiAkademik') }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -478,7 +478,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title">Panduan</span>
+                        <span class="menu-title">Pusat Informasi Akademik</span>
                     </a>
                 </div>
             @endif
