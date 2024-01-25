@@ -157,7 +157,7 @@ License: For each use you must have a valid license purchased only from above li
 															@if ($panduan->nama_file)
 																@if (in_array(strtolower($extension), ['pdf']))
 																	{{-- Display PDF --}}
-																	<a href="{{ asset('storage/' . $panduan->nama_file) }}" target="_blank">Download PDF</a>
+																	<a href="{{ asset('storage/' . $panduan->nama_file) }}" target="_blank">View PDF</a>
 																@else
 																	{{-- Handle other file types --}}
 																	<p>File type not supported</p>

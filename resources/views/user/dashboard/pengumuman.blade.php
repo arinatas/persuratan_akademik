@@ -87,7 +87,7 @@
 															@if ($pengumuman->nama_file)
 																@if (in_array(strtolower($extension), ['pdf']))
 																	{{-- Display PDF --}}
-																	<a href="{{ asset('storage/' . $pengumuman->nama_file) }}" target="_blank">Download PDF</a>
+																	<a href="{{ asset('storage/' . $pengumuman->nama_file) }}" target="_blank">View PDF</a>
 																@else
 																	{{-- Handle other file types --}}
 																	<p>File type not supported</p>
