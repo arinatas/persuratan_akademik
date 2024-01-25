@@ -16,9 +16,11 @@
 										<!--begin::Title-->
 										<div class="d-flex flex-row justify-content-between">
 											<div>
-												<h1>Informasi Surat Yang Diajukan</h1>
+												<h1>Surat Yang Diajukan</h1>
 											</div>
-
+											<div class="d-inline">
+												<a href="#" class="btn btn-sm btn-primary fs-6" data-bs-toggle="modal" data-bs-target="#kt_modal_new_surat">Tambah</a>
+											</div>
 										</div>
 										<!--end::Title-->
 									</div>
@@ -222,97 +224,119 @@
 									<!--end::Card body-->
 								</div>
 								<!--end::Card-->
-								<!--begin::Card-->
-								<div class="card  mt-10">
-									<!--begin::Card body-->
-									<div class="card-body">
-										<!--begin::Heading-->
-										<div class="heading text-center mt-5 mb-15">
-											<h1>Form {{ $title }}</h1>
-										</div>
-										<!--begin::Row-->
-										<form action="{{ url('userSuratPermohonanDataStore') }}" method="POST">
-											<div class="row g-5 g-xl-8">
-												@csrf
-												<div class="col-lg-12">
-													<label class="required form-label">Ditujukan Kepada (Yth. )</label>
-													<input type="text" value="{{ old('yth') }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
-													@error('yth')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
+								<!--begin::Modal-->
+								<div class="modal fade" id="kt_modal_new_surat" tabindex="-1" aria-hidden="true">
+                                    <!--begin::Modal dialog-->
+                                    <div class="modal-dialog modal-dialog-centered mw-1000px">
+                                        <!--begin::Modal content-->
+                                        <div class="modal-content">
+                                            <!--begin::Modal header-->
+                                            <div class="modal-header">
+                                                <!--begin::Modal title-->
+                                                <h2>Tambah {{ $title }}</h2>
+                                                <!--end::Modal title-->
+                                                <!--begin::Close-->
+                                                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                                    <span class="svg-icon svg-icon-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon-->
+                                                </div>
+                                                <!--end::Close-->
+                                            </div>
+                                            <!--end::Modal header-->
+                                            <!--begin::Modal body-->
+                                            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                                <!--begin::Form-->
+												<form action="{{ url('userSuratPermohonanDataStore') }}" method="POST">
+													<div class="row g-5 g-xl-8">
+														@csrf
+														<div class="col-lg-12">
+															<label class="required form-label">Ditujukan Kepada (Yth. )</label>
+															<input type="text" value="{{ old('yth') }}" class="form-control form-control-solid  @error('yth') is-invalid @enderror" required name="yth" />
+															@error('yth')
+																<div class="invalid-feedback mb-1">
+																	{{ $message }}
+																</div>
+															@enderror
 														</div>
-													@enderror
-												</div>
-												<div class="col-lg-12">
-													<label class="required form-label">Data 1</label>
-													<input type="text" value="{{ old('data1') }}" class="form-control form-control-solid  @error('data1') is-invalid @enderror" required name="data1"/>
-													@error('data1')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
+														<div class="col-lg-12">
+															<label class="required form-label">Data 1</label>
+															<input type="text" value="{{ old('data1') }}" class="form-control form-control-solid  @error('data1') is-invalid @enderror" required name="data1"/>
+															@error('data1')
+																<div class="invalid-feedback mb-1">
+																	{{ $message }}
+																</div>
+															@enderror
 														</div>
-													@enderror
-												</div>
-												<div class="col-lg-12">
-													<label class="form-label">Data 2</label>
-													<input type="text" value="{{ old('data2') }}" class="form-control form-control-solid  @error('data2') is-invalid @enderror" name="data2"/>
-													@error('data2')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
+														<div class="col-lg-12">
+															<label class="form-label">Data 2</label>
+															<input type="text" value="{{ old('data2') }}" class="form-control form-control-solid  @error('data2') is-invalid @enderror" name="data2"/>
+															@error('data2')
+																<div class="invalid-feedback mb-1">
+																	{{ $message }}
+																</div>
+															@enderror
 														</div>
-													@enderror
-												</div>
-												<div class="col-lg-12">
-													<label class="form-label">Data 3</label>
-													<input type="text" value="{{ old('data3') }}" class="form-control form-control-solid  @error('data3') is-invalid @enderror" name="data3"/>
-													@error('data3')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
+														<div class="col-lg-12">
+															<label class="form-label">Data 3</label>
+															<input type="text" value="{{ old('data3') }}" class="form-control form-control-solid  @error('data3') is-invalid @enderror" name="data3"/>
+															@error('data3')
+																<div class="invalid-feedback mb-1">
+																	{{ $message }}
+																</div>
+															@enderror
 														</div>
-													@enderror
-												</div>
-												<div class="col-lg-12">
-													<label class="form-label">Data 4</label>
-													<input type="text" value="{{ old('data4') }}" class="form-control form-control-solid  @error('data4') is-invalid @enderror" name="data4"/>
-													@error('data4')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
+														<div class="col-lg-12">
+															<label class="form-label">Data 4</label>
+															<input type="text" value="{{ old('data4') }}" class="form-control form-control-solid  @error('data4') is-invalid @enderror" name="data4"/>
+															@error('data4')
+																<div class="invalid-feedback mb-1">
+																	{{ $message }}
+																</div>
+															@enderror
 														</div>
-													@enderror
-												</div>
-												<div class="col-lg-12">
-													<label class="form-label">Data 5</label>
-													<input type="text" value="{{ old('data5') }}" class="form-control form-control-solid  @error('data5') is-invalid @enderror" name="data5"/>
-													@error('data5')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
+														<div class="col-lg-12">
+															<label class="form-label">Data 5</label>
+															<input type="text" value="{{ old('data5') }}" class="form-control form-control-solid  @error('data5') is-invalid @enderror" name="data5"/>
+															@error('data5')
+																<div class="invalid-feedback mb-1">
+																	{{ $message }}
+																</div>
+															@enderror
 														</div>
-													@enderror
-												</div>
-
-                                                {{-- hidden input --}}
-													<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
-													<input type="hidden" value="{{ $biomhs[0]->nim }}" class="form-control form-control-solid" readonly name="nim"/>
-													<input type="hidden" value="" class="form-control form-control-solid" name="nomor"/>
-													<input type="hidden" value="" class="form-control form-control-solid" name="acc_by"/>
-                                                {{-- end hidden input --}}
-
-												<div class="d-flex justify-content-end mt-10 pb-10">
-													<!--begin::Actions-->
-													<button id="submit_form" type="submit" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">
-														<span class="indicator-label">
-															Submit
-														</span>
-													</button>
-													<!--end::Actions-->
-												</div>
-											</div>
-										</form>
-										<!--end::Row-->
-									</div>
-									<!--end::Card body-->
-								</div>
-								<!--end::Card-->
-								
+		
+														{{-- hidden input --}}
+															<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
+															<input type="hidden" value="{{ $biomhs[0]->nim }}" class="form-control form-control-solid" readonly name="nim"/>
+															<input type="hidden" value="" class="form-control form-control-solid" name="nomor"/>
+															<input type="hidden" value="" class="form-control form-control-solid" name="acc_by"/>
+														{{-- end hidden input --}}
+		
+														<div class="d-flex justify-content-end mt-10 pb-10">
+															<!--begin::Actions-->
+															<button id="submit_form" type="submit" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">
+																<span class="indicator-label">
+																	Submit
+																</span>
+															</button>
+															<!--end::Actions-->
+														</div>
+													</div>
+												</form>
+                                                <!--end::Form-->
+                                            </div>
+                                            <!--end::Modal body-->
+                                        </div>
+                                        <!--end::Modal content-->
+                                    </div>
+                                    <!--end::Modal dialog-->
+                                </div>
+                                <!--end::Modal-->
 							</div>
 							<!--end::Container-->
 						</div>

@@ -16,9 +16,11 @@
 										<!--begin::Title-->
 										<div class="d-flex flex-row justify-content-between">
 											<div>
-												<h1>Informasi Surat Yang Diajukan</h1>
+												<h1>Surat Yang Diajukan</h1>
 											</div>
-
+											<div class="d-inline">
+												<a href="#" class="btn btn-sm btn-primary fs-6" data-bs-toggle="modal" data-bs-target="#kt_modal_new_surat">Tambah</a>
+											</div>
 										</div>
 										<!--end::Title-->
 									</div>
@@ -229,81 +231,104 @@
 									<!--end::Card body-->
 								</div>
 								<!--end::Card-->
-								<!--begin::Card-->
-								<div class="card  mt-10">
-									<!--begin::Card body-->
-									<div class="card-body">
-										<!--begin::Heading-->
-										<div class="heading text-center mt-5 mb-15">
-											<h1>Form {{ $title }}</h1>
-										</div>
-										<!--begin::Row-->
-										<form action="{{ url('userSuratKetKuliahStore') }}" method="POST">
-											<div class="row g-5 g-xl-8">
-												@csrf
-												<div class="col-lg-6">
-													<label class="required form-label">Nama Orang Tua</label>
-													<input type="text" value="{{ old('nama_ortu') }}" class="form-control form-control-solid  @error('nama_ortu') is-invalid @enderror" required name="nama_ortu" />
-													@error('nama_ortu')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
+								<!--begin::Modal-->
+								<div class="modal fade" id="kt_modal_new_surat" tabindex="-1" aria-hidden="true">
+                                    <!--begin::Modal dialog-->
+                                    <div class="modal-dialog modal-dialog-centered mw-1000px">
+                                        <!--begin::Modal content-->
+                                        <div class="modal-content">
+                                            <!--begin::Modal header-->
+                                            <div class="modal-header">
+                                                <!--begin::Modal title-->
+                                                <h2>Tambah {{ $title }}</h2>
+                                                <!--end::Modal title-->
+                                                <!--begin::Close-->
+                                                <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                                                    <span class="svg-icon svg-icon-1">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                            <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                                            <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                                                        </svg>
+                                                    </span>
+                                                    <!--end::Svg Icon-->
+                                                </div>
+                                                <!--end::Close-->
+                                            </div>
+                                            <!--end::Modal header-->
+                                            <!--begin::Modal body-->
+                                            <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                                                <!--begin::Form-->
+												<form action="{{ url('userSuratKetKuliahStore') }}" method="POST">
+													<div class="row g-5 g-xl-8">
+														@csrf
+														<div class="col-lg-6">
+															<label class="required form-label">Nama Orang Tua</label>
+															<input type="text" value="{{ old('nama_ortu') }}" class="form-control form-control-solid  @error('nama_ortu') is-invalid @enderror" required name="nama_ortu" />
+															@error('nama_ortu')
+																<div class="invalid-feedback mb-1">
+																	{{ $message }}
+																</div>
+															@enderror
 														</div>
-													@enderror
-												</div>
-												<div class="col-lg-6">
-													<label class="form-label">Pangkat / Golongan</label>
-													<input type="text" value="{{ old('pangkat') }}" class="form-control form-control-solid  @error('pangkat') is-invalid @enderror" name="pangkat"/>
-													@error('pangkat')
-														<div class="invalid-feedback mb-1">
-															{{ $message }}
+														<div class="col-lg-6">
+															<label class="form-label">Pangkat / Golongan</label>
+															<input type="text" value="{{ old('pangkat') }}" class="form-control form-control-solid  @error('pangkat') is-invalid @enderror" name="pangkat"/>
+															@error('pangkat')
+																<div class="invalid-feedback mb-1">
+																	{{ $message }}
+																</div>
+															@enderror
 														</div>
-													@enderror
-												</div>
-												<div class="col-lg-6">
-													<label class="required form-label">Semester</label>
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="semester" required>
-														<option value="Ganjil">Ganjil</option>
-														<option value="Genap">Genap</option>
-													</select>
-												</div>
-												@php
-													$tahun = \Carbon\Carbon::now()->format('Y');
-													$tahunBefore = $tahun-1;
-													$tahunAfter = $tahun+1;
-												@endphp
-												<div class="col-lg-6">
-													<label class="required form-label">Tahun Ajaran</label>
-													{{-- <input type="text" value="{{ $tahun .'/'. $tahunAfter }}" class="form-control form-control-solid  @error('tahun_akademik') is-invalid @enderror" required name="tahun_akademik"/> --}}
-													<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="tahun_akademik" required>
-														<option value="{{ $tahunBefore .'/'. $tahun }}">{{ $tahunBefore .'/'. $tahun }}</option>
-														<option value="{{ $tahun .'/'. $tahunAfter }}">{{ $tahun .'/'. $tahunAfter }}</option>
-													</select>
-												</div>
-
-
-                                                {{-- hidden input --}}
-													<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
-													<input type="hidden" value="{{ $biomhs[0]->nim }}" class="form-control form-control-solid" readonly name="nim"/>
-													<input type="hidden" value="" class="form-control form-control-solid" name="nomor"/>
-													<input type="hidden" value="" class="form-control form-control-solid" name="acc_by"/>
-                                                {{-- end hidden input --}}
-
-												<div class="d-flex justify-content-end mt-10 pb-10">
-													<!--begin::Actions-->
-													<button id="submit_form" type="submit" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">
-														<span class="indicator-label">
-															Submit
-														</span>
-													</button>
-													<!--end::Actions-->
-												</div>
-											</div>
-										</form>
-										<!--end::Row-->
-									</div>
-									<!--end::Card body-->
-								</div>
-								<!--end::Card-->
+														<div class="col-lg-6">
+															<label class="required form-label">Semester</label>
+															<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="semester" required>
+																<option value="Ganjil">Ganjil</option>
+																<option value="Genap">Genap</option>
+															</select>
+														</div>
+														@php
+															$tahun = \Carbon\Carbon::now()->format('Y');
+															$tahunBefore = $tahun-1;
+															$tahunAfter = $tahun+1;
+														@endphp
+														<div class="col-lg-6">
+															<label class="required form-label">Tahun Ajaran</label>
+															{{-- <input type="text" value="{{ $tahun .'/'. $tahunAfter }}" class="form-control form-control-solid  @error('tahun_akademik') is-invalid @enderror" required name="tahun_akademik"/> --}}
+															<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="tahun_akademik" required>
+																<option value="{{ $tahunBefore .'/'. $tahun }}">{{ $tahunBefore .'/'. $tahun }}</option>
+																<option value="{{ $tahun .'/'. $tahunAfter }}">{{ $tahun .'/'. $tahunAfter }}</option>
+															</select>
+														</div>
+		
+		
+														{{-- hidden input --}}
+															<input type="hidden" value="0" class="form-control form-control-solid" name="status_acc"/>
+															<input type="hidden" value="{{ $biomhs[0]->nim }}" class="form-control form-control-solid" readonly name="nim"/>
+															<input type="hidden" value="" class="form-control form-control-solid" name="nomor"/>
+															<input type="hidden" value="" class="form-control form-control-solid" name="acc_by"/>
+														{{-- end hidden input --}}
+		
+														<div class="d-flex justify-content-end mt-10 pb-10">
+															<!--begin::Actions-->
+															<button id="submit_form" type="submit" class="btn btn-primary" style="margin-left: 10px; margin-right: 10px;">
+																<span class="indicator-label">
+																	Submit
+																</span>
+															</button>
+															<!--end::Actions-->
+														</div>
+													</div>
+												</form>
+                                                <!--end::Form-->
+                                            </div>
+                                            <!--end::Modal body-->
+                                        </div>
+                                        <!--end::Modal content-->
+                                    </div>
+                                    <!--end::Modal dialog-->
+                                </div>
+                                <!--end::Modal-->
 								
 							</div>
 							<!--end::Container-->
