@@ -157,7 +157,17 @@ License: For each use you must have a valid license purchased only from above li
                                         </div>
                                         @endif
                                         <!--end::Table-->
-                                        
+										@if (auth()->check())
+											<!--begin::Icons-->
+											<div class="d-flex flex-center mb-10">
+												<a href="{{ route('userDashboard') }}" class="btn btn-secondary">
+													<span class="indicator-label">
+														Kembali
+													</span>
+												</a>
+											</div>
+											<!--end::Icons-->
+										@endif
                                     </div>
                                     <!--end::Card body-->
                                 </div>

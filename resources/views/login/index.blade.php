@@ -57,11 +57,11 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--end: Aside content-->
 						<!--begin: Aside footer for desktop-->
 						<div class="d-none flex-column-auto d-lg-flex justify-content-between mt-10">
-							<div class="opacity-70 font-weight-bold text-white">Copyright Primakara © 2023</div>
+							<div class="opacity-70 font-weight-bold text-white">Copyright Primakara © 2024</div>
 							<div class="d-flex">
-								<a href="#" class="text-white">Privacy</a>
-								<a href="#" class="text-white ml-10">Legal</a>
-								<a href="#" class="text-white ml-10">Contact</a>
+								{{-- <a href="#" class="text-white">Privacy</a> --}}
+								{{-- <a href="#" class="text-white ml-10">Legal</a> --}}
+								<a href="{{ url('userPanduan') }}" class="text-white ml-10">Panduan</a>
 							</div>
 						</div>
 						<!--end: Aside footer for desktop-->
@@ -111,7 +111,7 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
 								<!--begin::Action-->
 								<div class="form-group d-flex flex-wrap justify-content-between align-items-center">
-									<a href="https://imgur.com/a/Qgiq581" target="blank" class="text-dark-50 text-hover-primary my-3 mr-2" id="kt_login_forgot">Forgot Password ?</a>
+									<a href="https://imgur.com/9OsS4Xy" target="blank" class="text-dark-50 text-hover-primary my-3 mr-2" id="kt_login_forgot">Forgot Password ?</a>
 									<button type="submit" style="background-color: #003764" class="btn btn-outline-light text-light font-weight-bold px-9 py-4 my-3">Login</button>
 								</div>
 								<!--end::Action-->
@@ -147,11 +147,11 @@ License: You must have a valid license purchased only from themeforest(the above
 					<!--end::Content body-->
 					<!--begin::Content footer for mobile-->
 					<div class="d-flex d-lg-none flex-column-auto flex-column flex-sm-row justify-content-between align-items-center mt-5 p-5">
-						<div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">Copyright Primakara © 2023</div>
+						<div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">Copyright Primakara © 2024</div>
 						<div class="d-flex order-1 order-sm-2 my-2">
-							<a href="#" class="text-dark-75 text-hover-primary">Privacy</a>
-							<a href="#" class="text-dark-75 text-hover-primary ml-4">Legal</a>
-							<a href="#" class="text-dark-75 text-hover-primary ml-4">Contact</a>
+							{{-- <a href="#" class="text-dark-75 text-hover-primary">Privacy</a> --}}
+							{{-- <a href="#" class="text-dark-75 text-hover-primary ml-4">Legal</a> --}}
+							<a href="{{ url('userPanduan') }}" class="text-dark-75 text-hover-primary ml-4">Panduan</a>
 						</div>
 					</div>
 					<!--end::Content footer for mobile-->
