@@ -16,13 +16,22 @@
         </div>
       </div>
       <!--end::Aside mobile toggle-->
+      @if (auth()->user()->is_admin == 1)
+      <!--begin::Mobile logo-->
+      <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+        <a href="/adminDashboard" class="d-lg-none">
+          <img alt="Logo" src="assets/media/logos/smallprimakara.png" class="h-30px" />
+        </a>
+      </div>
+      @else
+      <!--begin::Mobile logo-->
+      <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+        <a href="/userDashboard" class="d-lg-none">
+          <img alt="Logo" src="assets/media/logos/smallprimakara.png" class="h-30px" />
+        </a>
+      </div>
+      @endif
     @endif
-    <!--begin::Mobile logo-->
-    <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-      <a href="/userDashboard" class="d-lg-none">
-        <img alt="Logo" src="assets/media/logos/smallprimakara.png" class="h-30px" />
-      </a>
-    </div>
     <!--end::Mobile logo-->
     <!--begin::Wrapper-->
     <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">

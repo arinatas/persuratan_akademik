@@ -2,9 +2,15 @@
     <!--begin::Brand-->
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
-        <a href="#">
+        @if (auth()->user()->is_admin == 1)
+        <a href="{{ url('adminDashboard') }}">
             <img alt="Logo" src="assets/media/logos/whiteprimakara.png" class="h-40px logo" />
         </a>
+        @else
+        <a href="{{ url('userDashboard') }}">
+            <img alt="Logo" src="assets/media/logos/whiteprimakara.png" class="h-40px logo" />
+        </a>
+        @endif
         <!--end::Logo-->
         <!--begin::Aside toggler-->
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
