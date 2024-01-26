@@ -143,4 +143,13 @@ class UserController extends Controller
                 'panduan' => $panduan,
             ]);
     }
+
+    public function pusatInformasiAkademik()
+    {
+        return view('user.menu.pusatInformasiAkademik', [
+            'title' => 'Pusat Informasi Akademik',
+            'section' => 'Menu Informasi',
+            'active' => 'Pusat Informasi Akademik',
+        ]);
+    }
 }

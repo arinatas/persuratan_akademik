@@ -203,6 +203,7 @@ Route::get('/userPengumuman/{id}', [UserController::class, 'pengumuman'])->middl
 Route::get('/userPedoman', [UserController::class, 'pedoman'])->middleware('auth')->name('userPedoman');
 Route::get('/userPanduan', [UserController::class, 'panduan'])->name('userPanduan');
 Route::get('/panduanDetails/{id}', [UserController::class, 'panduanDetails'])->name('panduanDetails');
+Route::get('/userPusatInformasiAkademik', [UserController::class, 'pusatInformasiAkademik'])->middleware('auth')->name('userPusatInformasiAkademik');
 
 
 // surat diproses sendiri
