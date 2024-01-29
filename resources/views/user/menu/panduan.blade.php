@@ -34,7 +34,7 @@
                                         </div>
                                         <!-- End Tampilan Search -->
                                         <!--begin::Table-->
-                                        @if ($panduans )
+                                        @if ($jenisPanduans)
                                         <!--begin::Row-->
                                         <div class="row mt-5 g-5 g-xl-8">
                                             @foreach ($jenisPanduans as $jenisPanduan)
@@ -45,10 +45,8 @@
                                                     <div class="card-body">
                                                         <h2 class="card-title fw-bolder text-dark fs-2">{{ $jenisPanduan->nama }}</h2>
                                                         <br>
-                                                        @foreach ($panduans as $item)
-                                                            @if ($jenisPanduan->id == $item->jenis_panduan)
+                                                        @foreach($jenisPanduan->panduans as $item)
                                                             <p> > <a href="{{ url('panduanDetails', $item->id) }}" class="text-dark-75 fw-bold fs-5 m-0">{{ $item->judul }}</a></p>
-                                                            @endif
                                                         @endforeach
                                                     </div>
                                                     <!--end::Body-->

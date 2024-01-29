@@ -17,6 +17,13 @@ class JenisPanduan extends Model
         'nama',
     ];
 
+    // Definisikan relasi ke JenisPanduan
+    public function panduans()
+    {
+        return $this->hasMany(Panduan::class, 'jenis_panduan', 'id');
+
+    }
+
     public $timestamps = true;
 
     const CREATED_AT = 'created_at';
