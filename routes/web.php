@@ -39,7 +39,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
-Route::get('/', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::get('/', [UserController::class, 'panduan'])->middleware('guest')->name('panduan');
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
@@ -201,7 +201,7 @@ Route::middleware(['admin'])->group(function () {
 Route::get('/userDashboard', [UserController::class, 'index'])->middleware('auth')->name('userDashboard');
 Route::get('/userPengumuman/{id}', [UserController::class, 'pengumuman'])->middleware('auth')->name('userPengumuman');
 Route::get('/userPedoman', [UserController::class, 'pedoman'])->middleware('auth')->name('userPedoman');
-Route::get('/userPanduan', [UserController::class, 'panduan'])->name('userPanduan');
+Route::get('/userPanduan', [UserController::class, 'panduan'])->name('userPanduan')->middleware('guest');
 Route::get('/panduanDetails/{id}', [UserController::class, 'panduanDetails'])->name('panduanDetails');
 Route::get('/userPusatInformasiAkademik', [UserController::class, 'pusatInformasiAkademik'])->middleware('auth')->name('userPusatInformasiAkademik');
 
