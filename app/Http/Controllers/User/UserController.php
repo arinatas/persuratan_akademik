@@ -120,7 +120,7 @@ class UserController extends Controller
         $panduans = $query->paginate($perPage)->appends(request()->query());
 
         return view('user.menu.panduan', [
-            'title' => 'Panduan',
+            'title' => 'Pusat Informasi Akademik',
             'section' => 'Menu Informasi',
             'active' => 'Panduan',
             'panduans' => $panduans,
@@ -137,7 +137,7 @@ class UserController extends Controller
         }
 
             return view('user.dashboard.panduan', [
-                'title' => 'Panduan',
+                'title' => 'Pusat Informasi Akademik',
                 'section' => 'Dashboard',
                 'active' => 'Dashboard',
                 'panduan' => $panduan,

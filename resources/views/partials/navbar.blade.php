@@ -1,7 +1,6 @@
 <div id="kt_header" style="" class="header align-items-stretch">
   <!--begin::Container-->
   <div class="container-fluid d-flex align-items-stretch justify-content-between">
-    @if (auth()->check())
       <!--begin::Aside mobile toggle-->
       <div class="d-flex align-items-center d-lg-none ms-n3 me-1" title="Show aside menu">
         <div class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px" id="kt_aside_mobile_toggle">
@@ -16,22 +15,30 @@
         </div>
       </div>
       <!--end::Aside mobile toggle-->
-      @if (auth()->user()->is_admin == 1)
-      <!--begin::Mobile logo-->
-      <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-        <a href="/adminDashboard" class="d-lg-none">
-          <img alt="Logo" src="assets/media/logos/smallprimakara.png" class="h-30px" />
-        </a>
-      </div>
-      @else
-      <!--begin::Mobile logo-->
-      <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-        <a href="/userDashboard" class="d-lg-none">
-          <img alt="Logo" src="assets/media/logos/smallprimakara.png" class="h-30px" />
-        </a>
-      </div>
+      @if (auth()->check())
+        @if (auth()->user()->is_admin == 1)
+        <!--begin::Mobile logo-->
+        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+          <a href="/adminDashboard" class="d-lg-none">
+            <img alt="Logo" src="assets/media/logos/smallprimakara.png" class="h-30px" />
+          </a>
+        </div>
+        @elseif (auth()->user()->is_admin == 0)
+        <!--begin::Mobile logo-->
+        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+          <a href="/userDashboard" class="d-lg-none">
+            <img alt="Logo" src="assets/media/logos/smallprimakara.png" class="h-30px" />
+          </a>
+        </div>
+        @else
+        <!--begin::Mobile logo-->
+        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+          <a href="/login" class="d-lg-none">
+            <img alt="Logo" src="assets/media/logos/smallprimakara.png" class="h-30px" />
+          </a>
+        </div>
+        @endif
       @endif
-    @endif
     <!--end::Mobile logo-->
     <!--begin::Wrapper-->
     <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
@@ -95,7 +102,7 @@
               <!--end::Menu wrapper-->
             </div>
           @else
-            <div class="">
+            <div>
               <a href="{{ url('login') }}" type="submit" class="btn btn-sm btn-primary mt-4">Login</a>
             </div>
           @endif
