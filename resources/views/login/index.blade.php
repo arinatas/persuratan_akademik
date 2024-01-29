@@ -46,7 +46,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<div class="d-flex flex-row-fluid flex-column justify-content-between">
 						<!--begin: Aside header-->
 						<a href="#" class="flex-column-auto mt-5 pb-lg-0 pb-10">
-							<img src="/assets/media/logos/whiteprimakara.png" class="max-h-70px" alt="" />
+							<img src="/assets/media/logos/whiteprimakara.png" width="250px" class="max-h-70px" alt="" />
 						</a>
 						<!--end: Aside header-->
 						<!--begin: Aside content-->
@@ -57,12 +57,10 @@ License: You must have a valid license purchased only from themeforest(the above
 						<!--end: Aside content-->
 						<!--begin: Aside footer for desktop-->
 						<div class="d-none flex-column-auto d-lg-flex justify-content-between mt-10">
-							<div class="opacity-70 font-weight-bold text-white">Copyright Primakara © 2024</div>
-							<div class="d-flex">
+							{{-- <div class="opacity-70 font-weight-bold text-white">Copyright Primakara © 2024</div> --}}
 								{{-- <a href="#" class="text-white">Privacy</a> --}}
 								{{-- <a href="#" class="text-white ml-10">Legal</a> --}}
-								<a href="{{ url('userPanduan') }}" class="text-white ml-10">Panduan</a>
-							</div>
+								<a href="{{ url('userPanduan') }}" class="text-white"><u>Pusat Informasi Akademik</u></a>
 						</div>
 						<!--end: Aside footer for desktop-->
 					</div>
@@ -142,16 +140,16 @@ License: You must have a valid license purchased only from themeforest(the above
             
 					</div>
           <div class="simple-footer mb-3 text-center" style="user-select: auto;">
-              Made with <i class="fas fa-heart text-danger" style="user-select: auto;"></i> by DTI Primakara
+              Made with <i class="fas fa-heart text-danger" style="user-select: auto;"></i> by DTI Primakara &nbsp;&nbsp; | &nbsp;&nbsp; Copyright Primakara © 2024
           </div>
 					<!--end::Content body-->
 					<!--begin::Content footer for mobile-->
 					<div class="d-flex d-lg-none flex-column-auto flex-column flex-sm-row justify-content-between align-items-center mt-5 p-5">
-						<div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">Copyright Primakara © 2024</div>
+						{{-- <div class="text-dark-50 font-weight-bold order-2 order-sm-1 my-2">Copyright Primakara © 2024</div> --}}
 						<div class="d-flex order-1 order-sm-2 my-2">
 							{{-- <a href="#" class="text-dark-75 text-hover-primary">Privacy</a> --}}
 							{{-- <a href="#" class="text-dark-75 text-hover-primary ml-4">Legal</a> --}}
-							<a href="{{ url('userPanduan') }}" class="text-dark-75 text-hover-primary ml-4">Panduan</a>
+							<a href="{{ url('userPanduan') }}" class="text-dark-75 text-hover-primary ml-4"><u>Pusat Informasi Akademik</u></a>
 						</div>
 					</div>
 					<!--end::Content footer for mobile-->
