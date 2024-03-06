@@ -156,8 +156,8 @@
                                                         <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
                                                             <option value="Informatika">Informatika</option>
                                                             <option value="Sistem Informasi">Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
-                                                            <option value="Akutansi">Akutansi</option>
+                                                            <option value="Sistem Informasi Akuntansi">Sistem Informasi Akuntansi</option>
+                                                            <option value="Akuntansi">Akuntansi</option>
                                                             <option value="Manajemen">Manajemen</option>
                                                             <option value="DKV">DKV</option>
                                                             <option value="Bisnis Digital">Bisnis Digital</option>

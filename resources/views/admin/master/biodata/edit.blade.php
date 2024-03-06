@@ -48,8 +48,8 @@
 									<select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
 										<option value="Informatika" {{ $biodata->prodi == 'Informatika' ? 'selected' : '' }}>Informatika</option>
 										<option value="Sistem Informasi" {{ $biodata->prodi == 'Sistem Informasi' ? 'selected' : '' }}>Sistem Informasi</option>
-										<option value="Sistem Informasi Akutansi" {{ $biodata->prodi == 'Sistem Informasi Akutansi' ? 'selected' : '' }}>Sistem Informasi Akutansi</option>
-										<option value="Akutansi" {{ $biodata->prodi == 'Akutansi' ? 'selected' : '' }}>Akutansi</option>
+										<option value="Sistem Informasi Akuntansi" {{ $biodata->prodi == 'Sistem Informasi Akuntansi' ? 'selected' : '' }}>Sistem Informasi Akuntansi</option>
+										<option value="Akuntansi" {{ $biodata->prodi == 'Akuntansi' ? 'selected' : '' }}>Akuntansi</option>
 										<option value="Manajemen" {{ $biodata->prodi == 'Manajemen' ? 'selected' : '' }}>Manajemen</option>
 										<option value="DKV" {{ $biodata->prodi == 'DKV' ? 'selected' : '' }}>DKV</option>
 										<option value="Bisnis Digital" {{ $biodata->prodi == 'Bisnis Digital' ? 'selected' : '' }}>Bisnis Digital</option>

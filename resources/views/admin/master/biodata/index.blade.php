@@ -106,10 +106,10 @@
                                                             <option value="">Filter by Prodi</option>
                                                             <option value="Informatika"{{ request('prodi') == 'Informatika' ? ' selected' : '' }}>Informatika</option>
                                                             <option value="Sistem Informasi"{{ request('prodi') == 'Sistem Informasi' ? ' selected' : '' }}>Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi"{{ request('prodi') == 'Sistem Informasi Akutansi' ? ' selected' : '' }}>Sistem Informasi Akutansi</option>
+                                                            <option value="Sistem Informasi Akuntansi"{{ request('prodi') == 'Sistem Informasi Akuntansi' ? ' selected' : '' }}>Sistem Informasi Akuntansi</option>
                                                             <option value="DKV"{{ request('prodi') == 'DKV' ? ' selected' : '' }}>DKV</option>
                                                             <option value="Manajemen"{{ request('prodi') == 'Manajemen' ? ' selected' : '' }}>Manajemen</option>
-                                                            <option value="Akutansi"{{ request('prodi') == 'Akutansi' ? ' selected' : '' }}>Akutansi</option>
+                                                            <option value="Akuntansi"{{ request('prodi') == 'Akuntansi' ? ' selected' : '' }}>Akuntansi</option>
                                                             <option value="Bisnis Digital"{{ request('prodi') == 'Bisnis Digital' ? ' selected' : '' }}>Bisnis Digital</option>
                                                         </select>
                                                     </div>
@@ -302,8 +302,8 @@
                                                         <select class="form-select form-select-solid" data-control="select2" data-hide-search="true" name="prodi" required>
                                                             <option value="Informatika">Informatika</option>
                                                             <option value="Sistem Informasi">Sistem Informasi</option>
-                                                            <option value="Sistem Informasi Akutansi">Sistem Informasi Akutansi</option>
-                                                            <option value="Akutansi">Akutansi</option>
+                                                            <option value="Sistem Informasi Akuntansi">Sistem Informasi Akuntansi</option>
+                                                            <option value="Akuntansi">Akuntansi</option>
                                                             <option value="Manajemen">Manajemen</option>
                                                             <option value="DKV">DKV</option>
                                                             <option value="Bisnis Digital">Bisnis Digital</option>
