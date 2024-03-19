@@ -58,9 +58,11 @@
 														<span class="text-dark text-hover-primary fs-2 fw-bolder">{{ $panduan->judul }}</span>
 														<!--end::Title-->
 														<!--begin::Container-->
-														<div class="fs-5 fw-bold text-gray-600 mt-8">
-															<p class="mb-8">{!! nl2br(e($panduan->desc1)) !!}</p>
-														</div>
+														@if ($panduan->desc1)
+															<div class="fs-5 fw-bold text-gray-600 mt-8">
+																<p class="mb-8">{!! nl2br(e($panduan->desc1)) !!}</p>
+															</div>
+														@endif
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
@@ -76,19 +78,21 @@
 																	{{-- Handle other file types --}}
 																	<p>File type not supported</p>
 																@endif
-															@else
-																No File Available
 															@endif
 															<!--end::Image-->
 														</div>
+														@if ($panduan->ket_gambar_1)
 														<div class="fs-5 fw-bold text-dark-600 text-center">
 															<p class="mt-3">{{ $panduan->ket_gambar_1 }}</p>
 														</div>
+														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->desc2)
 														<div class="fs-5 fw-bold text-gray-600 mt-8">
 															<p class="mb-8">{!! nl2br(e($panduan->desc2)) !!}</p>
 														</div>
+														@endif
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
@@ -105,18 +109,22 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																No File Available
+																
 															@endif
 															<!--end::Image-->
 														</div>
+														@if ($panduan->ket_gambar_2)
 														<div class="fs-5 fw-bold text-dark-600 text-center">
 															<p class="mt-3">{{ $panduan->ket_gambar_2 }}</p>
 														</div>
+														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->desc3)
 														<div class="fs-5 fw-bold text-gray-600 mt-8">
 															<p class="mb-8">{!! nl2br(e($panduan->desc3)) !!}</p>
 														</div>
+														@endif
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
@@ -133,18 +141,22 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																No File Available
+																
 															@endif
 															<!--end::Image-->
 														</div>
+														@if ($panduan->ket_gambar_3)
 														<div class="fs-5 fw-bold text-dark-600 text-center">
 															<p class="mt-3">{{ $panduan->ket_gambar_3 }}</p>
 														</div>
+														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->desc4)
 														<div class="fs-5 fw-bold text-gray-600 mt-8">
 															<p class="mb-8">{!! nl2br(e($panduan->desc4)) !!}</p>
 														</div>
+														@endif
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
@@ -161,18 +173,22 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																No File Available
+																
 															@endif
 															<!--end::Image-->
 														</div>
+														@if ($panduan->ket_gambar_4)
 														<div class="fs-5 fw-bold text-dark-600 text-center">
 															<p class="mt-3">{{ $panduan->ket_gambar_4 }}</p>
 														</div>
+														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->desc5)
 														<div class="fs-5 fw-bold text-gray-600 mt-8">
 															<p class="mb-8">{!! nl2br(e($panduan->desc5)) !!}</p>
 														</div>
+														@endif
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
@@ -189,18 +205,22 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																No File Available
+																
 															@endif
 															<!--end::Image-->
 														</div>
+														@if ($panduan->ket_gambar_5)
 														<div class="fs-5 fw-bold text-dark-600 text-center">
 															<p class="mt-3">{{ $panduan->ket_gambar_5 }}</p>
 														</div>
+														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->desc6)
 														<div class="fs-5 fw-bold text-gray-600 mt-8">
 															<p class="mb-8">{!! nl2br(e($panduan->desc6)) !!}</p>
 														</div>
+														@endif
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
@@ -217,18 +237,22 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																No File Available
+																
 															@endif
 															<!--end::Image-->
 														</div>
+														@if ($panduan->ket_gambar_6)
 														<div class="fs-5 fw-bold text-dark-600 text-center">
 															<p class="mt-3">{{ $panduan->ket_gambar_6 }}</p>
 														</div>
+														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->desc7)
 														<div class="fs-5 fw-bold text-gray-600 mt-8">
 															<p class="mb-8">{!! nl2br(e($panduan->desc7)) !!}</p>
 														</div>
+														@endif
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
@@ -245,18 +269,22 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																No File Available
+																
 															@endif
 															<!--end::Image-->
 														</div>
+														@if ($panduan->ket_gambar_7)
 														<div class="fs-5 fw-bold text-dark-600 text-center">
 															<p class="mt-3">{{ $panduan->ket_gambar_7 }}</p>
 														</div>
+														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->desc8)
 														<div class="fs-5 fw-bold text-gray-600 mt-8">
 															<p class="mb-8">{!! nl2br(e($panduan->desc8)) !!}</p>
 														</div>
+														@endif
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
@@ -273,13 +301,15 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																No File Available
+																
 															@endif
 															<!--end::Image-->
 														</div>
+														@if ($panduan->ket_gambar_8)
 														<div class="fs-5 fw-bold text-dark-600 text-center">
 															<p class="mt-3">{{ $panduan->ket_gambar_8 }}</p>
 														</div>
+														@endif
 														<!--end::Container-->
 														@if ($panduan->nama_file)
 														<div class="file text-center mt-10">
@@ -295,7 +325,7 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																No File Available
+																
 															@endif
 														</div>
 														@endif
