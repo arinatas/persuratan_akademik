@@ -18,7 +18,10 @@
                                             <form action="{{ route('userPanduan') }}" method="GET">
                                                 <div class="input-group row justify-content-center">
                                                     <div class="col-lg-12">
-                                                        <h2 class="fs-2x fw-bolder text-center mb-10">{{ $title }}</h2>
+                                                        <h2 class="fs-2x fw-bolder text-center mb-3">{{ $title }}</h2>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <p class="text-center mb-15" style="font-size: 14px;">Untuk mengakses surat menyurat dan download pedoman silakan login</p>
                                                     </div>
                                                     <div class="col-sm-5">
                                                         <input type="text" class="form-control" name="search" placeholder="Cari Informasi Berdasarkan Judul / Deskripsi" value="{{ request('search') }}">
