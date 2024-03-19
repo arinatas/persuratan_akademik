@@ -101,21 +101,11 @@
 													<!--end::Wrapper-->
 													<!--begin::Description-->
 													<div class="fs-5 fw-bold text-gray-600">
-														<!--begin::Text-->
-														<p class="mb-8">{{ $panduan->desc1 }}</p>
-														<!--end::Text-->
-														<!--begin::Text-->
-														<p class="mb-8">{{ $panduan->desc2 }}</p>
-														<!--end::Text-->
-														<!--begin::Text-->
-														<p class="mb-8">{{ $panduan->desc3 }}</p>
-														<!--end::Text-->
-														<!--begin::Text-->
-														<p class="mb-8">{{ $panduan->desc4 }}</p>
-														<!--end::Text-->
-														<!--begin::Text-->
-														<p class="mb-8">{{ $panduan->desc5 }}</p>
-														<!--end::Text-->
+														<p class="mb-8">{!! nl2br(e($panduan->desc1)) !!}</p>
+														<p class="mb-8">{!! nl2br(e($panduan->desc2)) !!}</p>
+														<p class="mb-8">{!! nl2br(e($panduan->desc3)) !!}</p>
+														<p class="mb-8">{!! nl2br(e($panduan->desc4)) !!}</p>
+														<p class="mb-8">{!! nl2br(e($panduan->desc5)) !!}</p>
 													</div>
 													<!--end::Description-->
 													

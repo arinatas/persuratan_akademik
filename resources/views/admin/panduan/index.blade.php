@@ -129,10 +129,60 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    @if($item->ket_gambar_1)
+                                                                                        <th>Title Gambar 1</th>
+                                                                                        <td>{{ $item->ket_gambar_1 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar 1</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->gambar1, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->gambar1)
+                                                                                            @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+                                                                                                {{-- Display image --}}
+                                                                                                <img src="{{ asset('storage/' . $item->gambar1) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
                                                                                     @if($item->desc2)
                                                                                         <th>Paragraf 2</th>
                                                                                         <td>{{ $item->desc2 }}</td>
                                                                                     @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->ket_gambar_2)
+                                                                                        <th>Title Gambar 2</th>
+                                                                                        <td>{{ $item->ket_gambar_2 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar 2</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->gambar2, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->gambar2)
+                                                                                            @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+                                                                                                {{-- Display image --}}
+                                                                                                <img src="{{ asset('storage/' . $item->gambar2) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->desc3)
@@ -141,10 +191,60 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    @if($item->ket_gambar_3)
+                                                                                        <th>Title Gambar 3</th>
+                                                                                        <td>{{ $item->ket_gambar_3 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar 3</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->gambar3, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->gambar3)
+                                                                                            @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+                                                                                                {{-- Display image --}}
+                                                                                                <img src="{{ asset('storage/' . $item->gambar3) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
                                                                                     @if($item->desc4)
                                                                                         <th>Paragraf 4</th>
                                                                                         <td>{{ $item->desc4 }}</td>
                                                                                     @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->ket_gambar_4)
+                                                                                        <th>Title Gambar 4</th>
+                                                                                        <td>{{ $item->ket_gambar_4 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar 4</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->gambar4, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->gambar4)
+                                                                                            @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+                                                                                                {{-- Display image --}}
+                                                                                                <img src="{{ asset('storage/' . $item->gambar4) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->desc5)
@@ -153,15 +253,114 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <th>Gambar Panduan</th>
+                                                                                    @if($item->ket_gambar_5)
+                                                                                        <th>Title Gambar 5</th>
+                                                                                        <td>{{ $item->ket_gambar_5 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar 5</th>
                                                                                     <td>
                                                                                         @php
-                                                                                            $extension = pathinfo($item->gambar, PATHINFO_EXTENSION);
+                                                                                            $extension = pathinfo($item->gambar5, PATHINFO_EXTENSION);
                                                                                         @endphp
-                                                                                        @if ($item->gambar)
+                                                                                        @if ($item->gambar5)
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
-                                                                                                <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <img src="{{ asset('storage/' . $item->gambar5) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->desc6)
+                                                                                        <th>Paragraf 6</th>
+                                                                                        <td>{{ $item->desc6 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->ket_gambar_6)
+                                                                                        <th>Title Gambar 6</th>
+                                                                                        <td>{{ $item->ket_gambar_6 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar 6</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->gambar6, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->gambar6)
+                                                                                            @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+                                                                                                {{-- Display image --}}
+                                                                                                <img src="{{ asset('storage/' . $item->gambar6) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->desc7)
+                                                                                        <th>Paragraf 7</th>
+                                                                                        <td>{{ $item->desc7 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->ket_gambar_7)
+                                                                                        <th>Title Gambar 7</th>
+                                                                                        <td>{{ $item->ket_gambar_7 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar 7</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->gambar7, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->gambar7)
+                                                                                            @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+                                                                                                {{-- Display image --}}
+                                                                                                <img src="{{ asset('storage/' . $item->gambar7) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                            @else
+                                                                                                {{-- Handle other file types --}}
+                                                                                                <p>File type not supported</p>
+                                                                                            @endif
+                                                                                        @else
+                                                                                            No File Available
+                                                                                        @endif
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->desc8)
+                                                                                        <th>Paragraf 8</th>
+                                                                                        <td>{{ $item->desc8 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->ket_gambar_8)
+                                                                                        <th>Title Gambar 8</th>
+                                                                                        <td>{{ $item->ket_gambar_8 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <th>Gambar 8</th>
+                                                                                    <td>
+                                                                                        @php
+                                                                                            $extension = pathinfo($item->gambar8, PATHINFO_EXTENSION);
+                                                                                        @endphp
+                                                                                        @if ($item->gambar8)
+                                                                                            @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+                                                                                                {{-- Display image --}}
+                                                                                                <img src="{{ asset('storage/' . $item->gambar8) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -302,10 +501,38 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Title Gambar 1</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="ket_gambar_1"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar 1</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar1" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="">Paragraf 2</span>
                                                         </label>
                                                         <!--end::Label-->
                                                         <textarea class="form-control form-control-solid" name="desc2"  value="" style="height: 300px;"/></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Title Gambar 2</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="ket_gambar_2"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar 2</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar2" />
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -318,10 +545,38 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Title Gambar 3</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="ket_gambar_3"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar 3</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar3" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="">Paragraf 4</span>
                                                         </label>
                                                         <!--end::Label-->
                                                         <textarea class="form-control form-control-solid" name="desc4"  value="" style="height: 300px;"/></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Title Gambar 4</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="ket_gambar_4"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar 4</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar4" />
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -332,11 +587,91 @@
                                                         <textarea class="form-control form-control-solid" name="desc5"  value="" style="height: 300px;"/></textarea>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Title Gambar 5</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="ket_gambar_5"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar 5</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar5" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Paragraf 6</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <textarea class="form-control form-control-solid" name="desc6"  value="" style="height: 300px;"/></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Title Gambar 6</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="ket_gambar_6"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar 6</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar6" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Paragraf 7</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <textarea class="form-control form-control-solid" name="desc7"  value="" style="height: 300px;"/></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Title Gambar 7</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="ket_gambar_7"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar 7</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar7" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Paragraf 8</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <textarea class="form-control form-control-solid" name="desc8"  value="" style="height: 300px;"/></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Title Gambar 8</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="ket_gambar_8"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Gambar 8</span>
+                                                        </label>
+                                                        <input class="form-control form-control-solid" type="file" name="gambar8" />
+                                                    </div>
+                                                    <!-- <div class="d-flex flex-column mb-7 fv-row">
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="">Gambar</span>
                                                         </label>
                                                         <input class="form-control form-control-solid" type="file" name="gambar" />
-                                                    </div>
+                                                    </div> -->
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="">File Panduan</span>
