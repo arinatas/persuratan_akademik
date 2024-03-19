@@ -58,16 +58,19 @@
 														<span class="text-dark text-hover-primary fs-2 fw-bolder">{{ $panduan->judul }}</span>
 														<!--end::Title-->
 														<!--begin::Container-->
+														<div class="fs-5 fw-bold text-gray-600 mt-8">
+															<p class="mb-8">{!! nl2br(e($panduan->desc1)) !!}</p>
+														</div>
 														<div class="overlay mt-8">
 															<!--begin::Image-->
 															@php
-																$extension = pathinfo($panduan->gambar, PATHINFO_EXTENSION);
+																$extension = pathinfo($panduan->gambar1, PATHINFO_EXTENSION);
 															@endphp
-															@if ($panduan->gambar)
+															@if ($panduan->gambar1)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
 															
-																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar) }}')"></div>
+																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar1) }}')"></div>
 
 																@else
 																	{{-- Handle other file types --}}
@@ -77,6 +80,205 @@
 																No File Available
 															@endif
 															<!--end::Image-->
+														</div>
+														<div class="fs-5 fw-bold text-dark-600 text-center">
+															<p class="mt-3">{{ $panduan->ket_gambar_1 }}</p>
+														</div>
+														<!--end::Container-->
+														<!--begin::Container-->
+														<div class="fs-5 fw-bold text-gray-600 mt-8">
+															<p class="mb-8">{!! nl2br(e($panduan->desc2)) !!}</p>
+														</div>
+														<div class="overlay mt-8">
+															<!--begin::Image-->
+															@php
+																$extension = pathinfo($panduan->gambar2, PATHINFO_EXTENSION);
+															@endphp
+															@if ($panduan->gambar2)
+																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+																	{{-- Display image --}}
+															
+																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar2) }}')"></div>
+
+																@else
+																	{{-- Handle other file types --}}
+																	<p>File type not supported</p>
+																@endif
+															@else
+																No File Available
+															@endif
+															<!--end::Image-->
+														</div>
+														<div class="fs-5 fw-bold text-dark-600 text-center">
+															<p class="mt-3">{{ $panduan->ket_gambar_2 }}</p>
+														</div>
+														<!--end::Container-->
+														<!--begin::Container-->
+														<div class="fs-5 fw-bold text-gray-600 mt-8">
+															<p class="mb-8">{!! nl2br(e($panduan->desc3)) !!}</p>
+														</div>
+														<div class="overlay mt-8">
+															<!--begin::Image-->
+															@php
+																$extension = pathinfo($panduan->gambar3, PATHINFO_EXTENSION);
+															@endphp
+															@if ($panduan->gambar3)
+																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+																	{{-- Display image --}}
+															
+																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar3) }}')"></div>
+
+																@else
+																	{{-- Handle other file types --}}
+																	<p>File type not supported</p>
+																@endif
+															@else
+																No File Available
+															@endif
+															<!--end::Image-->
+														</div>
+														<div class="fs-5 fw-bold text-dark-600 text-center">
+															<p class="mt-3">{{ $panduan->ket_gambar_3 }}</p>
+														</div>
+														<!--end::Container-->
+														<!--begin::Container-->
+														<div class="fs-5 fw-bold text-gray-600 mt-8">
+															<p class="mb-8">{!! nl2br(e($panduan->desc4)) !!}</p>
+														</div>
+														<div class="overlay mt-8">
+															<!--begin::Image-->
+															@php
+																$extension = pathinfo($panduan->gambar4, PATHINFO_EXTENSION);
+															@endphp
+															@if ($panduan->gambar4)
+																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+																	{{-- Display image --}}
+															
+																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar4) }}')"></div>
+
+																@else
+																	{{-- Handle other file types --}}
+																	<p>File type not supported</p>
+																@endif
+															@else
+																No File Available
+															@endif
+															<!--end::Image-->
+														</div>
+														<div class="fs-5 fw-bold text-dark-600 text-center">
+															<p class="mt-3">{{ $panduan->ket_gambar_4 }}</p>
+														</div>
+														<!--end::Container-->
+														<!--begin::Container-->
+														<div class="fs-5 fw-bold text-gray-600 mt-8">
+															<p class="mb-8">{!! nl2br(e($panduan->desc5)) !!}</p>
+														</div>
+														<div class="overlay mt-8">
+															<!--begin::Image-->
+															@php
+																$extension = pathinfo($panduan->gambar5, PATHINFO_EXTENSION);
+															@endphp
+															@if ($panduan->gambar5)
+																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+																	{{-- Display image --}}
+															
+																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar5) }}')"></div>
+
+																@else
+																	{{-- Handle other file types --}}
+																	<p>File type not supported</p>
+																@endif
+															@else
+																No File Available
+															@endif
+															<!--end::Image-->
+														</div>
+														<div class="fs-5 fw-bold text-dark-600 text-center">
+															<p class="mt-3">{{ $panduan->ket_gambar_5 }}</p>
+														</div>
+														<!--end::Container-->
+														<!--begin::Container-->
+														<div class="fs-5 fw-bold text-gray-600 mt-8">
+															<p class="mb-8">{!! nl2br(e($panduan->desc6)) !!}</p>
+														</div>
+														<div class="overlay mt-8">
+															<!--begin::Image-->
+															@php
+																$extension = pathinfo($panduan->gambar6, PATHINFO_EXTENSION);
+															@endphp
+															@if ($panduan->gambar6)
+																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+																	{{-- Display image --}}
+															
+																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar6) }}')"></div>
+
+																@else
+																	{{-- Handle other file types --}}
+																	<p>File type not supported</p>
+																@endif
+															@else
+																No File Available
+															@endif
+															<!--end::Image-->
+														</div>
+														<div class="fs-5 fw-bold text-dark-600 text-center">
+															<p class="mt-3">{{ $panduan->ket_gambar_6 }}</p>
+														</div>
+														<!--end::Container-->
+														<!--begin::Container-->
+														<div class="fs-5 fw-bold text-gray-600 mt-8">
+															<p class="mb-8">{!! nl2br(e($panduan->desc7)) !!}</p>
+														</div>
+														<div class="overlay mt-8">
+															<!--begin::Image-->
+															@php
+																$extension = pathinfo($panduan->gambar7, PATHINFO_EXTENSION);
+															@endphp
+															@if ($panduan->gambar7)
+																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+																	{{-- Display image --}}
+															
+																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar7) }}')"></div>
+
+																@else
+																	{{-- Handle other file types --}}
+																	<p>File type not supported</p>
+																@endif
+															@else
+																No File Available
+															@endif
+															<!--end::Image-->
+														</div>
+														<div class="fs-5 fw-bold text-dark-600 text-center">
+															<p class="mt-3">{{ $panduan->ket_gambar_7 }}</p>
+														</div>
+														<!--end::Container-->
+														<!--begin::Container-->
+														<div class="fs-5 fw-bold text-gray-600 mt-8">
+															<p class="mb-8">{!! nl2br(e($panduan->desc8)) !!}</p>
+														</div>
+														<div class="overlay mt-8">
+															<!--begin::Image-->
+															@php
+																$extension = pathinfo($panduan->gambar8, PATHINFO_EXTENSION);
+															@endphp
+															@if ($panduan->gambar8)
+																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
+																	{{-- Display image --}}
+															
+																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar8) }}')"></div>
+
+																@else
+																	{{-- Handle other file types --}}
+																	<p>File type not supported</p>
+																@endif
+															@else
+																No File Available
+															@endif
+															<!--end::Image-->
+														</div>
+														<div class="fs-5 fw-bold text-dark-600 text-center">
+															<p class="mt-3">{{ $panduan->ket_gambar_8 }}</p>
 														</div>
 														<!--end::Container-->
 														@if ($panduan->nama_file)
@@ -100,13 +302,16 @@
 													</div>
 													<!--end::Wrapper-->
 													<!--begin::Description-->
-													<div class="fs-5 fw-bold text-gray-600">
+													<!-- <div class="fs-5 fw-bold text-gray-600">
 														<p class="mb-8">{!! nl2br(e($panduan->desc1)) !!}</p>
 														<p class="mb-8">{!! nl2br(e($panduan->desc2)) !!}</p>
 														<p class="mb-8">{!! nl2br(e($panduan->desc3)) !!}</p>
 														<p class="mb-8">{!! nl2br(e($panduan->desc4)) !!}</p>
 														<p class="mb-8">{!! nl2br(e($panduan->desc5)) !!}</p>
-													</div>
+														<p class="mb-8">{!! nl2br(e($panduan->desc6)) !!}</p>
+														<p class="mb-8">{!! nl2br(e($panduan->desc7)) !!}</p>
+														<p class="mb-8">{!! nl2br(e($panduan->desc8)) !!}</p>
+													</div> -->
 													<!--end::Description-->
 													
 													<!--begin::Icons-->
