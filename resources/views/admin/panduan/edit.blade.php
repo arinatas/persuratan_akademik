@@ -43,6 +43,10 @@
                                     <label for="exampleFormControlInput1" class="required form-label">Judul</label>
                                     <input type="text" value="{{$panduan->judul}}" class="form-control form-control-solid" required name="judul"/>
                                 </div>
+                                <div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="form-label">Sub Judul 1</label>
+                                    <input type="text" value="{{$panduan->sub_judul_1}}" class="form-control form-control-solid" name="sub_judul_1"/>
+                                </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class="required form-label">Paragraf 1</label>
 									<textarea class="form-control form-control-solid" required name="desc1" style="height: 300px;">{{$panduan->desc1}}</textarea>
@@ -63,6 +67,10 @@
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar1"/>
+                                </div>
+                                <div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="form-label">Sub Judul 2</label>
+                                    <input type="text" value="{{$panduan->sub_judul_2}}" class="form-control form-control-solid" name="sub_judul_2"/>
                                 </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 2</label>
@@ -85,6 +93,10 @@
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar2"/>
                                 </div>
+                                <div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="form-label">Sub Judul 3</label>
+                                    <input type="text" value="{{$panduan->sub_judul_3}}" class="form-control form-control-solid" name="sub_judul_3"/>
+                                </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 3</label>
 									<textarea class="form-control form-control-solid"  name="desc3" style="height: 300px;">{{$panduan->desc3}}</textarea>
@@ -105,6 +117,10 @@
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar3"/>
+                                </div>
+                                <div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="form-label">Sub Judul 4</label>
+                                    <input type="text" value="{{$panduan->sub_judul_4}}" class="form-control form-control-solid" name="sub_judul_4"/>
                                 </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 4</label>
@@ -127,6 +143,10 @@
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar4"/>
                                 </div>
+                                <div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="form-label">Sub Judul 5</label>
+                                    <input type="text" value="{{$panduan->sub_judul_5}}" class="form-control form-control-solid" name="sub_judul_5"/>
+                                </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 5</label>
 									<textarea class="form-control form-control-solid"  name="desc5" style="height: 300px;">{{$panduan->desc5}}</textarea>
@@ -147,6 +167,10 @@
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar5"/>
+                                </div>
+                                <div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="form-label">Sub Judul 6</label>
+                                    <input type="text" value="{{$panduan->sub_judul_6}}" class="form-control form-control-solid" name="sub_judul_6"/>
                                 </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 6</label>
@@ -169,6 +193,10 @@
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar6"/>
                                 </div>
+                                <div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="form-label">Sub Judul 7</label>
+                                    <input type="text" value="{{$panduan->sub_judul_7}}" class="form-control form-control-solid" name="sub_judul_7"/>
+                                </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 7</label>
 									<textarea class="form-control form-control-solid"  name="desc7" style="height: 300px;">{{$panduan->desc7}}</textarea>
@@ -189,6 +217,10 @@
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar7"/>
+                                </div>
+                                <div class="mb-10">
+                                    <label for="exampleFormControlInput1" class="form-label">Sub Judul 8</label>
+                                    <input type="text" value="{{$panduan->sub_judul_8}}" class="form-control form-control-solid" name="sub_judul_8"/>
                                 </div>
 								<div class="mb-10">
 									<label for="exampleFormControlInput1" class=" form-label">Paragraf 8</label>

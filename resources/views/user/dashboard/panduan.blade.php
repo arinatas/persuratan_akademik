@@ -58,9 +58,14 @@
 														<span class="text-dark text-hover-primary fs-2 fw-bolder">{{ $panduan->judul }}</span>
 														<!--end::Title-->
 														<!--begin::Container-->
+														@if ($panduan->sub_judul_1)
+															<div class="mt-8">
+																<span class="text-dark text-hover-primary fs-5 fw-bolder">{{ $panduan->sub_judul_1 }}</span>
+															</div>
+														@endif
 														@if ($panduan->desc1)
-															<div class="fs-5 fw-bold text-gray-600 mt-8">
-																<p class="mb-8">{!! nl2br(e($panduan->desc1)) !!}</p>
+															<div class="fs-4 fw-bold text-gray-800 mt-8">
+																<pre class="mb-8" style="white-space: pre-wrap; font-family: poppins; line-height: 1.5; text-align: justify;">{!! nl2br(e($panduan->desc1)) !!}</pre>
 															</div>
 														@endif
 														<div class="overlay mt-8">
@@ -88,9 +93,14 @@
 														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->sub_judul_2)
+															<div class="mt-8">
+																<span class="text-dark text-hover-primary fs-5 fw-bolder">{{ $panduan->sub_judul_2 }}</span>
+															</div>
+														@endif
 														@if ($panduan->desc2)
-														<div class="fs-5 fw-bold text-gray-600 mt-8">
-															<p class="mb-8">{!! nl2br(e($panduan->desc2)) !!}</p>
+														<div class="fs-4 fw-bold text-gray-800 mt-8">
+															<pre class="mb-8" style="white-space: pre-wrap; font-family: poppins; line-height: 1.4; text-align: justify;">{!! nl2br(e($panduan->desc2)) !!}</pre>
 														</div>
 														@endif
 														<div class="overlay mt-8">
@@ -120,9 +130,14 @@
 														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->sub_judul_3)
+															<div class="mt-8">
+																<span class="text-dark text-hover-primary fs-5 fw-bolder">{{ $panduan->sub_judul_3 }}</span>
+															</div>
+														@endif
 														@if ($panduan->desc3)
-														<div class="fs-5 fw-bold text-gray-600 mt-8">
-															<p class="mb-8">{!! nl2br(e($panduan->desc3)) !!}</p>
+														<div class="fs-4 fw-bold text-gray-800 mt-8">
+															<pre class="mb-8" style="white-space: pre-wrap; font-family: poppins; line-height: 1.5; text-align: justify;">{!! nl2br(e($panduan->desc3)) !!}</pre>
 														</div>
 														@endif
 														<div class="overlay mt-8">
@@ -152,9 +167,14 @@
 														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->sub_judul_4)
+															<div class="mt-8">
+																<span class="text-dark text-hover-primary fs-5 fw-bolder">{{ $panduan->sub_judul_4 }}</span>
+															</div>
+														@endif
 														@if ($panduan->desc4)
-														<div class="fs-5 fw-bold text-gray-600 mt-8">
-															<p class="mb-8">{!! nl2br(e($panduan->desc4)) !!}</p>
+														<div class="fs-4 fw-bold text-gray-800 mt-8">
+															<pre class="mb-8" style="white-space: pre-wrap; font-family: poppins; line-height: 1.5; text-align: justify;">{!! nl2br(e($panduan->desc4)) !!}</pre>
 														</div>
 														@endif
 														<div class="overlay mt-8">
@@ -184,9 +204,14 @@
 														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->sub_judul_5)
+															<div class="mt-8">
+																<span class="text-dark text-hover-primary fs-5 fw-bolder">{{ $panduan->sub_judul_5 }}</span>
+															</div>
+														@endif
 														@if ($panduan->desc5)
-														<div class="fs-5 fw-bold text-gray-600 mt-8">
-															<p class="mb-8">{!! nl2br(e($panduan->desc5)) !!}</p>
+														<div class="fs-4 fw-bold text-gray-800 mt-8">
+															<pre class="mb-8" style="white-space: pre-wrap; font-family: poppins; line-height: 1.5; text-align: justify;">{!! nl2br(e($panduan->desc5)) !!}</pre>
 														</div>
 														@endif
 														<div class="overlay mt-8">
@@ -216,9 +241,14 @@
 														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->sub_judul_6)
+															<div class="mt-8">
+																<span class="text-dark text-hover-primary fs-5 fw-bolder">{{ $panduan->sub_judul_6 }}</span>
+															</div>
+														@endif
 														@if ($panduan->desc6)
-														<div class="fs-5 fw-bold text-gray-600 mt-8">
-															<p class="mb-8">{!! nl2br(e($panduan->desc6)) !!}</p>
+														<div class="fs-4 fw-bold text-gray-800 mt-8">
+															<pre class="mb-8" style="white-space: pre-wrap; font-family: poppins; line-height: 1.5; text-align: justify;">{!! nl2br(e($panduan->desc6)) !!}</pre>
 														</div>
 														@endif
 														<div class="overlay mt-8">
@@ -248,9 +278,14 @@
 														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->sub_judul_7)
+															<div class="mt-8">
+																<span class="text-dark text-hover-primary fs-5 fw-bolder">{{ $panduan->sub_judul_7 }}</span>
+															</div>
+														@endif
 														@if ($panduan->desc7)
-														<div class="fs-5 fw-bold text-gray-600 mt-8">
-															<p class="mb-8">{!! nl2br(e($panduan->desc7)) !!}</p>
+														<div class="fs-4 fw-bold text-gray-800 mt-8">
+															<pre class="mb-8" style="white-space: pre-wrap; font-family: poppins; line-height: 1.5; text-align: justify;">{!! nl2br(e($panduan->desc7)) !!}</pre>
 														</div>
 														@endif
 														<div class="overlay mt-8">
@@ -280,9 +315,14 @@
 														@endif
 														<!--end::Container-->
 														<!--begin::Container-->
+														@if ($panduan->sub_judul_8)
+															<div class="mt-8">
+																<span class="text-dark text-hover-primary fs-5 fw-bolder">{{ $panduan->sub_judul_8 }}</span>
+															</div>
+														@endif
 														@if ($panduan->desc8)
-														<div class="fs-5 fw-bold text-gray-600 mt-8">
-															<p class="mb-8">{!! nl2br(e($panduan->desc8)) !!}</p>
+														<div class="fs-4 fw-bold text-gray-800 mt-8">
+															<pre class="mb-8" style="white-space: pre-wrap; font-family: poppins; line-height: 1.5; text-align: justify;">{!! nl2br(e($panduan->desc8)) !!}</pre>
 														</div>
 														@endif
 														<div class="overlay mt-8">

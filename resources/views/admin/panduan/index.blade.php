@@ -123,6 +123,12 @@
                                                                                     <td>{{ \Carbon\Carbon::parse($item->tgl_terbit)->format('d F Y') }}</td>
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    @if($item->sub_judul_1)
+                                                                                        <th>Sub Judul 1</th>
+                                                                                        <td>{{ $item->sub_judul_1 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
                                                                                     @if($item->desc1)
                                                                                         <th>Paragraf 1</th>
                                                                                         <td>{{ $item->desc1 }}</td>
@@ -152,6 +158,12 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->sub_judul_2)
+                                                                                        <th>Sub Judul 2</th>
+                                                                                        <td>{{ $item->sub_judul_2 }}</td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->desc2)
@@ -185,6 +197,12 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    @if($item->sub_judul_3)
+                                                                                        <th>Sub Judul 3</th>
+                                                                                        <td>{{ $item->sub_judul_3 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
                                                                                     @if($item->desc3)
                                                                                         <th>Paragraf 3</th>
                                                                                         <td>{{ $item->desc3 }}</td>
@@ -214,6 +232,12 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->sub_judul_4)
+                                                                                        <th>Sub Judul 4</th>
+                                                                                        <td>{{ $item->sub_judul_4 }}</td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->desc4)
@@ -247,6 +271,12 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    @if($item->sub_judul_5)
+                                                                                        <th>Sub Judul 5</th>
+                                                                                        <td>{{ $item->sub_judul_5 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
                                                                                     @if($item->desc5)
                                                                                         <th>Paragraf 5</th>
                                                                                         <td>{{ $item->desc5 }}</td>
@@ -276,6 +306,12 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->sub_judul_6)
+                                                                                        <th>Sub Judul 6</th>
+                                                                                        <td>{{ $item->sub_judul_6 }}</td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->desc6)
@@ -309,6 +345,12 @@
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
+                                                                                    @if($item->sub_judul_7)
+                                                                                        <th>Sub Judul 7</th>
+                                                                                        <td>{{ $item->sub_judul_7 }}</td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
                                                                                     @if($item->desc7)
                                                                                         <th>Paragraf 7</th>
                                                                                         <td>{{ $item->desc7 }}</td>
@@ -338,6 +380,12 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->sub_judul_8)
+                                                                                        <th>Sub Judul 8</th>
+                                                                                        <td>{{ $item->sub_judul_8 }}</td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->desc8)
@@ -493,6 +541,14 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Sub Judul 1</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="sub_judul_1"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="required">Paragraf 1</span>
                                                         </label>
                                                         <!--end::Label-->
@@ -511,6 +567,14 @@
                                                             <span class="">Gambar 1</span>
                                                         </label>
                                                         <input class="form-control form-control-solid" type="file" name="gambar1" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Sub Judul 2</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="sub_judul_2"/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -537,6 +601,14 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Sub Judul 3</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="sub_judul_3"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="">Paragraf 3</span>
                                                         </label>
                                                         <!--end::Label-->
@@ -555,6 +627,14 @@
                                                             <span class="">Gambar 3</span>
                                                         </label>
                                                         <input class="form-control form-control-solid" type="file" name="gambar3" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Sub Judul 4</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="sub_judul_4"/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -581,6 +661,14 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Sub Judul 5</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="sub_judul_5"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="">Paragraf 5</span>
                                                         </label>
                                                         <!--end::Label-->
@@ -599,6 +687,14 @@
                                                             <span class="">Gambar 5</span>
                                                         </label>
                                                         <input class="form-control form-control-solid" type="file" name="gambar5" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Sub Judul 6</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="sub_judul_6"/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
@@ -625,6 +721,14 @@
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Sub Judul 7</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="sub_judul_7"/>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                                             <span class="">Paragraf 7</span>
                                                         </label>
                                                         <!--end::Label-->
@@ -643,6 +747,14 @@
                                                             <span class="">Gambar 7</span>
                                                         </label>
                                                         <input class="form-control form-control-solid" type="file" name="gambar7" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Sub Judul 8</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <input class="form-control form-control-solid" type="text" name="sub_judul_8"/>
                                                     </div>
                                                     <div class="d-flex flex-column mb-7 fv-row">
                                                         <!--begin::Label-->
