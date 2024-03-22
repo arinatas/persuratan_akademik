@@ -70,7 +70,7 @@
 														@endif
 														@if ($panduan->ket_gambar_1)
 															<div class="fs-7 fw-bold text-dark-600">
-																<p class="mt-3">{{ $panduan->ket_gambar_1 }}</p>
+																<p class="mt-8">{{ $panduan->ket_gambar_1 }}</p>
 															</div>
 														@endif
 														<div class="overlay">
@@ -105,7 +105,7 @@
 														@endif
 														@if ($panduan->ket_gambar_2)
 															<div class="fs-7 fw-bold text-dark-600">
-																<p class="mt-3">{{ $panduan->ket_gambar_2 }}</p>
+																<p class="mt-8">{{ $panduan->ket_gambar_2 }}</p>
 															</div>
 														@endif
 														<div class="overlay">
@@ -143,7 +143,7 @@
 														@endif
 														@if ($panduan->ket_gambar_3)
 														<div class="fs-7 fw-bold text-dark-600">
-															<p class="mt-3">{{ $panduan->ket_gambar_3 }}</p>
+															<p class="mt-8">{{ $panduan->ket_gambar_3 }}</p>
 														</div>
 														@endif
 														<div class="overlay">
@@ -181,7 +181,7 @@
 														@endif
 														@if ($panduan->ket_gambar_4)
 														<div class="fs-7 fw-bold text-dark-600">
-															<p class="mt-3">{{ $panduan->ket_gambar_4 }}</p>
+															<p class="mt-8">{{ $panduan->ket_gambar_4 }}</p>
 														</div>
 														@endif
 														<div class="overlay">
@@ -219,7 +219,7 @@
 														@endif
 														@if ($panduan->ket_gambar_5)
 														<div class="fs-7 fw-bold text-dark-600">
-															<p class="mt-3">{{ $panduan->ket_gambar_5 }}</p>
+															<p class="mt-8">{{ $panduan->ket_gambar_5 }}</p>
 														</div>
 														@endif
 														<div class="overlay">
@@ -257,7 +257,7 @@
 														@endif
 														@if ($panduan->ket_gambar_6)
 														<div class="fs-7 fw-bold text-dark-600">
-															<p class="mt-3">{{ $panduan->ket_gambar_6 }}</p>
+															<p class="mt-8">{{ $panduan->ket_gambar_6 }}</p>
 														</div>
 														@endif
 														<div class="overlay">
@@ -295,7 +295,7 @@
 														@endif
 														@if ($panduan->ket_gambar_7)
 														<div class="fs-7 fw-bold text-dark-600">
-															<p class="mt-3">{{ $panduan->ket_gambar_7 }}</p>
+															<p class="mt-8">{{ $panduan->ket_gambar_7 }}</p>
 														</div>
 														@endif
 														<div class="overlay">
@@ -333,7 +333,7 @@
 														@endif
 														@if ($panduan->ket_gambar_8)
 														<div class="fs-7 fw-bold text-dark-600">
-															<p class="mt-3">{{ $panduan->ket_gambar_8 }}</p>
+															<p class="mt-8">{{ $panduan->ket_gambar_8 }}</p>
 														</div>
 														@endif
 														<div class="overlay">
