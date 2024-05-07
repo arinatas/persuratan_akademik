@@ -46,6 +46,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui file, pilih file baru.</small>
+                                        <button onclick="deleteFile('{{ $pedoman->id }}')" class="btn btn-danger btn-sm mt-2">Hapus File</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="nama_file"/>
                                 </div>
@@ -106,4 +107,30 @@
 		});
 		}
 	</script>
+    <script>
+    function deleteFile(itemId) {
+        if (confirm('Anda yakin ingin menghapus file ini?')) {
+            // Kirim permintaan AJAX ke server untuk menghapus file
+            $.ajax({
+                type: 'POST',
+                url: '/delete-filePedoman',
+                data: {
+                    itemId: itemId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    // Handle response, misalnya, tampilkan pesan bahwa file berhasil dihapus
+                    alert('File berhasil dihapus');
+                    // Refresh halaman atau perbarui tampilan jika diperlukan
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error, misalnya, tampilkan pesan kesalahan
+                    console.error(error);
+                    alert('Terjadi kesalahan saat menghapus file');
+                    }
+                });
+            }
+        }
+    </script>
 @endsection

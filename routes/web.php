@@ -180,6 +180,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editPedoman/{id}', [PedomanController::class, 'edit'])->middleware('auth')->name('edit.pedoman');
     Route::post('/updatePedoman/{id}', [PedomanController::class, 'update'])->middleware('auth')->name('update.pedoman');
     Route::delete('/deletePedoman/{id}', [PedomanController::class, 'destroy'])->middleware('auth')->name('destroy.pedoman');
+    Route::post('/delete-filePedoman', [PedomanController::class, 'deleteFile'])->middleware('auth')->name('delete.filePedoman');
 
     // Pengumuman
     Route::get('/pengumuman', [PengumumanController::class, 'index'])->middleware('auth')->name('pengumuman');

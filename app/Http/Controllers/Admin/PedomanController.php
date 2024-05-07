@@ -45,35 +45,35 @@ class PedomanController extends Controller
             'keterangan' => 'required|string|max:255',
             'nama_file' => 'required|file|mimes:pdf',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             DB::beginTransaction();
-    
+
             // cek jika ada file upload
             if ($request->file('nama_file')) {
                 $fileName = $request->file('nama_file')->store('pedoman');
             }
 
-    
+
             Pedoman::create([
                 'nama' => $request->nama,
                 'keterangan' => $request->keterangan,
                 'nama_file' => $fileName,
             ]);
-    
+
             DB::commit();
-    
+
             return redirect()->back()->with('insertSuccess', 'Data berhasil diinputkan.');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('insertFail', $e->getMessage());
         }
     }
-    
+
     public function edit($id)
     {
         $pedoman = Pedoman::find($id);
@@ -93,68 +93,92 @@ class PedomanController extends Controller
     public function update(Request $request, $id)
     {
         $pedoman = Pedoman::find($id);
-    
+
         if (!$pedoman) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
-    
+
         // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
             'nama' => 'required|string|max:255',
             'keterangan' => 'required|string|max:255',
             'nama_file' => 'nullable|file|mimes:pdf', // Update validation rule for file uploads
         ]);
-    
+
         // kalau ada error kembalikan error
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             // Update fields that do not depend on the file first
             $pedoman->nama = $request->nama;
             $pedoman->keterangan = $request->keterangan;
-    
+
             // Check if there is a new file uploaded
             if ($request->file('nama_file')) {
                 // Delete existing file if it exists
                 if ($pedoman->nama_file) {
                     Storage::delete($pedoman->nama_file);
                 }
-    
+
                 // Store the new file
                 $fileName = $request->file('nama_file')->store('pedoman');
                 $pedoman->nama_file = $fileName;
             }
-    
+
             $pedoman->save();
-    
+
             return redirect('/pedoman')->with('updateSuccess', 'Data berhasil di Update');
         } catch (Exception $e) {
             return redirect()->back()->with('updateFail', 'Data gagal di Update');
         }
-    }    
+    }
 
     public function destroy($id)
     {
         // Cari data pedoman berdasarkan ID
         $pedoman = Pedoman::find($id);
-    
+
         try {
             // Hapus file terkait
             $filePath = $pedoman->nama_file;
-    
+
             if (!empty($filePath) && Storage::exists($filePath)) {
                 // Hapus file dari penyimpanan
                 Storage::delete($filePath);
             }
-    
+
             // Hapus data pedoman
             $pedoman->delete();
-    
+
             return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
         } catch (\Exception $e) {
             return redirect()->back()->with('deleteFail', $e->getMessage());
+        }
+    }
+
+    public function deleteFile(Request $request)
+    {
+        try {
+            // Ambil ID item dari permintaan
+            $itemId = $request->itemId;
+
+            // Temukan item yang sesuai dengan ID
+            $item = Pedoman::findOrFail($itemId);
+
+            // Periksa apakah ada file yang terkait dengan item
+            // Jika iya, hapus file dari penyimpanan
+            if ($item->nama_file) {
+                Storage::delete('path/to/files/' . $item->nama_file);
+                // Kosongkan nama file dalam basis data
+                $item->nama_file = null;
+                $item->save();
+            }
+
+            return response()->json(['success' => true]);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
         }
     }
 
