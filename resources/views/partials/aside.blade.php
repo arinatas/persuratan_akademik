@@ -50,13 +50,8 @@
                             <a class="menu-link" href="{{ url('adminDashboard') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-house fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -73,11 +68,8 @@
                             <span class="menu-link">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art009.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path opacity="0.3" d="M21 18.3V4H20H5C4.4 4 4 4.4 4 5V20C10.9 20 16.7 15.6 19 9.5V18.3C18.4 18.6 18 19.3 18 20C18 21.1 18.9 22 20 22C21.1 22 22 21.1 22 20C22 19.3 21.6 18.6 21 18.3Z" fill="black" />
-                                            <path d="M22 4C22 2.9 21.1 2 20 2C18.9 2 18 2.9 18 4C18 4.7 18.4 5.29995 18.9 5.69995C18.1 12.6 12.6 18.2 5.70001 18.9C5.30001 18.4 4.7 18 4 18C2.9 18 2 18.9 2 20C2 21.1 2.9 22 4 22C4.8 22 5.39999 21.6 5.79999 20.9C13.8 20.1 20.1 13.7 20.9 5.80005C21.6 5.40005 22 4.8 22 4Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-envelope fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -134,7 +126,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="menu-item">
                             <div class="menu-content pt-8 pb-2">
@@ -145,11 +137,8 @@
                             <a class="menu-link" href="{{ url('pedoman') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-book-fill fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -161,11 +150,8 @@
                             <a class="menu-link" href="{{ url('pengumuman') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-megaphone fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -177,19 +163,16 @@
                             <a class="menu-link" href="{{ url('panduan') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-compass fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="menu-title">Panduan</span>
                             </a>
                         </div>
-                        
-                        
+
+
                         <div class="menu-item">
                             <div class="menu-content pt-8 pb-2">
                                 <span class="menu-section text-muted text-uppercase fs-8 ls-1">Master</span>
@@ -199,27 +182,21 @@
                             <a class="menu-link" href="{{ url('akun') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-person fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
                                 <span class="menu-title">Akun</span>
                             </a>
                         </div>
-                        
+
                         <div class="menu-item {{ ($active === "Biodata") ? 'here show' : '' }}">
                             <a class="menu-link" href="{{ url('biodata') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-person-bounding-box fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -231,11 +208,8 @@
                             <a class="menu-link" href="{{ url('dosenPA') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-people-fill fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -247,11 +221,8 @@
                             <a class="menu-link" href="{{ url('kaprodi') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-building fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -263,11 +234,8 @@
                             <a class="menu-link" href="{{ url('penandaTangan') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-hand-index fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -279,11 +247,8 @@
                             <a class="menu-link" href="{{ url('jenisPanduan') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/art/art002.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                                            <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="black" />
-                                            <path d="M21 15V20C21 20.6 20.6 21 20 21H11.8L18.8 14H20C20.6 14 21 14.4 21 15ZM10 21V4C10 3.4 9.6 3 9 3H4C3.4 3 3 3.4 3 4V21C3 21.6 3.4 22 4 22H9C9.6 22 10 21.6 10 21ZM7.5 18.5C7.5 19.1 7.1 19.5 6.5 19.5C5.9 19.5 5.5 19.1 5.5 18.5C5.5 17.9 5.9 17.5 6.5 17.5C7.1 17.5 7.5 17.9 7.5 18.5Z" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-list-ul fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -291,7 +256,7 @@
                             </a>
                         </div>
                     @endif
-                    
+
                     @if (auth()->user()->is_admin == 0)
                         <div class="menu-item">
                             <div class="menu-content pb-2">
@@ -302,13 +267,8 @@
                             <a class="menu-link" href="{{ url('userDashboard') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-house fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -445,7 +405,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="menu-item">
                             <div class="menu-content pt-8 pb-2">
@@ -457,13 +417,8 @@
                             <a class="menu-link" href="{{ url('userPedoman') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-book-fill fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
@@ -474,13 +429,8 @@
                             <a class="menu-link" href="{{ url('userPusatInformasiAkademik') }}">
                                 <span class="menu-icon">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
-                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
-                                        </svg>
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-info-circle fs-3"></i>
                                     </span>
                                     <!--end::Svg Icon-->
                                 </span>
