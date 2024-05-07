@@ -77,6 +77,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <button onclick="deleteImage('{{ $pengumuman->id }}', 'gambar')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar"/>
                                 </div>
@@ -90,6 +91,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui file, pilih file baru.</small>
+                                        <button onclick="deleteFile('{{ $pengumuman->id }}')" class="btn btn-danger btn-sm mt-2">Hapus File</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="nama_file"/>
                                 </div>
@@ -150,4 +152,57 @@
 		});
 		}
 	</script>
+    <script>
+        function deleteImage(itemId, imageName) {
+            if (confirm('Anda yakin ingin menghapus gambar ini?')) {
+            // Kirim permintaan AJAX ke server untuk menghapus gambar
+            $.ajax({
+                type: 'POST',
+                url: '/delete-imagePengumuman',
+                data: {
+                    itemId: itemId,
+                    imageName: imageName,
+                    _token: '{{ csrf_token() }}'
+                },
+            success: function (response) {
+                // Handle response, misalnya, tampilkan pesan bahwa gambar berhasil dihapus
+                alert('Gambar berhasil dihapus');
+                // Refresh halaman atau perbarui tampilan jika diperlukan
+                location.reload();
+                },
+            error: function (xhr, status, error) {
+                // Handle error, misalnya, tampilkan pesan kesalahan
+                console.error(error);
+                alert('Terjadi kesalahan saat menghapus gambar');
+                    }
+                });
+            }
+        }
+    </script>
+    <script>
+    function deleteFile(itemId) {
+        if (confirm('Anda yakin ingin menghapus file ini?')) {
+            // Kirim permintaan AJAX ke server untuk menghapus file
+            $.ajax({
+                type: 'POST',
+                url: '/delete-filePengumuman',
+                data: {
+                    itemId: itemId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    // Handle response, misalnya, tampilkan pesan bahwa file berhasil dihapus
+                    alert('File berhasil dihapus');
+                    // Refresh halaman atau perbarui tampilan jika diperlukan
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error, misalnya, tampilkan pesan kesalahan
+                    console.error(error);
+                    alert('Terjadi kesalahan saat menghapus file');
+                }
+            });
+        }
+    }
+    </script>
 @endsection

@@ -187,6 +187,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editPengumuman/{id}', [PengumumanController::class, 'edit'])->middleware('auth')->name('edit.pengumuman');
     Route::post('/updatePengumuman/{id}', [PengumumanController::class, 'update'])->middleware('auth')->name('update.pengumuman');
     Route::delete('/deletePengumuman/{id}', [PengumumanController::class, 'destroy'])->middleware('auth')->name('destroy.pengumuman');
+    Route::post('/delete-imagePengumuman', [PengumumanController::class, 'deleteImage'])->middleware('auth')->name('delete.imagePengumuman');
+    Route::post('/delete-filePengumuman', [PengumumanController::class, 'deleteFile'])->middleware('auth')->name('delete.filePengumuman');
 
     // Panduan
     Route::get('/panduan', [PanduanController::class, 'index'])->middleware('auth')->name('panduan');

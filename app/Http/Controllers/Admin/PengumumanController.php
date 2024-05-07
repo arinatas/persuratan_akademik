@@ -22,7 +22,7 @@ class PengumumanController extends Controller
             $query->where('status_pin', $statusPin);
         }
          // End Filter by status_pin
-    
+
         // Filter Tanggal
         $startDate = request()->get('start_date');
         $endDate = request()->get('end_date');
@@ -47,7 +47,7 @@ class PengumumanController extends Controller
 
         // Order by ID secara descending
         $query->orderBy('id', 'desc');
-    
+
         $pengumumans = $query->paginate($perPage)->appends(request()->query());
 
         return view('admin.pengumuman.index', [
@@ -73,14 +73,14 @@ class PengumumanController extends Controller
             'tgl_akhir' => 'required|date',
             'status_pin' => 'required|integer',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             DB::beginTransaction();
-    
+
             // Initialize variables
             $gambarName = null;
             $fileName = null;
@@ -108,16 +108,16 @@ class PengumumanController extends Controller
                 'tgl_akhir' => $request->tgl_akhir,
                 'status_pin' => $request->status_pin,
             ]);
-    
+
             DB::commit();
-    
+
             return redirect()->back()->with('insertSuccess', 'Data berhasil diinputkan.');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('insertFail', $e->getMessage());
         }
     }
-    
+
     public function edit($id)
     {
         $pengumuman = Pengumuman::find($id);
@@ -137,11 +137,11 @@ class PengumumanController extends Controller
     public function update(Request $request, $id)
     {
         $pengumuman = Pengumuman::find($id);
-    
+
         if (!$pengumuman) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
-    
+
         // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
             'judul' => 'required|string|max:255',
@@ -156,12 +156,12 @@ class PengumumanController extends Controller
             'tgl_akhir' => 'required|date',
             'status_pin' => 'required|integer'
         ]);
-    
+
         // kalau ada error kembalikan error
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             // Update fields that do not depend on the file first
             $pengumuman->judul = $request->judul;
@@ -180,41 +180,41 @@ class PengumumanController extends Controller
                 if ($pengumuman->gambar) {
                     Storage::delete($pengumuman->gambar);
                 }
-    
+
                 // Store the new file
                 $gambarName = $request->file('gambar')->store('pengumuman');
                 $pengumuman->gambar = $gambarName;
             }
-    
+
             // Check if there is a new file uploaded
             if ($request->file('nama_file')) {
                 // Delete existing file if it exists
                 if ($pengumuman->nama_file) {
                     Storage::delete($pengumuman->nama_file);
                 }
-    
+
                 // Store the new file
                 $fileName = $request->file('nama_file')->store('pengumuman');
                 $pengumuman->nama_file = $fileName;
             }
-    
+
             $pengumuman->save();
-    
+
             return redirect('/pengumuman')->with('updateSuccess', 'Data berhasil di Update');
         } catch (Exception $e) {
             return redirect()->back()->with('updateFail', 'Data gagal di Update');
         }
-    }    
+    }
 
     public function destroy($id)
     {
         // Cari data pengumuman berdasarkan ID
         $pengumuman = Pengumuman::find($id);
-    
+
         try {
             // Hapus file terkait
             $filePath = $pengumuman->nama_file;
-    
+
             if (!empty($filePath) && Storage::exists($filePath)) {
                 // Hapus file dari penyimpanan
                 Storage::delete($filePath);
@@ -222,18 +222,67 @@ class PengumumanController extends Controller
 
             // Hapus gambar terkait
             $gambarPath = $pengumuman->gambar;
-    
+
             if (!empty($gambarPath) && Storage::exists($gambarPath)) {
                 // Hapus gambar dari penyimpanan
                 Storage::delete($gambarPath);
             }
-    
+
             // Hapus data pengumuman
             $pengumuman->delete();
-    
+
             return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
         } catch (\Exception $e) {
             return redirect()->back()->with('deleteFail', $e->getMessage());
+        }
+    }
+
+    public function deleteImage(Request $request)
+    {
+        try {
+            // Ambil nama gambar dan ID item dari permintaan
+            $imageName = $request->imageName;
+            $itemId = $request->itemId;
+
+            // Temukan item yang sesuai dengan ID
+            $item = Pengumuman::findOrFail($itemId);
+
+            // Periksa apakah gambar yang dihapus ada di item
+            // Jika iya, hapus gambar dari penyimpanan
+            if ($item->$imageName) {
+                Storage::delete('path/to/images/' . $item->$imageName);
+                // Kosongkan nama gambar dalam basis data
+                $item->$imageName = null;
+                $item->save();
+            }
+
+            return response()->json(['success' => true]);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function deleteFile(Request $request)
+    {
+        try {
+            // Ambil ID item dari permintaan
+            $itemId = $request->itemId;
+
+            // Temukan item yang sesuai dengan ID
+            $item = Pengumuman::findOrFail($itemId);
+
+            // Periksa apakah ada file yang terkait dengan item
+            // Jika iya, hapus file dari penyimpanan
+            if ($item->nama_file) {
+                Storage::delete('path/to/files/' . $item->nama_file);
+                // Kosongkan nama file dalam basis data
+                $item->nama_file = null;
+                $item->save();
+            }
+
+            return response()->json(['success' => true]);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
         }
     }
 

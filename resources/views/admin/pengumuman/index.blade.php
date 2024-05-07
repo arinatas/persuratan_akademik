@@ -38,7 +38,7 @@
                                                         </select>
                                                     </div>
                                                     <!-- Filter Kelas -->
-                                                    
+
                                                     <!-- Filter Tanggal -->
                                                     <div style="margin-left: 10px;">
                                                         <input type="date" class="form-control" name="start_date" value="{{ request('start_date') }}" placeholder="Start Date">
@@ -213,6 +213,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar) }}" alt="Gambar Pengumuman" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -232,6 +233,7 @@
                                                                                             @if (in_array(strtolower($extension), ['pdf']))
                                                                                                 {{-- Display PDF --}}
                                                                                                 <a href="{{ asset('storage/' . $item->nama_file) }}" target="_blank">View PDF</a>
+                                                                                                <button onclick="deleteFile('{{ $item->id }}')" class="btn btn-danger btn-sm mt-2">Hapus File</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -447,4 +449,57 @@
                                     button.form.submit();
                         }
                     </script>
+                    <script>
+                        function deleteImage(itemId, imageName) {
+                            if (confirm('Anda yakin ingin menghapus gambar ini?')) {
+                                // Kirim permintaan AJAX ke server untuk menghapus gambar
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/delete-imagePengumuman',
+                                    data: {
+                                        itemId: itemId,
+                                        imageName: imageName,
+                                        _token: '{{ csrf_token() }}'
+                                    },
+                                    success: function (response) {
+                                        // Handle response, misalnya, tampilkan pesan bahwa gambar berhasil dihapus
+                                        alert('Gambar berhasil dihapus');
+                                        // Refresh halaman atau perbarui tampilan jika diperlukan
+                                        location.reload();
+                                    },
+                                    error: function (xhr, status, error) {
+                                        // Handle error, misalnya, tampilkan pesan kesalahan
+                                        console.error(error);
+                                        alert('Terjadi kesalahan saat menghapus gambar');
+                                    }
+                                });
+                            }
+                        }
+                    </script>
+                    <script>
+                    function deleteFile(itemId) {
+                        if (confirm('Anda yakin ingin menghapus file ini?')) {
+                            // Kirim permintaan AJAX ke server untuk menghapus file
+                            $.ajax({
+                                type: 'POST',
+                                url: '/delete-filePengumuman',
+                                data: {
+                                    itemId: itemId,
+                                    _token: '{{ csrf_token() }}'
+                                },
+                                success: function (response) {
+                                    // Handle response, misalnya, tampilkan pesan bahwa file berhasil dihapus
+                                    alert('File berhasil dihapus');
+                                    // Refresh halaman atau perbarui tampilan jika diperlukan
+                                    location.reload();
+                                },
+                                error: function (xhr, status, error) {
+                                    // Handle error, misalnya, tampilkan pesan kesalahan
+                                    console.error(error);
+                                    alert('Terjadi kesalahan saat menghapus file');
+                                }
+                            });
+                        }
+                    }
+                </script>
 @endsection
