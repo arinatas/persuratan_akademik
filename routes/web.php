@@ -125,7 +125,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/rejectSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'reject'])->middleware('auth')->name('reject.suratSurveyMatkul');
     Route::post('/revisiSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'revisi'])->middleware('auth')->name('revisi.suratSurveyMatkul');
     Route::get('/exportSuratSurveyMatkul/{id}', [SuratSurveyMatkulController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveyMatkul');
-        
+
     // Surat Keterangan Kuliah
     Route::get('/suratKeteranganKuliah', [SuratKeteranganKuliahController::class, 'index'])->middleware('auth')->name('suratKeteranganKuliah');
     Route::post('/suratKeteranganKuliah', [SuratKeteranganKuliahController::class, 'store'])->middleware('auth')->name('insert.suratKeteranganKuliah');
@@ -149,7 +149,7 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/rejectSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'reject'])->middleware('auth')->name('reject.suratSurveyProposal');
     Route::post('/revisiSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'revisi'])->middleware('auth')->name('revisi.suratSurveyProposal');
     Route::get('/exportSuratSurveyProposal/{id}', [SuratSurveyProposalController::class, 'exportPdfbyid'])->middleware('auth')->name('export.suratSurveyProposal');
-    
+
     // Surat Izin Survey Skripsi
     Route::get('/suratSurveySkripsi', [SuratSurveySkripsiController::class, 'index'])->middleware('auth')->name('suratSurveySkripsi');
     Route::post('/suratSurveySkripsi', [SuratSurveySkripsiController::class, 'store'])->middleware('auth')->name('insert.suratSurveySkripsi');
@@ -194,6 +194,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/editPanduan/{id}', [PanduanController::class, 'edit'])->middleware('auth')->name('edit.panduan');
     Route::post('/updatePanduan/{id}', [PanduanController::class, 'update'])->middleware('auth')->name('update.panduan');
     Route::delete('/deletePanduan/{id}', [PanduanController::class, 'destroy'])->middleware('auth')->name('destroy.panduan');
+    Route::post('/delete-image', [PanduanController::class, 'deleteImage'])->middleware('auth')->name('delete.image');
+    Route::post('/delete-file', [PanduanController::class, 'deleteFile'])->middleware('auth')->name('delete.file');
+
+
 
 });
 
@@ -247,7 +251,7 @@ Route::get('/userPusatInformasiAkademik', [UserController::class, 'pusatInformas
         Route::delete('/userSuratSurveyMatkulDestroy/{id}', [SuratController::class, 'userSuratSurveyMatkulDestroy'])->middleware('auth')->name('userSuratSurveyMatkulDestroy');
         Route::get('/userSuratSurveyMatkulPrint/{id}', [SuratController::class, 'userSuratSurveyMatkulPrint'])->middleware('auth')->name('userSuratSurveyMatkulPrint');
     // end survey matkul
-    
+
     // survey proposal
         Route::get('/userSuratSurveyProposal', [SuratController::class, 'userSuratSurveyProposal'])->middleware('auth')->name('userSuratSurveyProposal');
         Route::post('/userSuratSurveyProposalStore', [SuratController::class, 'userSuratSurveyProposalStore'])->middleware('auth')->name('userSuratSurveyProposalStore');

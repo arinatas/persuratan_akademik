@@ -150,6 +150,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar1) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar1')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -187,6 +188,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar2) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar2')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -224,6 +226,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar3) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar3')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -261,6 +264,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar4) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar4')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -298,6 +302,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar5) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar5')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -335,6 +340,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar6) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar6')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -372,6 +378,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar7) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar7')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -409,6 +416,7 @@
                                                                                             @if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
                                                                                                 {{-- Display image --}}
                                                                                                 <img src="{{ asset('storage/' . $item->gambar8) }}" alt="Gambar Panduan" style="width: 450px; height: auto;">
+                                                                                                <button onclick="deleteImage('{{ $item->id }}', 'gambar8')" class="btn btn-danger btn-sm mt-2">Hapus Gambar</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -428,6 +436,7 @@
                                                                                             @if (in_array(strtolower($extension), ['pdf']))
                                                                                                 {{-- Display PDF --}}
                                                                                                 <a href="{{ asset('storage/' . $item->nama_file) }}" target="_blank">View PDF</a>
+                                                                                                <button onclick="deleteFile('{{ $item->id }}')" class="btn btn-danger btn-sm mt-2">Hapus File</button>
                                                                                             @else
                                                                                                 {{-- Handle other file types --}}
                                                                                                 <p>File type not supported</p>
@@ -830,4 +839,57 @@
                                     button.form.submit();
                         }
                     </script>
+                    <script>
+                        function deleteImage(itemId, imageName) {
+                            if (confirm('Anda yakin ingin menghapus gambar ini?')) {
+                                // Kirim permintaan AJAX ke server untuk menghapus gambar
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/delete-image',
+                                    data: {
+                                        itemId: itemId,
+                                        imageName: imageName,
+                                        _token: '{{ csrf_token() }}'
+                                    },
+                                    success: function (response) {
+                                        // Handle response, misalnya, tampilkan pesan bahwa gambar berhasil dihapus
+                                        alert('Gambar berhasil dihapus');
+                                        // Refresh halaman atau perbarui tampilan jika diperlukan
+                                        location.reload();
+                                    },
+                                    error: function (xhr, status, error) {
+                                        // Handle error, misalnya, tampilkan pesan kesalahan
+                                        console.error(error);
+                                        alert('Terjadi kesalahan saat menghapus gambar');
+                                    }
+                                });
+                            }
+                        }
+                    </script>
+                    <script>
+                    function deleteFile(itemId) {
+                        if (confirm('Anda yakin ingin menghapus file ini?')) {
+                            // Kirim permintaan AJAX ke server untuk menghapus file
+                            $.ajax({
+                                type: 'POST',
+                                url: '/delete-file',
+                                data: {
+                                    itemId: itemId,
+                                    _token: '{{ csrf_token() }}'
+                                },
+                                success: function (response) {
+                                    // Handle response, misalnya, tampilkan pesan bahwa file berhasil dihapus
+                                    alert('File berhasil dihapus');
+                                    // Refresh halaman atau perbarui tampilan jika diperlukan
+                                    location.reload();
+                                },
+                                error: function (xhr, status, error) {
+                                    // Handle error, misalnya, tampilkan pesan kesalahan
+                                    console.error(error);
+                                    alert('Terjadi kesalahan saat menghapus file');
+                                }
+                            });
+                        }
+                    }
+                </script>
 @endsection

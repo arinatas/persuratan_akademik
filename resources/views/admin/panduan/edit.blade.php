@@ -55,8 +55,8 @@
                                     <label for="exampleFormControlInput1" class="form-label">Title Gambar 1</label>
                                     <input type="text" value="{{$panduan->ket_gambar_1}}" class="form-control form-control-solid" name="ket_gambar_1"/>
                                 </div>
-								<div class="mb-10">
-                                    <label class=" form-label">Gambar Panduan 1</label>
+                                <div class="mb-10">
+                                    <label class="form-label">Gambar Panduan 1</label>
                                     @if ($panduan->gambar1)
                                         <div>
                                             Gambar Saat Ini:
@@ -64,7 +64,9 @@
                                                 View Gambar
                                             </a>
                                         </div>
-                                        <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru atau hapus gambar saat ini.</small>
+                                        <!-- <button onclick="deleteImage('{{ $panduan->id }}', 'gambar1')">Hapus Gambar</button> -->
+                                        <button onclick="deleteImage('{{ $panduan->id }}', 'gambar1')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar1"/>
                                 </div>
@@ -90,6 +92,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <button onclick="deleteImage('{{ $panduan->id }}', 'gambar2')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar2"/>
                                 </div>
@@ -115,6 +118,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <button onclick="deleteImage('{{ $panduan->id }}', 'gambar3')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar3"/>
                                 </div>
@@ -140,6 +144,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <button onclick="deleteImage('{{ $panduan->id }}', 'gambar4')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar4"/>
                                 </div>
@@ -165,6 +170,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <button onclick="deleteImage('{{ $panduan->id }}', 'gambar5')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar5"/>
                                 </div>
@@ -190,6 +196,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <button onclick="deleteImage('{{ $panduan->id }}', 'gambar6')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar6"/>
                                 </div>
@@ -215,6 +222,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <button onclick="deleteImage('{{ $panduan->id }}', 'gambar7')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar7"/>
                                 </div>
@@ -240,6 +248,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui gambar, pilih gambar baru.</small>
+                                        <button onclick="deleteImage('{{ $panduan->id }}', 'gambar8')" class="btn btn-danger btn-sm mt-2 mb-3">Hapus Gambar</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="gambar8"/>
                                 </div>
@@ -253,6 +262,7 @@
                                             </a>
                                         </div>
                                         <small style="color: red;">Jika Anda ingin memperbarui file, pilih file baru.</small>
+                                        <button onclick="deleteFile('{{ $panduan->id }}')" class="btn btn-danger btn-sm mt-2">Hapus File</button>
                                     @endif
                                     <input type="file" class="form-control form-control-solid" name="nama_file"/>
                                 </div>
@@ -313,4 +323,58 @@
 		});
 		}
 	</script>
+    <script>
+        function deleteImage(itemId, imageName) {
+            if (confirm('Anda yakin ingin menghapus gambar ini?')) {
+            // Kirim permintaan AJAX ke server untuk menghapus gambar
+            $.ajax({
+                type: 'POST',
+                url: '/delete-image',
+                data: {
+                    itemId: itemId,
+                    imageName: imageName,
+                    _token: '{{ csrf_token() }}'
+                },
+            success: function (response) {
+                // Handle response, misalnya, tampilkan pesan bahwa gambar berhasil dihapus
+                alert('Gambar berhasil dihapus');
+                // Refresh halaman atau perbarui tampilan jika diperlukan
+                location.reload();
+                },
+            error: function (xhr, status, error) {
+                // Handle error, misalnya, tampilkan pesan kesalahan
+                console.error(error);
+                alert('Terjadi kesalahan saat menghapus gambar');
+                    }
+                });
+            }
+        }
+    </script>
+    <script>
+    function deleteFile(itemId) {
+        if (confirm('Anda yakin ingin menghapus file ini?')) {
+            // Kirim permintaan AJAX ke server untuk menghapus file
+            $.ajax({
+                type: 'POST',
+                url: '/delete-file',
+                data: {
+                    itemId: itemId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    // Handle response, misalnya, tampilkan pesan bahwa file berhasil dihapus
+                    alert('File berhasil dihapus');
+                    // Refresh halaman atau perbarui tampilan jika diperlukan
+                    location.reload();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error, misalnya, tampilkan pesan kesalahan
+                    console.error(error);
+                    alert('Terjadi kesalahan saat menghapus file');
+                }
+            });
+        }
+    }
+</script>
+
 @endsection

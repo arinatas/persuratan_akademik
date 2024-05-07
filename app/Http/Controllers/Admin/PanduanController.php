@@ -94,16 +94,16 @@ class PanduanController extends Controller
             'gambar7' => 'nullable|file|mimes:jpg,png',
             'gambar8' => 'nullable|file|mimes:jpg,png',
             'nama_file' => 'nullable|file|mimes:pdf',
-            
+
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             DB::beginTransaction();
-    
+
             // Initialize variables
             $gambar1Name = null;
             $gambar2Name = null;
@@ -183,16 +183,16 @@ class PanduanController extends Controller
                 'gambar8' => $gambar8Name,
                 'nama_file' => $fileName,
             ]);
-    
+
             DB::commit();
-    
+
             return redirect()->back()->with('insertSuccess', 'Data berhasil diinputkan.');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('insertFail', $e->getMessage());
         }
     }
-    
+
     public function edit($id)
     {
         $panduan = Panduan::find($id);
@@ -214,11 +214,11 @@ class PanduanController extends Controller
     public function update(Request $request, $id)
     {
         $panduan = Panduan::find($id);
-    
+
         if (!$panduan) {
             return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
         }
-    
+
         // validasi input yang didapatkan dari request
         $validator = Validator::make($request->all(), [
             'jenis_panduan' => 'required|integer',
@@ -257,12 +257,12 @@ class PanduanController extends Controller
             'gambar8' => 'nullable|file|mimes:jpg,png',
             'nama_file' => 'nullable|file|mimes:pdf',
         ]);
-    
+
         // kalau ada error kembalikan error
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         try {
             $panduan->jenis_panduan = $request->jenis_panduan;
             $panduan->judul = $request->judul;
@@ -297,7 +297,7 @@ class PanduanController extends Controller
                 if ($panduan->gambar1) {
                     Storage::delete($panduan->gambar1);
                 }
-    
+
                 // Store the new file
                 $gambar1Name = $request->file('gambar1')->store('panduan');
                 $panduan->gambar1 = $gambar1Name;
@@ -307,7 +307,7 @@ class PanduanController extends Controller
                 if ($panduan->gambar2) {
                     Storage::delete($panduan->gambar2);
                 }
-    
+
                 // Store the new file
                 $gambar2Name = $request->file('gambar2')->store('panduan');
                 $panduan->gambar2 = $gambar2Name;
@@ -317,7 +317,7 @@ class PanduanController extends Controller
                 if ($panduan->gambar3) {
                     Storage::delete($panduan->gambar3);
                 }
-    
+
                 // Store the new file
                 $gambar3Name = $request->file('gambar3')->store('panduan');
                 $panduan->gambar3 = $gambar3Name;
@@ -327,7 +327,7 @@ class PanduanController extends Controller
                 if ($panduan->gambar4) {
                     Storage::delete($panduan->gambar4);
                 }
-    
+
                 // Store the new file
                 $gambar4Name = $request->file('gambar4')->store('panduan');
                 $panduan->gambar4 = $gambar4Name;
@@ -337,7 +337,7 @@ class PanduanController extends Controller
                 if ($panduan->gambar5) {
                     Storage::delete($panduan->gambar5);
                 }
-    
+
                 // Store the new file
                 $gambar5Name = $request->file('gambar5')->store('panduan');
                 $panduan->gambar5 = $gambar5Name;
@@ -347,7 +347,7 @@ class PanduanController extends Controller
                 if ($panduan->gambar6) {
                     Storage::delete($panduan->gambar6);
                 }
-    
+
                 // Store the new file
                 $gambar6Name = $request->file('gambar6')->store('panduan');
                 $panduan->gambar6 = $gambar6Name;
@@ -357,7 +357,7 @@ class PanduanController extends Controller
                 if ($panduan->gambar7) {
                     Storage::delete($panduan->gambar7);
                 }
-    
+
                 // Store the new file
                 $gambar7Name = $request->file('gambar7')->store('panduan');
                 $panduan->gambar7 = $gambar7Name;
@@ -367,7 +367,7 @@ class PanduanController extends Controller
                 if ($panduan->gambar8) {
                     Storage::delete($panduan->gambar8);
                 }
-    
+
                 // Store the new file
                 $gambar8Name = $request->file('gambar8')->store('panduan');
                 $panduan->gambar8 = $gambar8Name;
@@ -377,41 +377,41 @@ class PanduanController extends Controller
             //     if ($panduan->gambar) {
             //         Storage::delete($panduan->gambar);
             //     }
-    
+
             //     // Store the new file
             //     $gambarName = $request->file('gambar')->store('panduan');
             //     $panduan->gambar = $gambarName;
             // }
-    
+
             // Check if there is a new file uploaded
             if ($request->file('nama_file')) {
                 // Delete existing file if it exists
                 if ($panduan->nama_file) {
                     Storage::delete($panduan->nama_file);
                 }
-    
+
                 // Store the new file
                 $fileName = $request->file('nama_file')->store('panduan');
                 $panduan->nama_file = $fileName;
             }
-    
+
             $panduan->save();
-    
+
             return redirect('/panduan')->with('updateSuccess', 'Data berhasil di Update');
         } catch (Exception $e) {
             return redirect()->back()->with('updateFail', 'Data gagal di Update');
         }
-    }    
+    }
 
     public function destroy($id)
     {
         // Cari data panduan berdasarkan ID
         $panduan = Panduan::find($id);
-    
+
         try {
             // Hapus file terkait
             $filePath = $panduan->nama_file;
-    
+
             if (!empty($filePath) && Storage::exists($filePath)) {
                 // Hapus file dari penyimpanan
                 Storage::delete($filePath);
@@ -426,7 +426,7 @@ class PanduanController extends Controller
             $gambarPath6 = $panduan->gambar6;
             $gambarPath7 = $panduan->gambar7;
             $gambarPath8 = $panduan->gambar8;
-    
+
             if (!empty($gambarPath1) && Storage::exists($gambarPath1)) {
                 // Hapus gambar dari penyimpanan
                 Storage::delete($gambarPath1);
@@ -459,14 +459,62 @@ class PanduanController extends Controller
                 // Hapus gambar dari penyimpanan
                 Storage::delete($gambarPath8);
             }
-    
+
             // Hapus data panduan
             $panduan->delete();
-    
+
             return redirect()->back()->with('deleteSuccess', 'Data berhasil dihapus!');
         } catch (\Exception $e) {
             return redirect()->back()->with('deleteFail', $e->getMessage());
         }
     }
 
+    public function deleteImage(Request $request)
+    {
+        try {
+            // Ambil nama gambar dan ID item dari permintaan
+            $imageName = $request->imageName;
+            $itemId = $request->itemId;
+
+            // Temukan item yang sesuai dengan ID
+            $item = Panduan::findOrFail($itemId);
+
+            // Periksa apakah gambar yang dihapus ada di item
+            // Jika iya, hapus gambar dari penyimpanan
+            if ($item->$imageName) {
+                Storage::delete('path/to/images/' . $item->$imageName);
+                // Kosongkan nama gambar dalam basis data
+                $item->$imageName = null;
+                $item->save();
+            }
+
+            return response()->json(['success' => true]);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
+    }
+
+    public function deleteFile(Request $request)
+    {
+        try {
+            // Ambil ID item dari permintaan
+            $itemId = $request->itemId;
+
+            // Temukan item yang sesuai dengan ID
+            $item = Panduan::findOrFail($itemId);
+
+            // Periksa apakah ada file yang terkait dengan item
+            // Jika iya, hapus file dari penyimpanan
+            if ($item->nama_file) {
+                Storage::delete('path/to/files/' . $item->nama_file);
+                // Kosongkan nama file dalam basis data
+                $item->nama_file = null;
+                $item->save();
+            }
+
+            return response()->json(['success' => true]);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }
+    }
 }
