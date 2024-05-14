@@ -81,7 +81,7 @@
 															@if ($panduan->gambar1)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
-															
+
 																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar1) }}')"></div>
 
 																@else
@@ -116,7 +116,7 @@
 															@if ($panduan->gambar2)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
-															
+
 																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar2) }}')"></div>
 
 																@else
@@ -124,7 +124,7 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																
+
 															@endif
 															<!--end::Image-->
 														</div>
@@ -154,7 +154,7 @@
 															@if ($panduan->gambar3)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
-															
+
 																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar3) }}')"></div>
 
 																@else
@@ -162,11 +162,11 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																
+
 															@endif
 															<!--end::Image-->
 														</div>
-		
+
 														<!--end::Container-->
 														<!--begin::Container-->
 														@if ($panduan->sub_judul_4)
@@ -192,7 +192,7 @@
 															@if ($panduan->gambar4)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
-															
+
 																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar4) }}')"></div>
 
 																@else
@@ -200,7 +200,7 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																
+
 															@endif
 															<!--end::Image-->
 														</div>
@@ -230,7 +230,7 @@
 															@if ($panduan->gambar5)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
-															
+
 																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar5) }}')"></div>
 
 																@else
@@ -238,7 +238,7 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																
+
 															@endif
 															<!--end::Image-->
 														</div>
@@ -268,7 +268,7 @@
 															@if ($panduan->gambar6)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
-															
+
 																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar6) }}')"></div>
 
 																@else
@@ -276,7 +276,7 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																
+
 															@endif
 															<!--end::Image-->
 														</div>
@@ -306,7 +306,7 @@
 															@if ($panduan->gambar7)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
-															
+
 																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar7) }}')"></div>
 
 																@else
@@ -314,7 +314,7 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																
+
 															@endif
 															<!--end::Image-->
 														</div>
@@ -344,7 +344,7 @@
 															@if ($panduan->gambar8)
 																@if (in_array(strtolower($extension), ['jpg', 'jpeg', 'png', 'gif']))
 																	{{-- Display image --}}
-															
+
 																	<div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-350px" style="background-image:url('{{ asset('storage/' . $panduan->gambar8) }}')"></div>
 
 																@else
@@ -352,7 +352,7 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																
+
 															@endif
 															<!--end::Image-->
 														</div>
@@ -372,10 +372,34 @@
 																	<p>File type not supported</p>
 																@endif
 															@else
-																
+
 															@endif
 														</div>
 														@endif
+
+                                                        @if ($panduan->link1)
+                                                        <div class="fs-4 fw-bold mt-8">
+                                                            @php
+                                                                $link = $panduan->link1;
+                                                                if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
+                                                                    $link = "http://" . $link;
+                                                                }
+                                                            @endphp
+                                                            Tautan Selengkapnya : <a href="{{ $link }}" target="_blank">{{ $panduan->link1 }}</a>
+                                                        </div>
+                                                        @endif
+                                                        @if ($panduan->link2)
+                                                        <div class="fs-4 fw-bold mt-8">
+                                                            @php
+                                                                $link = $panduan->link2;
+                                                                if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
+                                                                    $link = "http://" . $link;
+                                                                }
+                                                            @endphp
+                                                            Tautan Selengkapnya : <a href="{{ $link }}" target="_blank">{{ $panduan->link2 }}</a>
+                                                        </div>
+                                                        @endif
+
 													</div>
 													<!--end::Wrapper-->
 													<!--begin::Description-->
@@ -390,7 +414,7 @@
 														<p class="mb-8">{!! nl2br(e($panduan->desc8)) !!}</p>
 													</div> -->
 													<!--end::Description-->
-													
+
 													<!--begin::Icons-->
 													<div class="d-flex flex-start">
 														<a href="{{ route('userPanduan') }}" class="btn btn-secondary">
