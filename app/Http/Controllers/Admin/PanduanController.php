@@ -94,6 +94,8 @@ class PanduanController extends Controller
             'gambar7' => 'nullable|file|mimes:jpg,png',
             'gambar8' => 'nullable|file|mimes:jpg,png',
             'nama_file' => 'nullable|file|mimes:pdf',
+            'link1' => 'nullable|string',
+            'link2' => 'nullable|string',
 
         ]);
 
@@ -182,6 +184,8 @@ class PanduanController extends Controller
                 'gambar7' => $gambar7Name,
                 'gambar8' => $gambar8Name,
                 'nama_file' => $fileName,
+                'link1' => $request->link1,
+                'link2' => $request->link2,
             ]);
 
             DB::commit();
@@ -256,6 +260,8 @@ class PanduanController extends Controller
             'gambar7' => 'nullable|file|mimes:jpg,png',
             'gambar8' => 'nullable|file|mimes:jpg,png',
             'nama_file' => 'nullable|file|mimes:pdf',
+            'link1' => 'nullable|string',
+            'link2' => 'nullable|string',
         ]);
 
         // kalau ada error kembalikan error
@@ -290,6 +296,8 @@ class PanduanController extends Controller
             $panduan->ket_gambar_6 = $request->ket_gambar_6;
             $panduan->ket_gambar_7 = $request->ket_gambar_7;
             $panduan->ket_gambar_8 = $request->ket_gambar_8;
+            $panduan->link1 = $request->link1;
+            $panduan->link2 = $request->link2;
 
             // Check if there is a new file uploaded
             if ($request->file('gambar1')) {

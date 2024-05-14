@@ -141,6 +141,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->gambar1)
                                                                                     <th>Gambar 1</th>
                                                                                     <td>
                                                                                         @php
@@ -159,6 +160,7 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->sub_judul_2)
@@ -179,6 +181,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->gambar2)
                                                                                     <th>Gambar 2</th>
                                                                                     <td>
                                                                                         @php
@@ -197,6 +200,7 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->sub_judul_3)
@@ -217,6 +221,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->gambar3)
                                                                                     <th>Gambar 3</th>
                                                                                     <td>
                                                                                         @php
@@ -235,6 +240,7 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->sub_judul_4)
@@ -255,6 +261,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->gambar4)
                                                                                     <th>Gambar 4</th>
                                                                                     <td>
                                                                                         @php
@@ -273,6 +280,7 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->sub_judul_5)
@@ -293,6 +301,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->gambar5)
                                                                                     <th>Gambar 5</th>
                                                                                     <td>
                                                                                         @php
@@ -311,6 +320,7 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->sub_judul_6)
@@ -331,6 +341,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->gambar6)
                                                                                     <th>Gambar 6</th>
                                                                                     <td>
                                                                                         @php
@@ -349,6 +360,7 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->sub_judul_7)
@@ -369,6 +381,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->gambar7)
                                                                                     <th>Gambar 7</th>
                                                                                     <td>
                                                                                         @php
@@ -387,6 +400,7 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
                                                                                     @if($item->sub_judul_8)
@@ -407,6 +421,7 @@
                                                                                     @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->gambar8)
                                                                                     <th>Gambar 8</th>
                                                                                     <td>
                                                                                         @php
@@ -425,8 +440,10 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 <tr>
+                                                                                @if($item->nama_file)
                                                                                     <th>File Panduan</th>
                                                                                     <td>
                                                                                         @php
@@ -445,6 +462,35 @@
                                                                                             No File Available
                                                                                         @endif
                                                                                     </td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->link1)
+                                                                                        <th>Link 1</th>
+                                                                                        <td>
+                                                                                            @php
+                                                                                                $link = $item->link1;
+                                                                                                if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
+                                                                                                    $link = "http://" . $link;
+                                                                                                }
+                                                                                            @endphp
+                                                                                            <a href="{{ $link }}" target="_blank">{{ $item->link1 }}</a>
+                                                                                        </td>
+                                                                                    @endif
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    @if($item->link2)
+                                                                                        <th>Link 2</th>
+                                                                                        <td>
+                                                                                            @php
+                                                                                                $link = $item->link2;
+                                                                                                if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
+                                                                                                    $link = "http://" . $link;
+                                                                                                }
+                                                                                            @endphp
+                                                                                            <a href="{{ $link }}" target="_blank">{{ $item->link2 }}</a>
+                                                                                        </td>
+                                                                                    @endif
                                                                                 </tr>
                                                                                 </table>
                                                                             </div>
@@ -798,6 +844,22 @@
                                                             <span class="">File Panduan</span>
                                                         </label>
                                                         <input class="form-control form-control-solid" type="file" name="nama_file" />
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Link 1</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <textarea class="form-control form-control-solid" name="link1"  value="" style="height: 100px;"/></textarea>
+                                                    </div>
+                                                    <div class="d-flex flex-column mb-7 fv-row">
+                                                        <!--begin::Label-->
+                                                        <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                                            <span class="">Link 2</span>
+                                                        </label>
+                                                        <!--end::Label-->
+                                                        <textarea class="form-control form-control-solid" name="link2"  value="" style="height: 100px;"/></textarea>
                                                     </div>
                                                     <!--end::Input group-->
                                                     <!--begin::Actions-->

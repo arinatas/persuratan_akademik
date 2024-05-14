@@ -49,6 +49,8 @@ class Panduan extends Model
         'gambar7',
         'gambar8',
         'nama_file',
+        'link1',
+        'link2',
     ];
 
     // Set nilai default untuk status_pin ke 0 dan tgl_terbit ke saat ini

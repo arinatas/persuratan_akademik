@@ -275,6 +275,14 @@
 									</ul>
 								</div>
 								@endif
+                                <div class="mb-10">
+									<label for="exampleFormControlInput1" class=" form-label">Link 1</label>
+									<textarea class="form-control form-control-solid"  name="link1" style="height: 100px;">{{$panduan->link1}}</textarea>
+								</div>
+                                <div class="mb-10">
+									<label for="exampleFormControlInput1" class=" form-label">Link 2</label>
+									<textarea class="form-control form-control-solid"  name="link2" style="height: 100px;">{{$panduan->link2}}</textarea>
+								</div>
                                 <div class="d-flex justify-content-end">
                                     <!--begin::Actions-->
                                     <a href="{{ route('panduan') }}" class="btn btn-secondary">
