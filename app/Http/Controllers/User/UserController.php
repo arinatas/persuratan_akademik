@@ -1,19 +1,21 @@
 <?php
 
 namespace App\Http\Controllers\User;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Models\Panduan;
+use App\Models\Pedoman;
 use App\Models\SuratMbkm;
-use App\Models\SuratKeteranganKuliah;
-use App\Models\SuratPermohonanData;
+use App\Models\Pengumuman;
+use App\Models\JenisPanduan;
+use Illuminate\Http\Request;
 use App\Models\SuratSurveyMatkul;
-use App\Models\SuratSurveyProposal;
 use App\Models\SuratSurveySkripsi;
 
-use App\Models\Pedoman;
-use App\Models\Pengumuman;
-use App\Models\Panduan;
-use App\Models\JenisPanduan;
+use Illuminate\Routing\Controller;
+use App\Models\SuratPermohonanData;
+use App\Models\SuratSurveyProposal;
+use Illuminate\Support\Facades\Hash;
+use App\Models\SuratKeteranganKuliah;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller
@@ -45,7 +47,7 @@ class UserController extends Controller
                 'pengumumanHariIni' => $pengumumanHariIni,
             ]);
     }
-    
+
     public function pengumuman($id)
     {
         $pengumuman = Pengumuman::find($id);
@@ -155,7 +157,7 @@ class UserController extends Controller
     //         'jenisPanduans' => $jenisPanduans,
     //     ]);
     // }
-    
+
     public function panduanDetails($id)
     {
         $panduan = Panduan::find($id);
@@ -179,5 +181,57 @@ class UserController extends Controller
             'section' => 'Menu Informasi',
             'active' => 'Pusat Informasi Akademik',
         ]);
+    }
+
+    public function reset()
+    {
+        $akun = auth()->user()->username;
+
+        if (!$akun) {
+            return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+        }
+
+        return view('user.akun.reset', [
+            'title' => 'Reset Password',
+            'section' => 'Menu',
+            'active' => 'Reset Password',
+            'akun' => $akun,
+        ]);
+    }
+
+    public function resetupdate(Request $request)
+    {
+        $akun = auth()->user();
+
+        if (!$akun) {
+            return redirect()->back()->with('dataNotFound', 'Data tidak ditemukan');
+        }
+
+        // Check if the username in the request matches the logged-in user's username
+        if ($request->username !== $akun->username) {
+            return redirect()->back()->with('unauthorized', 'Anda tidak memiliki izin untuk memperbarui password');
+        }
+
+        // validasi input yang didapatkan dari request
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|string|max:255'
+        ]);
+
+        // kalau ada error kembalikan error
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        try{
+            // Hash password sebelum menyimpannya ke database
+            $akun->password = Hash::make($request->password);
+
+            $akun->save();
+
+            return redirect('/userResetAkun')->with('updateSuccess', 'Data berhasil di Reset');
+        } catch(Exception $e) {
+            dd($e);
+            return redirect()->back()->with('updateFail', 'Data gagal di Reset');
+        }
     }
 }

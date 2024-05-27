@@ -437,6 +437,18 @@
                                 <span class="menu-title">Pusat Informasi Akademik</span>
                             </a>
                         </div>
+                        <div class="menu-item {{ ($active === "Reset Password") ? 'here show' : '' }}">
+                            <a class="menu-link" href="{{ url('userResetAkun') }}">
+                                <span class="menu-icon">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                                    <span class="menu-bullet">
+                                        <i class="bi bi-key-fill fs-3"></i>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                                <span class="menu-title">Reset Password</span>
+                            </a>
+                        </div>
                     @endif
                 @else
                 <div class="menu-item">

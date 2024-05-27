@@ -211,6 +211,8 @@ Route::get('/userPedoman', [UserController::class, 'pedoman'])->middleware('auth
 Route::get('/userPanduan', [UserController::class, 'panduan'])->name('userPanduan')->middleware('guest');
 Route::get('/panduanDetails/{id}', [UserController::class, 'panduanDetails'])->name('panduanDetails');
 Route::get('/userPusatInformasiAkademik', [UserController::class, 'pusatInformasiAkademik'])->middleware('auth')->name('userPusatInformasiAkademik');
+Route::get('/userResetAkun', [UserController::class, 'reset'])->middleware('auth')->name('userResetAkun');
+Route::post('/userResetupdateAkun', [UserController::class, 'resetupdate'])->middleware('auth')->name('userResetupdateAkun');
 
 
 // surat diproses sendiri
