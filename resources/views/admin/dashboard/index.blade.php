@@ -9,7 +9,7 @@
 						<div class="post d-flex flex-column-fluid" id="kt_post">
 							<!--begin::Container-->
 							<div id="kt_content_container" class="container-xxl">
-                                <h1>Surat dibantu FO yang belum ditindaklanjut</h1>
+                                <h1>Surat Dibantu FO</h1>
 								<!--begin::Card-->
 								<div class="card">
 									<!--begin::Card body-->
@@ -30,7 +30,8 @@
 															</g>
 														</svg><!--end::Svg Icon--></span>
 														<!--end::Svg Icon-->
-														<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ $suratMBKM }}</div>
+														<div class="text-white fw-bolder fs-2 mt-5">Perlu Tindakan : {{ $suratMBKM }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mb-5">Selesai : {{ $suratMBKMAcc }}</div>
 														<div class="fw-bold text-white">Surat Permohonan Magang MBKM</div>
 													</div>
 													<!--end::Body-->
@@ -52,7 +53,8 @@
 															</g>
 														</svg><!--end::Svg Icon--></span>
 														<!--end::Svg Icon-->
-														<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ $suratSurveyMatkul }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mt-5">Perlu Tindakan : {{ $suratSurveyMatkul }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mb-5">Selesai : {{ $suratSurveyMatkulAcc }}</div>
 														<div class="fw-bold text-white">Surat Izin Survei Matakuliah</div>
 													</div>
 													<!--end::Body-->
@@ -72,7 +74,8 @@
 															</svg>
 														</span>
 														<!--end::Svg Icon-->
-														<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ $suratKeteranganKuliah }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mt-5">Perlu Tindakan : {{ $suratKeteranganKuliah }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mb-5">Selesai : {{ $suratKeteranganKuliahAcc }}</div>
 														<div class="fw-bold text-white">Surat Keterangan Aktif Kuliah</div>
 													</div>
 													<!--end::Body-->
@@ -92,7 +95,8 @@
 															</g>
 														</svg><!--end::Svg Icon--></span>
 														<!--end::Svg Icon-->
-														<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ $suratSurveyProposal }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mt-5">Perlu Tindakan : {{ $suratSurveyProposal }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mb-5">Selesai : {{ $suratSurveyProposalAcc }}</div>
 														<div class="fw-bold text-white">Surat Izin Survei Proposal Skripsi</div>
 													</div>
 													<!--end::Body-->
@@ -114,7 +118,8 @@
 															</g>
 														</svg><!--end::Svg Icon--></span>
 														<!--end::Svg Icon-->
-														<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ $suratSurveySkripsi }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mt-5">Perlu Tindakan : {{ $suratSurveySkripsi }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mb-5">Selesai : {{ $suratSurveySkripsiAcc }}</div>
 														<div class="fw-bold text-white">Surat Izin Survei Skripsi</div>
 													</div>
 													<!--end::Body-->
@@ -134,7 +139,8 @@
 															</svg>
 														</span>
 														<!--end::Svg Icon-->
-														<div class="text-white fw-bolder fs-2 mb-2 mt-5">{{ $suratPermohonanData }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mt-5">Perlu Tindakan : {{ $suratPermohonanData }}</div>
+                                                        <div class="text-white fw-bolder fs-2 mb-5">Selesai : {{ $suratPermohonanDataAcc }}</div>
 														<div class="fw-bold text-white">Surat Permohonan Permintaan Data</div>
 													</div>
 													<!--end::Body-->

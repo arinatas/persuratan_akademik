@@ -15,13 +15,20 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $suratMBKM = SuratMbkm::where('status_acc', 1)->orWhere('status_acc', 3)->count();
-        $suratKeteranganKuliah = SuratKeteranganKuliah::where('status_acc', 1)->orWhere('status_acc', 3)->count();
-        $suratPermohonanData = SuratPermohonanData::where('status_acc', 1)->orWhere('status_acc', 3)->count();
-        $suratSurveyMatkul = SuratSurveyMatkul::where('status_acc', 1)->orWhere('status_acc', 3)->count();
-        $suratSurveyProposal = SuratSurveyProposal::where('status_acc', 1)->orWhere('status_acc', 3)->count();
-        $suratSurveySkripsi = SuratSurveySkripsi::where('status_acc', 1)->orWhere('status_acc', 3)->count();
-    
+        $suratMBKMAcc = SuratMbkm::where('status_acc', 1)->count();
+        $suratKeteranganKuliahAcc = SuratKeteranganKuliah::where('status_acc', 1)->count();
+        $suratPermohonanDataAcc = SuratPermohonanData::where('status_acc', 1)->count();
+        $suratSurveyMatkulAcc = SuratSurveyMatkul::where('status_acc', 1)->count();
+        $suratSurveyProposalAcc = SuratSurveyProposal::where('status_acc', 1)->count();
+        $suratSurveySkripsiAcc = SuratSurveySkripsi::where('status_acc', 1)->count();
+
+        $suratMBKM = SuratMbkm::where('status_acc', 0)->orWhere('status_acc', 2)->orWhere('status_acc', 3)->count();
+        $suratKeteranganKuliah = SuratKeteranganKuliah::where('status_acc', 0)->orWhere('status_acc', 2)->orWhere('status_acc', 3)->count();
+        $suratPermohonanData = SuratPermohonanData::where('status_acc', 0)->orWhere('status_acc', 2)->orWhere('status_acc', 3)->count();
+        $suratSurveyMatkul = SuratSurveyMatkul::where('status_acc', 0)->orWhere('status_acc', 2)->orWhere('status_acc', 3)->count();
+        $suratSurveyProposal = SuratSurveyProposal::where('status_acc', 0)->orWhere('status_acc', 2)->orWhere('status_acc', 3)->count();
+        $suratSurveySkripsi = SuratSurveySkripsi::where('status_acc', 0)->orWhere('status_acc', 2)->orWhere('status_acc', 3)->count();
+
         return view('admin.dashboard.index', [
             'title' => 'Dashboard Admin',
             'section' => 'Dashboard',
@@ -32,8 +39,14 @@ class AdminController extends Controller
             'suratSurveyMatkul' => $suratSurveyMatkul,
             'suratSurveyProposal' => $suratSurveyProposal,
             'suratSurveySkripsi' => $suratSurveySkripsi,
+            'suratMBKMAcc' => $suratMBKMAcc,
+            'suratKeteranganKuliahAcc' => $suratKeteranganKuliahAcc,
+            'suratPermohonanDataAcc' => $suratPermohonanDataAcc,
+            'suratSurveyMatkulAcc' => $suratSurveyMatkulAcc,
+            'suratSurveyProposalAcc' => $suratSurveyProposalAcc,
+            'suratSurveySkripsiAcc' => $suratSurveySkripsiAcc,
         ]);
     }
-    
-    
+
+
 }
