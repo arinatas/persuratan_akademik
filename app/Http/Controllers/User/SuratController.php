@@ -36,12 +36,12 @@ class SuratController extends Controller
                 'title' => 'Surat Izin Absensi',
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Izin Absensi',
-                'biomhs' => $biomhs, 
-            ]);  
+                'biomhs' => $biomhs,
+            ]);
         }
 
         public function suratIzinAbsensi(Request $request){
-            
+
             $data = $request->all();
 
             return view('surat.izinAbsensi', [
@@ -49,7 +49,7 @@ class SuratController extends Controller
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Izin Absensi',
                 'data' => $data,
-            ]);  
+            ]);
         }
 
 
@@ -64,13 +64,13 @@ class SuratController extends Controller
                 'title' => 'Surat Cuti Akademik',
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Cuti Akademik',
-                'biomhs' => $biomhs, 
-                'kaprodi' => $kaprodi, 
-            ]);  
+                'biomhs' => $biomhs,
+                'kaprodi' => $kaprodi,
+            ]);
         }
 
         public function suratCutiAkademik(Request $request){
-            
+
             $data = $request->all();
 
             return view('surat.cutiAkademik', [
@@ -78,7 +78,7 @@ class SuratController extends Controller
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Cuti Akademik',
                 'data' => $data,
-            ]);  
+            ]);
         }
 
         public function createSuratMengundurkanDiri(){
@@ -92,13 +92,13 @@ class SuratController extends Controller
                 'title' => 'Surat Pengunduran Diri',
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Pengunduran Diri',
-                'biomhs' => $biomhs, 
-                'kaprodi' => $kaprodi, 
-            ]);  
+                'biomhs' => $biomhs,
+                'kaprodi' => $kaprodi,
+            ]);
         }
 
         public function suratMengundurkanDiri(Request $request){
-            
+
             $data = $request->all();
 
             return view('surat.mengundurkanDiri', [
@@ -106,7 +106,7 @@ class SuratController extends Controller
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Pengunduran Diri',
                 'data' => $data,
-            ]);  
+            ]);
         }
 
         public function createSuratPindahKelas(){
@@ -120,9 +120,9 @@ class SuratController extends Controller
                 'title' => 'Surat Pindah Kelas',
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Pindah Kelas',
-                'biomhs' => $biomhs, 
-                'kaprodi' => $kaprodi, 
-            ]);  
+                'biomhs' => $biomhs,
+                'kaprodi' => $kaprodi,
+            ]);
         }
 
         public function suratPindahKelas(Request $request){
@@ -134,7 +134,7 @@ class SuratController extends Controller
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Pindah Kelas',
                 'data' => $data,
-            ]);  
+            ]);
         }
 
         public function createSuratPindahProdi(){
@@ -148,9 +148,9 @@ class SuratController extends Controller
                 'title' => 'Surat Pindah Prodi',
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Pindah Prodi',
-                'biomhs' => $biomhs, 
-                'kaprodi' => $kaprodi, 
-            ]);  
+                'biomhs' => $biomhs,
+                'kaprodi' => $kaprodi,
+            ]);
         }
 
         public function suratPindahProdi(Request $request){
@@ -162,7 +162,35 @@ class SuratController extends Controller
                 'section' => 'Surat Diproses Sendiri',
                 'active' => 'Surat Pindah Prodi',
                 'data' => $data,
-            ]);  
+            ]);
+        }
+
+        public function createSuratRekomendasiProposalSkripsi(){
+
+            $nim = auth()->user()->username;
+
+            $biomhs = Biodata::with('dosenPA')->where('nim', $nim)->get();
+            $kaprodi = Kaprodi::all();
+
+            return view('user.surat.rekomendasiProposalSkripsi', [
+                'title' => 'Surat Rekomendasi Proposal Skripsi',
+                'section' => 'Surat Diproses Sendiri',
+                'active' => 'Surat Rekomendasi Proposal Skripsi',
+                'biomhs' => $biomhs,
+                'kaprodi' => $kaprodi,
+            ]);
+        }
+
+        public function suratRekomendasiProposalSkripsi(Request $request){
+
+            $data = $request->all();
+
+            return view('surat.rekomendasiProposalSkripsi', [
+                'title' => 'Surat Rekomendasi Proposal Skripsi',
+                'section' => 'Surat Diproses Sendiri',
+                'active' => 'Surat Rekomendasi Proposal Skripsi',
+                'data' => $data,
+            ]);
         }
     // end surat di proses sendiri
 
@@ -180,9 +208,9 @@ class SuratController extends Controller
                     'title' => 'Surat Keterangan Aktif Kuliah',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Keterangan Aktif Kuliah',
-                    'biomhs' => $biomhs, 
-                    'mySuratKeteranganKuliah' => $mySuratKeteranganKuliah, 
-                ]);  
+                    'biomhs' => $biomhs,
+                    'mySuratKeteranganKuliah' => $mySuratKeteranganKuliah,
+                ]);
             }
 
             public function userSuratKetKuliahStore(Request $request){
@@ -249,7 +277,7 @@ class SuratController extends Controller
                     'title' => 'Surat Keterangan Aktif Kuliah',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Keterangan Aktif Kuliah',
-                    'biomhs' => $biomhs, 
+                    'biomhs' => $biomhs,
                     'mySuratKeteranganKuliah' => $mySuratKeteranganKuliah,
                 ]);
             }
@@ -343,7 +371,7 @@ class SuratController extends Controller
 
                 // Ambil data penanda tangan berdasarkan ID
                 $penandaTangan = PenandaTangan::where('id', 1)->first();
-                
+
                 return view('surat.suratKeteranganKuliah', [
                     'title' => 'Surat Keterangan Aktif Kuliah',
                     'section' => 'Surat Dibantu FO',
@@ -367,9 +395,9 @@ class SuratController extends Controller
                     'title' => 'Surat Permohonan Data',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Permohonan Data',
-                    'biomhs' => $biomhs, 
-                    'mySuratPermohonanData' => $mySuratPermohonanData, 
-                ]);  
+                    'biomhs' => $biomhs,
+                    'mySuratPermohonanData' => $mySuratPermohonanData,
+                ]);
             }
 
             public function userSuratPermohonanDataStore(Request $request){
@@ -440,7 +468,7 @@ class SuratController extends Controller
                     'title' => 'Surat Keterangan Aktif Kuliah',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Keterangan Aktif Kuliah',
-                    'biomhs' => $biomhs, 
+                    'biomhs' => $biomhs,
                     'mySuratPermohonanData' => $mySuratPermohonanData,
                 ]);
             }
@@ -538,7 +566,7 @@ class SuratController extends Controller
 
                 // Ambil data penanda tangan berdasarkan ID
                 $penandaTangan = PenandaTangan::where('id', 1)->first();
-                
+
                 return view('surat.suratPermohonanData', [
                     'title' => 'Surat Permohonan Data',
                     'section' => 'Surat Dibantu FO',
@@ -562,9 +590,9 @@ class SuratController extends Controller
                     'title' => 'Surat Magang MBKM',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Magang MBKM',
-                    'biomhs' => $biomhs, 
-                    'mySuratMbkm' => $mySuratMbkm, 
-                ]);  
+                    'biomhs' => $biomhs,
+                    'mySuratMbkm' => $mySuratMbkm,
+                ]);
             }
 
             public function userSuratMagangMBKMStore(Request $request){
@@ -661,7 +689,7 @@ class SuratController extends Controller
                     'title' => 'Surat Magang MBKM',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Magang MBKM',
-                    'biomhs' => $biomhs, 
+                    'biomhs' => $biomhs,
                     'mySuratMbkm' => $mySuratMbkm,
                 ]);
             }
@@ -784,7 +812,7 @@ class SuratController extends Controller
 
                 // Ambil data penanda tangan berdasarkan ID
                 $penandaTangan = PenandaTangan::where('id', 1)->first();
-                
+
                 return view('surat.suratMbkm', [
                     'title' => 'Surat Magang MBKM',
                     'section' => 'Surat Dibantu FO',
@@ -808,9 +836,9 @@ class SuratController extends Controller
                     'title' => 'Surat Survey Matakuliah',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Survey Matakuliah',
-                    'biomhs' => $biomhs, 
-                    'mySurveyMatkuls' => $mySurveyMatkuls, 
-                ]);  
+                    'biomhs' => $biomhs,
+                    'mySurveyMatkuls' => $mySurveyMatkuls,
+                ]);
             }
 
             public function userSuratSurveyMatkulStore(Request $request){
@@ -909,7 +937,7 @@ class SuratController extends Controller
                     'title' => 'Surat Survey Matakuliah',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Survey Matakuliah',
-                    'biomhs' => $biomhs, 
+                    'biomhs' => $biomhs,
                     'mySurveyMatkuls' => $mySurveyMatkuls,
                 ]);
             }
@@ -1034,7 +1062,7 @@ class SuratController extends Controller
 
                 // Ambil data penanda tangan berdasarkan ID
                 $penandaTangan = PenandaTangan::where('id', 1)->first();
-                
+
                 return view('surat.suratSurveyMatkul', [
                     'title' => 'Surat Survey Matakuliah',
                     'section' => 'Request Surat Mahasiswa',
@@ -1044,7 +1072,7 @@ class SuratController extends Controller
                 ]);
             }
         // surat survey matakuliah
-        
+
         // surat survey proposal
             public function userSuratSurveyProposal(){
 
@@ -1058,9 +1086,9 @@ class SuratController extends Controller
                     'title' => 'Surat Survey Proposal Skripsi',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Survey Proposal Skripsi',
-                    'biomhs' => $biomhs, 
-                    'mySurveyProposal' => $mySurveyProposal, 
-                ]);  
+                    'biomhs' => $biomhs,
+                    'mySurveyProposal' => $mySurveyProposal,
+                ]);
             }
 
             public function userSuratSurveyProposalStore(Request $request){
@@ -1155,8 +1183,8 @@ class SuratController extends Controller
                     'title' => 'Surat Survey Proposal Skripsi',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Survey Proposal Skripsi',
-                    'biomhs' => $biomhs, 
-                    'mySurveyProposal' => $mySurveyProposal, 
+                    'biomhs' => $biomhs,
+                    'mySurveyProposal' => $mySurveyProposal,
                 ]);
             }
 
@@ -1276,7 +1304,7 @@ class SuratController extends Controller
 
                 // Ambil data penanda tangan berdasarkan ID
                 $penandaTangan = PenandaTangan::where('id', 1)->first();
-                
+
                 return view('surat.suratSurveyProposal', [
                     'title' => 'Surat Izin Survei Proposal Skripsi',
                     'section' => 'Surat Dibantu FO',
@@ -1286,7 +1314,7 @@ class SuratController extends Controller
                 ]);
             }
         // surat survey proposal
-        
+
         // surat survey skripsi
             public function userSuratSurveySkripsi(){
 
@@ -1300,9 +1328,9 @@ class SuratController extends Controller
                     'title' => 'Surat Survey Skripsi',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Survey Skripsi',
-                    'biomhs' => $biomhs, 
-                    'mySurveySkripsi' => $mySurveySkripsi, 
-                ]);  
+                    'biomhs' => $biomhs,
+                    'mySurveySkripsi' => $mySurveySkripsi,
+                ]);
             }
 
             public function userSuratSurveySkripsiStore(Request $request){
@@ -1397,8 +1425,8 @@ class SuratController extends Controller
                     'title' => 'Surat Survey Skripsi',
                     'section' => 'Surat Dibantu FO',
                     'active' => 'Surat Survey Skripsi',
-                    'biomhs' => $biomhs, 
-                    'mySurveySkripsi' => $mySurveySkripsi, 
+                    'biomhs' => $biomhs,
+                    'mySurveySkripsi' => $mySurveySkripsi,
                 ]);
             }
 
@@ -1518,7 +1546,7 @@ class SuratController extends Controller
 
                 // Ambil data penanda tangan berdasarkan ID
                 $penandaTangan = PenandaTangan::where('id', 1)->first();
-                
+
                 return view('surat.suratSurveySkripsi', [
                     'title' => 'Surat Izin Survei Skripsi',
                     'section' => 'Request Surat Mahasiswa',
@@ -1528,7 +1556,7 @@ class SuratController extends Controller
                 ]);
             }
         // surat survey skripsi
-        
+
     // end surat di proses FO
 
 }

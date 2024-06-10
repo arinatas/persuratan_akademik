@@ -337,6 +337,14 @@
                                         <span class="menu-title">Surat Permohonan Pindah Prodi</span>
                                     </a>
                                 </div>
+                                <div class="menu-item">
+                                        <a class="menu-link {{ ($active === "Surat Rekomendasi Proposal Skripsi") ? 'active' : '' }} " href="{{ url('createSuratRekomendasiProposalSkripsi') }}">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title">Surat Rekomendasi Proposal Skripsi</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
 
