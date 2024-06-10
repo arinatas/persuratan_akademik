@@ -104,7 +104,7 @@
                             </div>
                         <!-- /.row -->
 
-                        <div class="mx-5" style="margin-top: -20px">                        
+                        <div class="mx-5" style="margin-top: -20px">
                             <!-- info row -->
                             <div class="row letter-info-mhs">
                                 <div class="col-sm-12 letter-col">
@@ -143,7 +143,7 @@
                                                 <p style="text-align: justify;">
                                                     Adapun data yang diperlukan adalah sebagai berikut :
                                                 </p>
-                                                <div class="mx-5">           
+                                                <div class="mx-5">
                                                     <div class="row letter-info-mhs">
                                                         <div class="col-sm-12 letter-col">
                                                             <address>
@@ -194,7 +194,7 @@
                                                 </div>
                                                 <!-- /.row -->
                                                 <p style="text-align: justify; text-indent: 30px; margin-top: -15px">
-                                                    Demikian Surat Keterangan ini dibuat untuk dapat dipergunakan sebagaimana mestinya. 
+                                                    Demikian Surat Keterangan ini dibuat untuk dapat dipergunakan sebagaimana mestinya.
                                                 </p>
                                             </div>
                                         </div>
@@ -210,7 +210,7 @@
                                     <span>Primakara University</span><br>
                                     <span>Wakil Rektor I Bidang Akademik</span><br>
                                     @if ($penandaTangan->file_ttd)
-                                        <img src="{{ asset('storage/' . $penandaTangan->file_ttd) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="160px">
+                                        <img src="{{ asset('storage/' . $penandaTangan->file_ttd) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="240px">
                                     @else
                                         <br>
                                         <br>
@@ -224,8 +224,8 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-        
-                       
+
+
                     </div>
 
                     <div class="footer">

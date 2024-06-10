@@ -56,7 +56,7 @@
                         <!-- /.col -->
                     </div>
 
-                    <div class="mx-5" style="font-size: 20px">                        
+                    <div class="mx-5" style="font-size: 20px">
                         <!-- info row -->
                         <div class="row letter-info-mhs">
                             <div class="col-sm-12 letter-col">
@@ -116,7 +116,7 @@
                                                 Yang bersangkutan aktif sebagai mahasiswa pada Semester {{ $item->semester }} Tahun Akademik {{ $item->tahun_akademik }} di Primakara University pada Program Studi {{ $item->biodata->prodi }}.
                                             </p>
                                             <p style="text-align: justify; text-indent: 30px;">
-                                                Demikian Surat Keterangan ini dibuat untuk dapat dipergunakan sebagaimana mestinya. 
+                                                Demikian Surat Keterangan ini dibuat untuk dapat dipergunakan sebagaimana mestinya.
                                             </p>
                                         </div>
                                     </div>
@@ -134,7 +134,7 @@
                                     <span>Primakara University</span><br>
                                     <span>Wakil Rektor I Bidang Akademik</span><br>
                                     @if ($penandaTangan->file_ttd)
-                                        <img src="{{ asset('storage/' . $penandaTangan->file_ttd) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="160px">
+                                        <img src="{{ asset('storage/' . $penandaTangan->file_ttd) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="240px">
                                     @else
                                         <br>
                                         <br>
@@ -148,8 +148,8 @@
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
-        
-                       
+
+
                     </div>
 
                     <div class="footer">

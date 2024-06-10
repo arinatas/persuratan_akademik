@@ -105,7 +105,7 @@
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
-                            
+
                             <!-- info row -->
                             <div class="row letter-info-mhs">
                                 <div class="col-sm-12 letter-col">
@@ -127,7 +127,7 @@
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
-            
+
                             <!-- Table row -->
                             <div class="row">
                                 <div class="col-12 table-responsive">
@@ -205,7 +205,7 @@
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
-            
+
                             <!-- info row -->
                             <div style="float: inline-end; margin-top: -35px;">
                                 <div>
@@ -214,7 +214,7 @@
                                         <span>Primakara University</span><br>
                                         <span>Wakil Rektor I Bidang Akademik</span><br>
                                         @if ($penandaTangan->file_ttd)
-                                            <img src="{{ asset('storage/' . $penandaTangan->file_ttd) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="160px">
+                                            <img src="{{ asset('storage/' . $penandaTangan->file_ttd) }}" alt="File TTD" class="img-fluid mx-auto d-block mt-10" width="240px">
                                         @else
                                             <br>
                                             <br>
@@ -228,7 +228,7 @@
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
-                        
+
                             <!-- info row -->
                             <div class="footer">
                             <!-- info row -->
